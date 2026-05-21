@@ -1,7 +1,7 @@
 ﻿#include "MovementComponent.h"
 #include "RenderCompononent.h"
 
-movementsComponent::movementsComponent(gameObject* _owner, float _speed)
+movementsComponent::movementsComponent(Object* _owner, float _speed)
     : Component(_owner)
     , speed(_speed)
 {

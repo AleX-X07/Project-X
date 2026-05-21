@@ -1,6 +1,6 @@
 ﻿#include "RenderCompononent.h"
 
-RenderCompononent::RenderCompononent(gameObject* _owner, std::string name) : Component(_owner)
+RenderCompononent::RenderCompononent(Object* _owner, std::string name) : Component(_owner)
 {
     setTexture(name);
     Rect.setPosition(owner->getPosition());

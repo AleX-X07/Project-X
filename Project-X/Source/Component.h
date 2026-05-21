@@ -1,15 +1,15 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
 
-class gameObject;
+class Object;
 
 class Component
 {
 protected:
-    gameObject* owner;
+    Object* owner;
 
 public:
-    Component(gameObject* _owner);
+    Component(Object* _owner);
     virtual ~Component() = default;
 
     virtual void update(float deltaTime);

@@ -9,7 +9,7 @@ private:
     sf::RectangleShape Rect;
 
 public:
-    RenderCompononent(gameObject* _owner, std::string name);
+    RenderCompononent(Object* _owner, std::string name);
     ~RenderCompononent() override = default;
 
     void update(float deltaTime) override;

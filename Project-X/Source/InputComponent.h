@@ -6,7 +6,7 @@
 class InputComponent : public Component
 {
 public:
-    InputComponent(gameObject* owner);
+    InputComponent(Object* owner);
     ~InputComponent() override = default;
     
     void update(float dt) override;

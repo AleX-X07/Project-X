@@ -11,7 +11,7 @@ int main()
     // Create the main window
     sf::RenderWindow window(sf::VideoMode({1920, 1080}), "SFML window");
     
-    gameObject test({0, 0}, {50, 50});
+    Object test({0, 0}, {50, 50});
     
     test.addComponent(new InputComponent(&test));
     test.addComponent(new RenderCompononent(&test, "Sprite/Debug/Baker.png"));

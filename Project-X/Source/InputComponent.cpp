@@ -1,7 +1,7 @@
 ﻿#include "InputComponent.h"
 #include "MovementComponent.h"
 
-InputComponent::InputComponent(gameObject* _owner)
+InputComponent::InputComponent(Object* _owner)
     : Component(_owner)
 {
 }

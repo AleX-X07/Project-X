@@ -8,7 +8,7 @@ private:
     float speed;
 
 public:
-    movementsComponent(gameObject* _owner, float _speed);
+    movementsComponent(Object* _owner, float _speed);
     ~movementsComponent() override = default;
 
     float getSpeed();

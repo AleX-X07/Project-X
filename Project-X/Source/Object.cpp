@@ -1,12 +1,12 @@
 ﻿#include "Object.h"
 
-gameObject::gameObject(sf::Vector2f _position, sf::Vector2f _size)
+Object::Object(sf::Vector2f _position, sf::Vector2f _size)
     : position(_position)
     , size(_size)
 {
 }
 
-gameObject::~gameObject()
+Object::~Object()
 {
     for (auto& comp : components)
     {
@@ -15,7 +15,7 @@ gameObject::~gameObject()
     }
 }
 
-void gameObject::update(float deltaTime)
+void Object::update(float deltaTime)
 {
     for (auto& comp : components)
     {
@@ -23,7 +23,7 @@ void gameObject::update(float deltaTime)
     }
 }
 
-void gameObject::render(sf::RenderWindow& window)
+void Object::render(sf::RenderWindow& window)
 {
     for (auto& comp : components)
     {
@@ -31,27 +31,27 @@ void gameObject::render(sf::RenderWindow& window)
     }
 }
 
-void gameObject::addComponent(Component* newComponent)
+void Object::addComponent(Component* newComponent)
 {
     components.push_back(newComponent);
 }
 
-sf::Vector2f gameObject::getPosition()
+sf::Vector2f Object::getPosition()
 {
     return position;
 }
 
-void gameObject::setPosition(sf::Vector2f newPosition)
+void Object::setPosition(sf::Vector2f newPosition)
 {
     position = newPosition;
 }
 
-sf::Vector2f gameObject::getSize()
+sf::Vector2f Object::getSize()
 {
     return size;
 }
 
-void gameObject::setSize(sf::Vector2f newSize)
+void Object::setSize(sf::Vector2f newSize)
 {
     size = newSize;
 }

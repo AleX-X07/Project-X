@@ -3,7 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "Component.h"
 
-class gameObject
+class Object
 {
 private:
     sf::Vector2f position;
@@ -11,8 +11,8 @@ private:
     std::vector<Component*> components = {};
 
 public:
-    gameObject(sf::Vector2f _position, sf::Vector2f _size);
-    ~gameObject();
+    Object(sf::Vector2f _position, sf::Vector2f _size);
+    ~Object();
 
     void update(float deltaTime);
     void render(sf::RenderWindow& window);
