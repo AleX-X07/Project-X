@@ -11,7 +11,7 @@ private:
     int nbrLayers;
     
 public:
-    Layer() = default;
+    Layer();
     ~Layer() = default;
     
     void setNbrLayer(int nbrLayers);

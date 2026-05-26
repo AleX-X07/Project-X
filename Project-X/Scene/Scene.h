@@ -7,18 +7,18 @@ class Scene {
 private:
     Layer myLayer;
     std::vector<Object*> myObjects;
+    int idScene;
     
 public:
-    Scene(int nbrLayer);
+    Scene(int _idScene);
     ~Scene() = default;
     
     Layer& getMyLayer();
     std::vector<Object*>& getVecObjects();
-    
-    // Dev //
+
     void addObject(Object* addObject, int Layer);
-    //####//
     
+    void setLayer(int Layer);
     void update(float deltatime);
     void render();
 };

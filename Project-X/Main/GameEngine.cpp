@@ -7,6 +7,7 @@ std::vector<Scene*> GameEngine::scenes;
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
     delatTime = 0;
+    idScene = 0;
 }
 
 GameEngine::~GameEngine() {
@@ -38,17 +39,13 @@ void GameEngine::updateTime() {
 
 void GameEngine::update() {
     if (!scenes.empty()) {
-        for (auto& scene : scenes) {
-            scene->update(delatTime);
-        }
+        scenes[idScene]->update(delatTime);
     }
 }
 
 void GameEngine::render() {
     if (!scenes.empty()) {
-        for (auto& scene : scenes) {
-            scene->render();
-        }
+        scenes[idScene]->render();
     }
 }
 
@@ -59,6 +56,14 @@ sf::RenderWindow* GameEngine::getWindow() {
 
 std::vector<Scene*>& GameEngine::getVecState() {
     return scenes;
+}
+
+void GameEngine::setScene(int newScene) {
+    idScene = newScene;
+}
+
+int GameEngine::getIdCurrentScene() {
+    return idScene;
 }
 
 

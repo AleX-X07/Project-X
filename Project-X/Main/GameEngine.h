@@ -11,6 +11,8 @@ private:
     static sf::RenderWindow* window;
     static std::vector<Scene*> scenes;
     
+    static int idScene;
+    
     sf::Clock clock;
     float delatTime;
     
@@ -25,6 +27,8 @@ public:
     
     static sf::RenderWindow* getWindow();
     static std::vector<Scene*>& getVecState();
+    static void setScene(int newScene);
+    static int getIdCurrentScene();
     
     GameEngine();
     ~GameEngine();

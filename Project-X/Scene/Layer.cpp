@@ -1,5 +1,9 @@
 ﻿#include "Layer.h"
 
+Layer::Layer() {
+    nbrLayers = 1;
+}
+
 void Layer::setNbrLayer(int _nbrLayers) {
     nbrLayers = _nbrLayers;
     for (int X = 0; X < nbrLayers; X++) {

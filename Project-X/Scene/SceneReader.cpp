@@ -15,7 +15,7 @@ void SceneReader::loadScene() {
             if (currentScene.is_open()) {
                 nlohmann::json data2 = nlohmann::json::parse(currentScene);
                 
-                Scene* addScene = new Scene(data2["Layer"]);
+                Scene* addScene = new Scene(data2["ID"]);
                 
                 nlohmann::json objects = data2["Objects"];
                 
@@ -35,7 +35,7 @@ void SceneReader::SceneTestDev() {
     Object* newObj = new Object({0, 0}, { 50, 50});
     
     newObj->addComponent(new InputComponent(newObj));
-    newObj->addComponent(new RenderComponent(newObj, "Sprite/Debug/Baker.png"));
+    newObj->addComponent(new RenderComponent(newObj, "Assets/Debug/Baker.png"));
     newObj->addComponent(new movementsComponent(newObj, 500));
     
     addScene->addObject(newObj, 1);

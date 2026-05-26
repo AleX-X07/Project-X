@@ -1,7 +1,7 @@
 ﻿#include "Scene.h"
 
-Scene::Scene(int nbrLayer) {
-    myLayer.setNbrLayer(nbrLayer);
+Scene::Scene(int _idScene) {
+    idScene = _idScene;
 }
 
 Layer& Scene::getMyLayer() {
@@ -15,6 +15,10 @@ std::vector<Object*>& Scene::getVecObjects() {
 void Scene::addObject(Object* addObject, int Layer) {
     myObjects.push_back(addObject);
     getMyLayer().addInLayer(addObject, Layer);
+}
+
+void Scene::setLayer(int Layer) {
+    myLayer.setNbrLayer(Layer);
 }
 
 void Scene::update(float deltatime) {
