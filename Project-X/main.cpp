@@ -4,7 +4,7 @@
 #include "Source/InputComponent.h"
 #include "Source/MovementComponent.h"
 #include "Source/Object.h"
-#include "Source/RenderCompononent.h"
+#include "Source/RenderComponent.h"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
     Object test({0, 0}, {50, 50});
     
     test.addComponent(new InputComponent(&test));
-    test.addComponent(new RenderCompononent(&test, "Sprite/Debug/Baker.png"));
+    test.addComponent(new RenderComponent(&test, "Sprite/Debug/Baker.png"));
     test.addComponent(new movementsComponent(&test, 500));
     
     sf::Clock clock;

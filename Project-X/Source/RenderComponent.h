@@ -2,15 +2,15 @@
 
 #include "Object.h"
 
-class RenderCompononent final : public Component
+class RenderComponent final : public Component
 {
 private:
     sf::Texture texture;
     sf::RectangleShape Rect;
 
 public:
-    RenderCompononent(Object* _owner, std::string name);
-    ~RenderCompononent() override = default;
+    RenderComponent(Object* _owner, std::string name);
+    ~RenderComponent() override = default;
 
     void update(float deltaTime) override;
     void render(sf::RenderWindow& window) override;
