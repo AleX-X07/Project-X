@@ -20,7 +20,8 @@ void SceneReader::loadScene() {
                 nlohmann::json objects = data2["Objects"];
                 
                 for (auto& currentObj : objects) {
-                    std::cout << currentObj["test"] << std::endl;
+                    Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
+                    addScene->addObject(newObj, currentObj["LayerPosition"]);
                 }
             }
         }
@@ -30,12 +31,15 @@ void SceneReader::loadScene() {
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     GameEngine::getVecState().push_back(addScene);
+<<<<<<< Updated upstream
     
     Object* newObj = new Object({0, 0}, { 50, 50});
     
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Sprite/Debug/Baker.png"));
     newObj->addComponent(new movementsComponent(newObj, 500));
+=======
+>>>>>>> Stashed changes
     
     addScene->addObject(newObj, 1);
 }
