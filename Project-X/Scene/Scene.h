@@ -15,6 +15,10 @@ public:
     Layer& getMyLayer();
     std::vector<Object*>& getVecObjects();
     
+    // Dev //
+    void addObject(Object* addObject, int Layer);
+    //####//
+    
     void update(float deltatime);
     void render();
 };

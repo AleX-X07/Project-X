@@ -2,7 +2,8 @@
     "Layer" : 5,
     "Objects" : [
         {
-            "test" : 5
+            "test" : 5,
+            "size" : [50,50]
         },
         {
             "test" : 6

@@ -15,4 +15,5 @@ public:
    ~SceneReader() = default;
     
    void loadScene();
+   void SceneTestDev();
 };

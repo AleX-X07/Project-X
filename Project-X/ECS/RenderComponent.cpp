@@ -24,6 +24,7 @@ void RenderComponent::render()
 }
 
 void RenderComponent::setTexture(std::string _name)
+
 {
     if (texture.loadFromFile(_name)) {
         Rect.setTexture(&texture);
