@@ -3,6 +3,10 @@
 #include <iostream>
 #include <fstream>
 
+#include "../ECS/MovementComponent.h"
+#include "../ECS/RenderComponent.h"
+#include "../ECS/InputComponent.h"
+
 #include "Scene.h"
 
 class GameEngine;

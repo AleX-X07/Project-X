@@ -29,7 +29,13 @@ void SceneReader::loadScene() {
 
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
+    GameEngine::getVecState().push_back(addScene);
     
-    Object* newObj = new Object({0,0},{50,50});
+    Object* newObj = new Object({0, 0}, { 50, 50});
+    
+    newObj->addComponent(new InputComponent(newObj));
+    newObj->addComponent(new RenderComponent(newObj, "Sprite/Debug/Baker.png"));
+    newObj->addComponent(new movementsComponent(newObj, 500));
+    
     addScene->addObject(newObj, 1);
 }

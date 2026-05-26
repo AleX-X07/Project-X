@@ -24,7 +24,7 @@ private:
 public:
     
     static sf::RenderWindow* getWindow();
-    static std::vector<Scene*> getVecState();
+    static std::vector<Scene*>& getVecState();
     
     GameEngine();
     ~GameEngine();

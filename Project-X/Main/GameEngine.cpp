@@ -57,7 +57,7 @@ sf::RenderWindow* GameEngine::getWindow() {
     return window;
 }
 
-std::vector<Scene*> GameEngine::getVecState() {
+std::vector<Scene*>& GameEngine::getVecState() {
     return scenes;
 }
 
