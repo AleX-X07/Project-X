@@ -1,6 +1,10 @@
 {
     "Layer" : 5,
-    "Objects" : [{
-        "test" : 7
-    }]
+    "Objects" : [
+        {
+        "LayerPosition" : 0,
+        "Position" : [0,0],
+        "Size" : [50,50]
+        }
+    ]
 }
