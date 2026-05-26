@@ -2,10 +2,14 @@
 
 void Layer::setNbrLayer(int _nbrLayers) {
     nbrLayers = _nbrLayers;
+    for (int X = 0; X < nbrLayers; X++) {
+        std::vector<Object*> newLayer;
+        layers.push_back(newLayer);
+    }
 }
 
 void Layer::addInLayer(Object* myObject, int layer) {
-    if (layer < nbrLayers ) {
+    if (layer <= nbrLayers ) {
         layers[layer].push_back(myObject);
     }
     else {

@@ -30,8 +30,6 @@ void SceneReader::loadScene() {
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     
-    Object* newObj = new Object();
-    addScene->addObject(newObj, 0);
-    
-    
+    Object* newObj = new Object({0,0},{50,50});
+    addScene->addObject(newObj, 1);
 }
