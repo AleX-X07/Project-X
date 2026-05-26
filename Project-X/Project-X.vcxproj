@@ -158,11 +158,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Source\Component.cpp" />
-    <ClCompile Include="Source\InputComponent.cpp" />
-    <ClCompile Include="Source\MovementComponent.cpp" />
-    <ClCompile Include="Source\Object.cpp">
+    <ClCompile Include="Main\GameEngine.cpp" />
+    <ClCompile Include="Main\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -236,17 +233,20 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Steve\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Source\RenderComponent.cpp" />
+    <ClCompile Include="Objects\GameObject.cpp" />
+    <ClCompile Include="Scene\Layer.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Component.h" />
-    <ClInclude Include="Source\InputComponent.h" />
-    <ClInclude Include="Source\MovementComponent.h" />
-    <ClInclude Include="Source\Object.h" />
-    <ClInclude Include="Source\RenderComponent.h" />
+    <ClInclude Include="Main\GameEngine.h" />
+    <ClInclude Include="Objects\GameObject.h" />
+    <ClInclude Include="Scene\Layer.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
