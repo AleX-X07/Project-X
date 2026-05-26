@@ -3,11 +3,11 @@
 #include <iostream>
 #include <ostream>
 
-#include "../Objects/GameObject.h"
+#include "../ECS/Object.h"
 
 class Layer {
 private:   
-    std::vector<std::vector<GameObject*>> layers;
+    std::vector<std::vector<Object*>> layers;
     int nbrLayers;
     
 public:
@@ -15,7 +15,7 @@ public:
     ~Layer() = default;
     
     void setNbrLayer(int nbrLayers);
-    void addInLayer(GameObject* myObject, int layer);
+    void addInLayer(Object* myObject, int layer);
     
     void render();
 };

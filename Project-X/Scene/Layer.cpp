@@ -4,7 +4,7 @@ void Layer::setNbrLayer(int _nbrLayers) {
     nbrLayers = _nbrLayers;
 }
 
-void Layer::addInLayer(GameObject* myObject, int layer) {
+void Layer::addInLayer(Object* myObject, int layer) {
     if (layer < nbrLayers ) {
         layers[layer].push_back(myObject);
     }

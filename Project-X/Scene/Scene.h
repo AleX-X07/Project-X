@@ -1,19 +1,19 @@
 ﻿#pragma once
 #include <vector>
-#include "../Objects/GameObject.h"
+#include "../ECS/Object.h"
 #include "Layer.h"
 
 class Scene {
 private:
     Layer myLayer;
-    std::vector<GameObject*> myObjects;
+    std::vector<Object*> myObjects;
     
 public:
     Scene(int nbrLayer);
     ~Scene() = default;
     
     Layer& getMyLayer();
-    std::vector<GameObject*>& getVecObjects();
+    std::vector<Object*>& getVecObjects();
     
     void update(float deltatime);
     void render();

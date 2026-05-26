@@ -8,13 +8,13 @@ Layer& Scene::getMyLayer() {
     return myLayer;
 }
 
-std::vector<GameObject*>& Scene::getVecObjects() {
+std::vector<Object*>& Scene::getVecObjects() {
     return myObjects;
 }
 
 void Scene::update(float deltatime) {
     for (auto& obj : myObjects) {
-        obj->update();
+        obj->update(deltatime);
     }
 }
 
