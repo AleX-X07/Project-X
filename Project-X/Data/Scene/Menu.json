@@ -1,0 +1,20 @@
+{
+    "ID" : 0,
+    "Layer" : 2,
+
+    "Objects" : [
+        {
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [50,50],
+            "Type" : {
+                "TypeName" : "Transition",
+                "Transition" : [ 1, "Click"]
+            },
+            "ECS" : [
+                {"Component" : "Render", "args" : ["Assets/Debug/Collider_DebugTX.png"]},
+                {"Component" : "Mouse", "args" : []}
+            ]
+        }
+    ]
+}

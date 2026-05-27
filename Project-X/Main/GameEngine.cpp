@@ -2,6 +2,7 @@
 
 sf::RenderWindow* GameEngine::window = nullptr;
 std::vector<Scene*> GameEngine::scenes;
+int GameEngine::idScene = 0;
 
 
 GameEngine::GameEngine() {
@@ -17,10 +18,10 @@ GameEngine::~GameEngine() {
 
 void GameEngine::start() {
     SceneReader readScene;
-    //readScene.loadScene();
-    
+    readScene.loadScene();
     //## for dev ##//
-    readScene.SceneTestDev();
+    
+    //readScene.SceneTestDev();
 }
 
 void GameEngine::updateEvent() {    

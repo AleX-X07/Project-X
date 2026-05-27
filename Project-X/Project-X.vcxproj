@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\InputComponent.cpp" />
+    <ClCompile Include="ECS\MouseComponent.cpp" />
     <ClCompile Include="ECS\MovementComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\RenderComponent.cpp" />
@@ -244,10 +245,12 @@
     <ClCompile Include="Scene\Layer.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneReader.cpp" />
+    <ClCompile Include="Scene\Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\InputComponent.h" />
+    <ClInclude Include="ECS\MouseComponent.h" />
     <ClInclude Include="ECS\MovementComponent.h" />
     <ClInclude Include="ECS\Object.h" />
     <ClInclude Include="ECS\RenderComponent.h" />
@@ -255,6 +258,7 @@
     <ClInclude Include="Scene\Layer.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneReader.h" />
+    <ClInclude Include="Scene\Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

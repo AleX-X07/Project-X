@@ -1,3 +1,3 @@
 {
-    "Scene" : ["HUB","FirstBiome"]
+    "Scene" : ["Menu", "HUB"]
 }

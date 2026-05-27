@@ -1,12 +1,5 @@
 {
-    "Layer" : 5,
-    "Objects" : [
-        {
-            "test" : 5,
-            "size" : [50,50]
-        },
-        {
-            "test" : 6
-        }
-    ]
+    "ID" : 0,
+    "Layer" : 0,
+    "Objects" : []
 }
