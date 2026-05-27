@@ -44,7 +44,7 @@ Le tableau suivant contient la liste des components disponibles, ainsi que les a
 
 | Component |   Args   | 
 |-----------|----------|
-|  Render   | Chemin vers la textures |
+|  Render   | Chemin vers la textures (La textures se mets dans le dossier Assets) |
 |  Mouse   | Rien |
 |  Input   | Rien |
 |  Movement | Vitesse de déplacement |
