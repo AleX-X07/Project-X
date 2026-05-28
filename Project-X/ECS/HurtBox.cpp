@@ -32,10 +32,10 @@ bool HurtBox::intersect()
                     if (z != nullptr)
                     {
                         if (
-                    (z->pos.x < pos.x + size.x &&
+                    z->pos.x < pos.x + size.x &&
                     z->pos.x + z->size.x > pos.x &&
                     z->pos.y < pos.y + size.y &&
-                    z->pos.y + z->size.y > pos.y)
+                    z->pos.y + z->size.y > pos.y
                     )
                         {
                             comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
