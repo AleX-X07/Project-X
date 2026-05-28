@@ -1,4 +1,5 @@
 ﻿#include "Scene.h"
+#include "../Main/GameEngine.h"
 
 Scene::Scene(int _idScene) {
     idScene = _idScene;

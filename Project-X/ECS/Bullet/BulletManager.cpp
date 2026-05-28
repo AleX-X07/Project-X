@@ -1,4 +1,5 @@
 ﻿#include "BulletManager.h"
+#include "../../Main/GameEngine.h"
 
 BulletManager::BulletManager(Object* _owner)
     : Component(_owner)
@@ -9,6 +10,9 @@ BulletManager::BulletManager(Object* _owner)
     fireRate = 10;
     
     actualTime = 0;
+    
+    buffer.loadFromFile("Assets/Sound/Shoot.wav");
+    sound =  new sf::Sound(buffer);
 }
 
 void BulletManager::update(float dt)
@@ -18,7 +22,20 @@ void BulletManager::update(float dt)
     auto Comp = owner->getComponent<MouseComponent>();
     if (Comp->clicked() && actualTime >= 1.0f / fireRate)
     {
-        CreateBullet(owner, (std::atan2(Comp->getMousePosition().y - owner->getPosition().y, Comp->getMousePosition().x - owner->getPosition().x) * 180 / 3.14), 5);
+        mouseScreenPos = {
+            (int)Comp->getMousePosition().x,
+            (int)Comp->getMousePosition().y
+        };
+
+        mouseWorldPos = GameEngine::getWindow()->mapPixelToCoords(mouseScreenPos);
+
+        float angle = std::atan2(
+            mouseWorldPos.y - owner->getPosition().y,
+            mouseWorldPos.x - owner->getPosition().x
+        ) * 180.0f / 3.14159f;
+        
+        sound->play();
+        CreateBullet(owner, angle, 5);
         actualTime = 0;
     }
     
@@ -60,4 +77,17 @@ void BulletManager::render()
     {
         b->render();
     }
+}
+
+BulletManager::~BulletManager()
+{
+    for (auto z : bullet)
+    {
+        delete z;
+        z = nullptr;
+    }
+    bullet.clear();
+    
+    delete sound;
+    sound = nullptr;
 }

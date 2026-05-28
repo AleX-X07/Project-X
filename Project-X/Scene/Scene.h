@@ -4,6 +4,8 @@
 #include "Layer.h"
 #include "Transition.h"
 
+class GameEngine;
+
 class Scene {
 public:
     Layer myLayer;
