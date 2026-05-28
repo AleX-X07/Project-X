@@ -13,11 +13,12 @@ void Layer::setNbrLayer(int _nbrLayers) {
 }
 
 void Layer::addInLayer(Object* myObject, int layer) {
-    if (layer <= nbrLayers ) {
+    if (layer < nbrLayers ) {
         layers[layer].push_back(myObject);
     }
     else {
         std::cerr << "Layer out of bounds" << std::endl;
+        abort();
     }
 }
 

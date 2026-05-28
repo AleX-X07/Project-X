@@ -18,10 +18,10 @@ GameEngine::~GameEngine() {
 
 void GameEngine::start() {
     SceneReader readScene;
-    readScene.loadScene();
+    //readScene.loadScene();
     //## for dev ##//
     
-    //readScene.SceneTestDev();
+    readScene.SceneTestDev();
 }
 
 void GameEngine::updateEvent() {    

@@ -79,6 +79,7 @@ void SceneReader::loadScene() {
 
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
+    addScene->setLayer(2);
     GameEngine::getVecState().push_back(addScene);
     
     Object* newObj = new Object({0, 0}, { 50, 50});
@@ -93,7 +94,7 @@ void SceneReader::SceneTestDev() {
     addScene->addObject(newObj, 1);
     
     Hurt->addComponent(new HurtBox(Hurt, 1, {50, 50}, addScene->getVecObjects()));
-    Hurt->addComponent(new RenderComponent(Hurt, "Sprite/Debug/Collider_DebugTX.png"));
+    Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
     
     addScene->addObject(Hurt, 1);
 }
