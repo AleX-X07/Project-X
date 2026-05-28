@@ -9,28 +9,28 @@ InputComponent::InputComponent(Object* _owner)
 void InputComponent::update(float deltaTime)
 {
     auto movementsComp = owner->getComponent<movementsComponent>();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left")))
     {
         if (movementsComp != nullptr)
         {
             movementsComp->left(deltaTime);
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Right")))
     {
         if (movementsComp != nullptr)
         {
             movementsComp->right(deltaTime);
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z))
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Up")))
     {
         if (movementsComp != nullptr)
         {
             movementsComp->up(deltaTime);
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Down")))
     {
         if (movementsComp != nullptr)
         {

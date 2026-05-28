@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Object.h"
-
+#include "../Tool/Input.h"
 
 class InputComponent : public Component
 {

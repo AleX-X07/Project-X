@@ -11,11 +11,11 @@ RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_
 void RenderComponent::update(float deltaTime)
 {
     Rect.setPosition(owner->getPosition());
-    if (texture.getSize().x > 0 && texture.getSize().y > 0)
-    {
-        Rect.setScale({owner->getSize().x / texture.getSize().x,
-                       owner->getSize().y / texture.getSize().y});
-    }
+    // if (texture.getSize().x > 0 && texture.getSize().y > 0)
+    // {
+    //     Rect.setScale({owner->getSize().x / texture.getSize().x,
+    //                    owner->getSize().y / texture.getSize().y});
+    // }
 }
 
 void RenderComponent::render()
@@ -23,9 +23,7 @@ void RenderComponent::render()
     GameEngine::getWindow()->draw(Rect);
 }
 
-void RenderComponent::setTexture(std::string _name)
-
-{
+void RenderComponent::setTexture(std::string _name) {
     if (texture.loadFromFile(_name)) {
         Rect.setTexture(&texture);
     }

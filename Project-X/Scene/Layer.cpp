@@ -18,7 +18,6 @@ void Layer::addInLayer(Object* myObject, int layer) {
     }
     else {
         std::cerr << "Layer out of bounds" << std::endl;
-        abort();
     }
 }
 

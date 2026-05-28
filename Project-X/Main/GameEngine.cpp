@@ -19,9 +19,13 @@ GameEngine::~GameEngine() {
 void GameEngine::start() {
     SceneReader readScene;
     //readScene.loadScene();
-    //## for dev ##//
     
+    //## for dev ##//
     readScene.SceneTestDev();
+    //#############//
+    
+    InputReader readInput;
+    readInput.loadInput();
 }
 
 void GameEngine::updateEvent() {    
