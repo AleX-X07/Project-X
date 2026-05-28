@@ -13,7 +13,7 @@ void MouseComponent::update(float deltaTime)
 }
 
 sf::Vector2i MouseComponent::getMousePosition() {
-    return sf::Mouse::getPosition();
+    return sf::Mouse::getPosition(*GameEngine::getWindow());
 }
 
 bool MouseComponent::clicked() {

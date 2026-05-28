@@ -11,11 +11,6 @@ RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_
 void RenderComponent::update(float deltaTime)
 {
     Rect.setPosition(owner->getPosition());
-    if (texture.getSize().x > 0 && texture.getSize().y > 0)
-    {
-        Rect.setScale({owner->getSize().x / texture.getSize().x,
-                       owner->getSize().y / texture.getSize().y});
-    }
 }
 
 void RenderComponent::render()
