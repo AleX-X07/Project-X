@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "Object.h"
+#include "../Object.h"
 #include "cmath"
 
 #include "BulletSystemComponent.h"
-#include "RenderComponent.h"
-#include "MouseComponent.h"
-#include "Hitbox.h"
+#include "../Graphics/RenderComponent.h"
+#include "../Input/MouseComponent.h"
+#include "../Box/Hitbox.h"
 
 class BulletManager : public Component
 {

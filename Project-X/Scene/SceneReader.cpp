@@ -1,6 +1,6 @@
 ﻿#include "SceneReader.h"
 
-#include "../ECS/HurtBox.h"
+#include "../ECS/Box/HurtBox.h"
 #include "../Main/GameEngine.h"
 
 std::unordered_map <

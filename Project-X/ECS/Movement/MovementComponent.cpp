@@ -1,5 +1,5 @@
 ﻿#include "MovementComponent.h"
-#include "RenderComponent.h"
+#include "../Graphics/RenderComponent.h"
 
 movementsComponent::movementsComponent(Object* _owner, float _speed)
     : Component(_owner)

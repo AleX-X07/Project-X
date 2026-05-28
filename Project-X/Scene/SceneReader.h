@@ -5,14 +5,14 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../ECS/MovementComponent.h"
-#include "../ECS/RenderComponent.h"
-#include "../ECS/InputComponent.h"
+#include "../ECS/Movement/MovementComponent.h"
+#include "../ECS/Graphics/RenderComponent.h"
+#include "../ECS/Input/InputComponent.h"
 
-#include "../ECS/MouseComponent.h"
+#include "../ECS/Input/MouseComponent.h"
 
-#include "../ECS/BulletSystemComponent.h"
-#include "../ECS/BulletManager.h"
+#include "../ECS/Bullet/BulletSystemComponent.h"
+#include "../ECS/Bullet/BulletManager.h"
 
 
 #include "Scene.h"

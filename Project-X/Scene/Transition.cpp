@@ -1,6 +1,6 @@
 ﻿#include "Transition.h"
 
-#include "../ECS/MouseComponent.h"
+#include "../ECS/Movement/MovementComponent.h"
 #include "../Main/GameEngine.h"
 
 Transition::Transition(int _targetID, TransitionType _type, Object* _owner) {

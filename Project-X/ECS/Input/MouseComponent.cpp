@@ -1,5 +1,5 @@
 ﻿#include "MouseComponent.h"
-#include "../Main/GameEngine.h"
+#include "../../Main/GameEngine.h"
 
 
 MouseComponent::MouseComponent(Object* _owner)
@@ -13,7 +13,7 @@ void MouseComponent::update(float deltaTime)
 }
 
 sf::Vector2i MouseComponent::getMousePosition() {
-    return sf::Mouse::getPosition(*GameEngine::getWindow());
+    return sf::Mouse::getPosition();
 }
 
 bool MouseComponent::clicked() {

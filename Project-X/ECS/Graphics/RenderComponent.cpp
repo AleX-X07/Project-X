@@ -1,5 +1,5 @@
 ﻿#include "RenderComponent.h"
-#include "../Main/GameEngine.h"
+#include "../../Main/GameEngine.h"
 
 RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_owner)
 {

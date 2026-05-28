@@ -1,6 +1,6 @@
 ﻿#include "HurtBox.h"
 
-#include "BulletManager.h"
+#include "../Bullet/BulletManager.h"
 
 HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects )
     : Component(_owner), other(_objects)

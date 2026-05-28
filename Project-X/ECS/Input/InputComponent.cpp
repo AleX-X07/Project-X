@@ -1,5 +1,5 @@
 ﻿#include "InputComponent.h"
-#include "MovementComponent.h"
+#include "../Movement/MovementComponent.h"
 
 InputComponent::InputComponent(Object* _owner)
     : Component(_owner)
