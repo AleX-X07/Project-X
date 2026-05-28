@@ -1,0 +1,17 @@
+﻿#pragma once
+
+#include "Object.h"
+
+class GameEngine;
+
+class MouseComponent : public Component
+{
+public:
+    MouseComponent(Object* owner);
+    ~MouseComponent() override = default;
+    
+    void update(float dt) override;
+    
+    sf::Vector2i getMousePosition();
+    bool clicked();
+};

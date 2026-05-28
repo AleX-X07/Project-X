@@ -4,7 +4,7 @@
 #include "Layer.h"
 
 class Scene {
-private:
+public:
     Layer myLayer;
     std::vector<Object*> myObjects;
     

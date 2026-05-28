@@ -6,14 +6,16 @@
 #include "../ECS/MovementComponent.h"
 #include "../ECS/RenderComponent.h"
 #include "../ECS/InputComponent.h"
+#include "../ECS/BulletSystemComponent.h"
+#include "../ECS/MouseComponent.h"
+#include "../ECS/BulletManager.h"
 
 #include "Scene.h"
 
 class GameEngine;
 
 class SceneReader {
-public:
-public:
+
 public:
    SceneReader() = default;
    ~SceneReader() = default;

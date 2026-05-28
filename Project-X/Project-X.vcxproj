@@ -158,8 +158,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ECS\BulletSystemComponent.cpp" />
+    <ClCompile Include="ECS\BulletManager.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
+    <ClCompile Include="ECS\HitBox.cpp" />
+    <ClCompile Include="ECS\HurtBox.cpp" />
     <ClCompile Include="ECS\InputComponent.cpp" />
+    <ClCompile Include="ECS\MouseComponent.cpp" />
     <ClCompile Include="ECS\MovementComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\RenderComponent.cpp" />
@@ -246,8 +251,13 @@
     <ClCompile Include="Scene\SceneReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ECS\BulletSystemComponent.h" />
+    <ClInclude Include="ECS\BulletManager.h" />
     <ClInclude Include="ECS\Component.h" />
+    <ClInclude Include="ECS\HitBox.h" />
+    <ClInclude Include="ECS\HurtBox.h" />
     <ClInclude Include="ECS\InputComponent.h" />
+    <ClInclude Include="ECS\MouseComponent.h" />
     <ClInclude Include="ECS\MovementComponent.h" />
     <ClInclude Include="ECS\Object.h" />
     <ClInclude Include="ECS\RenderComponent.h" />
