@@ -1,9 +1,8 @@
 ﻿#include "HitBox.h"
 
-HitBox::HitBox(Object* _owner, int _id, sf::Vector2f _size)
+HitBox::HitBox(Object* _owner, sf::Vector2f _size)
     : Component(_owner)
 {
-    id = _id;
     size = _size;
 }
 

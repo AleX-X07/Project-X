@@ -49,7 +49,7 @@ void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
     randomAngle = _angle + (rand() / (float)RAND_MAX) * (2 * spread) - spread;
     
     ball->addComponent(new BulletSystemComponent(ball, speed, randomAngle, _lifetime, damage));
-    ball->addComponent(new RenderComponent(ball, "Sprite/Debug/Baker.png"));
+    ball->addComponent(new RenderComponent(ball, "Assets/Debug/Baker.png"));
     ball->addComponent(new HitBox(ball, 1, {25, 25}));
     bullet.push_back(ball);
 }

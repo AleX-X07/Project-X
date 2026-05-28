@@ -18,7 +18,7 @@
 #include "Scene.h"
 
 class GameEngine;
-using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&)>;
+using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&, Scene*)>;
 
 class SceneReader {
 private:

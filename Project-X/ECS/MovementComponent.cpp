@@ -23,7 +23,7 @@ void movementsComponent::left(float deltaTime)
     auto comp = owner->getComponent<RenderComponent>();
     if (comp != nullptr)
     {
-        comp->setTexture("Sprite/Debug/Baker.png");
+        comp->setTexture("Assets/Debug/Baker.png");
     }
 }
 
@@ -33,7 +33,7 @@ void movementsComponent::right(float deltaTime)
     auto comp = owner->getComponent<RenderComponent>();
     if (comp != nullptr)
     {
-        comp->setTexture("Sprite/Debug/Baker.png");
+        comp->setTexture("Assets/Debug/Baker.png");
     }
 }
 
@@ -43,7 +43,7 @@ void movementsComponent::up(float deltaTime)
     auto comp = owner->getComponent<RenderComponent>();
     if (comp != nullptr)
     {
-        comp->setTexture("Sprite/Debug/Baker.png");
+        comp->setTexture("Assets/Debug/Baker.png");
     }
 }
 
@@ -53,6 +53,6 @@ void movementsComponent::down(float deltaTime)
     auto comp = owner->getComponent<RenderComponent>();
     if (comp != nullptr)
     {
-        comp->setTexture("Sprite/Debug/Baker.png");
+        comp->setTexture("Assets/Debug/Baker.png");
     }
 }

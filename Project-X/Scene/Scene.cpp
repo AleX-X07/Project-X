@@ -53,7 +53,7 @@ void Scene::update(float deltatime) {
     for (auto& trans : myTransitions) {
         trans->update();
     }
-    std::cout << idScene << std::endl;
+    //std::cout << idScene << std::endl;
 }
 
 void Scene::render() {

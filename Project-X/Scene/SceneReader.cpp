@@ -7,17 +7,29 @@ std::unordered_map <
     std::string,
     ComponentFactory
 > SceneReader::factories = {
-    {"Render",   [](Object* obj, const nlohmann::json& ecs) -> Component* {
+    {"Render",   [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new RenderComponent(obj, ecs["args"][0]);
     }},
-    {"Mouse",    [](Object* obj, const nlohmann::json& ecs) -> Component* {
+    {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new MouseComponent(obj);
     }},
-    {"Input",    [](Object* obj, const nlohmann::json& ecs) -> Component* {
+    {"Input",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new InputComponent(obj);
     }},
-    {"Movement", [](Object* obj, const nlohmann::json& ecs) -> Component* {
+    {"Movement", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new movementsComponent(obj, ecs["args"][0]);
+    }},
+    {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects());
+    }},
+    {"HitBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new HitBox(obj, {ecs["args"][0],ecs["args"][1]});
+    }},
+    {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new BulletManager(obj);
+    }},
+    {"BulletSystemComponent", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new BulletSystemComponent(obj, ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]);
     }},
 };
 
@@ -57,7 +69,7 @@ void SceneReader::loadScene() {
                         std::string name = ecs["Component"];
                         
                         if (factories.count(name)) {
-                            newObj->addComponent(factories[name](newObj, ecs));
+                            newObj->addComponent(factories[name](newObj, ecs, addScene));
                         } else {
                             std::cerr << "Composant inconnu : " << name << std::endl;
                         }
@@ -91,9 +103,10 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new movementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
+    newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects()));
     addScene->addObject(newObj, 1);
     
-    Hurt->addComponent(new HurtBox(Hurt, 1, {50, 50}, addScene->getVecObjects()));
+    Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
     Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
     
     addScene->addObject(Hurt, 1);
