@@ -5,7 +5,7 @@
 #include "Transition.h"
 
 class Scene {
-private:
+public:
     Layer myLayer;
     std::vector<Object*> myObjects;
     std::vector<Transition*> myTransitions;

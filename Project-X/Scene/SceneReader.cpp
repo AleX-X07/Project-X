@@ -1,4 +1,6 @@
 ﻿#include "SceneReader.h"
+
+#include "../ECS/HurtBox.h"
 #include "../Main/GameEngine.h"
 
 std::unordered_map <
@@ -80,10 +82,18 @@ void SceneReader::SceneTestDev() {
     GameEngine::getVecState().push_back(addScene);
     
     Object* newObj = new Object({0, 0}, { 50, 50});
+    Object* Hurt = new Object({0, 0}, { 50, 50});
+    
     
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Debug/Baker.png"));
+    newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new movementsComponent(newObj, 500));
-    
+    newObj->addComponent(new BulletManager(newObj));
     addScene->addObject(newObj, 1);
+    
+    Hurt->addComponent(new HurtBox(Hurt, 1, {50, 50}, addScene->getVecObjects()));
+    Hurt->addComponent(new RenderComponent(Hurt, "Sprite/Debug/Collider_DebugTX.png"));
+    
+    addScene->addObject(Hurt, 1);
 }
