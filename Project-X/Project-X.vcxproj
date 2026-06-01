@@ -782,6 +782,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Scene\Data\Factories.cpp" />
     <ClCompile Include="Scene\Data\InputReader.cpp" />
     <ClCompile Include="Scene\Data\SceneReader.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -957,6 +958,7 @@
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="Main\GameEngine.h" />
+    <ClInclude Include="Scene\Data\Factories.h" />
     <ClInclude Include="Scene\Data\InputReader.h" />
     <ClInclude Include="Scene\Data\SceneReader.h" />
     <ClInclude Include="Scene\Layer.h" />

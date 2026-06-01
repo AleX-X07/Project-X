@@ -5,29 +5,11 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../../ECS/Movement/MovementComponent.h"
-#include "../../ECS/Graphics/RenderComponent.h"
-#include "../../ECS/Input/InputComponent.h"
-#include "../../ECS/Input/MouseComponent.h"
-#include "../../ECS/Bullet/BulletSystemComponent.h"
-#include "../../ECS/Bullet/BulletManager.h"
-#include "../../ECS/Box/HurtBox.h"
-#include "../../ECS/Box/HitBox.h"
-#include "../../ECS/Behaviour/AiDebugShoot.h"
-#include "../../ECS/Tool/CameraComponent.h"
-
-#include "../Scene.h"
+#include "Factories.h"
 
 class GameEngine;
-using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&, Scene*)>;
 
 class SceneReader {
-private:
-   static std::unordered_map <
-        std::string,
-        ComponentFactory
-    > factories;
-    
 public:
    SceneReader() = default;
    ~SceneReader() = default;
