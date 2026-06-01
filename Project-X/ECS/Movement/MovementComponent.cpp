@@ -1,4 +1,6 @@
 ﻿#include "MovementComponent.h"
+
+#include "StateMachineComponent.h"
 #include "../Graphics/RenderComponent.h"
 
 movementsComponent::movementsComponent(Object* _owner, float _speed)
@@ -20,6 +22,9 @@ void movementsComponent::setSpeed(float newSpeed)
 void movementsComponent::left(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x - speed * deltaTime, owner->getPosition().y});
+    if (owner->hasComponent<StateMachineComponent>()) {
+        
+    }
 }
 
 void movementsComponent::right(float deltaTime)
