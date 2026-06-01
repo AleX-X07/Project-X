@@ -2,6 +2,7 @@
 
 #include "../Object.h"
 #include "HitBox.h"
+#include "../Tool/HealthComponent.h"
 
 #include <iostream>
 
@@ -15,6 +16,8 @@ private:
     sf::RectangleShape rect;
     
     std::vector<Object*>& other;
+    
+    int damageTaken;
     
 public:
     HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects );

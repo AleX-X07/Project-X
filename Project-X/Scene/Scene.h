@@ -5,6 +5,7 @@
 #include "Transition.h"
 
 class GameEngine;
+class HealthComponent;
 
 class Scene {
 public:

@@ -701,6 +701,7 @@
     </ClCompile>
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
+    <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -796,6 +797,7 @@
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
     <ClInclude Include="ECS\Object.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
+    <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Scene\Layer.h" />
     <ClInclude Include="Scene\Scene.h" />

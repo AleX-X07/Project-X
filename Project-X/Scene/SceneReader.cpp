@@ -109,6 +109,7 @@ void SceneReader::SceneTestDev() {
     
     Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
     Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
+    Hurt->addComponent(new HealthComponent(Hurt, 1000));
     
     addScene->addObject(Hurt, 1);
 }

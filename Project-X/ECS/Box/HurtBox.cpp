@@ -11,7 +11,15 @@ HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _obje
 void HurtBox::update(float dt)
 {
     pos = owner->getPosition();
-    intersect();
+    //intersect();
+    if (intersect())
+    {
+        auto comp = owner->getComponent<HealthComponent>();
+        if (comp != nullptr)
+        {
+            comp->TakeDamage(damageTaken);
+        }
+    }
 }
 
 void HurtBox::render()
@@ -39,6 +47,7 @@ bool HurtBox::intersect()
                     )
                         {
                             comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
+                            damageTaken = comp->damage;
                             return true;
                         }
                     }
