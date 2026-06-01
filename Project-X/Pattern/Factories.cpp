@@ -1,7 +1,7 @@
 ﻿#include "Factories.h"
-#include "../Scene.h"
-#include "../../ECS/Object.h"
-#include "../../ECS/Component.h"
+#include "../Scene/Scene.h"
+#include "../ECS/Object.h"
+#include "../ECS/Component.h"
 
 std::unordered_map <
     std::string,

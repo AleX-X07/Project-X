@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <functional>
 
-#include "Factories.h"
+#include "../../Pattern/Factories.h"
 
 class GameEngine;
 
