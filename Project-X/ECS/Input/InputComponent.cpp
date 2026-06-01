@@ -9,7 +9,7 @@ InputComponent::InputComponent(Object* _owner)
 void InputComponent::update(float deltaTime)
 {
     auto movementsComp = owner->getComponent<movementsComponent>();
-    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left")) || (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) < -deadzone)))
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left")) || (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) < -deadzone))
     {
         if (movementsComp != nullptr)
         {
