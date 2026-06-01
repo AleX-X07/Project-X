@@ -3,7 +3,8 @@
 #include <vector>
 
 #include "../Scene/Scene.h"
-#include "../Scene/SceneReader.h"
+#include "../Scene/Data/SceneReader.h"
+#include "../Scene/Data/InputReader.h"
 
 class GameEngine {
 private:

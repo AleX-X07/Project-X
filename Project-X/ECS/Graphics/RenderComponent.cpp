@@ -18,9 +18,7 @@ void RenderComponent::render()
     GameEngine::getWindow()->draw(Rect);
 }
 
-void RenderComponent::setTexture(std::string _name)
-
-{
+void RenderComponent::setTexture(std::string _name) {
     if (texture.loadFromFile(_name)) {
         Rect.setTexture(&texture);
     }

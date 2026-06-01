@@ -1,7 +1,6 @@
 ﻿#include "SceneReader.h"
 
-#include "../ECS/Box/HurtBox.h"
-#include "../Main/GameEngine.h"
+#include "../../Main/GameEngine.h"
 
 std::unordered_map <
     std::string,
@@ -83,7 +82,6 @@ void SceneReader::loadScene() {
         for (auto& vS2 : GameEngine::getVecState()) {
             if (vS != vS2 && vS->getIdScene() == vS2->getIdScene()) {
                 std::cout << "Id déjà existant" << std::endl;
-                abort();
             }
         }
     }
