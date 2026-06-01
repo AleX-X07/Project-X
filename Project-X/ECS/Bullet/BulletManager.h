@@ -16,6 +16,8 @@ class GameEngine;
 class BulletManager : public BulletSource
 {
 public:
+    float Xjoystick;
+    float Yjoystick;
     
     float spread;
     float fireRate;

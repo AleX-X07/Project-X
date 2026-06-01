@@ -61,14 +61,38 @@ void BulletManager::update(float dt)
 
 void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
 {
-    Object* ball = new Object(owner->getPosition(), {25,25});
+    Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
+    Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
     
-    randomAngle = _angle + (rand() / (float)RAND_MAX) * (2 * spread) - spread;
+    if (sf::Joystick::isConnected(0) && (std::abs(Xjoystick) > 20 || std::abs(Yjoystick) > 20))
+    {
+        float angleRad = std::atan2(Yjoystick, Xjoystick);
+        float angleDeg = angleRad * 180.f / 3.14159265f;
+            
+        if (angleDeg < 0) {
+            angleDeg += 360.f;
+        }
+        
+        Object* ball = new Object(owner->getPosition(), {25,25});
     
-    ball->addComponent(new BulletSystemComponent(ball, speed, randomAngle, _lifetime, damage));
-    ball->addComponent(new RenderComponent(ball, "Assets/Debug/Baker.png"));
-    ball->addComponent(new HitBox(ball, {25, 25}));
-    bullet.push_back(ball);
+        randomAngle = angleDeg + (rand() / (float)RAND_MAX) * (2 * spread) - spread;
+    
+        ball->addComponent(new BulletSystemComponent(ball, speed, randomAngle, _lifetime, damage));
+        ball->addComponent(new RenderComponent(ball, "Assets/Debug/Baker.png"));
+        ball->addComponent(new HitBox(ball, {25, 25}));
+        bullet.push_back(ball);
+    }
+    else
+    {
+        Object* ball = new Object(owner->getPosition(), {25,25});
+    
+        randomAngle = _angle + (rand() / (float)RAND_MAX) * (2 * spread) - spread;
+    
+        ball->addComponent(new BulletSystemComponent(ball, speed, randomAngle, _lifetime, damage));
+        ball->addComponent(new RenderComponent(ball, "Assets/Debug/Baker.png"));
+        ball->addComponent(new HitBox(ball, {25, 25}));
+        bullet.push_back(ball);
+    }
 }
 
 void BulletManager::render()

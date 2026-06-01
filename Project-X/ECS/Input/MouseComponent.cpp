@@ -17,5 +17,11 @@ sf::Vector2i MouseComponent::getMousePosition() {
 }
 
 bool MouseComponent::clicked() {
-    return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        return true;
+    }
+    if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -10) {
+        return true;
+    }
+    return false;
 }
