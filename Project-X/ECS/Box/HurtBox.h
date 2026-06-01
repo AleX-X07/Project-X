@@ -3,6 +3,7 @@
 #include "../Object.h"
 #include "HitBox.h"
 #include "../Tool/HealthComponent.h"
+#include "../Bullet/BulletSource.h"
 
 #include <iostream>
 

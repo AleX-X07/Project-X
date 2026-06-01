@@ -14,6 +14,7 @@
 
 #include "../ECS/Bullet/BulletSystemComponent.h"
 #include "../ECS/Bullet/BulletManager.h"
+#include "../ECS/Behaviour/AiDebugShoot.h"
 
 
 #include "Scene.h"

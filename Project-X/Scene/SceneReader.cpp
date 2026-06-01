@@ -104,12 +104,14 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects()));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 10000, 10000, false, 5));
+    newObj->addComponent(new HealthComponent(newObj, 1000));
     
     addScene->addObject(newObj, 1);
     
     Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
     Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
     Hurt->addComponent(new HealthComponent(Hurt, 1000));
+    Hurt->addComponent(new AiDebugShoot(Hurt, *newObj, 10, 500, 10, 1));
     
     addScene->addObject(Hurt, 1);
 }

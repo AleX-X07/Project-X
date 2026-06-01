@@ -1,19 +1,14 @@
 ﻿#pragma once
 
-#include "SFML/Audio.hpp"
-#include "BulletSource.h"
+// Ne sert que pour debug / Devrat etre refait pour etre mis dans un behavior tree
 
 #include "../Object.h"
-#include "cmath"
-
-#include "BulletSystemComponent.h"
-#include "../Graphics/RenderComponent.h"
-#include "../Input/MouseComponent.h"
-#include "../Box/Hitbox.h"
+#include "SFML/Audio.hpp"
+#include "../Bullet/BulletSource.h"
 
 class GameEngine;
 
-class BulletManager : public BulletSource
+class AiDebugShoot final : public BulletSource
 {
 public:
     
@@ -30,9 +25,11 @@ public:
     sf::SoundBuffer buffer;
     sf::Sound* sound;
     
+    Object& target;
+    
 public:
-    BulletManager(Object* _owner);
-    ~BulletManager() override;
+    AiDebugShoot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate);
+    ~AiDebugShoot() override;
     
     void CreateBullet(Object* _owner, float _angle, float _lifetime);
     

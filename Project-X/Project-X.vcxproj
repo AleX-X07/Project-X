@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ECS\Behaviour\AiDebugShoot.cpp" />
     <ClCompile Include="ECS\Box\HitBox.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -389,6 +390,7 @@
       <AdditionalIncludeDirectories>C:\Users\Steve\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="ECS\Bullet\BulletSource.cpp" />
     <ClCompile Include="ECS\Bullet\BulletSystemComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -786,9 +788,11 @@
     <ClCompile Include="Scene\Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
     <ClInclude Include="ECS\Box\HitBox.h" />
     <ClInclude Include="ECS\Box\HurtBox.h" />
     <ClInclude Include="ECS\Bullet\BulletManager.h" />
+    <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\BulletSystemComponent.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
@@ -803,9 +807,6 @@
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneReader.h" />
     <ClInclude Include="Scene\Transition.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ECS\Behaviour\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,13 +1,13 @@
-﻿#include "BulletManager.h"
+﻿#include "AiDebugShoot.h"
 #include "../../Main/GameEngine.h"
 
-BulletManager::BulletManager(Object* _owner)
-    : BulletSource(_owner)
+AiDebugShoot::AiDebugShoot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate)
+    : BulletSource(_owner), target(_target)
 {
-    speed = 500;
-    damage = 10;
-    spread = 5;
-    fireRate = 10;
+    speed = _speed;
+    damage = _damage;
+    spread = _spread;
+    fireRate = _firerate;
     
     actualTime = 0;
     
@@ -15,23 +15,15 @@ BulletManager::BulletManager(Object* _owner)
     sound =  new sf::Sound(buffer);
 }
 
-void BulletManager::update(float dt)
+void AiDebugShoot::update(float dt)
 {
     actualTime += dt;
     
-    auto Comp = owner->getComponent<MouseComponent>();
-    if (Comp->clicked() && actualTime >= 1.0f / fireRate)
+    if (actualTime >= 1.0f / fireRate)
     {
-        mouseScreenPos = {
-            (int)Comp->getMousePosition().x,
-            (int)Comp->getMousePosition().y
-        };
-
-        mouseWorldPos = GameEngine::getWindow()->mapPixelToCoords(mouseScreenPos);
-
         float angle = std::atan2(
-            mouseWorldPos.y - owner->getPosition().y,
-            mouseWorldPos.x - owner->getPosition().x
+            target.getPosition().y - owner->getPosition().y,
+            target.getPosition().x - owner->getPosition().x
         ) * 180.0f / 3.14159f;
         
         sound->play();
@@ -59,7 +51,7 @@ void BulletManager::update(float dt)
     );
 }
 
-void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
+void AiDebugShoot::CreateBullet(Object* _owner, float _angle, float _lifetime)
 {
     Object* ball = new Object(owner->getPosition(), {25,25});
     
@@ -71,7 +63,7 @@ void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
     bullet.push_back(ball);
 }
 
-void BulletManager::render()
+void AiDebugShoot::render()
 {
     for (auto& b : bullet)
     {
@@ -79,7 +71,7 @@ void BulletManager::render()
     }
 }
 
-BulletManager::~BulletManager()
+AiDebugShoot::~AiDebugShoot()
 {
     for (auto z : bullet)
     {
