@@ -5,6 +5,6 @@ State::State(Object* owner, const char* pathTexture) {
     Path = pathTexture;
 }
 
-State* State::getNext() {
-    return next;
-}
+//State* State::getNext() {
+//    return next;
+//}

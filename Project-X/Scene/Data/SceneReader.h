@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <functional>
 
-#include "Factories.h"
+#include "../../Pattern/Factories.h"
 
 #include "../../ECS/Movement/MovementComponent.h"
 #include "../../ECS/Graphics/RenderComponent.h"
