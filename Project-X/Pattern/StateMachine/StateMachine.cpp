@@ -24,7 +24,7 @@ void StateMachine::update(float deltaTime) {
     if (nextState != nullptr && nextState != currentState) {
         delete currentState;
         currentState = nextState;
-        currentState->next() = nullptr;
+        currentState->next = nullptr;
     }
 }
 
