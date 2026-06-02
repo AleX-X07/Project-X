@@ -17,6 +17,8 @@ public:
     float speed;
     float randomAngle;
 
+    int BulletQuantity;
+    
     float actualTime;
     
     sf::Vector2i mouseScreenPos;
@@ -28,7 +30,7 @@ public:
     Object& target;
     
 public:
-    AiDebugShoot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate);
+    AiDebugShoot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate, int quantity);
     ~AiDebugShoot() override;
     
     void CreateBullet(Object* _owner, float _angle, float _lifetime);

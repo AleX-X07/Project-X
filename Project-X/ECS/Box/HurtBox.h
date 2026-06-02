@@ -20,8 +20,11 @@ private:
     
     int damageTaken;
     
+    float Iframe;
+    float actualtime;
+    
 public:
-    HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects );
+    HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects, float _Iframe);
     ~HurtBox() override = default;
     
     void update(float dt) override;

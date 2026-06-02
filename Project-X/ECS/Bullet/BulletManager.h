@@ -10,20 +10,19 @@
 #include "../Graphics/RenderComponent.h"
 #include "../Input/MouseComponent.h"
 #include "../Box/Hitbox.h"
+#include "../Weapon/WeaponMain.h"
 
 class GameEngine;
 
 class BulletManager : public BulletSource
 {
 public:
+    WeaponMain* weapon;
+    
     float Xjoystick;
     float Yjoystick;
     
-    float spread;
-    float fireRate;
-    float speed;
     float randomAngle;
-
     float actualTime;
     
     sf::Vector2i mouseScreenPos;
@@ -40,4 +39,12 @@ public:
     
     void update(float dt) override;
     void render() override;
+    
+    void SetWeapon(WeaponMain* _weapon);
+    
+    void setspread(float _spread);
+    void setfireRate(float _firerate);
+    void setspeed(float _speed);
+    void setBulletQuantity(int _quantity);
+    void setAll(float _spread, float _firerate, float _speed, int _quantity);
 };

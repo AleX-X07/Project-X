@@ -1,0 +1,20 @@
+﻿#pragma once
+#include "../../WeaponMain.h"
+
+#include "../../../Box/HitBox.h"
+#include "../../../Graphics/RenderComponent.h"
+#include "../../../Bullet/BulletSystemComponent.h"
+#include "../../../Bullet/BulletManager.h"
+
+class GameEngine;
+
+class shotgun : public WeaponMain
+{
+public:
+    
+public:
+    shotgun(Object* _owner);
+    ~shotgun() override = default;
+    
+    Object* CreateBullet(float angle) override;
+};

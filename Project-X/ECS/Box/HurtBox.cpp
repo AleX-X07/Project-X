@@ -1,15 +1,20 @@
 ﻿#include "HurtBox.h"
 
-HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects )
+#include "../Bullet/BulletSystemComponent.h"
+
+HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects, float _Iframe)
     : Component(_owner), other(_objects)
 {
     size = _size;
+    Iframe = _Iframe;
 }
 
 void HurtBox::update(float dt)
 {
     pos = owner->getPosition();
-    //intersect();
+    
+    actualtime += dt;
+    
     if (intersect())
     {
         auto comp = owner->getComponent<HealthComponent>();
@@ -31,6 +36,25 @@ bool HurtBox::intersect()
     {
         if (b->getComponent<HurtBox>() != this)
         {
+            auto hit = b->getComponent<HitBox>();
+            if (hit != nullptr)
+            {
+                if (
+                    hit->pos.x < pos.x + size.x &&
+                    hit->pos.x + hit->size.x > pos.x &&
+                    hit->pos.y < pos.y + size.y &&
+                    hit->pos.y + hit->size.y > pos.y
+                    )
+                {
+                    if (actualtime >= Iframe)
+                    {
+                        damageTaken = 10;
+                        actualtime = 0;
+                        return true;
+                    }
+                }
+            }
+            
             auto comp = b->getComponent<BulletSource>();
             if (comp != nullptr)
             {
@@ -46,9 +70,16 @@ bool HurtBox::intersect()
                             z->pos.y + z->size.y > pos.y
                         )
                         {
+                            auto* bulletComp = c->getComponent<BulletSystemComponent>();
+                            int bulletDamage = (bulletComp != nullptr) ? bulletComp->getDamage() : 0;
+
                             comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
-                            damageTaken = comp->damage;
-                            return true;
+                            if (actualtime >= Iframe)
+                            {
+                                damageTaken = bulletDamage;
+                                actualtime = 0;
+                                return true;
+                            }
                         }
                     }
                 }

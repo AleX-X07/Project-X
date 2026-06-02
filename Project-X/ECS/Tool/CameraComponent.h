@@ -6,7 +6,7 @@ class GameEngine;
 
 class CameraComponent final : public Component
 {
-private:
+public:
     sf::RectangleShape sizeC;
     sf::Vector2f ScreenSize;
     sf::Vector2f LevelSize;

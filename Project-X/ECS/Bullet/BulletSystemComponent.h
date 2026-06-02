@@ -29,4 +29,6 @@ public:
     void CreateTrailPoint();
     
     bool isExpired() const;
+    
+    int getDamage() const { return damage; }
 };
