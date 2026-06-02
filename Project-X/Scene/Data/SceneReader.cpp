@@ -95,21 +95,25 @@ void SceneReader::SceneTestDev() {
     Object* newObj = new Object({0, 0}, { 50, 50});
     Object* Hurt = new Object({0, 0}, { 50, 50});
     
+    auto* spawner = new AiMobSpawner(Hurt, *newObj, {1920, 1080}, addScene->getVecObjects());
+    Hurt->addComponent(spawner);
+    
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Debug/Baker.png"));
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new movementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
-    newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects()));
-    newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 10000, 10000, false, 5));
+    newObj->addComponent(new HurtBox(newObj, {50, 50}, spawner->liste));
+    newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, true, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000));
     
     addScene->addObject(newObj, 1);
     
-    Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
-    Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
-    Hurt->addComponent(new HealthComponent(Hurt, 1000));
-    Hurt->addComponent(new AiDebugShoot(Hurt, *newObj, 10, 500, 10, 1));
+    //Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
+    //Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
+    //Hurt->addComponent(new HealthComponent(Hurt, 1000));
+    //Hurt->addComponent(new AiDebugShoot(Hurt, *newObj, 10, 500, 10, 1));
+    //Hurt->addComponent(new AiMobSpawner(Hurt, *newObj, {1920, 1080}));
     
     addScene->addObject(Hurt, 1);
 }

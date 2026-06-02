@@ -159,6 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ECS\Behaviour\AiDebugShoot.cpp" />
+    <ClCompile Include="ECS\Behaviour\Manager\AiMobSpawner.cpp" />
     <ClCompile Include="ECS\Box\HitBox.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -943,6 +944,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
+    <ClInclude Include="ECS\Behaviour\Manager\AiMobSpawner.h" />
     <ClInclude Include="ECS\Box\HitBox.h" />
     <ClInclude Include="ECS\Box\HurtBox.h" />
     <ClInclude Include="ECS\Bullet\BulletManager.h" />

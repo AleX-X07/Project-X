@@ -43,10 +43,10 @@ bool BulletSystemComponent::isExpired() const
 
 void BulletSystemComponent::render()
 {
-    for (auto& point : Trail)
-    {
-        point->render();
-    }
+    //for (auto& point : Trail)
+    //{
+    //    point->render();
+    //}
 }
 
 BulletSystemComponent::~BulletSystemComponent()

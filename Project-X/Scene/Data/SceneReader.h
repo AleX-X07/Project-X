@@ -15,6 +15,7 @@
 #include "../../ECS/Box/HitBox.h"
 #include "../../ECS/Behaviour/AiDebugShoot.h"
 #include "../../ECS/Tool/CameraComponent.h"
+#include "../../ECS/Behaviour/Manager/AiMobSpawner.h"
 
 #include "../Scene.h"
 
