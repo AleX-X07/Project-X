@@ -17,7 +17,7 @@ std::unordered_map <
         return new InputComponent(obj);
     }},
     {"Movement", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new movementsComponent(obj, ecs["args"][0]);
+        return new MovementsComponent(obj, ecs["args"][0]);
     }},
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects());

@@ -7,5 +7,4 @@ public:
     virtual ~LeftState() override = default;
     
     virtual void update(float deltaTime) override;
-    virtual void render() override;
 };

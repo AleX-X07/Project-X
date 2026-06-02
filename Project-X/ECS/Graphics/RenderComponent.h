@@ -17,5 +17,6 @@ public:
     void update(float deltaTime) override;
     void render() override;
     
-    void setTexture(std::string _name);
+    void setPathTexture(std::string _name);
+    void setTexture(sf::Texture& texture);
 };

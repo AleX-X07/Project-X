@@ -3,7 +3,7 @@
 
 RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_owner)
 {
-    setTexture(name);
+    setPathTexture(name);
     Rect.setPosition(owner->getPosition());
     Rect.setSize({owner->getSize().x, owner->getSize().y});
 }
@@ -18,8 +18,12 @@ void RenderComponent::render()
     GameEngine::getWindow()->draw(Rect);
 }
 
-void RenderComponent::setTexture(std::string _name) {
+void RenderComponent::setPathTexture(std::string _name) {
     if (texture.loadFromFile(_name)) {
         Rect.setTexture(&texture);
     }
+}
+
+void RenderComponent::setTexture(sf::Texture& _texture) {
+    texture = _texture;
 }

@@ -68,7 +68,7 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Debug/Baker.png"));
     newObj->addComponent(new MouseComponent(newObj));
-    newObj->addComponent(new movementsComponent(newObj, 500));
+    newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects()));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 10000, 10000, false, 5));
@@ -82,4 +82,18 @@ void SceneReader::SceneTestDev() {
     Hurt->addComponent(new AiDebugShoot(Hurt, *newObj, 10, 500, 10, 1));
     
     addScene->addObject(Hurt, 1);
+}
+
+void SceneReader::SceneTestDev2() {
+    Scene* myScene = new Scene(0);
+    myScene->setLayer(2);
+    GameEngine::getVecState().push_back(myScene);
+    
+    Object* Hero = new Object({0, 0}, { 50, 50});
+    Hero->addComponent(new InputComponent(Hero));
+    Hero->addComponent(new MovementsComponent(Hero,500));
+    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Baker.png"));
+    Hero->addComponent(new StateMachineComponent(Hero));
+    
+    myScene->addObject(Hero, 0);
 }

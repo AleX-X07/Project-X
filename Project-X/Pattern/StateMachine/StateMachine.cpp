@@ -1,8 +1,10 @@
 ﻿#include "StateMachine.h"
 
+#include "StateMachineMovement/IdleState.h"
+
 StateMachine::StateMachine(Object* _owner) {
     Owner = _owner;
-    currentState = nullptr;
+    currentState = new IdleState(Owner, "Assets/Debug/Baker.png");
 }
 
 StateMachine::~StateMachine() {
@@ -18,17 +20,21 @@ void StateMachine::setCurrentState(State* newState) {
     currentState = newState;
 }
 
+void StateMachine::addState(State* newState) {
+    states.push_back(newState);
+}
+
 void StateMachine::update(float deltaTime) {
-    currentState->update(deltaTime);
+    getCurrentState()->update(deltaTime);
     State* nextState = currentState->next;
     if (nextState != nullptr && nextState != currentState) {
         delete currentState;
         currentState = nextState;
-        currentState->next() = nullptr;
+        currentState->next = nullptr;
     }
 }
 
 void StateMachine::render() {
-    currentState->render();
+   currentState->render();
 }
 

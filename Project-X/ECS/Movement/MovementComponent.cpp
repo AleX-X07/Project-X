@@ -3,23 +3,23 @@
 #include "StateMachineComponent.h"
 #include "../Graphics/RenderComponent.h"
 
-movementsComponent::movementsComponent(Object* _owner, float _speed)
+MovementsComponent::MovementsComponent(Object* _owner, float _speed)
     : Component(_owner)
     , speed(_speed)
 {
 }
 
-float movementsComponent::getSpeed()
+float MovementsComponent::getSpeed()
 {
     return speed;
 }
 
-void movementsComponent::setSpeed(float newSpeed)
+void MovementsComponent::setSpeed(float newSpeed)
 {
     speed = newSpeed;
 }
 
-void movementsComponent::left(float deltaTime)
+void MovementsComponent::left(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x - speed * deltaTime, owner->getPosition().y});
     if (owner->hasComponent<StateMachineComponent>()) {
@@ -27,17 +27,17 @@ void movementsComponent::left(float deltaTime)
     }
 }
 
-void movementsComponent::right(float deltaTime)
+void MovementsComponent::right(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x + speed * deltaTime, owner->getPosition().y});
 }
 
-void movementsComponent::up(float deltaTime)
+void MovementsComponent::up(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x, owner->getPosition().y - speed * deltaTime});
 }
 
-void movementsComponent::down(float deltaTime)
+void MovementsComponent::down(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x, owner->getPosition().y + speed * deltaTime});
 }

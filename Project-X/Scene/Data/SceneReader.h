@@ -16,4 +16,5 @@ public:
     
    void loadScene();
    void SceneTestDev();
+   void SceneTestDev2();
 };

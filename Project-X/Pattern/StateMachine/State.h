@@ -1,17 +1,20 @@
 ﻿#pragma once
 #include "../../ECS/Object.h"
+#include "../../Tool/Animation.h"
+#include "../../Tool/Input.h"
 
 class State {
-private:
+protected:
     Object* Owner;
-    const char* Path;
+    Animation* animation;
+    
 public:
     State* next;
+
 public:
     State(Object* owner, const char* pathTexture);
-    virtual ~State() = default;
+    virtual ~State();
     
-    virtual void nextState() = 0;
     virtual void update(float deltaTime) = 0;
-    virtual void render() = 0;
+    void render();
 };

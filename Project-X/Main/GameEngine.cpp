@@ -16,16 +16,17 @@ GameEngine::~GameEngine() {
     window = nullptr;
 }
 
-void GameEngine::start() {
+void GameEngine::start() {    
+    InputReader readInput;
+    readInput.loadInput();
+    
     SceneReader readScene;
-    readScene.loadScene();
+    //readScene.loadScene();
     
     //## for dev ##//
     //readScene.SceneTestDev();
+    readScene.SceneTestDev2();
     //#############//
-    
-    InputReader readInput;
-    readInput.loadInput();
 }
 
 void GameEngine::updateEvent() {    

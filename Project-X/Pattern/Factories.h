@@ -13,6 +13,7 @@
 #include "../ECS/Box/HitBox.h"
 #include "../ECS/Behaviour/AiDebugShoot.h"
 #include "../ECS/Tool/CameraComponent.h"
+#include "../ECS/Movement/StateMachineComponent.h"
 
 class Scene;
 class Component;

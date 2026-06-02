@@ -2,14 +2,14 @@
 
 #include "../Object.h"
 
-class movementsComponent : public Component
+class MovementsComponent : public Component
 {
 private:
     float speed;
 
 public:
-    movementsComponent(Object* _owner, float _speed);
-    ~movementsComponent() override = default;
+    MovementsComponent(Object* _owner, float _speed);
+    ~MovementsComponent() override = default;
 
     float getSpeed();
     void setSpeed(float newSpeed);
