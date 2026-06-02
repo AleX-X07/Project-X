@@ -3,5 +3,5 @@
 class DebugHud
 {
 public:
-    
+    int e;
 };
