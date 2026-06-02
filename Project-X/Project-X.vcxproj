@@ -470,6 +470,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Component.cpp" />
+    <ClCompile Include="ECS\Debug\DebugHud.cpp" />
     <ClCompile Include="ECS\Graphics\RenderComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1110,6 +1111,7 @@
     <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\BulletSystemComponent.h" />
     <ClInclude Include="ECS\Component.h" />
+    <ClInclude Include="ECS\Debug\DebugHud.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
     <ClInclude Include="ECS\Input\InputComponent.h" />
     <ClInclude Include="ECS\Input\MouseComponent.h" />
