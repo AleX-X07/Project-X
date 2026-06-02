@@ -1,10 +1,11 @@
 ﻿#include "StateMachine.h"
 
-#include "StateMachineMovement/IdleState.h"
+#include "State/IdleRightState.h"
 
-StateMachine::StateMachine(Object* _owner) {
-    Owner = _owner;
-    currentState = new IdleState(Owner, "Assets/Debug/Baker.png");
+
+StateMachine::StateMachine(Object* owner, std::unordered_map<std::string, std::string>& _animation) : animation(_animation) {
+    Owner = owner;
+    currentState = nullptr;
 }
 
 StateMachine::~StateMachine() {
@@ -18,10 +19,6 @@ State* StateMachine::getCurrentState() {
 
 void StateMachine::setCurrentState(State* newState) {
     currentState = newState;
-}
-
-void StateMachine::addState(State* newState) {
-    states.push_back(newState);
 }
 
 void StateMachine::update(float deltaTime) {

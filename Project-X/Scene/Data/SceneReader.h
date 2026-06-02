@@ -15,6 +15,8 @@ public:
    ~SceneReader() = default;
     
    void loadScene();
+   void readAnimation(nlohmann::basic_json<>& ecs);
+   
    void SceneTestDev();
    void SceneTestDev2();
 };

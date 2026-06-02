@@ -57,6 +57,18 @@ void SceneReader::loadScene() {
     }
 }
 
+void SceneReader::readAnimation(nlohmann::basic_json<>& ecs) {
+    std::ifstream pathA(static_cast<std::string>(ecs["Component"]["args"][0]));
+    
+    nlohmann::json dataA = nlohmann::json::parse(pathA);
+    
+    std::unordered_map<std::string, std::string>* myMap = new std::unordered_map<std::string, std::string>();
+    
+    for (auto& [stateName, stateData] : dataA.items()) {
+        myMap[stateName] = stateData[1];
+    }
+}
+
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     addScene->setLayer(2);
@@ -92,7 +104,7 @@ void SceneReader::SceneTestDev2() {
     Object* Hero = new Object({0, 0}, { 50, 50});
     Hero->addComponent(new InputComponent(Hero));
     Hero->addComponent(new MovementsComponent(Hero,500));
-    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Baker.png"));
+    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Collider_DebugTX.png"));
     Hero->addComponent(new StateMachineComponent(Hero));
     
     myScene->addObject(Hero, 0);

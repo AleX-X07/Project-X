@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "../State.h"
+#include "IdleLeftState.h"
+#include "LeftState.h"
 
 class RightState : public State {
 public:

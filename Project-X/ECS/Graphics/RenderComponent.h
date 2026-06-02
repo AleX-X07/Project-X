@@ -1,22 +1,23 @@
 ﻿#pragma once
 
 #include "../Object.h"
+#include "../../Tool/Animation.h"
 
 class GameEngine;
 
 class RenderComponent final : public Component
 {
 private:
-    sf::Texture texture;
-    sf::RectangleShape Rect;
+    sf::Texture* texture;
+    sf::RectangleShape* rect;
+    Animation* currentAnimation;
 
 public:
     RenderComponent(Object* _owner, std::string name);
-    ~RenderComponent() override = default;
+    ~RenderComponent() override;
 
     void update(float deltaTime) override;
     void render() override;
     
-    void setPathTexture(std::string _name);
-    void setTexture(sf::Texture& texture);
+    void setAnimation(Animation* animation);
 };

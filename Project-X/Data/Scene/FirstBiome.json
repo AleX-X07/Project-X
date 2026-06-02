@@ -1,5 +1,21 @@
 {
     "ID" : 0,
-    "Layer" : 0,
-    "Objects" : []
+    "Layer" : 2,
+    "Objects" : [
+        {
+            "Name" : "Hero",
+            "Description" : "Player",
+            "LayerPosition" : 0,
+            "Position" : [50,50],
+            "Size" : [50,50],
+            "Type" : {},
+            "Animation" : ["StateMachine", "AnimationHero"],
+            "ECS" : [
+                {"Component" : "Input", "args" : []},
+                {"Component" : "Movement" , "args" : [500]},
+                {"Component" : "Render", "args" : []},
+                {"Component" : "StateMachine", "args" : ["AnimationHero"]}
+            ]
+        }
+    ]
 }

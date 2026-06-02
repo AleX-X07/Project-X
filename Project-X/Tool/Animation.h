@@ -1,15 +1,18 @@
 ﻿#pragma once
-#include "../ECS/Graphics/RenderComponent.h"
+#include "SFML/Graphics.hpp"
+
+class Object;
 
 class Animation {
-private:
+public:
     sf::Texture* texture;
+    Object* owner;
     
 public:
     
-    Animation(const char* path);
-    ~Animation();
+    Animation(Object* _owner, const char* path);
+    ~Animation() = default;
     
     void update(float deltaTime);
-    void render(RenderComponent& renderOwner);
+    void render();
 };

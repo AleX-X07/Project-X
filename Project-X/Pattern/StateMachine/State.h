@@ -2,10 +2,11 @@
 #include "../../ECS/Object.h"
 #include "../../Tool/Animation.h"
 #include "../../Tool/Input.h"
+#include "../../ECS/Graphics/RenderComponent.h"
 
 class State {
 protected:
-    Object* Owner;
+    Object* owner;
     Animation* animation;
     
 public:
@@ -15,6 +16,6 @@ public:
     State(Object* owner, const char* pathTexture);
     virtual ~State();
     
-    virtual void update(float deltaTime) = 0;
+    virtual void update(float deltaTime);
     void render();
 };

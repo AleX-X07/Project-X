@@ -938,9 +938,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\IdleState.cpp" />
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\LeftState.cpp" />
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\RightState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\IdleRightState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\IdleLeftState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\LeftState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\RightState.cpp" />
     <ClCompile Include="Scene\Data\InputReader.cpp" />
     <ClCompile Include="Scene\Data\SceneReader.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1121,9 +1122,10 @@
     <ClInclude Include="Pattern\Factories.h" />
     <ClInclude Include="Pattern\StateMachine\State.h" />
     <ClInclude Include="Pattern\StateMachine\StateMachine.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\IdleState.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\LeftState.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\RightState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\IdleRightState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\IdleLeftState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\LeftState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\RightState.h" />
     <ClInclude Include="Scene\Data\InputReader.h" />
     <ClInclude Include="Scene\Data\SceneReader.h" />
     <ClInclude Include="Scene\Layer.h" />

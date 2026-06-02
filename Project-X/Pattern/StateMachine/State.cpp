@@ -1,7 +1,7 @@
 ﻿#include "State.h"
 
-State::State(Object* owner, const char* pathTexture) {
-    Owner = owner;
+State::State(Object* _owner, const char* pathTexture) {
+    owner = _owner;
     next = nullptr;
     animation = nullptr;
 }
@@ -11,10 +11,16 @@ State::~State() {
     animation = nullptr;
 }
 
+void State::update(float deltaTime) {
+    if (next != nullptr) {
+        return;
+    }
+}
+
 void State::render() {
     if (animation != nullptr) {
-        if (Owner->hasComponent<RenderComponent>()) {
-            animation->render(*Owner->getComponent<RenderComponent>());
+        if (owner->hasComponent<RenderComponent>()) {
+            animation->render();
         }
     }
 }
