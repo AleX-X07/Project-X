@@ -1232,6 +1232,7 @@
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Transition.h" />
     <ClInclude Include="Tool\Animation.h" />
+    <ClInclude Include="Tool\Globals.h" />
     <ClInclude Include="Tool\Input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
