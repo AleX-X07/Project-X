@@ -1,4 +1,7 @@
 ﻿#include "StateMachineComponent.h"
+#include "../../Pattern/StateMachine/StateMachine.h"
+#include "../../Pattern/StateMachine/State.h"
+
 
 StateMachineComponent::StateMachineComponent(Object* _owner) : Component(_owner){
     SM = nullptr;
@@ -9,8 +12,10 @@ StateMachineComponent::~StateMachineComponent() {
     SM = nullptr;
 }
 
-void StateMachineComponent::setSM(std::unordered_map<std::string, std::string>& _animation) {
-    SM = new StateMachine(owner, _animation);
+void StateMachineComponent::setSM(std::unordered_map<std::string, nlohmann::basic_json<>>* _animation, 
+    std::unordered_map<std::string, State*>* _mapState,
+    std::string startState) {
+    SM = new StateMachine(owner, *_animation, *_mapState, startState);
 }
 
 void StateMachineComponent::update(float deltaTime) {

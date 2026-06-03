@@ -1111,6 +1111,7 @@
     <ClInclude Include="ECS\Bullet\BulletSystemComponent.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
+    <ClInclude Include="ECS\IncludeECS.h" />
     <ClInclude Include="ECS\Input\InputComponent.h" />
     <ClInclude Include="ECS\Input\MouseComponent.h" />
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
@@ -1120,6 +1121,7 @@
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
+    <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
     <ClInclude Include="Pattern\StateMachine\State.h" />
     <ClInclude Include="Pattern\StateMachine\StateMachine.h" />
     <ClInclude Include="Pattern\StateMachine\State\IdleRightState.h" />

@@ -5,7 +5,7 @@
 
 class IdleRightState : public State {
 public:
-    IdleRightState(Object* owner, const char* pathTexture);
+    IdleRightState(Object* owner, std::unordered_map<std::string,nlohmann::basic_json<>>* _mapAnimation);
     virtual ~IdleRightState() override = default;
     
     virtual void update(float deltaTime) override;

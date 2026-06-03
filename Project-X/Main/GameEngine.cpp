@@ -21,11 +21,11 @@ void GameEngine::start() {
     readInput.loadInput();
     
     SceneReader readScene;
-    //readScene.loadScene();
+    readScene.loadScene();
     
     //## for dev ##//
     //readScene.SceneTestDev();
-    readScene.SceneTestDev2();
+    //readScene.SceneTestDev2();
     //#############//
 }
 

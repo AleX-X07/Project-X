@@ -1,0 +1,12 @@
+﻿#pragma once
+#include "../ECS/Movement/MovementComponent.h"
+#include "../ECS/Graphics/RenderComponent.h"
+#include "../ECS/Input/InputComponent.h"
+#include "../ECS/Input/MouseComponent.h"
+#include "../ECS/Bullet/BulletSystemComponent.h"
+#include "../ECS/Bullet/BulletManager.h"
+#include "../ECS/Box/HurtBox.h"
+#include "../ECS/Box/HitBox.h"
+#include "../ECS/Behaviour/AiDebugShoot.h"
+#include "../ECS/Tool/CameraComponent.h"
+#include "../ECS/Movement/StateMachineComponent.h"

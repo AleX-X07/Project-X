@@ -1,6 +1,9 @@
 {
-    "IdleRight" : [{"Type" : "Animated"},"Assets/Debug/Baker.png"],
-    "IdleLeft" : [{"Type" : "Animated"},"Assets/Debug/debugR.png"],
-    "Right" : [{"Type" : "Animated"},"Assets/Debug/Collider_DebugTX.png"],
-    "Left" : [{"Type" : "Animated"},"Assets/Debug/Trigger_DebugTX.png"]
+    "FirstState" : "IdleRight",
+    "State" : {
+        "IdleRight" : [{"Type" : "Animated", "args" : [1024,256,4,0.2]}, "Assets/Debug/animation_courir.png"],
+        "IdleLeft" : [{"Type" : "No-Animated", "args" : []}, "Assets/Debug/debugR.png"],
+        "Right" : [{"Type" : "No-Animated", "args" : []}, "Assets/Debug/Collider_DebugTX.png"],
+        "Left" : [{"Type" : "No-Animated", "args" : []}, "Assets/Debug/Trigger_DebugTX.png"]
+    }
 }

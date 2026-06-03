@@ -1,6 +1,14 @@
 ﻿#include "RenderComponent.h"
 #include "../../Main/GameEngine.h"
 
+RenderComponent::RenderComponent(Object* _owner) : Component(_owner) {
+    texture = nullptr;
+    rect = new sf::RectangleShape(owner->getSize());
+    rect->setPosition(owner->getPosition());
+    rect->setFillColor(sf::Color::Red);
+    currentAnimation = nullptr;
+}
+
 RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_owner)
 {
     texture = new sf::Texture();
@@ -9,6 +17,7 @@ RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_
     if (texture->loadFromFile(name)) {
         rect->setTexture(texture);
     }
+    currentAnimation = nullptr;
 }
 
 RenderComponent::~RenderComponent() {
@@ -29,10 +38,20 @@ void RenderComponent::render() {
     }
 }
 
+void RenderComponent::setTexture(std::string newPath) {
+    if (texture->loadFromFile(newPath)) {
+        rect->setTexture(texture);
+    }
+}
+
 void RenderComponent::setAnimation(Animation* animation) {
     if (currentAnimation == animation) {
         return;
     }
     currentAnimation = animation;
-    rect->setTexture(animation->texture, true);
+    rect->setTexture(animation->getTexture());
+}
+
+sf::RectangleShape* RenderComponent::getRect() {
+    return rect;
 }

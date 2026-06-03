@@ -37,10 +37,13 @@ void SceneReader::loadScene() {
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
                         
-                        if (Factories::factories.count(name)) {
-                            newObj->addComponent(Factories::factories[name](newObj, ecs, addScene));
+                        if (FactoriesECS::factories.count(name)) {
+                            newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, addScene));
                         } else {
                             std::cerr << "Composant inconnu : " << name << std::endl;
+                        }
+                        if (name == "StateMachine") {
+                            readAnimation(ecs, newObj);
                         }
                     }
                     addScene->addObject(newObj, currentObj["LayerPosition"]);
@@ -57,15 +60,24 @@ void SceneReader::loadScene() {
     }
 }
 
-void SceneReader::readAnimation(nlohmann::basic_json<>& ecs) {
-    std::ifstream pathA(static_cast<std::string>(ecs["Component"]["args"][0]));
+void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
+    std::string fileName = std::string(ecs["args"][0]) + ".json";
+    std::string path = "Data/Animation/" + fileName;
+    std::ifstream pathA(path);
     
     nlohmann::json dataA = nlohmann::json::parse(pathA);
     
-    std::unordered_map<std::string, std::string>* myMap = new std::unordered_map<std::string, std::string>();
+    std::unordered_map<std::string, nlohmann::basic_json<>>* myMap = new std::unordered_map<std::string, nlohmann::basic_json<>>();
+    std::unordered_map<std::string, State*>* mapState = new std::unordered_map<std::string, State*>();
     
-    for (auto& [stateName, stateData] : dataA.items()) {
-        myMap[stateName] = stateData[1];
+    nlohmann::json dataFirstState = dataA["FirstState"];
+    nlohmann::json dataState = dataA["State"];
+    
+    for (auto& [stateName, stateData] : dataState.items()) {
+        (*myMap)[stateName] = stateData;
+    }
+    if (newObj->hasComponent<StateMachineComponent>()) {
+        newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
     }
 }
 
