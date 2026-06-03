@@ -3,25 +3,33 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-#include "../ECS/Movement/MovementComponent.h"
-#include "../ECS/Graphics/RenderComponent.h"
-#include "../ECS/Input/InputComponent.h"
-#include "../ECS/Input/MouseComponent.h"
-#include "../ECS/Bullet/BulletLogic/BulletSystemComponent.h"
-#include "../ECS/Bullet/BulletManager.h"
-#include "../ECS/Box/HurtBox.h"
-#include "../ECS/Box/HitBox.h"
-#include "../ECS/Behaviour/AiDebugShoot.h"
-#include "../ECS/Tool/CameraComponent.h"
+#include "../ECS/IncludeECS.h"
+
+#include "../Pattern/StateMachine/IncludeSM.h"
 
 class Scene;
 class Component;
 class Object;
+
+
 using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&, Scene*)>;
 
-struct Factories {
+using mapState = std::unordered_map<std::string,nlohmann::json>*;
+using StateFactory = std::function<State*(Object*, mapState)>;
+
+
+struct FactoriesECS {
     static std::unordered_map <
         std::string,
         ComponentFactory
     > factories;
 };
+
+
+struct FactoriesStates {
+    static std::unordered_map <
+        std::string,
+        StateFactory
+    > factories;
+};
+

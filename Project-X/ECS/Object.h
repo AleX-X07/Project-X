@@ -9,7 +9,7 @@ private:
     sf::Vector2f position;
     sf::Vector2f size;
     std::vector<Component*> components = {};
-
+    
 public:
     Object(sf::Vector2f _position, sf::Vector2f _size);
     ~Object();

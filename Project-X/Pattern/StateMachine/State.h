@@ -1,18 +1,26 @@
 ﻿#pragma once
+#include <iostream>
 #include "../../ECS/Object.h"
+#include "../../Tool/Animation.h"
+#include "../../Tool/Input.h"
+#include "../../ECS/Graphics/RenderComponent.h"
 
 class State {
-private:
-    Object* Owner;
-    const char* Path;
+protected:
+    Object* owner;
+    Animation* animation;
+    std::unordered_map<std::string,nlohmann::basic_json<>>* mapAnimation;
+    
 public:
     State* next;
+
 public:
-    State(Object* owner, const char* pathTexture);
-    virtual ~State() = default;
+    State(Object* owner, std::unordered_map<std::string,nlohmann::basic_json<>>* _mapAnimation);
+    virtual ~State();
     
+    virtual void update(float deltaTime);
+    void render();
     
-    virtual void nextState() = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void render() = 0;
+protected:
+    void createAnimation(std::string state);
 };

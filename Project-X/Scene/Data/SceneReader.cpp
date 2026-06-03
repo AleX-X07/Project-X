@@ -37,10 +37,13 @@ void SceneReader::loadScene() {
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
                         
-                        if (Factories::factories.count(name)) {
-                            newObj->addComponent(Factories::factories[name](newObj, ecs, addScene));
+                        if (FactoriesECS::factories.count(name)) {
+                            newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, addScene));
                         } else {
                             std::cerr << "Composant inconnu : " << name << std::endl;
+                        }
+                        if (name == "StateMachine") {
+                            readAnimation(ecs, newObj);
                         }
                     }
                     addScene->addObject(newObj, currentObj["LayerPosition"]);
@@ -54,6 +57,27 @@ void SceneReader::loadScene() {
                 std::cout << "Id déjà existant" << std::endl;
             }
         }
+    }
+}
+
+void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
+    std::string fileName = std::string(ecs["args"][0]) + ".json";
+    std::string path = "Data/Animation/" + fileName;
+    std::ifstream pathA(path);
+    
+    nlohmann::json dataA = nlohmann::json::parse(pathA);
+    
+    std::unordered_map<std::string, nlohmann::basic_json<>>* myMap = new std::unordered_map<std::string, nlohmann::basic_json<>>();
+    std::unordered_map<std::string, State*>* mapState = new std::unordered_map<std::string, State*>();
+    
+    nlohmann::json dataFirstState = dataA["FirstState"];
+    nlohmann::json dataState = dataA["State"];
+    
+    for (auto& [stateName, stateData] : dataState.items()) {
+        (*myMap)[stateName] = stateData;
+    }
+    if (newObj->hasComponent<StateMachineComponent>()) {
+        newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
     }
 }
 
@@ -71,8 +95,10 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
-    newObj->addComponent(new movementsComponent(newObj, 500, {(1920*2), (1080*2)}));
+
+    newObj->addComponent(new MovementsComponent(newObj, 500));
     
+    newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new LaserGun(newObj));
     
@@ -84,4 +110,18 @@ void SceneReader::SceneTestDev() {
     addScene->addObject(newObj, 1);
     
     addScene->addObject(Hurt, 1);
+}
+
+void SceneReader::SceneTestDev2() {
+    Scene* myScene = new Scene(0);
+    myScene->setLayer(2);
+    GameEngine::getVecState().push_back(myScene);
+    
+    Object* Hero = new Object({0, 0}, { 50, 50});
+    Hero->addComponent(new InputComponent(Hero));
+    Hero->addComponent(new MovementsComponent(Hero,500));
+    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Collider_DebugTX.png"));
+    Hero->addComponent(new StateMachineComponent(Hero));
+    
+    myScene->addObject(Hero, 0);
 }

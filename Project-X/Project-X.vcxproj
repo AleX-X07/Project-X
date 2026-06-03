@@ -1025,9 +1025,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\IdleState.cpp" />
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\LeftState.cpp" />
-    <ClCompile Include="Pattern\StateMachine\StateMachineMovement\RightState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\IdleRightState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\IdleLeftState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\LeftState.cpp" />
+    <ClCompile Include="Pattern\StateMachine\State\RightState.cpp" />
     <ClCompile Include="Scene\Data\InputReader.cpp" />
     <ClCompile Include="Scene\Data\SceneReader.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1109,6 +1110,7 @@
     <ClCompile Include="Scene\Layer.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Transition.cpp" />
+    <ClCompile Include="Tool\Animation.cpp" />
     <ClCompile Include="Tool\Input.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1200,6 +1202,7 @@
     <ClInclude Include="ECS\Bullet\Special\GrenadeBullet.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
+    <ClInclude Include="ECS\IncludeECS.h" />
     <ClInclude Include="ECS\Input\InputComponent.h" />
     <ClInclude Include="ECS\Input\MouseComponent.h" />
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
@@ -1216,16 +1219,19 @@
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
+    <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
     <ClInclude Include="Pattern\StateMachine\State.h" />
     <ClInclude Include="Pattern\StateMachine\StateMachine.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\IdleState.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\LeftState.h" />
-    <ClInclude Include="Pattern\StateMachine\StateMachineMovement\RightState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\IdleRightState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\IdleLeftState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\LeftState.h" />
+    <ClInclude Include="Pattern\StateMachine\State\RightState.h" />
     <ClInclude Include="Scene\Data\InputReader.h" />
     <ClInclude Include="Scene\Data\SceneReader.h" />
     <ClInclude Include="Scene\Layer.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Transition.h" />
+    <ClInclude Include="Tool\Animation.h" />
     <ClInclude Include="Tool\Input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,8 +3,7 @@
 
 class Object;
 
-class Component
-{
+class Component {
 protected:
     Object* owner;
 

@@ -1,16 +1,16 @@
 ﻿#pragma once
 
 #include "../Object.h"
+#include "../../Tool/Globals.h"
 
-class movementsComponent : public Component
+class MovementsComponent : public Component
 {
 private:
     float speed;
-    sf::Vector2f LevelSize;
 
 public:
-    movementsComponent(Object* _owner, float _speed, sf::Vector2f _LevelSize);
-    ~movementsComponent() override = default;
+    MovementsComponent(Object* _owner, float _speed);
+    ~MovementsComponent() override = default;
 
     float getSpeed();
     void setSpeed(float newSpeed);

@@ -37,5 +37,8 @@ public:
    ~SceneReader() = default;
    
    void loadScene();
+   void readAnimation(nlohmann::basic_json<>& ecs, Object* newObj);
+   
    void SceneTestDev();
+   void SceneTestDev2();
 };

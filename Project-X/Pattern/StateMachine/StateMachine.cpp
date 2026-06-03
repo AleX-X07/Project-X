@@ -1,8 +1,17 @@
 ﻿#include "StateMachine.h"
 
-StateMachine::StateMachine(Object* _owner) {
-    Owner = _owner;
-    currentState = nullptr;
+#include "State/IdleRightState.h"
+
+
+StateMachine::StateMachine(Object* _owner, 
+    std::unordered_map<std::string, nlohmann::basic_json<>>& _animation, 
+    std::unordered_map<std::string, State*>& _mapState,
+    std::string startState) 
+: animation(_animation), mapState(_mapState) {
+    
+    owner = _owner;
+    currentState = FactoriesStates::factories[startState](owner,&_animation);
+    
 }
 
 StateMachine::~StateMachine() {
@@ -19,7 +28,7 @@ void StateMachine::setCurrentState(State* newState) {
 }
 
 void StateMachine::update(float deltaTime) {
-    currentState->update(deltaTime);
+    getCurrentState()->update(deltaTime);
     State* nextState = currentState->next;
     if (nextState != nullptr && nextState != currentState) {
         delete currentState;
@@ -29,6 +38,6 @@ void StateMachine::update(float deltaTime) {
 }
 
 void StateMachine::render() {
-    currentState->render();
+   currentState->render();
 }
 
