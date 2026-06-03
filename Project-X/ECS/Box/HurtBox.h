@@ -30,4 +30,5 @@ public:
     bool overlaps(HitBox* hit);
     bool checkHitBox(Object* b);
     bool checkBullets(Object* b);
+    bool checkBulletsInSource(BulletSource* comp);
 };

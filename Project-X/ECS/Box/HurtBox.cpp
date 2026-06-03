@@ -48,9 +48,26 @@ bool HurtBox::checkHitBox(Object* b)
 
 bool HurtBox::checkBullets(Object* b)
 {
+    // bullets directes sur l'objet
     auto comp = b->getComponent<BulletSource>();
-    if (!comp) return false;
+    if (comp && checkBulletsInSource(comp)) return true;
 
+    // bullets dans le spawner (AiDebugShoot est sur chaque mob dans liste)
+    auto spawner = b->getComponent<AiMobSpawner>();
+    if (spawner)
+    {
+        for (auto mob : spawner->liste)
+        {
+            auto mobComp = mob->getComponent<BulletSource>();
+            if (mobComp && checkBulletsInSource(mobComp)) return true;
+        }
+    }
+
+    return false;
+}
+
+bool HurtBox::checkBulletsInSource(BulletSource* comp)
+{
     for (auto c : comp->bullet)
     {
         auto z = c->getComponent<HitBox>();

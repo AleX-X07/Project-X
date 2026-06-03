@@ -54,7 +54,12 @@ void Scene::update(float deltatime) {
 
     myObjects.erase(std::remove_if(myObjects.begin(), myObjects.end(), [](Object* obj) {
         auto comp = obj->getComponent<HealthComponent>();
-        return comp != nullptr && !comp->alive;
+        if (comp != nullptr && !comp->alive)
+        {
+            delete obj;
+            return true;
+        }
+        return false;
     }), myObjects.end());
 
     for (auto& trans : myTransitions)
