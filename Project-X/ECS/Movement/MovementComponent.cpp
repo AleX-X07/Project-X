@@ -54,8 +54,8 @@ void MovementsComponent::down(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x, owner->getPosition().y + speed * deltaTime});
     
-    if ((owner->getPosition().y + owner->getSize().y) > LevelSize.y)
+    if ((owner->getPosition().y + owner->getSize().y) > levelSize.y)
     {
-        owner->setPosition({owner->getPosition().x, (LevelSize.y - owner->getSize().y)});
+        owner->setPosition({owner->getPosition().x, (levelSize.y - owner->getSize().y)});
     }
 }
