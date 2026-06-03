@@ -5,19 +5,30 @@
 #include "../ECS/Object.h"
 #include "../ECS/Graphics/RenderComponent.h"
 
-Animation::Animation(Object* _owner, nlohmann::basic_json<> _myAnimation) : myAnimation(_myAnimation) {
+Animation::Animation(Object* _owner, std::string texturePath, nlohmann::basic_json<> _myAnimation) : myAnimation(_myAnimation) {
     owner = _owner;
     
     texture = new sf::Texture();
-    if (!texture->loadFromFile(_myAnimation.back())) {
+    if (!texture->loadFromFile(texturePath)) {
         std::cerr << "Error loading texture from file" << "\n";
     }
     
-    nlohmann::basic_json<> value = _myAnimation[0]["args"];
+    nlohmann::basic_json<> value = _myAnimation;
     
     sizeSpriteSheet = {value[0], value[1]};
     nbrFrames = value[2];
     frameRate = value[3];
+    sizeSpriteSheet.x = sizeSpriteSheet.x / nbrFrames;
+    
+    actualFrame = 0;
+    startPoint = 0;
+    
+    sf::IntRect offset({0, 0}, sizeSpriteSheet);
+    if (owner->hasComponent<RenderComponent>()) {
+        owner->getComponent<RenderComponent>()->getRect()->setTextureRect(offset);
+    }
+    
+    textureSet = false;
 }
 
 sf::Texture* Animation::getTexture() {
@@ -28,8 +39,8 @@ void Animation::update(float deltaTime) {
     startPoint += deltaTime;
     
     if (startPoint >= frameRate) {
-        locTexture.x = sizeSpriteSheet.x / frameRate * actualFrame;
-        offset = sf::IntRect({locTexture.x, 0}, {sizeSpriteSheet.x, sizeSpriteSheet.y});
+        locTexture.x = sizeSpriteSheet.x * actualFrame;
+        offset = sf::IntRect({locTexture}, {sizeSpriteSheet});
         if (owner->hasComponent<RenderComponent>()) {
             owner->getComponent<RenderComponent>()->getRect()->setTextureRect(offset);
         }
@@ -41,8 +52,15 @@ void Animation::update(float deltaTime) {
         actualFrame = 0;
         locTexture = {0,0};
     }
+    
+    if (textureSet == false) {
+        if (owner->hasComponent<RenderComponent>()) {
+            owner->getComponent<RenderComponent>()->setTexture(texture);
+        }
+        textureSet = true;
+    }
 }
 
-void Animation::render() {
+void Animation::setAnimation() {
     owner->getComponent<RenderComponent>()->setAnimation(this);
 }

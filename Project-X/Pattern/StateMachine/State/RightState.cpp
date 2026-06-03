@@ -9,11 +9,11 @@ RightState::RightState(Object* _owner, std::unordered_map<std::string,nlohmann::
 void RightState::update(float deltaTime) {
     State::update(deltaTime);
     if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left"))) {
-        next = new LeftState(owner,&mapAnimation);
+        next = new LeftState(owner,mapAnimation);
         return;
     }
     else if (!sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Right"))) {
-        next = new IdleRightState(owner,&mapAnimation);
+        next = new IdleRightState(owner,mapAnimation);
         return;
     }
 }

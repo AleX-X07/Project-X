@@ -8,11 +8,11 @@ IdleRightState::IdleRightState(Object* _owner, std::unordered_map<std::string,nl
 void IdleRightState::update(float deltaTime) {
     State::update(deltaTime);
     if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Right"))) {
-        next = new RightState(owner,&mapAnimation);
+        next = new RightState(owner,mapAnimation);
         return;
     }
     if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left"))) {
-        next = new LeftState(owner,&mapAnimation);
+        next = new LeftState(owner,mapAnimation);
         return;
     }
 }

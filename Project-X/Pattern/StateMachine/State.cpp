@@ -1,6 +1,6 @@
 ﻿#include "State.h"
 
-State::State(Object* _owner, std::unordered_map<std::string,nlohmann::basic_json<>>* _mapAnimation) : mapAnimation(*_mapAnimation) {
+State::State(Object* _owner, std::unordered_map<std::string,nlohmann::basic_json<>>* _mapAnimation) : mapAnimation(_mapAnimation) {
     owner = _owner;
     next = nullptr;
     animation = nullptr;
@@ -20,21 +20,25 @@ void State::update(float deltaTime) {
 void State::render() {
     if (animation != nullptr) {
         if (owner->hasComponent<RenderComponent>()) {
-            animation->render();
+            owner->getComponent<RenderComponent>()->setAnimation(animation);
         }
     }
 }
 
 
 void State::createAnimation(std::string state) {
-    std::string anim = mapAnimation[state][0]["Type"];
-    nlohmann::basic_json<> data = mapAnimation[state][0]["Type"];
+    std::string anim = (*mapAnimation)[state][0]["Type"];
+    nlohmann::basic_json<> data = (*mapAnimation)[state][0];
+    std::string texturePath = (*mapAnimation)[state][1];
     if (anim == "Animated") {
-        animation = new Animation(owner, data["args"]);
+        animation = new Animation(owner, texturePath, data["args"]);
+        if (owner->hasComponent<RenderComponent>()) {
+            owner->getComponent<RenderComponent>()->setAnimation(animation);
+        }
     }
     else if (anim == "No-Animated") {
         if (owner->hasComponent<RenderComponent>()) {
-            owner->getComponent<RenderComponent>()->setTexture(mapAnimation[state].back());
+            owner->getComponent<RenderComponent>()->setTexture((*mapAnimation)[state].back());
         }
     }
     else {

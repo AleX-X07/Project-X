@@ -19,14 +19,16 @@ private:
     int actualFrame;
     float startPoint;
     sf::IntRect offset;
-
+    
+    bool textureSet;
+    
 public:
     
-    Animation(Object* _owner, nlohmann::basic_json<> _myAnimation);
+    Animation(Object* _owner, std::string texturePath, nlohmann::basic_json<> _myAnimation);
     ~Animation() = default;
     
     sf::Texture* getTexture();
     
     void update(float deltaTime);
-    void render();
+    void setAnimation();
 };

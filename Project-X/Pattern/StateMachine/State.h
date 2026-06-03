@@ -9,7 +9,7 @@ class State {
 protected:
     Object* owner;
     Animation* animation;
-    std::unordered_map<std::string,nlohmann::basic_json<>>& mapAnimation;
+    std::unordered_map<std::string,nlohmann::basic_json<>>* mapAnimation;
     
 public:
     State* next;

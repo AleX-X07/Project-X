@@ -2,10 +2,9 @@
 #include "../../Main/GameEngine.h"
 
 RenderComponent::RenderComponent(Object* _owner) : Component(_owner) {
-    texture = nullptr;
+    texture = new sf::Texture();
     rect = new sf::RectangleShape(owner->getSize());
     rect->setPosition(owner->getPosition());
-    rect->setFillColor(sf::Color::Red);
     currentAnimation = nullptr;
 }
 
@@ -30,18 +29,30 @@ RenderComponent::~RenderComponent() {
 
 void RenderComponent::update(float deltaTime) {
     rect->setPosition(owner->getPosition());
+    if (currentAnimation != nullptr) {
+        currentAnimation->update(deltaTime);
+    }
 }
 
 void RenderComponent::render() {
-    if (texture != nullptr) {
-        GameEngine::getWindow()->draw(*rect);
+    if (texture == nullptr) {
+        rect->setFillColor(sf::Color::Red);
     }
+    GameEngine::getWindow()->draw(*rect);
 }
 
 void RenderComponent::setTexture(std::string newPath) {
     if (texture->loadFromFile(newPath)) {
         rect->setTexture(texture);
+        sf::Vector2u texSize = texture->getSize();
+        rect->setTextureRect(sf::IntRect({0, 0}, {sf::Vector2i(texSize)}));
+        currentAnimation = nullptr; 
     }
+}
+
+void RenderComponent::setTexture(sf::Texture* newTexture) {
+    texture = newTexture;
+    rect->setTexture(texture);
 }
 
 void RenderComponent::setAnimation(Animation* animation) {
@@ -49,9 +60,12 @@ void RenderComponent::setAnimation(Animation* animation) {
         return;
     }
     currentAnimation = animation;
-    rect->setTexture(animation->getTexture());
 }
 
 sf::RectangleShape* RenderComponent::getRect() {
     return rect;
+}
+
+sf::Texture* RenderComponent::getTexture() {
+    return texture;
 }

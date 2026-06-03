@@ -21,7 +21,9 @@ public:
     void render() override;
     
     void setTexture(std::string newPath);
+    void setTexture(sf::Texture* newTexture);
     void setAnimation(Animation* animation);
     
     sf::RectangleShape* getRect();
+    sf::Texture* getTexture();
 };

@@ -5,9 +5,10 @@
         {
             "Name" : "Hero",
             "Description" : "Player",
+            "ID Object" : 0,
             "LayerPosition" : 0,
-            "Position" : [50,50],
-            "Size" : [50,50],
+            "Position" : [500,500],
+            "Size" : [500,500],
             "Type" : {},
             "Animation" : ["StateMachine", "AnimationHero"],
             "ECS" : [
