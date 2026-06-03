@@ -1,5 +1,4 @@
 ﻿#include "HurtBox.h"
-
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Bullet/BulletLogic/GrenadeSystemComponent.h"
 
@@ -13,35 +12,17 @@ HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _obje
 void HurtBox::update(float dt)
 {
     pos = owner->getPosition();
-    
     actualtime += dt;
-    
+
     if (intersect())
     {
         auto comp = owner->getComponent<HealthComponent>();
         if (comp != nullptr)
-        {
             comp->TakeDamage(damageTaken);
-        }
     }
 }
 
-void HurtBox::render()
-{
-
-}
-
-bool HurtBox::intersect()
-{
-    for (auto b : other)
-    {
-        if (b->getComponent<HurtBox>() == this) continue;
-
-        if (checkHitBox(b))   return true;
-        if (checkBullets(b))  return true;
-    }
-    return false;
-}
+void HurtBox::render() {}
 
 bool HurtBox::overlaps(HitBox* hit)
 {
@@ -78,7 +59,6 @@ bool HurtBox::checkBullets(Object* b)
         int damage = 0;
         if (auto* bullet  = c->getComponent<BulletSystemComponent>())  damage = bullet->getDamage();
         if (auto* grenade = c->getComponent<GrenadeSystemComponent>()) damage = grenade->getDamage();
-
         if (damage == 0) continue;
 
         comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
@@ -88,6 +68,19 @@ bool HurtBox::checkBullets(Object* b)
             actualtime = 0;
             return true;
         }
+    }
+    return false;
+}
+
+bool HurtBox::intersect()
+{
+    for (auto b : other)
+    {
+        if (b == owner) continue;
+        if (b->team == owner->team) continue;
+
+        if (checkHitBox(b))  return true;
+        if (checkBullets(b)) return true;
     }
     return false;
 }
