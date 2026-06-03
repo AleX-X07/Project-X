@@ -69,31 +69,19 @@ void SceneReader::SceneTestDev() {
     Hurt->addComponent(spawner);
     
     newObj->addComponent(new InputComponent(newObj));
-    newObj->addComponent(new RenderComponent(newObj, "Assets/Debug/Baker.png"));
+    newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
-    newObj->addComponent(new movementsComponent(newObj, 500));
+    newObj->addComponent(new movementsComponent(newObj, 500, {(1920*2), (1080*2)}));
     
-    auto* bm = new BulletManager(newObj);
-    auto* pistol = new Ak(newObj);
-    
-    bm->SetWeapon(pistol);
-    
-    newObj->addComponent(bm);
-    newObj->addComponent(pistol);
+    newObj->addComponent(new BulletManager(newObj));
+    newObj->addComponent(new LaserGun(newObj));
     
     newObj->addComponent(new HurtBox(newObj, {50, 50}, spawner->liste, 1));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, true, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000));
     newObj->addComponent(new DebugHudComp(newObj));
     
-    
     addScene->addObject(newObj, 1);
-    
-    //Hurt->addComponent(new HurtBox(Hurt, {50, 50}, addScene->getVecObjects()));
-    //Hurt->addComponent(new RenderComponent(Hurt, "Assets/Debug/Collider_DebugTX.png"));
-    //Hurt->addComponent(new HealthComponent(Hurt, 1000));
-    //Hurt->addComponent(new AiDebugShoot(Hurt, *newObj, 10, 500, 10, 1));
-    //Hurt->addComponent(new AiMobSpawner(Hurt, *newObj, {1920, 1080}));
     
     addScene->addObject(Hurt, 1);
 }

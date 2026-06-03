@@ -1,20 +1,21 @@
 ﻿#pragma once
+
 #include "../../WeaponMain.h"
 
 #include "../../../Box/HitBox.h"
 #include "../../../Graphics/RenderComponent.h"
-#include "../../../Bullet/BulletLogic/BulletSystemComponent.h"
+#include "../../../Bullet/BulletLogic/GrenadeSystemComponent.h"
 #include "../../../Bullet/BulletManager.h"
 
 class GameEngine;
 
-class Ak : public WeaponMain
+class GrenadeLauncher : public WeaponMain
 {
 public:
     
 public:
-    Ak(Object* _owner);
-    ~Ak() override = default;
+    GrenadeLauncher(Object* _owner);
+    ~GrenadeLauncher() override = default;
     
     Object* CreateBullet(float angle) override;
 };

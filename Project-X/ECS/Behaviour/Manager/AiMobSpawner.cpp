@@ -3,7 +3,8 @@
 
 AiMobSpawner::AiMobSpawner(Object* _owner, Object& _target, sf::Vector2f _LevleSize, std::vector<Object*>& _sceneObjects) : Component(_owner), target(_target), sceneObjects(_sceneObjects)
 {
-    LevelSize = _LevleSize;
+    LevelSize.x = _LevleSize.x - 50;
+    LevelSize.y = _LevleSize.y - 50;
     timer = 1.5;
     srand(time(nullptr));
 }
@@ -59,7 +60,7 @@ void AiMobSpawner::addMob()
         Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x,static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
     
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}));
+        Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Trigger_DebugTX.png"));
         Mob->addComponent(new HealthComponent(Mob, 30));
         Mob->addComponent(new AiDebugShoot(Mob, target, 10, 500, 10, 1, 1));
@@ -72,7 +73,7 @@ void AiMobSpawner::addMob()
         Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x,static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
     
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}));
+        Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Trigger_DebugTX.png"));
         Mob->addComponent(new HealthComponent(Mob, 30));
         Mob->addComponent(new AiDebugShoot(Mob, target, 10, 500, 360, 0.2, 15));
@@ -84,7 +85,7 @@ void AiMobSpawner::addMob()
         Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x,static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
     
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}));
+        Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Collider_DebugTX.png"));
         Mob->addComponent(new HealthComponent(Mob, 30));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 200));

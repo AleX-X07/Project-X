@@ -3,7 +3,7 @@
 
 #include "../../../Box/HitBox.h"
 #include "../../../Graphics/RenderComponent.h"
-#include "../../../Bullet/BulletSystemComponent.h"
+#include "../../../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../../../Bullet/BulletManager.h"
 
 class GameEngine;

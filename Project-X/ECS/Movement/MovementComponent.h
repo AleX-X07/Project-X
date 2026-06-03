@@ -6,9 +6,10 @@ class movementsComponent : public Component
 {
 private:
     float speed;
+    sf::Vector2f LevelSize;
 
 public:
-    movementsComponent(Object* _owner, float _speed);
+    movementsComponent(Object* _owner, float _speed, sf::Vector2f _LevelSize);
     ~movementsComponent() override = default;
 
     float getSpeed();

@@ -11,6 +11,8 @@ public:
     float speed;
     int Bulletquantity;
     
+    std::string WeaponName;
+    
 public:
     WeaponMain(Object* _owner);
     ~WeaponMain() override = default;

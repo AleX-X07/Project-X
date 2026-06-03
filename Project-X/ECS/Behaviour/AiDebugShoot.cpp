@@ -63,7 +63,7 @@ void AiDebugShoot::CreateBullet(Object* _owner, float _angle, float _lifetime)
     
         ball->addComponent(new BulletSystemComponent(ball, speed, randomAngle, _lifetime, damage));
         ball->addComponent(new RenderComponent(ball, "Assets/Debug/DebugBulletRed.png"));
-        ball->addComponent(new HitBox(ball, {25, 25}));
+        ball->addComponent(new HitBox(ball, {25, 25}, true));
         bullet.push_back(ball);
     }
 }

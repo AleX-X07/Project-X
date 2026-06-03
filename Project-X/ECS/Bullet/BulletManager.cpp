@@ -12,7 +12,7 @@ BulletManager::BulletManager(Object* _owner)
 
 void BulletManager::update(float dt)
 {
-    if (!weapon) return; // sécurité si pas d'arme assignée
+    if (!weapon) return;
 
     actualTime += dt;
 
@@ -42,6 +42,19 @@ void BulletManager::update(float dt)
         std::remove_if(bullet.begin(), bullet.end(), [](Object* b)
         {
             auto* mov = b->getComponent<BulletSystemComponent>();
+            if (mov && mov->isExpired())
+            {
+                delete b;
+                return true;
+            }
+            return false;
+        }),
+        bullet.end()
+    );
+    bullet.erase(
+        std::remove_if(bullet.begin(), bullet.end(), [](Object* b)
+        {
+            auto* mov = b->getComponent<GrenadeSystemComponent>();
             if (mov && mov->isExpired())
             {
                 delete b;

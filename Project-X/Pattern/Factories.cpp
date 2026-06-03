@@ -17,13 +17,13 @@ std::unordered_map <
         return new InputComponent(obj);
     }},
     {"Movement", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new movementsComponent(obj, ecs["args"][0]);
+        return new movementsComponent(obj, ecs["args"][0], {ecs["args"][1],ecs["args"][2] });
     }},
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects(), ecs["args"][2]);
     }},
     {"HitBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new HitBox(obj, {ecs["args"][0],ecs["args"][1]});
+        return new HitBox(obj, {ecs["args"][0],ecs["args"][1]} , ecs["args"][2]);
     }},
     {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new BulletManager(obj);

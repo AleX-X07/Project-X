@@ -1,6 +1,7 @@
 ﻿#include "HurtBox.h"
 
-#include "../Bullet/BulletSystemComponent.h"
+#include "../Bullet/BulletLogic/BulletSystemComponent.h"
+#include "../Bullet/BulletLogic/GrenadeSystemComponent.h"
 
 HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects, float _Iframe)
     : Component(_owner), other(_objects)
@@ -63,22 +64,38 @@ bool HurtBox::intersect()
                     auto z = c->getComponent<HitBox>();
                     if (z != nullptr)
                     {
-                        if (
+                        if ((
                             z->pos.x < pos.x + size.x &&
                             z->pos.x + z->size.x > pos.x &&
                             z->pos.y < pos.y + size.y &&
                             z->pos.y + z->size.y > pos.y
-                        )
+                        ) && z->isactive)
                         {
                             auto* bulletComp = c->getComponent<BulletSystemComponent>();
-                            int bulletDamage = (bulletComp != nullptr) ? bulletComp->getDamage() : 0;
-
-                            comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
-                            if (actualtime >= Iframe)
+                            if (bulletComp != nullptr)
                             {
-                                damageTaken = bulletDamage;
-                                actualtime = 0;
-                                return true;
+                                int bulletDamage = (bulletComp != nullptr) ? bulletComp->getDamage() : 0;
+
+                                comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
+                                if (actualtime >= Iframe)
+                                {
+                                    damageTaken = bulletDamage;
+                                    actualtime = 0;
+                                    return true;
+                                }
+                            }
+                            auto* GrenadeComp = c->getComponent<GrenadeSystemComponent>();
+                            if (GrenadeComp != nullptr)
+                            {
+                                int bulletDamage = (GrenadeComp != nullptr) ? GrenadeComp->getDamage() : 0;
+
+                                comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
+                                if (actualtime >= Iframe)
+                                {
+                                    damageTaken = bulletDamage;
+                                    actualtime = 0;
+                                    return true;
+                                }
                             }
                         }
                     }
