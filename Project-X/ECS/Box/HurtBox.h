@@ -31,4 +31,8 @@ public:
     void render() override;
     
     bool intersect();
+    
+    bool overlaps(HitBox* hit);
+    bool checkHitBox(Object* b);
+    bool checkBullets(Object* b);
 };

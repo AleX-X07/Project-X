@@ -35,72 +35,58 @@ bool HurtBox::intersect()
 {
     for (auto b : other)
     {
-        if (b->getComponent<HurtBox>() != this)
+        if (b->getComponent<HurtBox>() == this) continue;
+
+        if (checkHitBox(b))   return true;
+        if (checkBullets(b))  return true;
+    }
+    return false;
+}
+
+bool HurtBox::overlaps(HitBox* hit)
+{
+    return hit->pos.x < pos.x + size.x &&
+           hit->pos.x + hit->size.x > pos.x &&
+           hit->pos.y < pos.y + size.y &&
+           hit->pos.y + hit->size.y > pos.y;
+}
+
+bool HurtBox::checkHitBox(Object* b)
+{
+    auto hit = b->getComponent<HitBox>();
+    if (!hit || !overlaps(hit)) return false;
+
+    if (actualtime >= Iframe)
+    {
+        damageTaken = 10;
+        actualtime = 0;
+        return true;
+    }
+    return false;
+}
+
+bool HurtBox::checkBullets(Object* b)
+{
+    auto comp = b->getComponent<BulletSource>();
+    if (!comp) return false;
+
+    for (auto c : comp->bullet)
+    {
+        auto z = c->getComponent<HitBox>();
+        if (!z || !z->isactive || !overlaps(z)) continue;
+
+        int damage = 0;
+        if (auto* bullet  = c->getComponent<BulletSystemComponent>())  damage = bullet->getDamage();
+        if (auto* grenade = c->getComponent<GrenadeSystemComponent>()) damage = grenade->getDamage();
+
+        if (damage == 0) continue;
+
+        comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
+        if (actualtime >= Iframe)
         {
-            auto hit = b->getComponent<HitBox>();
-            if (hit != nullptr)
-            {
-                if (
-                    hit->pos.x < pos.x + size.x &&
-                    hit->pos.x + hit->size.x > pos.x &&
-                    hit->pos.y < pos.y + size.y &&
-                    hit->pos.y + hit->size.y > pos.y
-                    )
-                {
-                    if (actualtime >= Iframe)
-                    {
-                        damageTaken = 10;
-                        actualtime = 0;
-                        return true;
-                    }
-                }
-            }
-            
-            auto comp = b->getComponent<BulletSource>();
-            if (comp != nullptr)
-            {
-                for (auto c : comp->bullet)
-                {
-                    auto z = c->getComponent<HitBox>();
-                    if (z != nullptr)
-                    {
-                        if ((
-                            z->pos.x < pos.x + size.x &&
-                            z->pos.x + z->size.x > pos.x &&
-                            z->pos.y < pos.y + size.y &&
-                            z->pos.y + z->size.y > pos.y
-                        ) && z->isactive)
-                        {
-                            auto* bulletComp = c->getComponent<BulletSystemComponent>();
-                            if (bulletComp != nullptr)
-                            {
-                                int bulletDamage = (bulletComp != nullptr) ? bulletComp->getDamage() : 0;
-
-                                comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
-                                if (actualtime >= Iframe)
-                                {
-                                    damageTaken = bulletDamage;
-                                    actualtime = 0;
-                                    return true;
-                                }
-                            }
-                            auto* GrenadeComp = c->getComponent<GrenadeSystemComponent>();
-                            if (GrenadeComp != nullptr)
-                            {
-                                int bulletDamage = (GrenadeComp != nullptr) ? GrenadeComp->getDamage() : 0;
-
-                                comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
-                                if (actualtime >= Iframe)
-                                {
-                                    damageTaken = bulletDamage;
-                                    actualtime = 0;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            damageTaken = damage;
+            actualtime = 0;
+            return true;
         }
     }
     return false;
