@@ -48,11 +48,9 @@ bool HurtBox::checkHitBox(Object* b)
 
 bool HurtBox::checkBullets(Object* b)
 {
-    // bullets directes sur l'objet
     auto comp = b->getComponent<BulletSource>();
     if (comp && checkBulletsInSource(comp)) return true;
-
-    // bullets dans le spawner (AiDebugShoot est sur chaque mob dans liste)
+    
     auto spawner = b->getComponent<AiMobSpawner>();
     if (spawner)
     {
@@ -70,6 +68,9 @@ bool HurtBox::checkBulletsInSource(BulletSource* comp)
 {
     for (auto c : comp->bullet)
     {
+        if (c->team == owner->team)
+            continue;
+        
         auto z = c->getComponent<HitBox>();
         if (!z || !z->isactive || !overlaps(z)) continue;
 

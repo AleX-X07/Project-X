@@ -27,11 +27,11 @@ void AiMobSpawner::update(float dt)
     for (auto c : liste)
         c->update(dt);
 
+
     liste.erase(std::remove_if(liste.begin(), liste.end(), [](Object* c) {
         auto comp = c->getComponent<HealthComponent>();
-        if (comp != nullptr && !comp->alive)
+        if (comp != nullptr && !comp->alive && c !=nullptr)
         {
-            delete c;
             return true;
         }
         return false;
