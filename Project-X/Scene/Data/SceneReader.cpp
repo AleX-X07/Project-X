@@ -65,7 +65,7 @@ void SceneReader::SceneTestDev() {
     Object* newObj = new Object({0, 0}, { 50, 50});
     Object* Hurt = new Object({0, 0}, { 50, 50});
     
-    auto* spawner = new AiMobSpawner(Hurt, *newObj, {1920*2, 1080*2}, addScene->getVecObjects());
+    auto* spawner = new AiMobSpawner(Hurt, {1920*2, 1080*2}, addScene->getVecObjects());
     Hurt->addComponent(spawner);
     
     newObj->addComponent(new InputComponent(newObj));
