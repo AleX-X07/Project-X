@@ -10,7 +10,6 @@ class AiMobSpawner : public Component
 {
 public:
     std::vector<Object*> liste;
-    Object& target;
     
     std::vector<Object*>& sceneObjects;
     
@@ -22,7 +21,7 @@ public:
     float actualtime = 0;
     
 public:
-    AiMobSpawner(Object* _owner, Object& _target, sf::Vector2f _LevleSize, std::vector<Object*>& _sceneObjects);
+    AiMobSpawner(Object* _owner, sf::Vector2f _LevleSize, std::vector<Object*>& _sceneObjects);
     ~AiMobSpawner() override;
     
     void update(float dt) override;
