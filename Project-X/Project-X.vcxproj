@@ -709,6 +709,8 @@
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
     <ClCompile Include="ECS\Tool\Debug\DebugHudComp.cpp" />
+    <ClCompile Include="ECS\Tool\Experience\ExperienceContainer.cpp" />
+    <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="ECS\Weapon\Derived\Ak.cpp" />
     <ClCompile Include="ECS\Weapon\Derived\GrenadeLauncher.cpp" />
@@ -1207,6 +1209,8 @@
     <ClInclude Include="ECS\Object.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\Debug\DebugHudComp.h" />
+    <ClInclude Include="ECS\Tool\Experience\ExperienceContainer.h" />
+    <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Weapon\Derived\.h\Ak.h" />
     <ClInclude Include="ECS\Weapon\Derived\.h\GrenadeLauncher.h" />

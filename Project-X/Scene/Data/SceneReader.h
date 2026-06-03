@@ -25,6 +25,7 @@
 #include "../../ECS/Weapon/Derived/.h/LaserGun.h"
 #include "../../ECS/Weapon/Derived/.h/Ak.h"
 #include "../../ECS/Weapon/Derived/.h/GrenadeLauncher.h"
+#include "../../ECS/Tool/Experience/ExpManager.h"
 
 #include "../Scene.h"
 
