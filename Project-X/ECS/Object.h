@@ -3,8 +3,14 @@
 #include "SFML/Graphics.hpp"
 #include "Component.h"
 
+
+
 class Object
 {
+public :
+    enum class Team { Player, Enemy, Neutral };
+    Team team = Team::Neutral;
+    
 private:
     sf::Vector2f position;
     sf::Vector2f size;

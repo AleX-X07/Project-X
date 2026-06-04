@@ -1,6 +1,5 @@
 ﻿#include "Scene.h"
 #include "../Main/GameEngine.h"
-
 #include "../ECS/Tool/HealthComponent.h"
 
 Scene::Scene(int _idScene) {
@@ -50,21 +49,11 @@ void Scene::setLayer(int Layer) {
 }
 
 void Scene::update(float deltatime) {
-    for (auto& obj : myObjects) {
+    for (auto& obj : myObjects)
         obj->update(deltatime);
-        auto comp = obj->getComponent<HealthComponent>();
-        if (comp != nullptr)
-        {
-            if (!comp->alive)
-            {
-                myObjects.erase(std::find(myObjects.begin(), myObjects.end(), obj));
-            }
-        }
-    }
-    for (auto& trans : myTransitions) {
+
+    for (auto& trans : myTransitions)
         trans->update();
-    }
-    //std::cout << idScene << std::endl;
 }
 
 void Scene::render() {

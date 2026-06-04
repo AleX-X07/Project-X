@@ -91,18 +91,18 @@ void SceneReader::SceneTestDev() {
     
     auto* spawner = new AiMobSpawner(Hurt, {1920*2, 1080*2}, addScene->getVecObjects());
     Hurt->addComponent(spawner);
-    
+
+    newObj->team = Object::Team::Player;
+
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
 
-    newObj->addComponent(new MovementsComponent(newObj, 500));
-    
-    newObj->addComponent(new MovementsComponent(newObj, 500));
+    newObj->addComponent(new movementsComponent(newObj, 500, {(1920*2), (1080*2)}));
+
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new LaserGun(newObj));
-    
-    newObj->addComponent(new HurtBox(newObj, {50, 50}, spawner->liste, 1));
+    newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, true, 5));
     
     newObj->addComponent(new HealthComponent(newObj, 1000));
@@ -110,9 +110,8 @@ void SceneReader::SceneTestDev() {
     
     
     newObj->addComponent(new DebugHudComp(newObj));
-    
+
     addScene->addObject(newObj, 1);
-    
     addScene->addObject(Hurt, 1);
 }
 
