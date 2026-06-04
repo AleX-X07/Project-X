@@ -1,7 +1,7 @@
 ﻿#include "HealthComponent.h"
 #include "../../Main/GameEngine.h"
 
-HealthComponent::HealthComponent(Object* _owner, int _MaxHp)  : Component(_owner) {
+HealthComponent::HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*>& _sceneObjects)  : Component(_owner), sceneObjects(_sceneObjects) {
     MaxHp = _MaxHp;
     hp = _MaxHp;
 }
@@ -23,6 +23,18 @@ void HealthComponent::TakeDamage(int damage)
 
 void HealthComponent::Death()
 {
+    for (auto x : sceneObjects)
+    {
+        auto ExpComp = x->getComponent<ExpManager>();
+        if (ExpComp != nullptr)
+        {
+            auto ExpCont = owner->getComponent<ExperienceContainer>();
+            if (ExpCont != nullptr)
+            {
+                ExpComp->setExp(ExpComp->getExp() + ExpCont->getExp());
+            }
+        }
+    }
     alive = false;
 }
 

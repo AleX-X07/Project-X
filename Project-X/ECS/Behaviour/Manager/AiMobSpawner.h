@@ -29,4 +29,5 @@ public:
     void render() override;
     
     void addMob();
+    void giveExp();
 };

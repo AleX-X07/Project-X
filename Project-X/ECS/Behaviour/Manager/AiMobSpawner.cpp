@@ -72,9 +72,10 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Trigger_DebugTX.png"));
-        Mob->addComponent(new HealthComponent(Mob, 30));
+        Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 10, 1, 1));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 50));
+        Mob->addComponent(new ExperienceContainer(Mob, 8));
         liste.push_back(Mob);
     }
     else if (r <= 50)
@@ -84,8 +85,9 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Trigger_DebugTX.png"));
-        Mob->addComponent(new HealthComponent(Mob, 30));
+        Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 360, 0.2, 15));
+        Mob->addComponent(new ExperienceContainer(Mob, 10));
         liste.push_back(Mob);
     }
     else
@@ -95,8 +97,13 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true));
         Mob->addComponent(new RenderComponent(Mob, "Assets/Debug/Collider_DebugTX.png"));
-        Mob->addComponent(new HealthComponent(Mob, 30));
+        Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 200));
+        Mob->addComponent(new ExperienceContainer(Mob, 3));
         liste.push_back(Mob);
     }
+}
+
+void AiMobSpawner::giveExp() {
+
 }
