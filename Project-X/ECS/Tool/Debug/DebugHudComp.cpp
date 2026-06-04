@@ -10,8 +10,10 @@ DebugHudComp::DebugHudComp(Object* _owner) : Component(_owner)
     Hp->setCharacterSize(24);
     Hp->setFillColor(sf::Color::White);
     
-    
     Exp = new sf::Text(font);
+    Exp->setPosition({0, 25});
+    Exp->setCharacterSize(24);
+    Exp->setFillColor(sf::Color::White);
 }
 
 DebugHudComp::~DebugHudComp()
@@ -34,12 +36,24 @@ void DebugHudComp::update(float deltaTime)
     {
         Hp->setString("None");
     }
+    
+    auto Experience = owner->getComponent<ExpManager>();
+    if (Experience != nullptr)
+    {
+        Exp->setString((std::to_string(Experience->Exp)));
+    }
+    else
+    {
+        Exp->setString("None");
+    }
 }
 
 void DebugHudComp::render()
 {
     GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
     GameEngine::getWindow()->draw(*Hp);
+    GameEngine::getWindow()->draw(*Exp);
+    
     auto cam = owner->getComponent<CameraComponent>();
     if (cam != nullptr)
     {
