@@ -2,6 +2,8 @@
 #include "../../Object.h"
 
 #include "../HealthComponent.h"
+#include "../Experience/ExpManager.h"
+
 #include "../CameraComponent.h"
 
 class GameEngine;

@@ -3,6 +3,7 @@
 #include "SFML/Audio.hpp"
 #include "../../../Scene/Layer.h"
 #include "../AiMoveTo.h"
+#include "../../Tool/Experience/ExperienceContainer.h"
 
 class GameEngine;
 
