@@ -8,6 +8,9 @@ Ak::Ak(Object* _owner) : WeaponMain(_owner) {
     
     WeaponName = "Ak-47";
     
+    shakeDuration = 1;
+    shakeIntensity = 0.3;
+    
     auto comp = _owner->getComponent<BulletManager>();
     if (comp != nullptr) {
         comp->SetWeapon(this);
@@ -15,6 +18,9 @@ Ak::Ak(Object* _owner) : WeaponMain(_owner) {
 }
 
 Object* Ak::CreateBullet(float angle) {
+    auto Cam = owner->getComponent<CameraComponent>();
+    Cam->CameraShake(shakeIntensity, shakeDuration);
+    
     Object* ball = new Object(owner->getPosition(), {25,25});
     
     ball->addComponent(new BulletSystemComponent(ball, speed, angle, 7.5, 5));

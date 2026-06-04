@@ -7,6 +7,9 @@ GrenadeLauncher::GrenadeLauncher(Object* _owner) : WeaponMain(_owner)
     speed = 100;
     Bulletquantity = 1;
     
+    shakeDuration = 1;
+    shakeIntensity = 0.2;
+    
     WeaponName = "Deagle";
     
     auto comp = _owner->getComponent<BulletManager>();
@@ -18,6 +21,9 @@ GrenadeLauncher::GrenadeLauncher(Object* _owner) : WeaponMain(_owner)
 
 Object* GrenadeLauncher::CreateBullet(float angle)
 {
+    auto Cam = owner->getComponent<CameraComponent>();
+    Cam->CameraShake(shakeIntensity, shakeDuration);
+    
     Object* ball = new Object(owner->getPosition(), {25,25});
     
     ball->addComponent(new GrenadeSystemComponent(ball, speed, angle, 50, 3.5));

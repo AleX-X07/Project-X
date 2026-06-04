@@ -31,6 +31,9 @@ public:
     sf::SoundBuffer buffer;
     sf::Sound* sound;
     
+    sf::SoundBuffer bufferBoom;
+    sf::Sound* soundBoom;
+    
 public:
     BulletManager(Object* _owner);
     ~BulletManager() override;

@@ -13,6 +13,9 @@ public:
     
     std::string WeaponName;
     
+    float shakeIntensity;
+    float shakeDuration;
+    
 public:
     WeaponMain(Object* _owner);
     ~WeaponMain() override = default;

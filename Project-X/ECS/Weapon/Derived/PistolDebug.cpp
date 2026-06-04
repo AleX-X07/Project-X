@@ -7,6 +7,9 @@ PistolDebug::PistolDebug(Object* _owner) : WeaponMain(_owner)
     speed = 1000;
     Bulletquantity = 1;
     
+    shakeDuration = 1;
+    shakeIntensity = 1;
+    
     WeaponName = "Deagle";
     
     auto comp = _owner->getComponent<BulletManager>();
@@ -18,6 +21,9 @@ PistolDebug::PistolDebug(Object* _owner) : WeaponMain(_owner)
 
 Object* PistolDebug::CreateBullet(float angle)
 {
+    auto Cam = owner->getComponent<CameraComponent>();
+    Cam->CameraShake(shakeIntensity, shakeDuration);
+    
     Object* ball = new Object(owner->getPosition(), {25,25});
     
     ball->addComponent(new BulletSystemComponent(ball, speed, angle, 7.5, 30));

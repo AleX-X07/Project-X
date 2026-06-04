@@ -86,6 +86,12 @@ void SceneReader::SceneTestDev() {
     addScene->setLayer(2);
     GameEngine::getVecState().push_back(addScene);
     
+    // DebugMap for dev only
+    Object* Map = new Object({0, 0}, { 1920*2, 1080*2});
+    Map->addComponent(new RenderComponent(Map, "Assets/Debug/map.png"));
+    addScene->addObject(Map, 1);
+    // End Debug
+    
     Object* newObj = new Object({200, 200}, { 50, 50});
     Object* Hurt = new Object({0, 0}, { 50, 50});
     
@@ -101,13 +107,12 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new MovementsComponent(newObj, 500));
 
     newObj->addComponent(new BulletManager(newObj));
-    newObj->addComponent(new LaserGun(newObj));
+    newObj->addComponent(new shotgun(newObj));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
-    newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, true, 5));
+    newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, false, 5));
     
     newObj->addComponent(new HealthComponent(newObj, 1000));
     newObj->addComponent(new ExpManager(newObj));
-    
     
     newObj->addComponent(new DebugHudComp(newObj));
 

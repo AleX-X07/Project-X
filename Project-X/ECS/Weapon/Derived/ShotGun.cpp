@@ -1,5 +1,7 @@
 ﻿#include ".h/ShotGun.h"
 
+#include "../../Tool/CameraComponent.h"
+
 shotgun::shotgun(Object* _owner) : WeaponMain(_owner)
 {
     spread = 15;
@@ -8,6 +10,9 @@ shotgun::shotgun(Object* _owner) : WeaponMain(_owner)
     Bulletquantity = 3;
     
     WeaponName = "ShorGun";
+    
+    shakeDuration = 1;
+    shakeIntensity = 1;
     
     auto comp = _owner->getComponent<BulletManager>();
     if (comp != nullptr)
@@ -18,6 +23,9 @@ shotgun::shotgun(Object* _owner) : WeaponMain(_owner)
 
 Object* shotgun::CreateBullet(float angle)
 {
+    auto Cam = owner->getComponent<CameraComponent>();
+    Cam->CameraShake(shakeIntensity, shakeDuration);
+    
     Object* ball = new Object(owner->getPosition(), {25,25});
     
     ball->addComponent(new BulletSystemComponent(ball, speed, angle, 7.5, 10));

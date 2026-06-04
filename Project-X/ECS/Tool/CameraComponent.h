@@ -24,10 +24,18 @@ public:
     sf::View* view;
 
     sf::Vector2f CamPos;
+    
+    float ShakeTimer;
+    float ShakeDuration;
+    float ShakeIntensity;
+    
+    bool isShaking;
 
 public:
     CameraComponent(Object* _owner, float ScreenX, float ScreenY, float LevelX, float LevelY, bool _hasLag, float lagfactor);
     ~CameraComponent() override;
 
     void update(float deltaTime) override;
+    
+    void CameraShake(float intensity, float duration);
 };

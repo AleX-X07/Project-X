@@ -9,6 +9,9 @@ LaserGun::LaserGun(Object* _owner) : WeaponMain(_owner)
     
     WeaponName = "Laser";
     
+    shakeDuration = 0;
+    shakeIntensity = 0;
+    
     auto comp = _owner->getComponent<BulletManager>();
     if (comp != nullptr)
     {

@@ -8,6 +8,8 @@ BulletManager::BulletManager(Object* _owner)
 
     buffer.loadFromFile("Assets/Sound/Shoot.wav");
     sound = new sf::Sound(buffer);
+    bufferBoom.loadFromFile("Assets/Sound/Boom3.wav");
+    soundBoom = new sf::Sound(bufferBoom);
 }
 
 void BulletManager::update(float dt)
@@ -31,6 +33,7 @@ void BulletManager::update(float dt)
         ) * 180.0f / 3.14159f;
 
         sound->play();
+        soundBoom->play();
         CreateBullet(owner, angle, 5);
         actualTime = 0;
     }
@@ -110,7 +113,9 @@ BulletManager::~BulletManager()
     bullet.clear();
     
     delete sound;
+    delete soundBoom;
     sound = nullptr;
+    soundBoom = nullptr;
 }
 
 void BulletManager::SetWeapon(WeaponMain* _weapon)

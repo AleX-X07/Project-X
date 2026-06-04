@@ -6,6 +6,7 @@
 #include "../../../Graphics/RenderComponent.h"
 #include "../../../Bullet/BulletLogic/GrenadeSystemComponent.h"
 #include "../../../Bullet/BulletManager.h"
+#include "../../../Tool/CameraComponent.h"
 
 class GameEngine;
 
