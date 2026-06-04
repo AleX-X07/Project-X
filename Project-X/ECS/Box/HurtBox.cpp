@@ -99,6 +99,17 @@ bool HurtBox::intersect()
 
         if (checkHitBox(b))  return true;
         if (checkBullets(b)) return true;
+        
+        auto spawner = b->getComponent<AiMobSpawner>();
+        if (spawner)
+        {
+            for (auto mob : spawner->liste)
+            {
+                if (mob == owner) continue;
+                if (mob->team == owner->team) continue;
+                if (checkHitBox(mob)) return true;
+            }
+        }
     }
     return false;
 }
