@@ -98,7 +98,7 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
 
-    newObj->addComponent(new movementsComponent(newObj, 500, {(1920*2), (1080*2)}));
+    newObj->addComponent(new MovementsComponent(newObj, 500));
 
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new LaserGun(newObj));
