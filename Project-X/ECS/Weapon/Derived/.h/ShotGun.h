@@ -17,5 +17,7 @@ public:
     shotgun(Object* _owner);
     ~shotgun() override = default;
     
+    void update(float deltaTime) override;
+    
     Object* CreateBullet(float angle) override;
 };

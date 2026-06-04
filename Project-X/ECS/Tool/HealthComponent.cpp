@@ -4,6 +4,9 @@
 HealthComponent::HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*>& _sceneObjects)  : Component(_owner), sceneObjects(_sceneObjects) {
     MaxHp = _MaxHp;
     hp = _MaxHp;
+    
+    buffer.loadFromFile("Assets/Sound/Hurt.wav");
+    sound = new sf::Sound(buffer);
 }
 
 HealthComponent::~HealthComponent()
@@ -19,6 +22,10 @@ void HealthComponent::TakeDamage(int damage)
         Death();
     }
     std::cout << owner << " : " << hp << std::endl;
+    
+    if (owner->hasComponent<InputComponent>()) {
+        sound->play();
+    }
 }
 
 void HealthComponent::Death()

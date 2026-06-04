@@ -708,6 +708,7 @@
     <ClCompile Include="ECS\Movement\StateMachineComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
+    <ClCompile Include="ECS\Tool\CrossHairComponent.cpp" />
     <ClCompile Include="ECS\Tool\Debug\DebugHudComp.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExperienceContainer.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
@@ -1211,6 +1212,7 @@
     <ClInclude Include="ECS\Movement\StateMachineComponent.h" />
     <ClInclude Include="ECS\Object.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
+    <ClInclude Include="ECS\Tool\CrossHairComponent.h" />
     <ClInclude Include="ECS\Tool\Debug\DebugHudComp.h" />
     <ClInclude Include="ECS\Tool\Experience\ExperienceContainer.h" />
     <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />

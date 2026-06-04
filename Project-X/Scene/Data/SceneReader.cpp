@@ -103,18 +103,15 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
-
     newObj->addComponent(new MovementsComponent(newObj, 500));
-
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new shotgun(newObj));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, false, 5));
-    
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
     newObj->addComponent(new ExpManager(newObj));
-    
     newObj->addComponent(new DebugHudComp(newObj));
+    newObj->addComponent(new CrossHairComponent(newObj));
 
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);

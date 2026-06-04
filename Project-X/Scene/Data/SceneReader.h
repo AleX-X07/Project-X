@@ -26,6 +26,7 @@
 #include "../../ECS/Weapon/Derived/.h/Ak.h"
 #include "../../ECS/Weapon/Derived/.h/GrenadeLauncher.h"
 #include "../../ECS/Tool/Experience/ExpManager.h"
+#include "../../ECS/Tool/CrossHairComponent.h"
 
 #include "../Scene.h"
 

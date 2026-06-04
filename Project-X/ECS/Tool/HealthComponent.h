@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../Object.h"
+#include "SFML/Audio.hpp"
 
 class GameEngine;
 
@@ -13,6 +14,9 @@ public:
     
     std::vector<Object*>& sceneObjects;
 
+    sf::SoundBuffer buffer;
+    sf::Sound* sound;
+    
 public:
     HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*>& _sceneObjects);
     ~HealthComponent();
