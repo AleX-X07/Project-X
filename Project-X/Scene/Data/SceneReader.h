@@ -20,11 +20,6 @@
 #include "../../ECS/Behaviour/Manager/AiMobSpawner.h"
 #include "../../Ecs/Tool/Debug/DebugHudComp.h"
 
-#include "../../ECS/Weapon/Derived/.h/PistolDebug.h"
-#include "../../ECS/Weapon/Derived/.h/ShotGun.h"
-#include "../../ECS/Weapon/Derived/.h/LaserGun.h"
-#include "../../ECS/Weapon/Derived/.h/Ak.h"
-#include "../../ECS/Weapon/Derived/.h/GrenadeLauncher.h"
 #include "../../ECS/Tool/Experience/ExpManager.h"
 #include "../../ECS/Tool/CrossHairComponent.h"
 

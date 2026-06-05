@@ -1,0 +1,10 @@
+15
+2
+1000
+3
+10
+ShotGun
+Assets/Weapon/shotgun.png
+1
+1
+1

@@ -37,9 +37,3 @@
 
 
 #include "../ECS/Weapon/WeaponMain.h"
-
-#include "../ECS/Weapon/Derived/.h/Ak.h"
-#include "../ECS/Weapon/Derived/.h/GrenadeLauncher.h"
-#include "../ECS/Weapon/Derived/.h/LaserGun.h"
-#include "../ECS/Weapon/Derived/.h/PistolDebug.h"
-#include "../ECS/Weapon/Derived/.h/ShotGun.h"

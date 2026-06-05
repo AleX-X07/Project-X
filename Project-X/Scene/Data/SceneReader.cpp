@@ -105,7 +105,7 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
-    newObj->addComponent(new shotgun(newObj));
+    newObj->addComponent(new WeaponMain(newObj, "Assets/WeaponTxt/ShotGun.txt"));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
     newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, false, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
