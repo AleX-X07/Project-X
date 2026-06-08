@@ -2,11 +2,11 @@
 
 #include "../../Main/GameEngine.h"
 
-CameraComponent::CameraComponent(Object* _owner, float ScreenX, float ScreenY, float LevelX, float LevelY, bool _hasLag, float lagfactor)  : Component(_owner) {
-    view = new sf::View({ ScreenX / 2, ScreenY / 2 }, { ScreenX, ScreenY });
+CameraComponent::CameraComponent(Object* _owner, bool _hasLag, float lagfactor)  : Component(_owner) {
+    view = new sf::View({ WindowSize.x / 2, WindowSize.y / 2 }, WindowSize);
     lag = lagfactor;
-    ScreenSize = { ScreenX, ScreenY };
-    LevelSize = { LevelX, LevelY };
+    ScreenSize = WindowSize;
+    LevelSize = levelSize;
     haslag = _hasLag;
 }
 

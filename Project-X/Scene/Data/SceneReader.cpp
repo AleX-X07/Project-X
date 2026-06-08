@@ -107,7 +107,7 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new BulletManager(newObj));
     newObj->addComponent(new WeaponMain(newObj, "Assets/WeaponTxt/Deagle.txt"));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
-    newObj->addComponent(new CameraComponent(newObj, 1920, 1080, 1920*2, 1080*2, false, 5));
+    newObj->addComponent(new CameraComponent(newObj, false, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
     newObj->addComponent(new ExpManager(newObj));
     newObj->addComponent(new DebugHudComp(newObj));

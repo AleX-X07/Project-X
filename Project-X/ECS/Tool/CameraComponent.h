@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../Object.h"
+#include "../../Tool/Globals.h"
 
 class GameEngine;
 
@@ -32,7 +33,7 @@ public:
     bool isShaking;
 
 public:
-    CameraComponent(Object* _owner, float ScreenX, float ScreenY, float LevelX, float LevelY, bool _hasLag, float lagfactor);
+    CameraComponent(Object* _owner, bool _hasLag, float lagfactor);
     ~CameraComponent() override;
 
     void update(float deltaTime) override;
