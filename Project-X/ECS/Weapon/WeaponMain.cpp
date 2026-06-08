@@ -48,7 +48,7 @@ Object* WeaponMain::CreateBullet(float angle) {
     
     ball->addComponent(new BulletSystemComponent(ball, speed, angle, 7.5, 10));
     ball->addComponent(new RenderComponent(ball, "Assets/Debug/DebugBulletblue.png"));
-    ball->addComponent(new HitBox(ball, {25, 25}, true));
+    ball->addComponent(new HitBox(ball, {25, 25}, true, damage));
     
     return ball;
 }

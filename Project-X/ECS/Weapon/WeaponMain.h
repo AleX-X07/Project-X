@@ -37,7 +37,6 @@ public:
     float Xjoystick;
     float Yjoystick;
     
-    sf::Vector2f MousePosition;
     sf::Vector2f MouseWorldPosition;
     
     float weaponAngle;

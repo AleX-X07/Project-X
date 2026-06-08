@@ -39,7 +39,7 @@ bool HurtBox::checkHitBox(Object* b)
 
     if (actualtime >= Iframe)
     {
-        damageTaken = 10;
+        damageTaken = hit->damage;
         actualtime = 0;
         return true;
     }
@@ -74,15 +74,13 @@ bool HurtBox::checkBulletsInSource(BulletSource* comp)
         auto z = c->getComponent<HitBox>();
         if (!z || !z->isactive || !overlaps(z)) continue;
 
-        int damage = 0;
-        if (auto* bullet  = c->getComponent<BulletSystemComponent>())  damage = bullet->getDamage();
-        if (auto* grenade = c->getComponent<GrenadeSystemComponent>()) damage = grenade->getDamage();
+        int damage = z->damage;
         if (damage == 0) continue;
 
         comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
         if (actualtime >= Iframe)
         {
-            damageTaken = damage;
+            damageTaken = z->damage;
             actualtime = 0;
             return true;
         }

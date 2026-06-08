@@ -1,0 +1,10 @@
+3
+2
+1000
+1
+30
+Deagle
+Assets/Weapon/deagle.png
+1
+1
+1

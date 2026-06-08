@@ -12,8 +12,10 @@ public:
     sf::RectangleShape rect;
     bool isactive;
     
+    int damage = 10;
+    
 public:
-    HitBox(Object* _owner, sf::Vector2f _size, bool _isactive);
+    HitBox(Object* _owner, sf::Vector2f _size, bool _isactive, int _damage);
     ~HitBox() override = default;
     
     void update(float dt) override;

@@ -21,9 +21,6 @@ public:
     
     float actualTime;
     
-    sf::Vector2i mouseScreenPos;
-    sf::Vector2f mouseWorldPos;
-    
     sf::SoundBuffer buffer;
     sf::Sound* sound;
     
