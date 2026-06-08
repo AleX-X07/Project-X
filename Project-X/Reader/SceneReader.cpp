@@ -1,9 +1,9 @@
 ﻿#include "SceneReader.h"
 
-#include "../../Main/GameEngine.h"
+#include "../Main/GameEngine.h"
 
-void SceneReader::loadScene() {
-    std::ifstream scene("Data/Scene.json");
+void SceneReader::read() {
+    std::ifstream scene("Data/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
         
@@ -61,7 +61,7 @@ void SceneReader::loadScene() {
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
-    std::string fileName = std::string(ecs["args"][0]) + ".json";
+    std::string fileName = ecs["args"][0].get<std::string>() + ".json";
     std::string path = "Data/Animation/" + fileName;
     std::ifstream pathA(path);
     
@@ -76,9 +76,7 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     for (auto& [stateName, stateData] : dataState.items()) {
         (*myMap)[stateName] = stateData;
     }
-    if (newObj->hasComponent<StateMachineComponent>()) {
-        newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
-    }
+    newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
 void SceneReader::SceneTestDev() {

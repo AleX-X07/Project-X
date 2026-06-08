@@ -37,6 +37,9 @@ std::unordered_map <
     {"StateMachine", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
        return new StateMachineComponent(obj); 
     }},
+    {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new WeaponMain(obj, ecs["args"][0]); 
+    }},
 };
 
 std::unordered_map <

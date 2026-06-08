@@ -10,12 +10,12 @@
             "Position" : [500,500],
             "Size" : [500,500],
             "Type" : {},
-            "Animation" : ["StateMachine", "AnimationHero"],
             "ECS" : [
                 {"Component" : "Input", "args" : []},
                 {"Component" : "Movement" , "args" : [500]},
                 {"Component" : "Render", "args" : []},
-                {"Component" : "StateMachine", "args" : ["AnimationHero"]}
+                {"Component" : "StateMachine", "args" : ["AnimationHero"]},
+                {"Component" : "Weapon", "args" : ["Deagle"]}
             ]
         }
     ]
