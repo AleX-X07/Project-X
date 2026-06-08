@@ -3,14 +3,14 @@
 #include "../Main/GameEngine.h"
 
 void SceneReader::read() {
-    std::ifstream scene("Data/SceneManager.json");
+    std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
         
         for (auto& sceneData : data["Scene"]) {
             
             std::string myScene = sceneData.get<std::string>() + ".json";
-            std::string path = "Data/Scene/" + myScene;
+            std::string path = "Data/Scene/Scene/" + myScene;
             std::ifstream currentScene(path);
             
             if (currentScene.is_open()) {

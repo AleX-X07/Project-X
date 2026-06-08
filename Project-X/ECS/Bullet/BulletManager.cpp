@@ -19,7 +19,7 @@ void BulletManager::update(float dt)
     actualTime += dt;
 
     auto Comp = owner->getComponent<MouseComponent>();
-    if (Comp->clicked() && actualTime >= 1.0f / weapon->fireRate)
+    if (Comp->clicked() && actualTime >= 1.0f / weapon->myArgs.fireRate)
     {
         mouseScreenPos = {
             (int)Comp->getMousePosition().x,
@@ -73,7 +73,7 @@ void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
 {
     if (!weapon) return;
 
-    for (int u = 0; u < weapon->Bulletquantity; u++)
+    for (int u = 0; u < weapon->myArgs.Bulletquantity; u++)
     {
         Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
         Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
@@ -84,11 +84,11 @@ void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
             float angleDeg = angleRad * 180.f / 3.14159265f;
             if (angleDeg < 0) angleDeg += 360.f;
 
-            randomAngle = angleDeg + (rand() / (float)RAND_MAX) * (2 * weapon->spread) - weapon->spread;
+            randomAngle = angleDeg + (rand() / (float)RAND_MAX) * (2 * weapon->myArgs.spread) - weapon->myArgs.spread;
         }
         else
         {
-            randomAngle = _angle + (rand() / (float)RAND_MAX) * (2 * weapon->spread) - weapon->spread;
+            randomAngle = _angle + (rand() / (float)RAND_MAX) * (2 * weapon->myArgs.spread) - weapon->myArgs.spread;
         }
 
         bullet.push_back(weapon->CreateBullet(randomAngle));

@@ -5,6 +5,7 @@
 #include "../Scene/Scene.h"
 #include "../Reader/SceneReader.h"
 #include "../Reader/InputReader.h"
+#include "../Reader/WeaponReader.h"
 
 class GameEngine {
 private:

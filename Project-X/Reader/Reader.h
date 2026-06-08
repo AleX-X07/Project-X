@@ -2,6 +2,6 @@
 
 class Reader {
 public:
-    virtual ~Reader();
+    virtual ~Reader() = default;
     virtual void read() = 0;
 };

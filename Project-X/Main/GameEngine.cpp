@@ -18,13 +18,16 @@ GameEngine::~GameEngine() {
 
 void GameEngine::start() {    
     InputReader readInput;
-    readInput.loadInput();
+    readInput.read();
+    
+    WeaponReader readWeapons;
+    readWeapons.read();
     
     SceneReader readScene;
-    //readScene.loadScene();
+    readScene.read();
     
     //## for dev ##//
-    readScene.SceneTestDev();
+    //readScene.SceneTestDev();
     //readScene.SceneTestDev2();
     //#############//
 }
