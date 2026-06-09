@@ -25,10 +25,10 @@ void GameEngine::start() {
     readWeapons.read();
     
     SceneReader readScene;
-    readScene.read();
+    //readScene.read();
     
     //## for dev ##//
-    //readScene.SceneTestDev();
+    readScene.SceneTestDev();
     //readScene.SceneTestDev2();
     //#############//
 }
