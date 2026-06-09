@@ -1,7 +1,7 @@
 ﻿#include "InputReader.h"
 
-void InputReader::loadInput() {
-    std::ifstream inputFile("Data/Input.json");
+void InputReader::read() {
+    std::ifstream inputFile("Data/Input/Input.json");
     if (inputFile.is_open()) {
         nlohmann::json data = nlohmann::json::parse(inputFile);
         for (auto& [key,val] : data.items()) {

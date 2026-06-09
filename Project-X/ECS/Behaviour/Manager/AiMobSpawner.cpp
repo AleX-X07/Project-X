@@ -1,11 +1,11 @@
 ﻿#include "AiMobSpawner.h"
 #include "../../../Main/GameEngine.h"
 
-AiMobSpawner::AiMobSpawner(Object* _owner, sf::Vector2f _LevleSize, std::vector<Object*>& _sceneObjects)
+AiMobSpawner::AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects)
     : Component(_owner), sceneObjects(_sceneObjects)
 {
-    LevelSize.x = _LevleSize.x - 50;
-    LevelSize.y = _LevleSize.y - 50;
+    LevelSize.x = levelSize.x - 50;
+    LevelSize.y = levelSize.y - 50;
     timer = 1.5;
     srand(time(nullptr));
 }

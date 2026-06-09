@@ -1,16 +1,16 @@
 ﻿#include "SceneReader.h"
 
-#include "../../Main/GameEngine.h"
+#include "../Main/GameEngine.h"
 
-void SceneReader::loadScene() {
-    std::ifstream scene("Data/Scene.json");
+void SceneReader::read() {
+    std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
         
         for (auto& sceneData : data["Scene"]) {
             
             std::string myScene = sceneData.get<std::string>() + ".json";
-            std::string path = "Data/Scene/" + myScene;
+            std::string path = "Data/Scene/Scene/" + myScene;
             std::ifstream currentScene(path);
             
             if (currentScene.is_open()) {
@@ -24,6 +24,17 @@ void SceneReader::loadScene() {
                 for (auto& currentObj : objects) {
                     Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
                     
+                    if (currentObj["Team"] == "Player") {
+                        newObj->team = Object::Team::Player;
+                    }
+                    else if (currentObj["Team"] == "Enemy") {
+                        newObj->team = Object::Team::Enemy;
+                    }
+                    else {
+                        newObj->team = Object::Team::Neutral;
+                    }
+                    
+                    // à transformer en ECS
                     if (currentObj["Type"]["TypeName"] == "Transition") {
                         std::string currentTransitionType = currentObj["Type"]["Transition"][1];
                         Transition::TransitionType transitionType;
@@ -33,6 +44,7 @@ void SceneReader::loadScene() {
                         Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
                         addScene->addTransition(newTrans);
                     }
+                    //#####
                     
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
@@ -61,7 +73,7 @@ void SceneReader::loadScene() {
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
-    std::string fileName = std::string(ecs["args"][0]) + ".json";
+    std::string fileName = ecs["args"][0].get<std::string>() + ".json";
     std::string path = "Data/Animation/" + fileName;
     std::ifstream pathA(path);
     
@@ -76,9 +88,7 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     for (auto& [stateName, stateData] : dataState.items()) {
         (*myMap)[stateName] = stateData;
     }
-    if (newObj->hasComponent<StateMachineComponent>()) {
-        newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
-    }
+    newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
 void SceneReader::SceneTestDev() {
@@ -96,7 +106,7 @@ void SceneReader::SceneTestDev() {
     Object* Hurt = new Object({0, 0}, { 50, 50});
     Object* Exp = new Object({0, 0}, { 50, 50});
     
-    Hurt->addComponent(new AiMobSpawner(Hurt, {1920*2, 1080*2}, addScene->getVecObjects()));
+    Hurt->addComponent(new AiMobSpawner(Hurt, addScene->getVecObjects()));
 
     newObj->team = Object::Team::Player;
 

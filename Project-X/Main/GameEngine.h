@@ -3,8 +3,9 @@
 #include <vector>
 
 #include "../Scene/Scene.h"
-#include "../Scene/Data/SceneReader.h"
-#include "../Scene/Data/InputReader.h"
+#include "../Reader/SceneReader.h"
+#include "../Reader/InputReader.h"
+#include "../Reader/WeaponReader.h"
 
 class GameEngine {
 private:
@@ -16,6 +17,7 @@ private:
     
     sf::Clock clock;
     float delatTime;
+    bool inGame;
     
     void start();
     

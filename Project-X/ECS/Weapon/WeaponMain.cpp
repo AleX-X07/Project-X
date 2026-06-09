@@ -1,24 +1,10 @@
 ﻿#include "WeaponMain.h"
 #include "../Bullet/BulletManager.h"
 #include "../../Main/GameEngine.h"
+#include "../../Reader/WeaponReader.h"
 
-WeaponMain::WeaponMain(Object* _owner, std::string file) : Component(_owner) {
-    std::ifstream f(file);
-    
-    f >> spread;
-    f >> fireRate;
-    f >> speed;
-    f >> Bulletquantity;
-    f >> damage;
-    
-    f >> WeaponName;
-    f >> WeaponImage;
-    
-    f >> shakeIntensity;
-    f >> shakeDuration;
-    
-    f >> hasrecoil;
-    
+WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
+    myArgs = WeaponReader::getWeapons()[weapon];
     
     auto comp = owner->getComponent<BulletManager>();
     if (comp != nullptr)
@@ -26,29 +12,29 @@ WeaponMain::WeaponMain(Object* _owner, std::string file) : Component(_owner) {
         comp->SetWeapon(this);
     }
     
-    WeaponRender = new Object({(owner->getPosition().x + 25), (owner->getPosition().y + 35)}, {50, 50});
-    WeaponRender->addComponent(new RenderComponent(WeaponRender, WeaponImage));
+    WeaponRender = new Object({0,0}, myArgs.size);
+    WeaponRender->addComponent(new RenderComponent(WeaponRender, myArgs.WeaponImage));
     
     auto ori = WeaponRender->getComponent<RenderComponent>();
-    ori->getRect()->setOrigin({25.f, 25.f});
+    ori->getRect()->setOrigin({myArgs.size.x / 2.f, myArgs.size.y / 2.f});
 }
 
 Object* WeaponMain::CreateBullet(float angle) {
     // FeedBack
     auto Cam = owner->getComponent<CameraComponent>();
     if (Cam != nullptr) {
-        Cam->CameraShake(shakeIntensity, shakeDuration);
+        Cam->CameraShake(myArgs.shakeIntensity, myArgs.shakeDuration);
     }
-    if (hasrecoil) {
+    if (myArgs.hasrecoil) {
         recoil(angle);
     }
     
     //Bullet
-    Object* ball = new Object(owner->getPosition(), {25,25});
+    Object* ball = new Object(owner->getPosition(), myArgs.bulletSize);
     
-    ball->addComponent(new BulletSystemComponent(ball, speed, angle, 7.5));
-    ball->addComponent(new RenderComponent(ball, "Assets/Debug/DebugBulletblue.png"));
-    ball->addComponent(new HitBox(ball, {25, 25}, true, damage));
+    ball->addComponent(new BulletSystemComponent(ball, myArgs.speed, angle, myArgs.lifeTime));
+    ball->addComponent(new RenderComponent(ball, myArgs.BulletImage));
+    ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
     
     return ball;
 }
@@ -62,18 +48,18 @@ void WeaponMain::recoil(float angle) {
     recoilStartPos = pos;
     recoilTargetPos = pos - recoilDir * 100.f;
     
-    recoilTime = 0.f;
+    myArgs.recoilTime = 0.f;
 }
 
 void WeaponMain::update(float deltaTime) {
     //Recoil
-    if (recoilTime < 1.f)
+    if (myArgs.recoilTime < 1.f)
     {
-        recoilTime += deltaTime * 10.f;
-        if (recoilTime > 1.f) recoilTime = 1.f;
+        myArgs.recoilTime += deltaTime * 10.f;
+        if (myArgs.recoilTime > 1.f) myArgs.recoilTime = 1.f;
 
 
-        sf::Vector2f newPos = recoilStartPos + (recoilTargetPos - recoilStartPos) * recoilTime;
+        sf::Vector2f newPos = recoilStartPos + (recoilTargetPos - recoilStartPos) * myArgs.recoilTime;
 
         owner->setPosition(newPos);
     }
@@ -117,23 +103,8 @@ void WeaponMain::render() {
     WeaponRender->render();
 }
 
-void WeaponMain::ChangeWeapon(std::string file) {
-    std::ifstream f(file);
-    
-    f >> spread;
-    f >> fireRate;
-    f >> speed;
-    f >> Bulletquantity;
-    f >> damage;
-    
-    f >> WeaponName;
-    f >> WeaponImage;
-    
-    f >> shakeIntensity;
-    f >> shakeDuration;
-    
-    f >> hasrecoil;
-    
+void WeaponMain::ChangeWeapon(argsWeapon newWeapon) {
+    myArgs = newWeapon;
     
     auto comp = owner->getComponent<BulletManager>();
     if (comp != nullptr)
@@ -142,7 +113,7 @@ void WeaponMain::ChangeWeapon(std::string file) {
     }
     
     WeaponRender = new Object({(owner->getPosition().x + 25), (owner->getPosition().y + 35)}, {50, 50});
-    WeaponRender->addComponent(new RenderComponent(WeaponRender, WeaponImage));
+    WeaponRender->addComponent(new RenderComponent(WeaponRender,myArgs.WeaponImage));
     
     auto ori = WeaponRender->getComponent<RenderComponent>();
     ori->getRect()->setOrigin({25.f, 25.f});

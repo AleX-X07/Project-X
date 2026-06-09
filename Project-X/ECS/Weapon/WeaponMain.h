@@ -9,30 +9,40 @@
 
 class BulletManager;
 class GameEngine;
+class WeaponReader;
 
-class WeaponMain : public Component
-{
-public:
+struct argsWeapon {
+    std::string WeaponName;
+    std::string WeaponImage;
+    std::string BulletImage;
+    
+    sf::Vector2f size;
+    sf::Vector2f bulletSize;
+    
     float spread;
     float fireRate;
     float speed;
     int Bulletquantity;
-    float damage;
-    
-    std::string WeaponName;
-    std::string WeaponImage;
+    int damage;
+    float lifeTime;
     
     float shakeIntensity;
     float shakeDuration;
     
     bool hasrecoil;
+    float recoilTime;
+};
 
+class WeaponMain : public Component
+{
+public:
+    argsWeapon myArgs;
+    
 public:
     Object* WeaponRender;
     
     sf::Vector2f recoilStartPos;
     sf::Vector2f recoilTargetPos;
-    float recoilTime = 1.f;
     
     float Xjoystick;
     float Yjoystick;
@@ -42,14 +52,14 @@ public:
     float weaponAngle;
     
 public:
-    WeaponMain(Object* _owner, std::string file);
+    WeaponMain(Object* _owner, std::string weapon);
     ~WeaponMain() override = default;
 
     void update(float deltaTime) override;
     void render() override;
     
     void recoil(float angle);
-    void ChangeWeapon(std::string file);
+    void ChangeWeapon(argsWeapon newWeapon);
     
     virtual Object* CreateBullet(float angle);
 };

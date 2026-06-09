@@ -7,9 +7,10 @@
 
 #include "nlohmann/json.hpp"
 
-#include "../../Tool/Input.h"
+#include "../Tool/Input.h"
+#include "Reader.h"
 
-class InputReader {
+class InputReader : public Reader {
 private:
     const std::unordered_map<std::string, sf::Keyboard::Key> keyTable = {
         // Lettres
@@ -62,7 +63,7 @@ private:
     };
 public:
     InputReader() = default;
-    ~InputReader() = default;
+    virtual ~InputReader() override = default;
     
-    void loadInput();
+    virtual void read() override;
 };

@@ -57,7 +57,5 @@ void Scene::update(float deltatime) {
 }
 
 void Scene::render() {
-    for (auto& obj : myObjects) {
-        obj->render();
-    }
+    myLayer.render();
 }

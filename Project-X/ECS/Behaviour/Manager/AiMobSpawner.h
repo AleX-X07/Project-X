@@ -5,6 +5,7 @@
 #include "../AiMoveTo.h"
 #include "../../Tool/Experience/ExperienceContainer.h"
 #include "../../Tool/Experience/ExpComponent.h"
+#include "../../../Tool/Globals.h"
 
 class GameEngine;
 
@@ -24,7 +25,7 @@ public:
     float actualtime = 0;
     
 public:
-    AiMobSpawner(Object* _owner, sf::Vector2f _LevleSize, std::vector<Object*>& _sceneObjects);
+    AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects);
     ~AiMobSpawner() override;
     
     void update(float dt) override;

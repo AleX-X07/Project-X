@@ -1,0 +1,19 @@
+{
+    "Name" : "Deagle",
+    "Image" : "Assets/Weapon/deagle.png",
+    "Size" : [50,50],
+    "shakeIntensity" : 1,
+    "shakeDuration" : 1,
+    "hasrecoil" : true,
+    "recoilTime" : 1,
+    "Bullet" : {        
+        "BulletImage" : "Assets/Debug/DebugBulletblue.png",
+        "Size" : [25,25],
+        "spread" : 3,
+        "fireRate" : 2,
+        "speed" : 1000,
+        "Bulletquantity" : 1,
+        "damage" : 30,
+        "lifeTime" : 7.5
+    }
+}

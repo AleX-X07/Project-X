@@ -7,36 +7,59 @@ std::unordered_map <
     std::string,
     ComponentFactory
 > FactoriesECS::factories = {
+    {"AIMobSpawner",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new AiMobSpawner(obj, currentScene->getVecObjects());
+    }},
+    // Box
+    {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects(), ecs["args"][2]);
+    }},
+    // Bullet
+    {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new BulletManager(obj);
+    }},
+    // Graphics
     {"Render", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
             return new RenderComponent(obj, ecs["args"][0]);
         }
         return new RenderComponent(obj);
     }},
+    // Input
     {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new MouseComponent(obj);
     }},
     {"Input",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new InputComponent(obj);
     }},
+    // Movement
     {"Movement", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new MovementsComponent(obj, ecs["args"][0]);
-    }},
-    {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects(), ecs["args"][2]);
-    }},
-    {"HitBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new HitBox(obj, {ecs["args"][0],ecs["args"][1]} , ecs["args"][2], ecs["args"][2]);
-    }},
-    {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new BulletManager(obj);
-    }},
-    {"BulletSystem", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new BulletSystemComponent(obj, ecs["args"][0], ecs["args"][1], ecs["args"][2]);
     }},
     {"StateMachine", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
        return new StateMachineComponent(obj); 
     }},
+    // Tool
+    {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new ExpManager(obj);
+    }},
+    {"Camera", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new CameraComponent(obj, ecs["args"][0], ecs["args"][1]);
+    }},
+    {"Crosshair", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new CrossHairComponent(obj);
+    }},
+    {"Health", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new HealthComponent(obj, ecs["args"][0], currentScene->getVecObjects());
+    }},
+    // Weapon
+    {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new WeaponMain(obj, ecs["args"][0]);
+    }},
+    // Debug
+    {"DebugHUD", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new DebugHudComp(obj);
+    }}
 };
 
 std::unordered_map <
