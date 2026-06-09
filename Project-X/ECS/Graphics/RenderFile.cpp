@@ -1,14 +1,14 @@
-﻿#include "RenderComponent.h"
+﻿#include "RenderFile.h"
 #include "../../Main/GameEngine.h"
 
-RenderComponent::RenderComponent(Object* _owner) : Component(_owner) {
+RenderFile::RenderFile(Object* _owner) : Component(_owner) {
     texture = new sf::Texture();
     rect = new sf::RectangleShape(owner->getSize());
     rect->setPosition(owner->getPosition());
     currentAnimation = nullptr;
 }
 
-RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_owner)
+RenderFile::RenderFile(Object* _owner, std::string name) : Component(_owner)
 {
     texture = new sf::Texture();
     rect = new sf::RectangleShape(owner->getSize());
@@ -19,7 +19,7 @@ RenderComponent::RenderComponent(Object* _owner, std::string name) : Component(_
     currentAnimation = nullptr;
 }
 
-RenderComponent::~RenderComponent() {
+RenderFile::~RenderFile() {
     delete texture;
     texture = nullptr;
     
@@ -27,21 +27,21 @@ RenderComponent::~RenderComponent() {
     rect = nullptr;
 }
 
-void RenderComponent::update(float deltaTime) {
+void RenderFile::update(float deltaTime) {
     rect->setPosition(owner->getPosition());
     if (currentAnimation != nullptr) {
         currentAnimation->update(deltaTime);
     }
 }
 
-void RenderComponent::render() {
+void RenderFile::render() {
     if (texture == nullptr) {
         rect->setFillColor(sf::Color::Red);
     }
     GameEngine::getWindow()->draw(*rect);
 }
 
-void RenderComponent::setTexture(std::string newPath) {
+void RenderFile::setTexture(std::string newPath) {
     if (texture->loadFromFile(newPath)) {
         rect->setTexture(texture);
         sf::Vector2u texSize = texture->getSize();
@@ -50,22 +50,22 @@ void RenderComponent::setTexture(std::string newPath) {
     }
 }
 
-void RenderComponent::setTexture(sf::Texture* newTexture) {
+void RenderFile::setTexture(sf::Texture* newTexture) {
     texture = newTexture;
     rect->setTexture(texture);
 }
 
-void RenderComponent::setAnimation(Animation* animation) {
+void RenderFile::setAnimation(Animation* animation) {
     if (currentAnimation == animation) {
         return;
     }
     currentAnimation = animation;
 }
 
-sf::RectangleShape* RenderComponent::getRect() {
+sf::RectangleShape* RenderFile::getRect() {
     return rect;
 }
 
-sf::Texture* RenderComponent::getTexture() {
+sf::Texture* RenderFile::getTexture() {
     return texture;
 }

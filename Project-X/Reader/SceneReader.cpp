@@ -35,15 +35,15 @@ void SceneReader::read() {
                     }
                     
                     // à transformer en ECS
-                    if (currentObj["Type"]["TypeName"] == "Transition") {
-                        std::string currentTransitionType = currentObj["Type"]["Transition"][1];
-                        Transition::TransitionType transitionType;
-                        if (currentTransitionType == "Click") {
-                            transitionType = Transition::TransitionType::Button;
-                        }
-                        Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
-                        addScene->addTransition(newTrans);
-                    }
+                    // if (currentObj["Type"]["TypeName"] == "Transition") {
+                    //     std::string currentTransitionType = currentObj["Type"]["Transition"][1];
+                    //     Transition::TransitionType transitionType;
+                    //     if (currentTransitionType == "Click") {
+                    //         transitionType = Transition::TransitionType::Button;
+                    //     }
+                    //     Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
+                    //     addScene->addTransition(newTrans);
+                    // }
                     //#####
                     
                     for (auto& ecs : currentObj["ECS"]) {
@@ -98,7 +98,7 @@ void SceneReader::SceneTestDev() {
     
     // DebugMap for dev only
     Object* Map = new Object({0, 0}, { 1920*2, 1080*2});
-    Map->addComponent(new RenderComponent(Map, "Assets/Debug/map.png"));
+    Map->addComponent(new RenderFile(Map, "Assets/Debug/map.png"));
     addScene->addObject(Map, 1);
     // End Debug
     
@@ -111,7 +111,7 @@ void SceneReader::SceneTestDev() {
     newObj->team = Object::Team::Player;
 
     newObj->addComponent(new InputComponent(newObj));
-    newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
+    newObj->addComponent(new RenderFile(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
@@ -125,7 +125,7 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new LevelEnder(newObj, 500));
     
     Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
-    Exp->addComponent(new RenderComponent(Exp, "Assets/Debug/ExpDebug.png"));
+    Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
     
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
@@ -140,7 +140,7 @@ void SceneReader::SceneTestDev2() {
     Object* Hero = new Object({0, 0}, { 50, 50});
     Hero->addComponent(new InputComponent(Hero));
     Hero->addComponent(new MovementsComponent(Hero,500));
-    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Collider_DebugTX.png"));
+    Hero->addComponent(new RenderFile(Hero, "Assets/Debug/Collider_DebugTX.png"));
     Hero->addComponent(new StateMachineComponent(Hero));
     
     myScene->addObject(Hero, 0);

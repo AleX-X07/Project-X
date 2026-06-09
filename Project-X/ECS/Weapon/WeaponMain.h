@@ -3,7 +3,7 @@
 #include <fstream>
 
 #include "../Box/HitBox.h"
-#include "../Graphics/RenderComponent.h"
+#include "../Graphics/RenderFile.h"
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Tool/CameraComponent.h"
 

@@ -21,9 +21,9 @@ std::unordered_map <
     // Graphics
     {"Render", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
-            return new RenderComponent(obj, ecs["args"][0]);
+            return new RenderFile(obj, ecs["args"][0]);
         }
-        return new RenderComponent(obj);
+        return new RenderFile(obj);
     }},
     // Input
     {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -38,6 +38,11 @@ std::unordered_map <
     }},
     {"StateMachine", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
        return new StateMachineComponent(obj); 
+    }},
+    
+    // Scene
+    {"Transition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new Transition(obj, ecs["args"][0], ecs["args"][1]);
     }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -66,24 +71,16 @@ std::unordered_map <
         std::string,
         StateFactory
 > FactoriesStates::factories = {
-    {
-        "IdleRight", [](Object* obj, mapState myMap) -> State* {
+    {"IdleRight", [](Object* obj, mapState myMap) -> State* {
             return new IdleRightState(obj, myMap);
-        }
-    },
-    {
-        "IdleLeft", [](Object* obj, mapState myMap) -> State* {
+    }},
+    {"IdleLeft", [](Object* obj, mapState myMap) -> State* {
             return new IdleLeftState(obj, myMap);
-        }
-    },
-    {
-        "Right", [](Object* obj, mapState myMap) -> State* {
+    }},
+    {"Right", [](Object* obj, mapState myMap) -> State* {
             return new RightState(obj, myMap);
-        }
-    },
-    {
-        "Left", [](Object* obj, mapState myMap) -> State* {
+    }},
+    {"Left", [](Object* obj, mapState myMap) -> State* {
             return new LeftState(obj, myMap);
-        }
-    }
+    }}
 };
