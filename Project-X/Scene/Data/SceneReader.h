@@ -24,6 +24,7 @@
 #include "../../ECS/Tool/CrossHairComponent.h"
 
 #include "../../ECS/Tool/Experience/ExpComponent.h"
+#include "../../ECS/Tool/LevelEnder.h"
 
 #include "../Scene.h"
 

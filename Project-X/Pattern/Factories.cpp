@@ -32,7 +32,7 @@ std::unordered_map <
         return new BulletManager(obj);
     }},
     {"BulletSystem", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new BulletSystemComponent(obj, ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]);
+        return new BulletSystemComponent(obj, ecs["args"][0], ecs["args"][1], ecs["args"][2]);
     }},
     {"StateMachine", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
        return new StateMachineComponent(obj); 

@@ -17,7 +17,7 @@ private:
     std::vector<Object*> Trail;
 
 public:
-    BulletSystemComponent(Object* _owner, float _speed, float _angle, float _lifetime, int _damage);
+    BulletSystemComponent(Object* _owner, float _speed, float _angle, float _lifetime);
     ~BulletSystemComponent() override;
 
     float getSpeed();

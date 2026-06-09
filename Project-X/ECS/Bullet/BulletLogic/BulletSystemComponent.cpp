@@ -1,12 +1,11 @@
 ﻿#include "BulletSystemComponent.h"
 
-BulletSystemComponent::BulletSystemComponent(Object* _owner, float _speed, float _angle, float _lifetime, int _damage)
+BulletSystemComponent::BulletSystemComponent(Object* _owner, float _speed, float _angle, float _lifetime)
     : Component(_owner)
 {
     speed = _speed;
     angle = _angle;
     lifetime = _lifetime;
-    damage = _damage;
 }
 
 void BulletSystemComponent::update(float dt)
