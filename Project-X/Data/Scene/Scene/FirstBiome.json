@@ -32,7 +32,7 @@
                 {"Component" : "Health", "args" : [100]},
                 {"Component" : "DebugHUD", "args" : []},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "Weapon", "args" : ["Deagle"]},
+                {"Component" : "Weapon", "args" : ["ShotGun"]},
                 {"Component" : "HurtBox", "args" : [175,125,1]}
             ]
         },

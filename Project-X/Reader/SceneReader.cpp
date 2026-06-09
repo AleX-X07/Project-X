@@ -110,6 +110,7 @@ void SceneReader::SceneTestDev() {
 
     newObj->team = Object::Team::Player;
 
+    newObj->addComponent(new CapacityMain(newObj, "Assets/Capacity/Debug.txt"));
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));

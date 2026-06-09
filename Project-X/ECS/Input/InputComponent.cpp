@@ -1,4 +1,8 @@
 ﻿#include "InputComponent.h"
+
+#include <iostream>
+
+#include "../Capacity/CapacityMain.h"
 #include "../Movement/MovementComponent.h"
 
 InputComponent::InputComponent(Object* _owner)
@@ -35,6 +39,13 @@ void InputComponent::update(float deltaTime)
         if (movementsComp != nullptr)
         {
             movementsComp->down(deltaTime);
+        }
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+    {
+        auto Comp = owner->getComponent<CapacityMain>();
+        if (Comp != nullptr) {
+            Comp->Activate();
         }
     }
 }

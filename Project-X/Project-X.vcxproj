@@ -472,6 +472,8 @@
     </ClCompile>
     <ClCompile Include="ECS\Bullet\BulletSource.cpp" />
     <ClCompile Include="ECS\Bullet\Special\GrenadeBullet.cpp" />
+    <ClCompile Include="ECS\Capacity\CapacityMain.cpp" />
+    <ClCompile Include="ECS\Capacity\ScriptParser.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\RenderComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1202,6 +1204,8 @@
     <ClInclude Include="ECS\Bullet\BulletManager.h" />
     <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\Special\GrenadeBullet.h" />
+    <ClInclude Include="ECS\Capacity\CapacityMain.h" />
+    <ClInclude Include="ECS\Capacity\ScriptParser.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
     <ClInclude Include="ECS\IncludeECS.h" />
