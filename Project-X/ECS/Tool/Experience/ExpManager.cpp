@@ -15,7 +15,7 @@ int ExpManager::getExp()
     return Exp;
 }
 
-void ExpManager::setExp(float _exp)
+void ExpManager::setExp(int _exp)
 {
     Exp = _exp;
 }

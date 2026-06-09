@@ -4,6 +4,7 @@
 #include "../../../Scene/Layer.h"
 #include "../AiMoveTo.h"
 #include "../../Tool/Experience/ExperienceContainer.h"
+#include "../../Tool/Experience/ExpComponent.h"
 
 class GameEngine;
 
@@ -11,6 +12,7 @@ class AiMobSpawner : public Component
 {
 public:
     std::vector<Object*> liste;
+    std::vector<Object*> ExpList;
     
     std::vector<Object*>& sceneObjects;
     

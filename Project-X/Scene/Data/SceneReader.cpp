@@ -94,6 +94,7 @@ void SceneReader::SceneTestDev() {
     
     Object* newObj = new Object({200, 200}, { 50, 50});
     Object* Hurt = new Object({0, 0}, { 50, 50});
+    Object* Exp = new Object({0, 0}, { 50, 50});
     
     auto* spawner = new AiMobSpawner(Hurt, {1920*2, 1080*2}, addScene->getVecObjects());
     Hurt->addComponent(spawner);
@@ -112,9 +113,13 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new ExpManager(newObj));
     newObj->addComponent(new DebugHudComp(newObj));
     newObj->addComponent(new CrossHairComponent(newObj));
-
+    
+    Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
+    Exp->addComponent(new RenderComponent(Exp, "Assets/Debug/ExpDebug.png"));
+    
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
+    addScene->addObject(Exp, 1);
 }
 
 void SceneReader::SceneTestDev2() {

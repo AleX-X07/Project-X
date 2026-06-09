@@ -17,15 +17,34 @@ AiMobSpawner::~AiMobSpawner()
         delete c;
         c = nullptr;
     }
+    for (auto c : ExpList)
+    {
+        delete c;
+        c = nullptr;
+    }
     liste.clear();
+    ExpList.clear();
 }
 
 void AiMobSpawner::update(float dt)
 {
     actualtime += dt;
 
-    for (auto c : liste)
+    for (auto c : liste) {
         c->update(dt);
+        auto hp = c->getComponent<HealthComponent>();
+        auto Contain = c->getComponent<ExperienceContainer>();
+        if (!hp->alive) {
+            Object* Exp = new Object(c->getPosition(), {25, 25});
+            Exp->addComponent(new ExpComponent(Exp, {25, 25}, sceneObjects, Contain->Exp));
+            Exp->addComponent(new RenderComponent(Exp, "Assets/Debug/ExpDebug.png"));
+            
+            ExpList.push_back(Exp);
+        }
+    }
+    for (auto b : ExpList) {
+        b->update(dt);
+    }
 
 
     liste.erase(std::remove_if(liste.begin(), liste.end(), [](Object* c) {
@@ -36,6 +55,15 @@ void AiMobSpawner::update(float dt)
         }
         return false;
     }), liste.end());
+    
+    ExpList.erase(std::remove_if(ExpList.begin(), ExpList.end(), [](Object* c) {
+        auto comp = c->getComponent<ExpComponent>();
+        if (comp != nullptr && !comp->isActive && c !=nullptr)
+        {
+            return true;
+        }
+        return false;
+    }), ExpList.end());
 
     if (actualtime >= timer)
     {
@@ -48,6 +76,8 @@ void AiMobSpawner::render()
 {
     for (auto c : liste)
         c->render();
+    for (auto b : ExpList)
+        b->render();
 }
 
 void AiMobSpawner::addMob()

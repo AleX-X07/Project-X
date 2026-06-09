@@ -23,6 +23,8 @@
 #include "../../ECS/Tool/Experience/ExpManager.h"
 #include "../../ECS/Tool/CrossHairComponent.h"
 
+#include "../../ECS/Tool/Experience/ExpComponent.h"
+
 #include "../Scene.h"
 
 

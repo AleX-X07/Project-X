@@ -14,6 +14,6 @@ public:
 
     void update(float deltaTime) override;
     
-    void setExp(float _exp);
+    void setExp(int _exp);
     int getExp();
 };

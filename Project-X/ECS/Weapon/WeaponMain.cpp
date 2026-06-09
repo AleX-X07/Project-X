@@ -91,7 +91,7 @@ void WeaponMain::update(float deltaTime) {
 
     if (sf::Joystick::isConnected(0) && (std::abs(Xjoystick) > 20 || std::abs(Yjoystick) > 20))
     {
-        weaponAngle = std::atan2(Yjoystick, Xjoystick) * 180.0f / 3.14159f;;
+        weaponAngle = std::atan2(Yjoystick, Xjoystick) * 180.0f / 3.14159f;
     }
     else
     {
