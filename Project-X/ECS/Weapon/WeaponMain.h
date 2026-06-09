@@ -16,11 +16,15 @@ struct argsWeapon {
     std::string WeaponImage;
     std::string BulletImage;
     
+    sf::Vector2f size;
+    sf::Vector2f bulletSize;
+    
     float spread;
     float fireRate;
     float speed;
     int Bulletquantity;
-    float damage;
+    int damage;
+    float lifeTime;
     
     float shakeIntensity;
     float shakeDuration;

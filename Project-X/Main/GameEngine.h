@@ -17,6 +17,7 @@ private:
     
     sf::Clock clock;
     float delatTime;
+    bool inGame;
     
     void start();
     

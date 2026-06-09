@@ -3,29 +3,47 @@
     "Layer" : 2,
     "Objects" : [
         {
+            "Name" : "EnemyManager",
+            "Description" : "AIMobSpawner",
+            "Team" : "Enemy",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "AIMobSpawner", "args" : []}
+            ]
+        },
+        {
             "Name" : "Hero",
             "Description" : "Player",
+            "Team" : "Player",
             "ID Object" : 0,
             "LayerPosition" : 1,
             "Position" : [500,500],
-            "Size" : [500,500],
-            "Type" : {},
+            "Size" : [175,125],
             "ECS" : [
                 {"Component" : "Input", "args" : []},
-                {"Component" : "Movement" , "args" : [500]},
                 {"Component" : "Render", "args" : []},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Movement" , "args" : [500]},
+                {"Component" : "BulletManager", "args" : []},
+                {"Component" : "Camera", "args" : [false, 0]},
+                {"Component" : "Health", "args" : [100]},
+                {"Component" : "DebugHUD", "args" : []},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "Weapon", "args" : ["Deagle"]}
+                {"Component" : "Weapon", "args" : ["Deagle"]},
+                {"Component" : "HurtBox", "args" : [175,125,1]}
             ]
         },
         {
             "Name" : "Map",
             "Description" : "Map",
+            "Team" : "Neutral",
             "ID Object" : 0,
             "LayerPosition" : 0,
             "Position" : [0,0],
             "Size" : [1920,1080],
-            "Type" : {},
             "ECS" : [
                 {"Component" : "Render", "args" : ["Assets/Debug/Map.png"]}
             ]

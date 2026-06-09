@@ -12,11 +12,11 @@ WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
         comp->SetWeapon(this);
     }
     
-    WeaponRender = new Object({(owner->getPosition().x + 25), (owner->getPosition().y + 35)}, {50, 50});
+    WeaponRender = new Object({0,0}, myArgs.size);
     WeaponRender->addComponent(new RenderComponent(WeaponRender, myArgs.WeaponImage));
     
     auto ori = WeaponRender->getComponent<RenderComponent>();
-    ori->getRect()->setOrigin({25.f, 25.f});
+    ori->getRect()->setOrigin({myArgs.size.x / 2.f, myArgs.size.y / 2.f});
 }
 
 Object* WeaponMain::CreateBullet(float angle) {
@@ -30,11 +30,11 @@ Object* WeaponMain::CreateBullet(float angle) {
     }
     
     //Bullet
-    Object* ball = new Object(owner->getPosition(), {25,25});
+    Object* ball = new Object(owner->getPosition(), myArgs.bulletSize);
     
-    ball->addComponent(new BulletSystemComponent(ball, myArgs.speed, angle, 7.5, 10));
+    ball->addComponent(new BulletSystemComponent(ball, myArgs.speed, angle, myArgs.lifeTime, 0));
     ball->addComponent(new RenderComponent(ball, myArgs.BulletImage));
-    ball->addComponent(new HitBox(ball, {25, 25}, true, myArgs.damage));
+    ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
     
     return ball;
 }

@@ -24,6 +24,17 @@ void SceneReader::read() {
                 for (auto& currentObj : objects) {
                     Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
                     
+                    if (currentObj["Team"] == "Player") {
+                        newObj->team = Object::Team::Player;
+                    }
+                    else if (currentObj["Team"] == "Enemy") {
+                        newObj->team = Object::Team::Enemy;
+                    }
+                    else {
+                        newObj->team = Object::Team::Neutral;
+                    }
+                    
+                    // à transformer en ECS
                     if (currentObj["Type"]["TypeName"] == "Transition") {
                         std::string currentTransitionType = currentObj["Type"]["Transition"][1];
                         Transition::TransitionType transitionType;
@@ -33,6 +44,7 @@ void SceneReader::read() {
                         Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
                         addScene->addTransition(newTrans);
                     }
+                    //#####
                     
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
@@ -93,7 +105,7 @@ void SceneReader::SceneTestDev() {
     Object* newObj = new Object({200, 200}, { 50, 50});
     Object* Hurt = new Object({0, 0}, { 50, 50});
     
-    auto* spawner = new AiMobSpawner(Hurt, {1920*2, 1080*2}, addScene->getVecObjects());
+    auto* spawner = new AiMobSpawner(Hurt, addScene->getVecObjects());
     Hurt->addComponent(spawner);
 
     newObj->team = Object::Team::Player;

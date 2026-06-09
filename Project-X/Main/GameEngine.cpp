@@ -9,6 +9,7 @@ GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
     delatTime = 0;
     idScene = 0;
+    inGame = true;
 }
 
 GameEngine::~GameEngine() {
@@ -36,6 +37,12 @@ void GameEngine::updateEvent() {
     while (const std::optional event = window->pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
             window->close();
+        }
+        if (event->is<sf::Event::FocusLost>()) {
+            inGame = false;
+        }
+        if (event->is<sf::Event::FocusGained>()) {
+            inGame = true;
         }
     }
 }
@@ -78,13 +85,14 @@ int GameEngine::getIdCurrentScene() {
 
 void GameEngine::run() {
     start();
-    
     while (window->isOpen()) {
         updateEvent();
-        updateTime();
-        update();
-        window->clear();
-        render();
-        window->display();
+        if (inGame) {
+            updateTime();
+            update();
+            window->clear();
+            render();
+            window->display();
+        }    
     }
 }
