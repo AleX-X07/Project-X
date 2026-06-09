@@ -22,6 +22,7 @@
 
 #include "../ECS/Tool/Experience/ExpManager.h"
 #include "../ECS/Tool/CrossHairComponent.h"
+#include "../ECS/Tool/LevelEnder.h"
 
 #include "../Scene/Scene.h"
 #include "Reader.h"
