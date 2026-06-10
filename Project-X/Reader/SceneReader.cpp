@@ -1,5 +1,6 @@
 ﻿#include "SceneReader.h"
 
+#include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
 void SceneReader::read() {
@@ -91,6 +92,37 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
+void SceneReader::readSceneHUD(std::string name, std::string file) {
+    std::string fileName = file + ".json";
+    std::string path = "Data/Scene/SceneHUD" + fileName;
+    std::ifstream currentScene(path);
+    
+    nlohmann::json data = nlohmann::json::parse(currentScene);
+    
+    Scene* newScene = new Scene();
+    newScene->setLayer(data["Layer"]);
+    
+    for (auto& currentObj : data["Objects"]) {
+        Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
+        
+        for (auto& ecs : currentObj["ECS"]) {
+            std::string name = ecs["Component"];
+            
+            if (FactoriesECS::factories.count(name)) {
+                newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, newScene));
+            } else {
+                std::cerr << "Composant inconnu : " << name << std::endl;
+            }
+            if (name == "StateMachine") {
+                readAnimation(ecs, newObj);
+            }
+        }
+        newScene->addObject(newObj, currentObj["LayerPosition"]);
+    }
+    
+    scenes["Name"] = newScene;
+}
+
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     addScene->setLayer(2);
@@ -120,12 +152,17 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new CameraComponent(newObj, false, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
     newObj->addComponent(new ExpManager(newObj));
-    newObj->addComponent(new DebugHudComp(newObj));
+    //newObj->addComponent(new DebugHudComp(newObj));
     newObj->addComponent(new CrossHairComponent(newObj));
-    newObj->addComponent(new LevelEnder(newObj, 500));
+    newObj->addComponent(new TimerComponent(newObj,60));
+    newObj->addComponent(new HUD(newObj));
+    newObj->getComponent<HUD>()->addHUD(new HealthDisplay(newObj,{0, 0}, 24, sf::Color::White, "Assets/Font/Brown Cookies.otf"));
+    newObj->getComponent<HUD>()->addHUD(new TimerDisplay(newObj,{WindowSize.x/2,0},24,sf::Color::White, "Assets/Font/Brown Cookies.otf"));
     
     Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
     Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
+    
+    newObj->addComponent(new LevelEnder(newObj, addScene));
     
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
@@ -144,4 +181,8 @@ void SceneReader::SceneTestDev2() {
     Hero->addComponent(new StateMachineComponent(Hero));
     
     myScene->addObject(Hero, 0);
+}
+
+std::unordered_map<std::string, Scene*> SceneReader::getScenes() {
+    return scenes;
 }

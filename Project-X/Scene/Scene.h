@@ -11,8 +11,10 @@ public:
     Layer myLayer;
     std::vector<Object*> myObjects;
     int idScene;
+    bool isPaused;
     
 public:
+    Scene();
     Scene(int _idScene);
     ~Scene();
     
@@ -23,6 +25,7 @@ public:
     void addObject(Object* addObject, int Layer);
     
     void setLayer(int Layer);
+    void setPaused(bool pause);
     
     void update(float deltatime);
     void render();

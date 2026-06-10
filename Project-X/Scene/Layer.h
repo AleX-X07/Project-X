@@ -8,7 +8,6 @@
 class Layer {
 private:   
     std::vector<std::vector<Object*>> layers;
-    std::vector<Object*> HUD;
     int nbrLayers;
     
 public:
@@ -17,7 +16,6 @@ public:
     
     void setNbrLayer(int nbrLayers);
     void addInLayer(Object* myObject, int layer);
-    void addInHUD(Object* myObject);
     
     void render();
 };

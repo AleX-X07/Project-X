@@ -10,6 +10,7 @@ private:
     sf::Font myFont;
     sf::Text* myText;
 public:
+    RenderText(Object* _owner);
     RenderText(Object* _owner, std::string file);
     virtual ~RenderText() override;
     

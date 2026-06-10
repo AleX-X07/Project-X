@@ -2,6 +2,9 @@
 #include "../Main/GameEngine.h"
 #include "../ECS/Tool/HealthComponent.h"
 
+Scene::Scene() {
+}
+
 Scene::Scene(int _idScene) {
     idScene = _idScene;
 }
@@ -35,7 +38,14 @@ void Scene::setLayer(int Layer) {
     myLayer.setNbrLayer(Layer);
 }
 
+void Scene::setPaused(bool pause) {
+    isPaused = pause;
+}
+
 void Scene::update(float deltatime) {
+    if (isPaused) {
+        return;
+    }
     for (auto& obj : myObjects) {
         obj->update(deltatime);
     }

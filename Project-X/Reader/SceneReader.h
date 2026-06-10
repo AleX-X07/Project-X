@@ -16,13 +16,18 @@
 class GameEngine;
 
 class SceneReader : public Reader {
+private:
+   static std::unordered_map<std::string, Scene*> scenes;
 public:
    SceneReader() = default;
    virtual ~SceneReader() override = default;
    
    virtual void read() override;
    void readAnimation(nlohmann::basic_json<>& ecs, Object* newObj);
+   void readSceneHUD(std::string name, std::string file);
    
    void SceneTestDev();
    void SceneTestDev2();
+   
+   static std::unordered_map<std::string, Scene*> getScenes();
 };

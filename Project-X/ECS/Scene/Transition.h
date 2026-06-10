@@ -9,7 +9,6 @@ class Transition : public Component{
 private:
     enum class TransitionType {
         Button,
-        Booleen,
     };
     
     TransitionType type;

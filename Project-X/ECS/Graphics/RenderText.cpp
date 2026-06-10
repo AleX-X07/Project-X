@@ -2,6 +2,9 @@
 
 #include "../../Main/GameEngine.h"
 
+RenderText::RenderText(Object* _owner) : RenderText(_owner, ""){
+}
+
 RenderText::RenderText(Object* _owner, std::string file) : Component(_owner){
     if (!myFont.openFromFile(file)) {
         std::cerr << "Erreur : impossible de charger la police !" << std::endl;

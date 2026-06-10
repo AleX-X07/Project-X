@@ -1,0 +1,16 @@
+{
+    "ID" : 0,
+    "Layer" : 2,
+    "Objects" : [
+        {
+            "Name" : "",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : []
+        }
+    ]
+}

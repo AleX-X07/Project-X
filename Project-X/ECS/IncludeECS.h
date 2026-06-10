@@ -20,6 +20,10 @@
 
 // Graphics
 #include "../ECS/Graphics/RenderFile.h"
+#include "../ECS/Graphics/RenderText.h"
+#include "../ECS/Graphics/HUD/HUD.h"
+#include "../ECS/Graphics/HUD/HealthDisplay.h"
+#include "../ECS/Graphics/HUD/TimerDisplay.h"
 
 // Input
 #include "../ECS/Input/InputComponent.h"

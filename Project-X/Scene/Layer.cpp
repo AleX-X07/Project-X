@@ -23,18 +23,10 @@ void Layer::addInLayer(Object* myObject, int layer) {
     }
 }
 
-void Layer::addInHUD(Object* myObject) {
-    HUD.push_back(myObject);
-}
-
 void Layer::render() {
     for (auto& layer : layers) {
         for (auto& object : layer) {
             object->render();
         }
-    }
-    GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
-    for (auto& H : HUD) {
-        H->render();
     }
 }
