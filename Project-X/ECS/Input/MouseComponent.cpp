@@ -36,5 +36,10 @@ bool MouseComponent::isClick() {
         owner->getSize().y}
     );
     
-    return bounds.contains(sf::Vector2f(mousePos));
+    if (clicked() && bounds.contains(sf::Vector2f(mousePos))) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

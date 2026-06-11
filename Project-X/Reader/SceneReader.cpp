@@ -3,8 +3,6 @@
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
-std::unordered_map<std::string, Scene*> SceneReader::scenesHUD;
-
 void SceneReader::read() {
     std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
@@ -20,7 +18,7 @@ void SceneReader::read() {
                 nlohmann::json data2 = nlohmann::json::parse(currentScene);
                 
                 Scene* addScene = new Scene(data2["ID"]);
-                GameEngine::getVecState().push_back(addScene);
+                GameEngine::getVecState()[addScene->getIdScene()] = addScene;
                 addScene->setLayer(data2["Layer"]);
                 nlohmann::json objects = data2["Objects"];
                 
@@ -72,15 +70,7 @@ void SceneReader::read() {
     Object* quit = new Object();
     quit->addComponent(new Quit(quit));
     quitScene->addObject(quit, 0);
-    scenesHUD["Quit"] = quitScene;    
-    
-    for (auto& vS : GameEngine::getVecState()) {
-        for (auto& vS2 : GameEngine::getVecState()) {
-            if (vS != vS2 && vS->getIdScene() == vS2->getIdScene()) {
-                std::cout << "Id déjà existant" << std::endl;
-            }
-        }
-    }
+    GameEngine::getVecState()[quitScene->getIdScene()] = quitScene;  
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
@@ -109,7 +99,7 @@ void SceneReader::readSceneHUD(std::string file) {
     
     nlohmann::json data = nlohmann::json::parse(currentScene);
     
-    Scene* newScene = new Scene();
+    Scene* newScene = new Scene(1);
     newScene->setLayer(data["Layer"]);
     
     for (auto& currentObj : data["Objects"]) {
@@ -129,7 +119,7 @@ void SceneReader::readSceneHUD(std::string file) {
         }
         newScene->addObject(newObj, currentObj["LayerPosition"]);
     }
-    scenesHUD[file] = newScene;
+    GameEngine::getVecPaused()[newScene->getIdScene()] = newScene;
 }
 
 void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene) {
@@ -150,7 +140,7 @@ void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* ne
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     addScene->setLayer(2);
-    GameEngine::getVecState().push_back(addScene);
+    GameEngine::getVecState()[addScene->getIdScene()] = addScene;
     
     // DebugMap for dev only
     Object* Map = new Object({0, 0}, { 1920*2, 1080*2});
@@ -196,7 +186,7 @@ void SceneReader::SceneTestDev() {
 void SceneReader::SceneTestDev2() {
     Scene* myScene = new Scene(0);
     myScene->setLayer(2);
-    GameEngine::getVecState().push_back(myScene);
+    GameEngine::getVecState()[myScene->getIdScene()] = myScene;
     
     Object* Hero = new Object({0, 0}, { 50, 50});
     Hero->addComponent(new InputComponent(Hero));
@@ -207,6 +197,3 @@ void SceneReader::SceneTestDev2() {
     myScene->addObject(Hero, 0);
 }
 
-std::unordered_map<std::string, Scene*>& SceneReader::getScenes() {
-    return scenesHUD;
-}

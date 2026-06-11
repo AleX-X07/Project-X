@@ -16,8 +16,6 @@
 class GameEngine;
 
 class SceneReader : public Reader {
-private:
-   static std::unordered_map<std::string, Scene*> scenesHUD;
 public:
    SceneReader() = default;
    virtual ~SceneReader() override = default;
@@ -29,6 +27,4 @@ public:
    
    void SceneTestDev();
    void SceneTestDev2();
-   
-   static std::unordered_map<std::string, Scene*>& getScenes();
 };

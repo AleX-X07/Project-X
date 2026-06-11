@@ -15,7 +15,5 @@ public:
     ScreenManager(Object* owner, Scene* scene);
     virtual ~ScreenManager() override = default;
     
-    void state();
-    
     void update(float deltaTime) override;
 };

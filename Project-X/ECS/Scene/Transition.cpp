@@ -11,10 +11,8 @@ void Transition::update(float deltaTime) {
         auto mouse = owner->hasComponent<MouseComponent>();
         auto* isClick = owner->getComponent<MouseComponent>();
         if (mouse) {
-            std::cout << "Mouse pressed: " << sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) << std::endl;
             if (isClick->isClick()) {
-                std::cout << "Hello World !";
-                //GameEngine::setScene(targetID);
+                GameEngine::setScene(targetID);
             }
         }
     }

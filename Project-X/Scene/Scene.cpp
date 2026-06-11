@@ -29,6 +29,10 @@ int Scene::getIdScene() {
     return idScene;
 }
 
+bool& Scene::getIsPaused() {
+    return isPaused;
+}
+
 void Scene::addObject(Object* addObject, int Layer) {
     myObjects.push_back(addObject);
     getMyLayer().addInLayer(addObject, Layer);
@@ -53,10 +57,4 @@ void Scene::update(float deltatime) {
 
 void Scene::render() {
     myLayer.render();
-    for (auto& obj : myObjects) {
-        auto ender = obj->getComponent<ScreenManager>();
-        if (ender) {
-            obj->getComponent<ScreenManager>()->state();
-        }
-    }
 }

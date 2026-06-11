@@ -1,9 +1,10 @@
 ﻿#include "GameEngine.h"
 
 sf::RenderWindow* GameEngine::window = nullptr;
-std::vector<Scene*> GameEngine::scenes;
+std::unordered_map<int, Scene*> GameEngine::scenes;
+std::unordered_map<int, Scene*> GameEngine::scenesPaused;
 int GameEngine::idScene = 0;
-
+int GameEngine::idScenePaused = 0;
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -55,14 +56,26 @@ void GameEngine::updateTime() {
 }
 
 void GameEngine::update() {
-    if (!scenes.empty()) {
-        scenes[idScene]->update(delatTime);
+    if (scenes.count(idScene)) {
+        if (!scenes[idScene]->getIsPaused()) {
+            scenes[idScene]->update(delatTime);
+        }
+    }
+    if (scenesPaused.count(idScenePaused)) {
+        if (scenes[idScene]->getIsPaused()) {
+            scenesPaused[idScenePaused]->update(delatTime);
+        }
     }
 }
 
 void GameEngine::render() {
-    if (!scenes.empty()) {
+    if (scenes.count(idScene)) {
         scenes[idScene]->render();
+    }
+    if (scenesPaused.count(idScenePaused)) {
+        if (scenes[idScene]->getIsPaused()) {
+            scenesPaused[idScenePaused]->render();
+        }
     }
 }
 
@@ -71,12 +84,24 @@ sf::RenderWindow* GameEngine::getWindow() {
     return window;
 }
 
-std::vector<Scene*>& GameEngine::getVecState() {
+std::unordered_map<int, Scene*>& GameEngine::getVecState() {
     return scenes;
+}
+
+std::unordered_map<int, Scene*>& GameEngine::getVecPaused() {
+    return scenesPaused;
 }
 
 void GameEngine::setScene(int newScene) {
     idScene = newScene;
+}
+
+void GameEngine::setScenePaused(int newScene) {
+    idScenePaused = newScene;
+}
+
+int GameEngine::getIdCurrentScenePaused() {
+    return idScenePaused;
 }
 
 int GameEngine::getIdCurrentScene() {

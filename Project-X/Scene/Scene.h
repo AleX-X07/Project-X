@@ -20,7 +20,9 @@ public:
     
     Layer& getMyLayer();
     std::vector<Object*>& getVecObjects();
+    
     int getIdScene();
+    bool& getIsPaused();
     
     void addObject(Object* addObject, int Layer);
     
