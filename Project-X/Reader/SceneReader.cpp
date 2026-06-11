@@ -58,14 +58,21 @@ void SceneReader::read() {
         }
     }
     
-    std::ifstream sceneHUD("Data/Scene/SceneManagerHUD.json");
-    if (sceneHUD.is_open()) {
-        nlohmann::json data = nlohmann::json::parse(sceneHUD);
+    std::ifstream path("Data/Scene/SceneManagerHUD.json");
+    if (path.is_open()) {
+        nlohmann::json data = nlohmann::json::parse(path);
         
         for (auto& sceneData : data["Manager"]) {
             readSceneHUD(sceneData);
         }
     }
+    
+    Scene* quitScene = new Scene(71756974);
+    quitScene->setLayer(1);
+    Object* quit = new Object();
+    quit->addComponent(new Quit(quit));
+    quitScene->addObject(quit, 0);
+    scenesHUD["Quit"] = quitScene;    
     
     for (auto& vS : GameEngine::getVecState()) {
         for (auto& vS2 : GameEngine::getVecState()) {
@@ -200,6 +207,6 @@ void SceneReader::SceneTestDev2() {
     myScene->addObject(Hero, 0);
 }
 
-std::unordered_map<std::string, Scene*> SceneReader::getScenes() {
+std::unordered_map<std::string, Scene*>& SceneReader::getScenes() {
     return scenesHUD;
 }

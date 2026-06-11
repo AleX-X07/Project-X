@@ -30,5 +30,5 @@ public:
    void SceneTestDev();
    void SceneTestDev2();
    
-   static std::unordered_map<std::string, Scene*> getScenes();
+   static std::unordered_map<std::string, Scene*>& getScenes();
 };

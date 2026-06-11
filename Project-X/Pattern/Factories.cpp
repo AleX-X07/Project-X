@@ -60,7 +60,10 @@ std::unordered_map <
     
     // Scene
     {"Transition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new Transition(obj, ecs["args"][0], ecs["args"][1]);
+        const std::unordered_map<std::string, TransitionType> typeMap = {
+            {"Button",  TransitionType::Button},
+        };
+        return new Transition(obj, ecs["args"][0], typeMap.at(std::string(ecs["args"][1])));
     }},
     {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ScreenManager(obj, currentScene);

@@ -20,7 +20,7 @@
                 {"Component" : "Weapon", "args" : ["Deagle"]},
                 {"Component" : "HurtBox", "args" : [175,125,1]},
                 {"Component" : "Camera", "args" : [false, 0]},
-                {"Component" : "Health", "args" : [100]},
+                {"Component" : "Health", "args" : [10]},
                 {"Component" : "ExpManager", "args" : []},
                 {"Component" : "Crosshair", "args" : []},
                 {"Component" : "Timer", "args" : [500]},

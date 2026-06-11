@@ -38,6 +38,7 @@
 // Scene
 #include "Scene/Transition.h"
 #include "Scene/ScreenManager.h"
+#include "Scene/Quit.h"
 
 // Tool
 #include "../ECS/Tool/CameraComponent.h"

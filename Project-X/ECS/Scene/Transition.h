@@ -1,16 +1,17 @@
 ﻿#pragma once
 #include "../Component.h"
+#include <iostream>
 
 class GameEngine;
 class Object;
 class MouseComponent;
 
+enum TransitionType {
+    Button,
+};
+
 class Transition : public Component{
 private:
-    enum class TransitionType {
-        Button,
-    };
-    
     TransitionType type;
     int targetID;
     

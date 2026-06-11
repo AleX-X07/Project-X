@@ -25,3 +25,16 @@ bool MouseComponent::clicked() {
     }
     return false;
 }
+
+bool MouseComponent::isClick() {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*GameEngine::getWindow());
+    
+    sf::FloatRect bounds(
+        {owner->getPosition().x,
+        owner->getPosition().y},
+        {owner->getSize().x,
+        owner->getSize().y}
+    );
+    
+    return bounds.contains(sf::Vector2f(mousePos));
+}

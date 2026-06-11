@@ -864,6 +864,7 @@
     </ClCompile>
     <ClCompile Include="ECS\Movement\StateMachineComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
+    <ClCompile Include="ECS\Scene\Quit.cpp" />
     <ClCompile Include="ECS\Scene\ScreenManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1449,6 +1450,7 @@
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
     <ClInclude Include="ECS\Movement\StateMachineComponent.h" />
     <ClInclude Include="ECS\Object.h" />
+    <ClInclude Include="ECS\Scene\Quit.h" />
     <ClInclude Include="ECS\Scene\ScreenManager.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
