@@ -66,21 +66,35 @@ bool HurtBox::checkBullets(Object* b)
 
 bool HurtBox::checkBulletsInSource(BulletSource* comp)
 {
-    for (auto c : comp->bullet)
+    for (auto it = comp->bullet.begin(); it != comp->bullet.end(); )
     {
+        auto c = *it;
+
         if (c->team == owner->team)
+        {
+            ++it;
             continue;
-        
+        }
+
         auto z = c->getComponent<HitBox>();
-        if (!z || !z->isactive || !overlaps(z)) continue;
+        if (!z || !z->isactive || !overlaps(z))
+        {
+            ++it;
+            continue;
+        }
 
         int damage = z->damage;
-        if (damage == 0) continue;
+        if (damage == 0)
+        {
+            ++it;
+            continue;
+        }
 
-        comp->bullet.erase(std::find(comp->bullet.begin(), comp->bullet.end(), c));
+        it = comp->bullet.erase(it);
+
         if (actualtime >= Iframe)
         {
-            damageTaken = z->damage;
+            damageTaken = damage;
             actualtime = 0;
             return true;
         }

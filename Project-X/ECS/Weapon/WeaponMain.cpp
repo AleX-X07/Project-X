@@ -60,8 +60,9 @@ void WeaponMain::update(float deltaTime) {
 
 
         sf::Vector2f newPos = recoilStartPos + (recoilTargetPos - recoilStartPos) * myArgs.recoilTime;
-
+        
         owner->setPosition(newPos);
+        CollisionCeck();
     }
     
     //WeaponRender
@@ -117,4 +118,19 @@ void WeaponMain::ChangeWeapon(argsWeapon newWeapon) {
     
     auto ori = WeaponRender->getComponent<RenderComponent>();
     ori->getRect()->setOrigin({25.f, 25.f});
+}
+
+void WeaponMain::CollisionCeck() {
+    if (owner->getPosition().x < 0) {
+        owner->setPosition({0, owner->getPosition().y});
+    }
+    if (owner->getPosition().x > levelSize.x) {
+        owner->setPosition({(levelSize.x - owner->getSize().x), owner->getPosition().y});
+    }
+    if (owner->getPosition().y < 0) {
+        owner->setPosition({owner->getPosition().x, 0});
+    }
+    if (owner->getPosition().y > levelSize.y) {
+        owner->setPosition({owner->getPosition().x, (levelSize.y - owner->getSize().y)});
+    }
 }

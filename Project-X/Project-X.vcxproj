@@ -472,8 +472,6 @@
     </ClCompile>
     <ClCompile Include="ECS\Bullet\BulletSource.cpp" />
     <ClCompile Include="ECS\Bullet\Special\GrenadeBullet.cpp" />
-    <ClCompile Include="ECS\Capacity\CapacityMain.cpp" />
-    <ClCompile Include="ECS\Capacity\ScriptParser.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\RenderComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -709,6 +707,83 @@
     </ClCompile>
     <ClCompile Include="ECS\Movement\StateMachineComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
+    <ClCompile Include="ECS\Particle\ParticleEmmiter.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>x64\Debug\Project-X.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>x64\Debug\Project-X.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Steve\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="ECS\Particle\ParticleSystem.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
     <ClCompile Include="ECS\Tool\CrossHairComponent.cpp" />
     <ClCompile Include="ECS\Tool\Debug\DebugHudComp.cpp" />
@@ -870,6 +945,15 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Gameplay\CapacityMain.cpp" />
+    <ClCompile Include="Gameplay\CapacityManager.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_BigBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_BulletExplode.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Dash.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_DoubleBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Frenesie.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Heal.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1204,8 +1288,6 @@
     <ClInclude Include="ECS\Bullet\BulletManager.h" />
     <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\Special\GrenadeBullet.h" />
-    <ClInclude Include="ECS\Capacity\CapacityMain.h" />
-    <ClInclude Include="ECS\Capacity\ScriptParser.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\RenderComponent.h" />
     <ClInclude Include="ECS\IncludeECS.h" />
@@ -1214,6 +1296,8 @@
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
     <ClInclude Include="ECS\Movement\StateMachineComponent.h" />
     <ClInclude Include="ECS\Object.h" />
+    <ClInclude Include="ECS\Particle\ParticleEmmiter.h" />
+    <ClInclude Include="ECS\Particle\ParticleSystem.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\CrossHairComponent.h" />
     <ClInclude Include="ECS\Tool\Debug\DebugHudComp.h" />
@@ -1223,6 +1307,15 @@
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\LevelEnder.h" />
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />
+    <ClInclude Include="Gameplay\CapacityMain.h" />
+    <ClInclude Include="Gameplay\CapacityManager.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_BigBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_BulletExplode.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Dash.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_DoubleBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Frenesie.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Heal.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
     <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
@@ -1242,6 +1335,9 @@
     <ClInclude Include="Tool\Animation.h" />
     <ClInclude Include="Tool\Globals.h" />
     <ClInclude Include="Tool\Input.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ECS\Capacity\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

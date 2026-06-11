@@ -23,7 +23,7 @@
 #include "../ECS/Tool/Experience/ExpManager.h"
 #include "../ECS/Tool/CrossHairComponent.h"
 #include "../ECS/Tool/LevelEnder.h"
-#include "../ECS/Capacity/CapacityMain.h"
+#include "../Gameplay/CapacityManager.h"
 
 #include "../Scene/Scene.h"
 #include "Reader.h"
