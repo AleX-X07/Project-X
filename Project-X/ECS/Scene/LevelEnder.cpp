@@ -24,7 +24,7 @@ void LevelEnder::update(float deltaTime) {
         SceneReader::getScenes()["death"]->update(deltaTime);        
     }
     else if ((hasEnd)) {
-        SceneReader::getScenes()["win"]->update(deltaTime);
+        SceneReader::getScenes()["death"]->update(deltaTime);
     }
 }
 

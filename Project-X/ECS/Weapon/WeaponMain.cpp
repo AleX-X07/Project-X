@@ -66,7 +66,7 @@ void WeaponMain::update(float deltaTime) {
     
     //WeaponRender
     WeaponRender->update(deltaTime);
-    WeaponRender->setPosition({(owner->getPosition().x + 25), (owner->getPosition().y + 35)});
+    WeaponRender->setPosition({(owner->getPosition().x + myArgs.positionOnPlayer.x), (owner->getPosition().y + myArgs.positionOnPlayer.y)});
     
     //WeaponPositionning
     auto Mouseangle = owner->getComponent<MouseComponent>();

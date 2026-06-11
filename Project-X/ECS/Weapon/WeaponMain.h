@@ -18,6 +18,7 @@ struct argsWeapon {
     
     sf::Vector2f size;
     sf::Vector2f bulletSize;
+    sf::Vector2f positionOnPlayer;
     
     float spread;
     float fireRate;

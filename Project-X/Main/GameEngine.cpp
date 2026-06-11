@@ -17,20 +17,21 @@ GameEngine::~GameEngine() {
     window = nullptr;
 }
 
-void GameEngine::start() {    
-    InputReader readInput;
-    readInput.read();
-    
-    WeaponReader readWeapons;
-    readWeapons.read();
-    
-    SceneReader readScene;
-    //readScene.read();
-    
+void GameEngine::initRead() {    
     //## for dev ##//
-    readScene.SceneTestDev();
+    // SceneReader readScene;
+    // readScene.SceneTestDev();
     //readScene.SceneTestDev2();
     //#############//
+    readers.push_back(new InputReader());
+    readers.push_back(new WeaponReader());
+    readers.push_back(new SceneReader());
+}
+
+void GameEngine::readData() {
+    for (auto& r : readers) {
+        r->read();
+    }
 }
 
 void GameEngine::updateEvent() {    
@@ -84,7 +85,9 @@ int GameEngine::getIdCurrentScene() {
 
 
 void GameEngine::run() {
-    start();
+    initRead();
+    readData();
+    
     while (window->isOpen()) {
         updateEvent();
         if (inGame) {

@@ -13,13 +13,16 @@ private:
     static sf::RenderWindow* window;
     static std::vector<Scene*> scenes;
     
+    std::vector<Reader*> readers;
+    
     static int idScene;
     
     sf::Clock clock;
     float delatTime;
     bool inGame;
     
-    void start();
+    void initRead();
+    void readData();
     
     void updateEvent();
     void updateTime();

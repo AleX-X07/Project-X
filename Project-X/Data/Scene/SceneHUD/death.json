@@ -1,16 +1,19 @@
 {
     "ID" : 0,
     "Layer" : 2,
+    "Name" : "win",
     "Objects" : [
         {
-            "Name" : "",
+            "Name" : "Fond noir",
             "Description" : "",
             "Team" : "",
             "ID Object" : 0,
-            "LayerPosition" : 1,
+            "LayerPosition" : 0,
             "Position" : [0,0],
-            "Size" : [0,0],
-            "ECS" : []
+            "Size" : [1920,1080],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,0,0,255]}
+            ]
         }
     ]
 }

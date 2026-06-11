@@ -3,6 +3,8 @@
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
+std::unordered_map<std::string, Scene*> SceneReader::scenesHUD;
+
 void SceneReader::read() {
     std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
@@ -35,18 +37,6 @@ void SceneReader::read() {
                         newObj->team = Object::Team::Neutral;
                     }
                     
-                    // à transformer en ECS
-                    // if (currentObj["Type"]["TypeName"] == "Transition") {
-                    //     std::string currentTransitionType = currentObj["Type"]["Transition"][1];
-                    //     Transition::TransitionType transitionType;
-                    //     if (currentTransitionType == "Click") {
-                    //         transitionType = Transition::TransitionType::Button;
-                    //     }
-                    //     Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
-                    //     addScene->addTransition(newTrans);
-                    // }
-                    //#####
-                    
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
                         
@@ -58,12 +48,25 @@ void SceneReader::read() {
                         if (name == "StateMachine") {
                             readAnimation(ecs, newObj);
                         }
+                        if (name == "HUD") {
+                            readHUD(ecs, newObj, addScene);
+                        }
                     }
                     addScene->addObject(newObj, currentObj["LayerPosition"]);
                 }
             }
         }
     }
+    
+    std::ifstream sceneHUD("Data/Scene/SceneManagerHUD.json");
+    if (sceneHUD.is_open()) {
+        nlohmann::json data = nlohmann::json::parse(sceneHUD);
+        
+        for (auto& sceneData : data["Manager"]) {
+            readSceneHUD(sceneData);
+        }
+    }
+    
     for (auto& vS : GameEngine::getVecState()) {
         for (auto& vS2 : GameEngine::getVecState()) {
             if (vS != vS2 && vS->getIdScene() == vS2->getIdScene()) {
@@ -92,9 +95,9 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
-void SceneReader::readSceneHUD(std::string name, std::string file) {
+void SceneReader::readSceneHUD(std::string file) {
     std::string fileName = file + ".json";
-    std::string path = "Data/Scene/SceneHUD" + fileName;
+    std::string path = "Data/Scene/SceneHUD/" + fileName;
     std::ifstream currentScene(path);
     
     nlohmann::json data = nlohmann::json::parse(currentScene);
@@ -119,8 +122,22 @@ void SceneReader::readSceneHUD(std::string name, std::string file) {
         }
         newScene->addObject(newObj, currentObj["LayerPosition"]);
     }
+    scenesHUD[file] = newScene;
+}
+
+void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene) {
+    auto hud = newObj->getComponent<HUD>();
     
-    scenes["Name"] = newScene;
+    if (hud != nullptr) {
+        for (auto& item : ecs["args"]) {
+            for (auto& [key, value] : item.items()) {
+                std::string name = key + "Display";
+                if (FactoriesECS::factories.count(name)) {
+                    hud->addHUD(FactoriesECS::factories[name](newObj, value, newScene));
+                }
+            }
+        }
+    }
 }
 
 void SceneReader::SceneTestDev() {
@@ -184,5 +201,5 @@ void SceneReader::SceneTestDev2() {
 }
 
 std::unordered_map<std::string, Scene*> SceneReader::getScenes() {
-    return scenes;
+    return scenesHUD;
 }

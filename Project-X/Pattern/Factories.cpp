@@ -2,6 +2,7 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
+#include "../ECS/Tool/TimerComponent.h"
 
 std::unordered_map <
     std::string,
@@ -19,12 +20,28 @@ std::unordered_map <
         return new BulletManager(obj);
     }},
     // Graphics
-    {"Render", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+    {"RenderFile", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
             return new RenderFile(obj, ecs["args"][0]);
         }
         return new RenderFile(obj);
     }},
+    {"RenderText", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new RenderText(obj, ecs["agrs"][0]); 
+    }},
+    {"RenderColor", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new RenderColor(obj, {ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]});
+    }},
+    {"HUD", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new HUD(obj);
+    }},
+        //HUD
+        {"HealthDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new HealthDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
+        }},
+        {"TimerDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new TimerDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
+        }},
     // Input
     {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new MouseComponent(obj);
@@ -56,6 +73,9 @@ std::unordered_map <
     }},
     {"Health", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new HealthComponent(obj, ecs["args"][0], currentScene->getVecObjects());
+    }},
+    {"Timer", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new TimerComponent(obj, ecs["args"][0]);
     }},
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
