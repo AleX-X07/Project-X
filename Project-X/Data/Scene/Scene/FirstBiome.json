@@ -4,18 +4,6 @@
     "Name" : "FirstBiome",
     "Objects" : [
         {
-            "Name" : "EnemyManager",
-            "Description" : "AIMobSpawner",
-            "Team" : "Enemy",
-            "ID Object" : 0,
-            "LayerPosition" : 1,
-            "Position" : [0,0],
-            "Size" : [0,0],
-            "ECS" : [
-                {"Component" : "AIMobSpawner", "args" : []}
-            ]
-        },
-        {
             "Name" : "Hero",
             "Description" : "Player",
             "Team" : "Player",
@@ -37,10 +25,11 @@
                 {"Component" : "Crosshair", "args" : []},
                 {"Component" : "Timer", "args" : [500]},
                 {"Component" : "HUD", "args" : [
-                                                {"Timer" : ["Timer",[0,960],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Timer" : ["Timer",[960,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
                                                 {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
-                {"Component" : "StateMachine", "args" : ["AnimationHero"]}
+                {"Component" : "StateMachine", "args" : ["AnimationHero"]},
+                {"Component" : "ScreenManager", "args" : []}
             ]
         },
         {
@@ -53,6 +42,18 @@
             "Size" : [1920,1080],
             "ECS" : [
                 {"Component" : "RenderFile", "args" : ["Assets/Debug/Map.png"]}
+            ]
+        },
+        {
+            "Name" : "EnemyManager",
+            "Description" : "AIMobSpawner",
+            "Team" : "Enemy",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "AIMobSpawner", "args" : []}
             ]
         }
     ]

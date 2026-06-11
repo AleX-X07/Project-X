@@ -53,4 +53,10 @@ void Scene::update(float deltatime) {
 
 void Scene::render() {
     myLayer.render();
+    for (auto& obj : myObjects) {
+        auto ender = obj->getComponent<ScreenManager>();
+        if (ender) {
+            obj->getComponent<ScreenManager>()->state();
+        }
+    }
 }

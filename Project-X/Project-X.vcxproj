@@ -864,7 +864,7 @@
     </ClCompile>
     <ClCompile Include="ECS\Movement\StateMachineComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
-    <ClCompile Include="ECS\Scene\LevelEnder.cpp">
+    <ClCompile Include="ECS\Scene\ScreenManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -1449,7 +1449,7 @@
     <ClInclude Include="ECS\Movement\MovementComponent.h" />
     <ClInclude Include="ECS\Movement\StateMachineComponent.h" />
     <ClInclude Include="ECS\Object.h" />
-    <ClInclude Include="ECS\Scene\LevelEnder.h" />
+    <ClInclude Include="ECS\Scene\ScreenManager.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\CrossHairComponent.h" />

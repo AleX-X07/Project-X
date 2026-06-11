@@ -12,7 +12,7 @@
             "Position" : [0,0],
             "Size" : [1920,1080],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,0,0,255]}
+                {"Component" : "RenderColor", "args" : [0,0,0,155]}
             ]
         }
     ]

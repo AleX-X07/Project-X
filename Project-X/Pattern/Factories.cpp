@@ -8,6 +8,7 @@ std::unordered_map <
     std::string,
     ComponentFactory
 > FactoriesECS::factories = {
+    // Behaviour
     {"AIMobSpawner",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new AiMobSpawner(obj, currentScene->getVecObjects());
     }},
@@ -60,6 +61,9 @@ std::unordered_map <
     // Scene
     {"Transition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new Transition(obj, ecs["args"][0], ecs["args"][1]);
+    }},
+    {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new ScreenManager(obj, currentScene);
     }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {

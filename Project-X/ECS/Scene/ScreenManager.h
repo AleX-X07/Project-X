@@ -4,7 +4,7 @@
 class Scene;
 class SceneReader;
 
-class LevelEnder : public Component {
+class ScreenManager : public Component {
 private:
  
     Scene* currentScene;
@@ -12,9 +12,10 @@ private:
     bool hasEnd;
     
 public:
-    LevelEnder(Object* owner, Scene* scene);
-    virtual ~LevelEnder() override = default;
+    ScreenManager(Object* owner, Scene* scene);
+    virtual ~ScreenManager() override = default;
+    
+    void state();
     
     void update(float deltaTime) override;
-    void render() override;
 };

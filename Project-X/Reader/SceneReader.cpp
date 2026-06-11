@@ -179,7 +179,7 @@ void SceneReader::SceneTestDev() {
     Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
     Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
     
-    newObj->addComponent(new LevelEnder(newObj, addScene));
+    newObj->addComponent(new ScreenManager(newObj, addScene));
     
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
