@@ -772,6 +772,7 @@
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
       <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
