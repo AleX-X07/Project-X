@@ -49,3 +49,9 @@ void CapacityManager::render() {
     SecondaryCapa->render();
     UltiCapa->render();
 }
+
+void CapacityManager::offerUpgrade(CapacityMain* capa) {
+    auto options = capa->getUpgradeOptions();
+    int i = 0;  // Remplacer avec HUD
+    capa->levelUp(i);
+}

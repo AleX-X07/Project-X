@@ -13,4 +13,6 @@ public:
     
     void update(float deltaTime) override;
     void render() override;
+    
+    void offerUpgrade(CapacityMain* capa);
 };

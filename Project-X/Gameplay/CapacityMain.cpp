@@ -35,3 +35,11 @@ void CapacityMain::renderHUD() {
         GameEngine::getWindow()->setView(*cam->view);
     }
 }
+
+void CapacityMain::levelUp(int statIndex) {
+    auto options = getUpgradeOptions();
+    if (statIndex >= 0 && statIndex < options.size() && level < maxLevel) {
+        options[statIndex].apply();
+        level++;
+    }
+}

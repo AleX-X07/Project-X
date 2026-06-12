@@ -9,6 +9,8 @@ public:
     float TotalTime = 0;
     
     bool IsActived = false;
+    
+    std::vector<UpgradeStat> getUpgradeOptions() override;
 public:
     CA_Rage(Object* _owner, float _Timer, float _CoolDown);
     ~CA_Rage() override = default;

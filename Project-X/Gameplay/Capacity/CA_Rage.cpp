@@ -44,3 +44,20 @@ void CA_Rage::activate() {
         }
     }
 }
+
+std::vector<UpgradeStat> CA_Rage::getUpgradeOptions() {
+    return {
+            {
+                "Durée",
+                [this]() { Timer += 3.0f; },
+                [this]() { return std::to_string((int)Timer) + "s → "
+                                 + std::to_string((int)(Timer + 3)) + "s"; }
+            },
+            {
+                "Cooldown",
+                [this]() { CoolDown = std::max(1.0f, CoolDown - 2.0f); },
+                [this]() { return std::to_string((int)CoolDown) + "s → "
+                                 + std::to_string((int)std::max(1.f, CoolDown - 2)) + "s"; }
+            }
+    };
+}
