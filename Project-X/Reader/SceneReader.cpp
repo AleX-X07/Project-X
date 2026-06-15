@@ -159,6 +159,7 @@ void SceneReader::SceneTestDev() {
 
     newObj->team = Object::Team::Player;
 
+    newObj->addComponent(new CapacityManager(newObj));
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderFile(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));

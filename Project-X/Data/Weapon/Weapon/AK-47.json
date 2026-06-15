@@ -1,0 +1,19 @@
+{
+    "Name" : "Deagle",
+    "Image" : "Assets/Weapon/AK-47.png",
+    "Size" : [50,50],
+    "shakeIntensity" : 0.25,
+    "shakeDuration" : 0.5,
+    "hasrecoil" : false,
+    "recoilTime" : 1,
+    "Bullet" : {        
+        "BulletImage" : "Assets/Debug/DebugBulletblue.png",
+        "Size" : [25,25],
+        "spread" : 5,
+        "fireRate" : 7,
+        "speed" : 1000,
+        "Bulletquantity" : 1,
+        "damage" : 7,
+        "lifeTime" : 2.5
+    }
+}
