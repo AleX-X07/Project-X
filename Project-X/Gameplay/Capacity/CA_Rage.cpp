@@ -6,6 +6,8 @@
 CA_Rage::CA_Rage(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
     Timer = _Timer;
     CoolDown = _Cooldown;
+    
+    LevelUpOption = 3;
 }
 
 void CA_Rage::update(float dt) {
@@ -25,8 +27,9 @@ void CA_Rage::update(float dt) {
 
             auto comp = owner->getComponent<WeaponMain>();
             if (comp) {
-                comp->myArgs.spread /= 2;
-                comp->myArgs.damage /= 2;
+                if (RageSpread != 0)
+                    comp->myArgs.spread /= RageSpread;
+                comp->myArgs.damage /= RageDamage;
             }
         }
     }
@@ -39,25 +42,26 @@ void CA_Rage::activate() {
 
         auto comp = owner->getComponent<WeaponMain>();
         if (comp) {
-            comp->myArgs.spread *= 2;
-            comp->myArgs.damage *= 2;
+            comp->myArgs.spread *= RageSpread;
+            comp->myArgs.damage *= RageDamage;
         }
     }
 }
 
-std::vector<UpgradeStat> CA_Rage::getUpgradeOptions() {
-    return {
-            {
-                "Durée",
-                [this]() { Timer += 3.0f; },
-                [this]() { return std::to_string((int)Timer) + "s → "
-                                 + std::to_string((int)(Timer + 3)) + "s"; }
-            },
-            {
-                "Cooldown",
-                [this]() { CoolDown = std::max(1.0f, CoolDown - 2.0f); },
-                [this]() { return std::to_string((int)CoolDown) + "s → "
-                                 + std::to_string((int)std::max(1.f, CoolDown - 2)) + "s"; }
-            }
-    };
+void CA_Rage::levelUp() {
+    level += 1;
+    if (level > maxLevel) {
+        level = maxLevel;
+    }
+    else {
+        HUDlevel.setTexture(nullptr);
+        std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
+        HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+        HUDlevel.setTexture(&HUDtxLv);
+    
+        RageDamage += 0.5;
+        RageSpread  -= 0.5;
+        if (RageSpread < 0.1f) RageSpread = 0.1f; 
+        CoolDown -= 0.5;
+    }
 }

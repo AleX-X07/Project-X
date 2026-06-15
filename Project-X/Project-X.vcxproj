@@ -955,6 +955,7 @@
     <ClCompile Include="Gameplay\Capacity\CA_Frenesie.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Heal.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
+    <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1317,6 +1318,7 @@
     <ClInclude Include="Gameplay\Capacity\CA_Frenesie.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Heal.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
+    <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
     <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />

@@ -18,12 +18,16 @@ class CapacityMain : public Component {
 public:
     int level = 1;
     int maxLevel = 5;
-
-    virtual std::vector<UpgradeStat> getUpgradeOptions() = 0;
     
+    int LevelUpOption;  // Pas explicite mais du coup correspond au nombre de varaible qui peut etre upgrade sur la capa (sert pour l'ecran de selection)
+
 public:
+    
     sf::RectangleShape HUDrect;
+    sf::RectangleShape HUDlevel;
+    
     sf::Texture HUDtx;
+    sf::Texture HUDtxLv;
     
     bool CanUse;
     float CoolDown;
@@ -36,6 +40,6 @@ public:
     virtual void render();
     virtual void activate();
     
-    void levelUp(int statIndex);
+    virtual void levelUp();
     void renderHUD();
 };

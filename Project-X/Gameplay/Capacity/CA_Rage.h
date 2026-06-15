@@ -10,7 +10,9 @@ public:
     
     bool IsActived = false;
     
-    std::vector<UpgradeStat> getUpgradeOptions() override;
+    float RageSpread = 2;
+    float RageDamage = 2;
+
 public:
     CA_Rage(Object* _owner, float _Timer, float _CoolDown);
     ~CA_Rage() override = default;
@@ -18,4 +20,5 @@ public:
     void update(float dt) override;
     
     void activate() override;
+    void levelUp() override;
 };

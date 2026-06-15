@@ -1,12 +1,24 @@
 ﻿#pragma once
 #include "../ECS/Object.h"
 #include "CapacityMain.h"
+#include "Test/CapaButton.h"
 
 class CapacityManager : public Component{
 public:
     CapacityMain* ActualCapa;
     CapacityMain* SecondaryCapa;
     CapacityMain* UltiCapa;
+    
+    std::vector<CapaButton> buttonList;
+    
+    bool pending = false;
+    
+    float ExpNeed = 10;
+    float ExpMulti = 1.2;
+    
+    int pendnumber;
+    
+    bool offered = false;
 public:
     CapacityManager(Object* _owner);
     ~CapacityManager();

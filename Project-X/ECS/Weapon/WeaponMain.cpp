@@ -60,6 +60,10 @@ void WeaponMain::update(float deltaTime) {
 
 
         sf::Vector2f newPos = recoilStartPos + (recoilTargetPos - recoilStartPos) * myArgs.recoilTime;
+        if (!std::isnan(newPos.x) && !std::isnan(newPos.y)) {
+            owner->setPosition(newPos);
+            CollisionCeck();
+        }
         
         owner->setPosition(newPos);
         CollisionCeck();

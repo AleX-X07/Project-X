@@ -1,5 +1,6 @@
 ﻿#include "CapacityManager.h"
 
+#include "../ECS/Tool/Experience/ExpComponent.h"
 #include "Capacity/CA_Heal.h"
 #include "Capacity/CA_BulletExplode.h"
 #include "Capacity/CA_Rage.h"
@@ -13,9 +14,14 @@ CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
     SecondaryCapa = new CA_DoubleBullet(owner, 10, 10);
     UltiCapa = new CA_Dash(owner, 4000, 200, 1);
     
-    ActualCapa->HUDrect.setPosition({(1920 - 70), (1080 - 70)});
-    SecondaryCapa->HUDrect.setPosition({(1920 - 70*2), (1080 - 70)});
-    UltiCapa->HUDrect.setPosition({(1920 - 70*3), (1080 - 70)});
+    ActualCapa->HUDrect.setPosition({(1920 - 70*3), (1080 - 100)});
+    ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
+    
+    SecondaryCapa->HUDrect.setPosition({(1920 - 70*2), (1080 - 100)});
+    SecondaryCapa->HUDlevel.setPosition({(SecondaryCapa->HUDrect.getPosition().x), (SecondaryCapa->HUDrect.getPosition().y + 60)});
+    
+    UltiCapa->HUDrect.setPosition({(1920 - 70), (1080 - 100)});
+    UltiCapa->HUDlevel.setPosition({(UltiCapa->HUDrect.getPosition().x), (UltiCapa->HUDrect.getPosition().y + 60)});
 }
 
 CapacityManager::~CapacityManager() {
@@ -42,16 +48,46 @@ void CapacityManager::update(float deltaTime) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R)) {
         UltiCapa->activate();
     }
+    
+    for (auto& z : buttonList) {
+        z.update(deltaTime);
+    }
+    
+    if (pending) {
+        buttonList.clear();
+        pending = false;
+    }
+    
+    auto comp = owner->getComponent<ExpManager>();
+    if (comp) {
+        if (comp->Exp >= ExpNeed) {
+            comp->Exp = 0;
+            
+            pendnumber += 1;
+            ExpNeed *= ExpMulti;
+        }
+    }
+    
+    if (pendnumber > 0 && !offered && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        offered = true;
+        pendnumber -=1;
+        
+        offerUpgrade(ActualCapa);
+        offerUpgrade(SecondaryCapa);
+        offerUpgrade(UltiCapa);
+    }
 }
 
 void CapacityManager::render() {
     ActualCapa->render();
     SecondaryCapa->render();
     UltiCapa->render();
+    
+    for (auto& c : buttonList) {
+        c.render();
+    }
 }
 
 void CapacityManager::offerUpgrade(CapacityMain* capa) {
-    auto options = capa->getUpgradeOptions();
-    int i = 0;  // Remplacer avec HUD
-    capa->levelUp(i);
+    buttonList.emplace_back(owner, capa);
 }

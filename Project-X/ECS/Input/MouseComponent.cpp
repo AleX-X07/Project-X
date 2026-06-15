@@ -9,7 +9,7 @@ MouseComponent::MouseComponent(Object* _owner)
 
 void MouseComponent::update(float deltaTime)
 {
-
+    //std::cout << owner->getPosition().x << " " << owner->getPosition().y << "\n";
 }
 
 sf::Vector2i MouseComponent::getMousePosition() {
