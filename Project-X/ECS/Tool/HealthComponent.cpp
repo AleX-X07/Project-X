@@ -16,7 +16,7 @@ void HealthComponent::TakeDamage(int damage)
     {
         Death();
     }
-    //std::cout << owner << " : " << hp << std::endl;
+    std::cout << owner << " : " << hp << std::endl;
     
     if (owner->hasComponent<InputComponent>()) {
         sound->play();

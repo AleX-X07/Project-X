@@ -16,6 +16,7 @@ AiMoveTo::AiMoveTo(Object* _owner, std::vector<Object*>& _objects, float _speed)
 
 AiMoveTo::~AiMoveTo()
 {
+    delete target;
     target = nullptr;
 }
 

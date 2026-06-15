@@ -7,26 +7,7 @@
 
 #include "../Pattern/Factories.h"
 
-
 #include "../ECS/IncludeECS.h"
-
-#include "../ECS/Movement/MovementComponent.h"
-#include "../ECS/Graphics/RenderComponent.h"
-#include "../ECS/Input/InputComponent.h"
-#include "../ECS/Input/MouseComponent.h"
-#include "../ECS/Bullet/BulletLogic/BulletSystemComponent.h"
-#include "../ECS/Bullet/BulletManager.h"
-#include "../ECS/Box/HurtBox.h"
-#include "../ECS/Box/HitBox.h"
-#include "../ECS/Behaviour/AiDebugShoot.h"
-#include "../ECS/Tool/CameraComponent.h"
-#include "../ECS/Behaviour/Manager/AiMobSpawner.h"
-#include "../Ecs/Tool/Debug/DebugHudComp.h"
-
-#include "../ECS/Tool/Experience/ExpManager.h"
-#include "../ECS/Tool/CrossHairComponent.h"
-#include "../ECS/Tool/LevelEnder.h"
-#include "../Gameplay/CapacityManager.h"
 
 #include "../Scene/Scene.h"
 #include "Reader.h"

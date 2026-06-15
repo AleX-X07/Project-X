@@ -547,7 +547,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Graphics\HUD\HUD.cpp">
@@ -624,7 +624,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Graphics\HUD\TimerDisplay.cpp" />
@@ -866,7 +866,6 @@
     <ClCompile Include="ECS\Object.cpp" />
     <ClCompile Include="ECS\Scene\Quit.cpp" />
     <ClCompile Include="ECS\Scene\ScreenManager.cpp">
-    <ClCompile Include="ECS\Particle\ParticleEmmiter.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -940,10 +939,10 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="ECS\Scene\Transition.cpp" />
-    <ClCompile Include="ECS\Particle\ParticleSystem.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
     <ClCompile Include="ECS\Tool\CrossHairComponent.cpp" />
     <ClCompile Include="ECS\Tool\Debug\DebugHudComp.cpp" />
@@ -1105,16 +1104,6 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Gameplay\CapacityMain.cpp" />
-    <ClCompile Include="Gameplay\CapacityManager.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_BigBullet.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_BulletExplode.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_Dash.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_DoubleBullet.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_Frenesie.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_Heal.cpp" />
-    <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
-    <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1464,8 +1453,6 @@
     <ClInclude Include="ECS\Scene\Quit.h" />
     <ClInclude Include="ECS\Scene\ScreenManager.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
-    <ClInclude Include="ECS\Particle\ParticleEmmiter.h" />
-    <ClInclude Include="ECS\Particle\ParticleSystem.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\CrossHairComponent.h" />
     <ClInclude Include="ECS\Tool\Debug\DebugHudComp.h" />
@@ -1475,16 +1462,6 @@
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\TimerComponent.h" />
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />
-    <ClInclude Include="Gameplay\CapacityMain.h" />
-    <ClInclude Include="Gameplay\CapacityManager.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_BigBullet.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_BulletExplode.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_Dash.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_DoubleBullet.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_Frenesie.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_Heal.h" />
-    <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
-    <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
     <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
@@ -1503,9 +1480,6 @@
     <ClInclude Include="Tool\Animation.h" />
     <ClInclude Include="Tool\Globals.h" />
     <ClInclude Include="Tool\Input.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ECS\Capacity\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,7 +6,6 @@
 #include "../Graphics/RenderFile.h"
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Tool/CameraComponent.h"
-#include "../../Tool/Globals.h"
 
 class BulletManager;
 class GameEngine;
@@ -62,7 +61,6 @@ public:
     
     void recoil(float angle);
     void ChangeWeapon(argsWeapon newWeapon);
-    void CollisionCeck();
     
     virtual Object* CreateBullet(float angle);
 };
