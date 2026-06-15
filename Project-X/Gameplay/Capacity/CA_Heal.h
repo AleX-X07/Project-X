@@ -19,4 +19,6 @@ public:
     
     void activate() override;
     void Heal();
+    
+    void levelUp() override;
 };

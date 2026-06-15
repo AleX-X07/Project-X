@@ -50,3 +50,18 @@ void CA_bigbullet::activate() {
         }
     }
 }
+
+void CA_bigbullet::levelUp() {
+    level += 1;
+    if (level > maxLevel) {
+        level = maxLevel;
+    }
+    else {
+        HUDlevel.setTexture(nullptr);
+        std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
+        HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+        HUDlevel.setTexture(&HUDtxLv);
+
+        Multi += 0.5;
+    }
+}

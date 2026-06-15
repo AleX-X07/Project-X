@@ -57,3 +57,18 @@ void CA_Dash::activate() {
         }
     }
 }
+
+void CA_Dash::levelUp() {
+    level += 1;
+    if (level > maxLevel) {
+        level = maxLevel;
+    }
+    else {
+        HUDlevel.setTexture(nullptr);
+        std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
+        HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+        HUDlevel.setTexture(&HUDtxLv);
+
+        CoolDown -= 0.4;
+    }
+}

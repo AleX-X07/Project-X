@@ -12,7 +12,7 @@
 CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
     ActualCapa = new CA_Rage(owner, 10, 10);
     SecondaryCapa = new CA_DoubleBullet(owner, 10, 10);
-    UltiCapa = new CA_Dash(owner, 4000, 200, 1);
+    UltiCapa = new CA_Dash(owner, 4000, 200, 3);
     
     ActualCapa->HUDrect.setPosition({(1920 - 70*3), (1080 - 100)});
     ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
@@ -61,7 +61,7 @@ void CapacityManager::update(float deltaTime) {
     auto comp = owner->getComponent<ExpManager>();
     if (comp) {
         if (comp->Exp >= ExpNeed) {
-            comp->Exp = 0;
+            comp->Exp -= ExpNeed;
             
             pendnumber += 1;
             ExpNeed *= ExpMulti;
@@ -72,9 +72,15 @@ void CapacityManager::update(float deltaTime) {
         offered = true;
         pendnumber -=1;
         
-        offerUpgrade(ActualCapa);
-        offerUpgrade(SecondaryCapa);
-        offerUpgrade(UltiCapa);
+        if (ActualCapa->level != ActualCapa->maxLevel) {
+            offerUpgrade(ActualCapa);
+        }
+        if (SecondaryCapa->level != SecondaryCapa->maxLevel) {
+            offerUpgrade(SecondaryCapa);
+        }
+        if (UltiCapa->level != UltiCapa->maxLevel) {
+            offerUpgrade(UltiCapa);
+        }
     }
 }
 

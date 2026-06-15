@@ -165,14 +165,14 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
-    newObj->addComponent(new WeaponMain(newObj, "Deagle"));
+    newObj->addComponent(new WeaponMain(newObj, "ShotGun"));
     newObj->addComponent(new HurtBox(newObj, {50, 50}, addScene->getVecObjects(), 1));
     newObj->addComponent(new CameraComponent(newObj, false, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
     newObj->addComponent(new ExpManager(newObj));
     //newObj->addComponent(new DebugHudComp(newObj));
     newObj->addComponent(new CrossHairComponent(newObj));
-    newObj->addComponent(new TimerComponent(newObj,60));
+    newObj->addComponent(new TimerComponent(newObj,500));
     newObj->addComponent(new HUD(newObj));
     newObj->getComponent<HUD>()->addHUD(new HealthDisplay(newObj,{0, 0}, 24, sf::Color::White, "Assets/Font/Brown Cookies.otf"));
     newObj->getComponent<HUD>()->addHUD(new TimerDisplay(newObj,{WindowSize.x/2,0},24,sf::Color::White, "Assets/Font/Brown Cookies.otf"));

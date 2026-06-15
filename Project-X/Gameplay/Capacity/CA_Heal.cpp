@@ -47,3 +47,19 @@ void CA_Heal::Heal() {
         }
     }
 }
+
+void CA_Heal::levelUp() {
+    level += 1;
+    if (level > maxLevel) {
+        level = maxLevel;
+    }
+    else {
+        HUDlevel.setTexture(nullptr);
+        std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
+        HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+        HUDlevel.setTexture(&HUDtxLv);
+    
+        Amount += 10;
+        CoolDown -= 0.5;
+    }
+}

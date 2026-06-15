@@ -13,6 +13,7 @@ public:
     void update(float dt) override;
     
     sf::Vector2i getMousePosition();
+    bool keepClick();
     bool clicked();
     
     bool isClick();

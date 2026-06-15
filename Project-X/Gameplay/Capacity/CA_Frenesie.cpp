@@ -6,6 +6,7 @@
 CA_Frenesie::CA_Frenesie(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
     Timer = _Timer;
     CoolDown = _Cooldown;
+    FrenFireRate = 1.5;
 }
 
 void CA_Frenesie::update(float dt) {
@@ -25,7 +26,7 @@ void CA_Frenesie::update(float dt) {
 
             auto comp = owner->getComponent<WeaponMain>();
             if (comp) {
-                comp->myArgs.fireRate /= 2;
+                comp->myArgs.fireRate /= FrenFireRate;
             }
         }
     }
@@ -38,7 +39,23 @@ void CA_Frenesie::activate() {
 
         auto comp = owner->getComponent<WeaponMain>();
         if (comp) {
-            comp->myArgs.fireRate *= 2;
+            comp->myArgs.fireRate *= FrenFireRate;
         }
+    }
+}
+
+void CA_Frenesie::levelUp() {
+    level += 1;
+    if (level > maxLevel) {
+        level = maxLevel;
+    }
+    else {
+        HUDlevel.setTexture(nullptr);
+        std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
+        HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+        HUDlevel.setTexture(&HUDtxLv);
+    
+        FrenFireRate += 0.5;
+        Timer += 1;
     }
 }
