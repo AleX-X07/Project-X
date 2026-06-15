@@ -22,6 +22,7 @@ void WeaponReader::read() {
                 newWeapon.WeaponName = data2["Name"];
                 newWeapon.WeaponImage = data2["Image"];
                 newWeapon.size =  {data2["Size"][0], data2["Size"][1]};
+                newWeapon.positionOnPlayer = {data2["PositionOnPlayer"][0], data2["PositionOnPlayer"][1]};
                 
                 newWeapon.shakeIntensity = data2["shakeIntensity"];
                 newWeapon.shakeDuration = data2["shakeDuration"];

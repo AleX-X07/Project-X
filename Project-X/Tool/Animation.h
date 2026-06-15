@@ -13,7 +13,7 @@ private:
     
     sf::Vector2i sizeSpriteSheet;
     int nbrFrames;
-    int frameRate;
+    float frameRate;
     
     sf::Vector2i locTexture;
     int actualFrame;
