@@ -1,0 +1,44 @@
+{
+    "Objects" : [
+        {
+            "Name" : "Fond noir",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [1920,1080],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,0,0,155]}
+            ]
+        },
+        {
+            "Name" : "Menu",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 1,
+            "LayerPosition" : 1,
+            "Position" : [200,200],
+            "Size" : [350,250],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Transition", "args" : [0,"Button"]}
+            ]
+        },
+        {
+            "Name" : "Quit",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [200,800],
+            "Size" : [350,250],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Transition" , "args" : [71756974,"Button"]}
+            ]
+        }
+    ]
+}

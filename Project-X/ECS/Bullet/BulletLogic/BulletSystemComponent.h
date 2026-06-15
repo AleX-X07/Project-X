@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../Object.h"
-#include "../../Graphics/RenderComponent.h"
+#include "../../Graphics/RenderFile.h"
 
 class BulletSystemComponent : public Component
 {

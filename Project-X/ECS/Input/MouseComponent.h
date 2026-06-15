@@ -14,4 +14,6 @@ public:
     
     sf::Vector2i getMousePosition();
     bool clicked();
+    
+    bool isClick();
 };

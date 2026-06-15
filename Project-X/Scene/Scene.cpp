@@ -1,9 +1,12 @@
 ﻿#include "Scene.h"
 #include "../Main/GameEngine.h"
 #include "../ECS/Tool/HealthComponent.h"
+#include "../Reader/SceneReader.h"
 
-Scene::Scene(int _idScene) {
-    idScene = _idScene;
+Scene::Scene() : Scene(0){
+}
+
+Scene::Scene(int _idScene) : idScene(_idScene), state(State::Run)  {
 }
 
 Scene::~Scene() {
@@ -12,11 +15,6 @@ Scene::~Scene() {
         obj = nullptr;
     }
     myObjects.clear();
-    for (auto& trans : myTransitions) {
-        delete trans;
-        trans = nullptr;
-    }
-    myTransitions.clear();
 }
 
 Layer& Scene::getMyLayer() {
@@ -27,12 +25,12 @@ std::vector<Object*>& Scene::getVecObjects() {
     return myObjects;
 }
 
-std::vector<Transition*>& Scene::getVecTransitions() {
-    return myTransitions;
+int& Scene::getIdScene() {
+    return idScene;
 }
 
-int Scene::getIdScene() {
-    return idScene;
+Scene::State& Scene::getState() {
+    return state;
 }
 
 void Scene::addObject(Object* addObject, int Layer) {
@@ -40,8 +38,16 @@ void Scene::addObject(Object* addObject, int Layer) {
     getMyLayer().addInLayer(addObject, Layer);
 }
 
-void Scene::addTransition(Transition* addObject) {
-    myTransitions.push_back(addObject);
+void Scene::setIdScene(int _idScene) {
+    idScene = _idScene;
+}
+
+void Scene::setState(State newState) {
+    state = newState;
+}
+
+void Scene::setScreen(std::string newScreen) {
+    screen = newScreen;
 }
 
 void Scene::setLayer(int Layer) {
@@ -49,13 +55,27 @@ void Scene::setLayer(int Layer) {
 }
 
 void Scene::update(float deltatime) {
-    for (auto& obj : myObjects)
-        obj->update(deltatime);
-
-    for (auto& trans : myTransitions)
-        trans->update();
+    if (state == State::Run) {
+        for (auto& obj : myObjects) {
+            obj->update(deltatime);
+        }
+    }
+    for (auto& objScreen : SceneReader::getScreen()[screen]) {
+        objScreen->update(deltatime);
+    }
+    
 }
 
 void Scene::render() {
     myLayer.render();
+    GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
+    for (auto& objScreen : SceneReader::getScreen()[screen]) {
+        objScreen->render();
+    }
+    for (auto& obj : myObjects) {
+        auto cam = obj->getComponent<CameraComponent>();
+        if (cam != nullptr) {
+            GameEngine::getWindow()->setView(*cam->view);
+        }
+    }
 }

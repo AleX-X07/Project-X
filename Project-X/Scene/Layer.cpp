@@ -1,5 +1,7 @@
 ﻿#include "Layer.h"
 
+#include "../Main/GameEngine.h"
+
 Layer::Layer() {
     nbrLayers = 1;
 }

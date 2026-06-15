@@ -5,7 +5,7 @@
 
 class GameEngine;
 
-class RenderComponent final : public Component
+class RenderFile final : public Component
 {
 private:
     sf::Texture* texture;
@@ -13,9 +13,9 @@ private:
     Animation* currentAnimation;
 
 public:
-    RenderComponent(Object* _owner);
-    RenderComponent(Object* _owner, std::string name);
-    ~RenderComponent() override;
+    RenderFile(Object* _owner);
+    RenderFile(Object* _owner, std::string name);
+    ~RenderFile() override;
 
     void update(float deltaTime) override;
     void render() override;

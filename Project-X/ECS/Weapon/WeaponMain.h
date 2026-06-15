@@ -3,7 +3,7 @@
 #include <fstream>
 
 #include "../Box/HitBox.h"
-#include "../Graphics/RenderComponent.h"
+#include "../Graphics/RenderFile.h"
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Tool/CameraComponent.h"
 #include "../../Tool/Globals.h"
@@ -19,6 +19,7 @@ struct argsWeapon {
     
     sf::Vector2f size;
     sf::Vector2f bulletSize;
+    sf::Vector2f positionOnPlayer;
     
     float spread;
     float fireRate;

@@ -19,8 +19,8 @@ void State::update(float deltaTime) {
 
 void State::render() {
     if (animation != nullptr) {
-        if (owner->hasComponent<RenderComponent>()) {
-            owner->getComponent<RenderComponent>()->setAnimation(animation);
+        if (owner->hasComponent<RenderFile>()) {
+            owner->getComponent<RenderFile>()->setAnimation(animation);
         }
     }
 }
@@ -32,13 +32,13 @@ void State::createAnimation(std::string state) {
     std::string texturePath = (*mapAnimation)[state][1];
     if (anim == "Animated") {
         animation = new Animation(owner, texturePath, data["args"]);
-        if (owner->hasComponent<RenderComponent>()) {
-            owner->getComponent<RenderComponent>()->setAnimation(animation);
+        if (owner->hasComponent<RenderFile>()) {
+            owner->getComponent<RenderFile>()->setAnimation(animation);
         }
     }
     else if (anim == "No-Animated") {
-        if (owner->hasComponent<RenderComponent>()) {
-            owner->getComponent<RenderComponent>()->setTexture((*mapAnimation)[state].back());
+        if (owner->hasComponent<RenderFile>()) {
+            owner->getComponent<RenderFile>()->setTexture((*mapAnimation)[state].back());
         }
     }
     else {

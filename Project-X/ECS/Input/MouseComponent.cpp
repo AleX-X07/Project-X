@@ -17,11 +17,30 @@ sf::Vector2i MouseComponent::getMousePosition() {
 }
 
 bool MouseComponent::clicked() {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+    if (Input::getInput()->isMousePressed(sf::Mouse::Button::Left)) {
         return true;
     }
     if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -10) {
         return true;
     }
     return false;
+}
+
+bool MouseComponent::isClick() {
+    sf::Vector2i mousePixel = sf::Mouse::getPosition(*GameEngine::getWindow());
+    sf::Vector2f mousePos = GameEngine::getWindow()->mapPixelToCoords(mousePixel, GameEngine::getWindow()->getDefaultView()); 
+    
+    sf::FloatRect bounds(
+        {owner->getPosition().x,
+        owner->getPosition().y},
+        {owner->getSize().x,
+        owner->getSize().y}
+    );
+    
+    if (clicked() && bounds.contains(sf::Vector2f(mousePos))) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

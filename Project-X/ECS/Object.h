@@ -17,6 +17,7 @@ private:
     std::vector<Component*> components = {};
     
 public:
+    Object();
     Object(sf::Vector2f _position, sf::Vector2f _size);
     ~Object();
 
