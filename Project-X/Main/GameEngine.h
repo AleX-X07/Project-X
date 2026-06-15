@@ -5,27 +5,24 @@
 
 #include "../Scene/Scene.h"
 #include "../Reader/SceneReader.h"
-#include "../Reader/InputReader.h"
-#include "../Reader/WeaponReader.h"
 
 class GameEngine {
 private:
+    // Data
+    static sf::RenderWindow* window; 
     
-    static sf::RenderWindow* window;
-    
-    static std::unordered_map<int, Scene*> scenes;
-    
-    std::vector<Reader*> readers;
-    
+    static std::unordered_map<int, std::string> scenes;
     static int idScene;
+    static Scene *currentScene;
     
+    void initRead();
+    
+    // Time
     sf::Clock clock;
     float delatTime;
     bool inGame;
     
-    void initRead();
-    void readData();
-    
+    // Update
     void updateEvent();
     void updateTime();
     void update();
@@ -34,10 +31,10 @@ private:
 public:
     
     static sf::RenderWindow* getWindow();
-    static std::unordered_map<int, Scene*>& getVecState();
+    static std::unordered_map<int, std::string>& getMapScene();
     
     static void setScene(int newScene);
-    static int getIdCurrentScene();
+    static Scene* getCurrentScene();
     
     GameEngine();
     ~GameEngine();

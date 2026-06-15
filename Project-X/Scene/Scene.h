@@ -18,10 +18,12 @@ private:
     std::vector<Object*> myObjects;
     int idScene;
     
-    State state;
-    
+    std::vector<std::string> screenVec;
+    std::vector<Object*>* objectsScreen;
     std::string screen;
     
+    State state;
+
 public:
     Scene();
     Scene(int _idScene);
@@ -30,6 +32,7 @@ public:
     Layer& getMyLayer();
     std::vector<Object*>& getVecObjects();
     
+    std::vector<std::string>& getScreenVec();
     int& getIdScene();
     State& getState();
     

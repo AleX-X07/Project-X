@@ -3,11 +3,11 @@
 #include "../Tool/TimerComponent.h"
 #include "../../Reader/SceneReader.h"
 
-ScreenManager::ScreenManager(Object* _owner, Scene* scene) : ScreenManager(_owner, scene, "", "", "") {
+ScreenManager::ScreenManager(Object* _owner, Scene* scene) : ScreenManager(_owner, scene, "", "", "", "") {
 }
 
-ScreenManager::ScreenManager(Object* _owner, Scene* scene, std::string nameWin, std::string nameDeath,
-    std::string namePaused) : Component(_owner), currentScene(scene), nameWin(nameWin), nameDeath(nameDeath), namePaused(namePaused) {
+ScreenManager::ScreenManager(Object* _owner, Scene* _scene, std::string _nameWin, std::string _nameDeath,
+    std::string _namePaused, std::string _nameSettings) : Component(_owner), currentScene(_scene), nameWin(_nameWin), nameDeath(_nameDeath), namePaused(_namePaused), nameSettings(_nameSettings) {
 }
 
 void ScreenManager::setScreen(std::string name) {

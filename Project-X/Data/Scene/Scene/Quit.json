@@ -1,3 +1,19 @@
 {
-    
+    "ID" : 71756974,
+    "Name" : "Quit",
+    "Layer" : 1,
+    "Objects": [
+        {
+            "Name" : "Quit",
+            "Description" : "Quit the game",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "Quit", "args" : []}
+            ]
+        }
+    ]
 }

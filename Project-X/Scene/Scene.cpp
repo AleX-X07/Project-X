@@ -6,7 +6,7 @@
 Scene::Scene() : Scene(0){
 }
 
-Scene::Scene(int _idScene) : idScene(_idScene), state(State::Run)  {
+Scene::Scene(int _idScene) : idScene(_idScene), state(State::Run), objectsScreen(nullptr)  {
 }
 
 Scene::~Scene() {
@@ -23,6 +23,10 @@ Layer& Scene::getMyLayer() {
 
 std::vector<Object*>& Scene::getVecObjects() {
     return myObjects;
+}
+
+std::vector<std::string>& Scene::getScreenVec() {
+    return screenVec;
 }
 
 int& Scene::getIdScene() {
@@ -48,6 +52,7 @@ void Scene::setState(State newState) {
 
 void Scene::setScreen(std::string newScreen) {
     screen = newScreen;
+    objectsScreen = SceneReader::getInstance()->initScreen(screen,this);
 }
 
 void Scene::setLayer(int Layer) {
@@ -60,22 +65,29 @@ void Scene::update(float deltatime) {
             obj->update(deltatime);
         }
     }
-    for (auto& objScreen : SceneReader::getScreen()[screen]) {
-        objScreen->update(deltatime);
+    if (objectsScreen != nullptr) {
+        if (!objectsScreen->empty()) {
+            for (auto& objScreen : *objectsScreen) {
+                objScreen->update(deltatime);
+            }
+        }
     }
-    
 }
 
 void Scene::render() {
     myLayer.render();
-    GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
-    for (auto& objScreen : SceneReader::getScreen()[screen]) {
-        objScreen->render();
-    }
-    for (auto& obj : myObjects) {
-        auto cam = obj->getComponent<CameraComponent>();
-        if (cam != nullptr) {
-            GameEngine::getWindow()->setView(*cam->view);
+    if (objectsScreen != nullptr) {
+        if (!objectsScreen->empty()) {
+            GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
+            for (auto& objScreen : *objectsScreen) {
+                objScreen->render();
+            }
+            for (auto& obj : myObjects) {
+                auto cam = obj->getComponent<CameraComponent>();
+                if (cam != nullptr) {
+                    GameEngine::getWindow()->setView(*cam->view);
+                }
+            }
         }
     }
 }

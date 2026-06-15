@@ -1,7 +1,8 @@
 {
     "ID" : 1,
-    "Layer" : 2,
     "Name" : "FirstBiome",
+    "Layer" : 2,
+    "Screen" : ["Win","Death","Paused","Settings"],
     "Objects" : [
         {
             "Name" : "Hero",
@@ -29,7 +30,7 @@
                                                 {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "ScreenManager", "args" : ["win","death","paused"]}
+                {"Component" : "ScreenManager", "args" : ["Win","Death","Paused","Settings"]}
             ]
         },
         {

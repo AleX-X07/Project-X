@@ -3,81 +3,128 @@
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
-std::unordered_map<std::string, std::vector<Object*>> SceneReader::screen;
+SceneReader* SceneReader::myInstance = nullptr;
 
 void SceneReader::read() {
-    std::string defaultString = "Default";
-    std::vector<Object*> defaultVec;
-    
-    screen[defaultString] = defaultVec;
-    
+    inputReader.read();
+    weaponReader.read();
+    readScene();
+}
+
+void SceneReader::readScene() {
     std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
-        
-        for (auto& sceneData : data["Scene"]) {
+        nlohmann::json currentScene = data["Scene"];
+        for (auto& s : currentScene) {
+            std::string file = s.get<std::string>() + ".json";
+            std::string path = "Data/Scene/Scene/" + file;
+            std::ifstream currentSceneOpen(path);
             
-            std::string myScene = sceneData.get<std::string>() + ".json";
-            std::string path = "Data/Scene/Scene/" + myScene;
-            std::ifstream currentScene(path);
-            
-            if (currentScene.is_open()) {
-                nlohmann::json data2 = nlohmann::json::parse(currentScene);
-                
-                Scene* addScene = new Scene(data2["ID"]);
-                GameEngine::getVecState()[addScene->getIdScene()] = addScene;
-                addScene->setLayer(data2["Layer"]);
-                nlohmann::json objects = data2["Objects"];
-                
-                for (auto& currentObj : objects) {
-                    Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
-                    
-                    if (currentObj["Team"] == "Player") {
-                        newObj->team = Object::Team::Player;
-                    }
-                    else if (currentObj["Team"] == "Enemy") {
-                        newObj->team = Object::Team::Enemy;
-                    }
-                    else {
-                        newObj->team = Object::Team::Neutral;
-                    }
-                    
-                    for (auto& ecs : currentObj["ECS"]) {
-                        std::string name = ecs["Component"];
-                        
-                        if (FactoriesECS::factories.count(name)) {
-                            newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, addScene));
-                        } else {
-                            std::cerr << "Composant inconnu : " << name << std::endl;
-                        }
-                        if (name == "StateMachine") {
-                            readAnimation(ecs, newObj);
-                        }
-                        if (name == "HUD") {
-                            readHUD(ecs, newObj, addScene);
-                        }
-                    }
-                    addScene->addObject(newObj, currentObj["LayerPosition"]);
-                }
+            if (currentSceneOpen.is_open()) {
+                nlohmann::json data2 = nlohmann::json::parse(currentSceneOpen);
+                GameEngine::getMapScene()[data2["ID"]] = data2["Name"];
             }
         }
     }
+}
+
+Scene* SceneReader::initScene(int idScene) {
+    std::string file = GameEngine::getMapScene()[idScene] + ".json";
+    std::string path = "Data/Scene/Scene/" + file;
+    std::ifstream currentScene(path);
     
-    std::ifstream path("Data/Scene/SceneManagerHUD.json");
-    if (path.is_open()) {
-        nlohmann::json data = nlohmann::json::parse(path);
+    if (currentScene.is_open()) {
+        nlohmann::json data = nlohmann::json::parse(currentScene);
+    
+        Scene* newScene = new Scene(idScene);
+        newScene->setLayer(data["Layer"]);
         
-        for (auto& sceneData : data["Manager"]) {
-            readSceneHUD(sceneData);
+        for (auto& s : data["Screen"]) {
+            newScene->getScreenVec().push_back(s.get<std::string>());
+        }
+        
+        nlohmann::json objects = data["Objects"];
+        
+        for (auto& obj : objects) {
+            Object* newObj = new Object({obj["Position"][0],obj["Position"][1]},{obj["Size"][0],obj["Size"][1]});
+                    
+            if (obj["Team"] == "Player") {
+                newObj->team = Object::Team::Player;
+            }
+            else if (obj["Team"] == "Enemy") {
+                newObj->team = Object::Team::Enemy;
+            }
+            else {
+                newObj->team = Object::Team::Neutral;
+            }
+                    
+            for (auto& ecs : obj["ECS"]) {
+                std::string name = ecs["Component"];
+                        
+                if (FactoriesECS::factories.count(name)) {
+                    newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, newScene));
+                } else {
+                    std::cerr << "Composant inconnu : " << name << std::endl;
+                }
+                
+                if (newObj->hasComponent<StateMachine>()) {
+                    readAnimation(ecs,newObj);
+                }
+                if (newObj->hasComponent<HUD>()) {
+                    readHUD(ecs,newObj,newScene);
+                }
+            }
+            newScene->addObject(newObj, obj["LayerPosition"]);
+        }
+        return newScene;
+    }
+    return nullptr;
+}
+
+std::vector<Object*>* SceneReader::initScreen(std::string nameScreen, Scene* currentScene) {
+    std::vector<Object*>* myObjects = new std::vector<Object*>;
+    
+    std::string file = nameScreen + ".json";
+    std::string path = "Data/Scene/Screen/" + file;
+    std::ifstream screen(path);
+    
+    if (screen.is_open()) {
+        nlohmann::json data = nlohmann::json::parse(screen);
+        
+        for (auto& obj : data["Objects"]) {
+            Object* newObj = new Object({obj["Position"][0],obj["Position"][1]},{obj["Size"][0],obj["Size"][1]});
+            
+            if (obj["Team"] == "Player") {
+                newObj->team = Object::Team::Player;
+            }
+            else if (obj["Team"] == "Enemy") {
+                newObj->team = Object::Team::Enemy;
+            }
+            else {
+                newObj->team = Object::Team::Neutral;
+            }
+                    
+            for (auto& ecs : obj["ECS"]) {
+                std::string name = ecs["Component"];
+                        
+                if (FactoriesECS::factories.count(name)) {
+                    newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, currentScene));
+                } else {
+                    std::cerr << "Composant inconnu : " << name << std::endl;
+                }
+                
+                if (newObj->hasComponent<StateMachine>()) {
+                    readAnimation(ecs,newObj);
+                }
+                if (newObj->hasComponent<HUD>()) {
+                    readHUD(ecs,newObj,currentScene);
+                }
+            }
+            myObjects->push_back(newObj);
         }
     }
-    
-    Scene* quitScene = new Scene(71756974);
-    quitScene->setLayer(1);
-    Object* quit = new Object();
-    quit->addComponent(new Quit(quit));
-    quitScene->addObject(quit, 0);
-    GameEngine::getVecState()[quitScene->getIdScene()] = quitScene;  
+    return myObjects;
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
@@ -99,32 +146,6 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
-void SceneReader::readSceneHUD(std::string file) {
-    std::string fileName = file + ".json";
-    std::string path = "Data/Scene/SceneHUD/" + fileName;
-    std::ifstream currentScene(path);
-    
-    nlohmann::json data = nlohmann::json::parse(currentScene);
-    
-    for (auto& currentObj : data["Objects"]) {
-        Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
-        
-        for (auto& ecs : currentObj["ECS"]) {
-            std::string name = ecs["Component"];
-            
-            if (FactoriesECS::factories.count(name)) {
-                newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, GameEngine::getVecState().at(GameEngine::getIdCurrentScene())));
-            } else {
-                std::cerr << "Composant inconnu : " << name << std::endl;
-            }
-            if (name == "StateMachine") {
-                readAnimation(ecs, newObj);
-            }
-        }
-        screen[file].push_back(newObj);
-    }
-}
-
 void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene) {
     auto hud = newObj->getComponent<HUD>();
     
@@ -143,7 +164,6 @@ void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* ne
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(0);
     addScene->setLayer(2);
-    GameEngine::getVecState()[addScene->getIdScene()] = addScene;
     
     // DebugMap for dev only
     Object* Map = new Object({0, 0}, { 1920*2, 1080*2});
@@ -187,21 +207,10 @@ void SceneReader::SceneTestDev() {
     addScene->addObject(Exp, 1);
 }
 
-void SceneReader::SceneTestDev2() {
-    Scene* myScene = new Scene(0);
-    myScene->setLayer(2);
-    GameEngine::getVecState()[myScene->getIdScene()] = myScene;
-    
-    Object* Hero = new Object({0, 0}, { 50, 50});
-    Hero->addComponent(new InputComponent(Hero));
-    Hero->addComponent(new MovementsComponent(Hero,500));
-    Hero->addComponent(new RenderFile(Hero, "Assets/Debug/Collider_DebugTX.png"));
-    Hero->addComponent(new StateMachineComponent(Hero));
-    
-    myScene->addObject(Hero, 0);
-}
-
-std::unordered_map<std::string, std::vector<Object*>>& SceneReader::getScreen() {
-    return screen;
+SceneReader* SceneReader::getInstance() {
+    if (myInstance == nullptr) {
+        myInstance = new SceneReader();
+    }
+    return myInstance;
 }
 

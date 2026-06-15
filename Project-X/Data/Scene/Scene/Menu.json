@@ -1,7 +1,7 @@
 {
     "ID" : 0,
+    "Name" : "Menu",
     "Layer" : 2,
-
     "Objects" : [
        {
             "Name" : "Fond noir",

@@ -15,25 +15,34 @@
 
 #include "../Scene/Scene.h"
 #include "Reader.h"
+#include "InputReader.h"
+#include "../Pattern/StateMachine/StateMachine.h"
+#include "WeaponReader.h"
 
 
 class GameEngine;
 
 class SceneReader : public Reader {
 private:
-   static std::unordered_map<std::string, std::vector<Object*>> screen;
+   static SceneReader* myInstance;
    
-public:
+   InputReader inputReader;
+   WeaponReader weaponReader;
+   
    SceneReader() = default;
+public:
    virtual ~SceneReader() override = default;
    
    virtual void read() override;
+   void readScene();
+   
+   Scene* initScene(int idScene);
+   std::vector<Object*>* initScreen(std::string nameScreen, Scene* currentScene);
+   
    void readAnimation(nlohmann::basic_json<>& ecs, Object* newObj);
-   void readSceneHUD(std::string file);
    void readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene);
    
    void SceneTestDev();
-   void SceneTestDev2();
    
-   static std::unordered_map<std::string, std::vector<Object*>>& getScreen();
+   static SceneReader* getInstance();
 };

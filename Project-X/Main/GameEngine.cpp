@@ -1,7 +1,8 @@
 ﻿#include "GameEngine.h"
 
 sf::RenderWindow* GameEngine::window = nullptr;
-std::unordered_map<int, Scene*> GameEngine::scenes;
+std::unordered_map<int, std::string> GameEngine::scenes;
+Scene* GameEngine::currentScene;
 int GameEngine::idScene = 0;
 
 GameEngine::GameEngine() {
@@ -18,23 +19,16 @@ GameEngine::~GameEngine() {
 
 void GameEngine::initRead() {    
     //## for dev ##//
-     InputReader input;
-     input.read();
-     WeaponReader weapons;
-     weapons.read();
-     SceneReader readScene;
-     readScene.SceneTestDev();
+    // InputReader input;
+    // input.read();
+    // WeaponReader weapons;
+    // weapons.read();
+    // SceneReader readScene;
+    // readScene.SceneTestDev();
     // readScene.SceneTestDev2();
     // #############//
-    readers.push_back(new InputReader());
-    readers.push_back(new WeaponReader());
-    //readers.push_back(new SceneReader());
-}
-
-void GameEngine::readData() {
-    for (auto& r : readers) {
-        r->read();
-    }
+    SceneReader::getInstance()->read();
+    currentScene = SceneReader::getInstance()->initScene(0);
 }
 
 void GameEngine::updateEvent() {
@@ -60,15 +54,11 @@ void GameEngine::updateTime() {
 }
 
 void GameEngine::update() {
-    if (scenes.count(idScene)) {
-        scenes[idScene]->update(delatTime);
-    }
+    currentScene->update(delatTime);
 }
 
 void GameEngine::render() {
-    if (scenes.count(idScene)) {
-        scenes[idScene]->render();
-    }
+    currentScene->render();
 }
 
 
@@ -76,22 +66,22 @@ sf::RenderWindow* GameEngine::getWindow() {
     return window;
 }
 
-std::unordered_map<int, Scene*>& GameEngine::getVecState() {
+std::unordered_map<int, std::string>& GameEngine::getMapScene() {
     return scenes;
 }
 
 void GameEngine::setScene(int newScene) {
     idScene = newScene;
+    currentScene = SceneReader::getInstance()->initScene(idScene);
 }
 
-int GameEngine::getIdCurrentScene() {
-    return idScene;
+Scene* GameEngine::getCurrentScene() {  
+    return currentScene;
 }
 
 
 void GameEngine::run() {
     initRead();
-    //readData();
     
     while (window->isOpen()) {
         updateEvent();

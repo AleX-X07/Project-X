@@ -67,7 +67,7 @@ std::unordered_map <
     }},
     {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
-            return new ScreenManager(obj, currentScene, ecs["args"][0], ecs["args"][1], ecs["args"][2]);
+            return new ScreenManager(obj, currentScene, ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]);
         }
         return new ScreenManager(obj, currentScene);
     }},
