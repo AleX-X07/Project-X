@@ -864,10 +864,9 @@
     </ClCompile>
     <ClCompile Include="ECS\Movement\StateMachineComponent.cpp" />
     <ClCompile Include="ECS\Object.cpp" />
-    <ClCompile Include="ECS\Particle\ParticleEmmiter.cpp">
+    <ClCompile Include="ECS\Particle\ParticleEmmiter.cpp" />
     <ClCompile Include="ECS\Scene\Quit.cpp" />
     <ClCompile Include="ECS\Scene\ScreenManager.cpp">
-
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -1505,9 +1504,6 @@
     <ClInclude Include="Tool\Animation.h" />
     <ClInclude Include="Tool\Globals.h" />
     <ClInclude Include="Tool\Input.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ECS\Capacity\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

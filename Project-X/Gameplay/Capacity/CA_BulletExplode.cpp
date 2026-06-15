@@ -35,7 +35,7 @@ void CA_BulletExplode::Shot() {
             Object* ball = new Object(owner->getPosition(), {25,25});
             
             ball->addComponent(new BulletSystemComponent(ball, speed, Angle, 5));
-            ball->addComponent(new RenderComponent(ball, "Assets/Debug/DebugBulletblue.png"));
+            ball->addComponent(new RenderFile(ball, "Assets/Debug/DebugBulletblue.png"));
             ball->addComponent(new HitBox(ball, {25, 25}, true, damage));
             
             comp->bullet.push_back(ball);

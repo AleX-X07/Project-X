@@ -141,7 +141,7 @@ void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* ne
 }
 
 void SceneReader::SceneTestDev() {
-    Scene* addScene = new Scene(2);
+    Scene* addScene = new Scene(0);
     addScene->setLayer(2);
     GameEngine::getVecState()[addScene->getIdScene()] = addScene;
     

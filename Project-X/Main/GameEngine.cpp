@@ -18,13 +18,17 @@ GameEngine::~GameEngine() {
 
 void GameEngine::initRead() {    
     //## for dev ##//
-    // SceneReader readScene;
-    // readScene.SceneTestDev();
-    //readScene.SceneTestDev2();
-    //#############//
+     InputReader input;
+     input.read();
+     WeaponReader weapons;
+     weapons.read();
+     SceneReader readScene;
+     readScene.SceneTestDev();
+    // readScene.SceneTestDev2();
+    // #############//
     readers.push_back(new InputReader());
     readers.push_back(new WeaponReader());
-    readers.push_back(new SceneReader());
+    //readers.push_back(new SceneReader());
 }
 
 void GameEngine::readData() {
@@ -87,7 +91,7 @@ int GameEngine::getIdCurrentScene() {
 
 void GameEngine::run() {
     initRead();
-    readData();
+    //readData();
     
     while (window->isOpen()) {
         updateEvent();
