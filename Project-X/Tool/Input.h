@@ -9,27 +9,14 @@ private:
 
     InputMap inputMap;
     
-    bool keyPressed;
-    sf::Keyboard::Key key;
-
-    bool mousePressed;
-    sf::Mouse::Button mouse;
-    sf::Vector2i mousePos;
-    
 private:
     Input();
     
 public:
-    ~Input();
-    
     static Input* getInput();
     
-    void setEvent(sf::Event event);
-    void reset();
+    ~Input() = default;
     
     InputMap& getMap();
     sf::Keyboard::Key getKey(const std::string& key);
-    
-    bool isKeyPressed(sf::Keyboard::Key key);
-    bool isMousePressed(sf::Mouse::Button button);
 };

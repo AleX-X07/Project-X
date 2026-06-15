@@ -39,7 +39,7 @@ void GrenadeSystemComponent::CreateTrailPoint()
 {
     Object* point = new Object(ActualPosition, {10, 10});
     
-    point->addComponent(new RenderFile(point, "Assets/Debug/DebugPoint.png"));
+    point->addComponent(new RenderComponent(point, "Assets/Debug/DebugPoint.png"));
     Trail.push_back(point);
 }
 
@@ -65,7 +65,7 @@ GrenadeSystemComponent::~GrenadeSystemComponent()
 void GrenadeSystemComponent::Explode()
 {
     auto *explode = owner->getComponent<HitBox>();
-    auto *textcomp = owner->getComponent<RenderFile>();
+    auto *textcomp = owner->getComponent<RenderComponent>();
     if (explode != nullptr)
     {
         explode->size = {150, 150};

@@ -1,9 +1,9 @@
 {
     "FirstState" : "IdleRight",
     "State" : {
-        "IdleRight" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_idle.png"],
-        "IdleLeft" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_idle_left.png"],
-        "Right" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_marche.png"],
-        "Left" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_marche_left.png"]
+        "IdleRight" : [{"Type" : "Animated", "args" : [1024,256,4,0.2]}, "Assets/Debug/animation_idl.png"],
+        "IdleLeft" : [{"Type" : "Animated", "args" : [1024,256,4,0.2]}, "Assets/Debug/animation_idl_left.png"],
+        "Right" : [{"Type" : "Animated", "args" : [1024,256,4,0.2]}, "Assets/Debug/animation_courir.png"],
+        "Left" : [{"Type" : "Animated", "args" : [1024,256,4,0.2]}, "Assets/Debug/animation_courir_left.png"]
     }
 }

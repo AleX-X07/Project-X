@@ -3,7 +3,7 @@
 #include "../../ECS/Object.h"
 #include "../../Tool/Animation.h"
 #include "../../Tool/Input.h"
-#include "../../ECS/Graphics/RenderFile.h"
+#include "../../ECS/Graphics/RenderComponent.h"
 
 class State {
 protected:

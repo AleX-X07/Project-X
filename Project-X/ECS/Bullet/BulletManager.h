@@ -7,7 +7,7 @@
 #include "cmath"
 
 #include "BulletLogic/BulletSystemComponent.h"
-#include "../Graphics/RenderFile.h"
+#include "../Graphics/RenderComponent.h"
 #include "../Input/MouseComponent.h"
 #include "../Box/Hitbox.h"
 #include "../Weapon/WeaponMain.h"

@@ -3,30 +3,17 @@
     "Layer" : 2,
 
     "Objects" : [
-       {
-            "Name" : "Fond noir",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 0,
+        {
             "LayerPosition" : 0,
             "Position" : [0,0],
-            "Size" : [1920,1080],
+            "Size" : [50,50],
+            "Type" : {
+                "TypeName" : "Transition",
+                "Transition" : [ 1, "Click"]
+            },
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,0,0,155]}
-            ]
-        },
-        {
-            "Name" : "Play",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 1,
-            "LayerPosition" : 1,
-            "Position" : [200,200],
-            "Size" : [350,250],
-            "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
-                {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition", "args" : [1,"Button"]}
+                {"Component" : "Render", "args" : ["Assets/Debug/Collider_DebugTX.png"]},
+                {"Component" : "Mouse", "args" : []}
             ]
         }
     ]

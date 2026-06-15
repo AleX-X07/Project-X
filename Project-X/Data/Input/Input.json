@@ -2,7 +2,5 @@
     "Up" : "Z",
     "Left" : "Q",
     "Down" : "S",
-    "Right" : "D",
-
-    "Pause" : "Escape"
+    "Right" : "D"
 }

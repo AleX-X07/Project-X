@@ -19,7 +19,7 @@ public:
     
 public:
     HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*>& _sceneObjects);
-    virtual ~HealthComponent() override = default;
+    ~HealthComponent();
     void TakeDamage(int damage);
     
     int getHp();

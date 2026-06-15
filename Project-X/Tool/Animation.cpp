@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../ECS/Object.h"
-#include "../ECS/Graphics/RenderFile.h"
+#include "../ECS/Graphics/RenderComponent.h"
 
 Animation::Animation(Object* _owner, std::string texturePath, nlohmann::basic_json<> _myAnimation) : myAnimation(_myAnimation) {
     owner = _owner;
@@ -24,8 +24,8 @@ Animation::Animation(Object* _owner, std::string texturePath, nlohmann::basic_js
     startPoint = 0;
     
     sf::IntRect offset({0, 0}, sizeSpriteSheet);
-    if (owner->hasComponent<RenderFile>()) {
-        owner->getComponent<RenderFile>()->getRect()->setTextureRect(offset);
+    if (owner->hasComponent<RenderComponent>()) {
+        owner->getComponent<RenderComponent>()->getRect()->setTextureRect(offset);
     }
     
     textureSet = false;
@@ -39,30 +39,28 @@ void Animation::update(float deltaTime) {
     startPoint += deltaTime;
     
     if (startPoint >= frameRate) {
-        startPoint = 0;
-
         locTexture.x = sizeSpriteSheet.x * actualFrame;
         offset = sf::IntRect({locTexture}, {sizeSpriteSheet});
-        
-        if (owner->hasComponent<RenderFile>()) {
-            owner->getComponent<RenderFile>()->getRect()->setTextureRect(offset);
+        if (owner->hasComponent<RenderComponent>()) {
+            owner->getComponent<RenderComponent>()->getRect()->setTextureRect(offset);
         }
-        
         actualFrame++;
-        if (actualFrame >= nbrFrames) {
-            actualFrame = 0;
-            locTexture = {0, 0};
-        }
+        startPoint = 0;
     }
     
-    if (!textureSet) {
-        if (owner->hasComponent<RenderFile>()) {
-            owner->getComponent<RenderFile>()->setTexture(texture);
+    if (actualFrame == nbrFrames) {
+        actualFrame = 0;
+        locTexture = {0,0};
+    }
+    
+    if (textureSet == false) {
+        if (owner->hasComponent<RenderComponent>()) {
+            owner->getComponent<RenderComponent>()->setTexture(texture);
         }
         textureSet = true;
     }
 }
 
 void Animation::setAnimation() {
-    owner->getComponent<RenderFile>()->setAnimation(this);
+    owner->getComponent<RenderComponent>()->setAnimation(this);
 }

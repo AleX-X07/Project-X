@@ -9,6 +9,11 @@ HealthComponent::HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*
     sound = new sf::Sound(buffer);
 }
 
+HealthComponent::~HealthComponent()
+{
+
+}
+
 void HealthComponent::TakeDamage(int damage)
 {
     hp -= damage;

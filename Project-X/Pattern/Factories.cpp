@@ -2,13 +2,11 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
-#include "../ECS/Tool/TimerComponent.h"
 
 std::unordered_map <
     std::string,
     ComponentFactory
 > FactoriesECS::factories = {
-    // Behaviour
     {"AIMobSpawner",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new AiMobSpawner(obj, currentScene->getVecObjects());
     }},
@@ -21,28 +19,12 @@ std::unordered_map <
         return new BulletManager(obj);
     }},
     // Graphics
-    {"RenderFile", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+    {"Render", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
-            return new RenderFile(obj, ecs["args"][0]);
+            return new RenderComponent(obj, ecs["args"][0]);
         }
-        return new RenderFile(obj);
+        return new RenderComponent(obj);
     }},
-    {"RenderText", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new RenderText(obj, ecs["agrs"][0]); 
-    }},
-    {"RenderColor", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new RenderColor(obj, {ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]});
-    }},
-    {"HUD", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new HUD(obj);
-    }},
-        //HUD
-        {"HealthDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new HealthDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
-        }},
-        {"TimerDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new TimerDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
-        }},
     // Input
     {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new MouseComponent(obj);
@@ -57,20 +39,6 @@ std::unordered_map <
     {"StateMachine", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
        return new StateMachineComponent(obj); 
     }},
-    
-    // Scene
-    {"Transition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        const std::unordered_map<std::string, TransitionType> typeMap = {
-            {"Button",  TransitionType::Button},
-        };
-        return new Transition(obj, ecs["args"][0], typeMap.at(std::string(ecs["args"][1])));
-    }},
-    {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
-            return new ScreenManager(obj, currentScene, ecs["args"][0], ecs["args"][1], ecs["args"][2]);
-        }
-        return new ScreenManager(obj, currentScene);
-    }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);
@@ -83,9 +51,6 @@ std::unordered_map <
     }},
     {"Health", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new HealthComponent(obj, ecs["args"][0], currentScene->getVecObjects());
-    }},
-    {"Timer", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new TimerComponent(obj, ecs["args"][0]);
     }},
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -101,16 +66,24 @@ std::unordered_map <
         std::string,
         StateFactory
 > FactoriesStates::factories = {
-    {"IdleRight", [](Object* obj, mapState myMap) -> State* {
+    {
+        "IdleRight", [](Object* obj, mapState myMap) -> State* {
             return new IdleRightState(obj, myMap);
-    }},
-    {"IdleLeft", [](Object* obj, mapState myMap) -> State* {
+        }
+    },
+    {
+        "IdleLeft", [](Object* obj, mapState myMap) -> State* {
             return new IdleLeftState(obj, myMap);
-    }},
-    {"Right", [](Object* obj, mapState myMap) -> State* {
+        }
+    },
+    {
+        "Right", [](Object* obj, mapState myMap) -> State* {
             return new RightState(obj, myMap);
-    }},
-    {"Left", [](Object* obj, mapState myMap) -> State* {
+        }
+    },
+    {
+        "Left", [](Object* obj, mapState myMap) -> State* {
             return new LeftState(obj, myMap);
-    }}
+        }
+    }
 };

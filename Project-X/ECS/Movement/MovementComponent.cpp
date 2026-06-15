@@ -1,7 +1,7 @@
 ﻿#include "MovementComponent.h"
 
 #include "StateMachineComponent.h"
-#include "../Graphics/RenderFile.h"
+#include "../Graphics/RenderComponent.h"
 
 MovementsComponent::MovementsComponent(Object* _owner, float _speed)
     : Component(_owner)

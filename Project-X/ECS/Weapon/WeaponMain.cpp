@@ -13,9 +13,9 @@ WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
     }
     
     WeaponRender = new Object({0,0}, myArgs.size);
-    WeaponRender->addComponent(new RenderFile(WeaponRender, myArgs.WeaponImage));
+    WeaponRender->addComponent(new RenderComponent(WeaponRender, myArgs.WeaponImage));
     
-    auto ori = WeaponRender->getComponent<RenderFile>();
+    auto ori = WeaponRender->getComponent<RenderComponent>();
     ori->getRect()->setOrigin({myArgs.size.x / 2.f, myArgs.size.y / 2.f});
 }
 
@@ -33,7 +33,7 @@ Object* WeaponMain::CreateBullet(float angle) {
     Object* ball = new Object(owner->getPosition(), myArgs.bulletSize);
     
     ball->addComponent(new BulletSystemComponent(ball, myArgs.speed, angle, myArgs.lifeTime));
-    ball->addComponent(new RenderFile(ball, myArgs.BulletImage));
+    ball->addComponent(new RenderComponent(ball, myArgs.BulletImage));
     ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
     
     return ball;
@@ -71,11 +71,11 @@ void WeaponMain::update(float deltaTime) {
     
     //WeaponRender
     WeaponRender->update(deltaTime);
-    WeaponRender->setPosition({(owner->getPosition().x + myArgs.positionOnPlayer.x), (owner->getPosition().y + myArgs.positionOnPlayer.y)});
+    WeaponRender->setPosition({(owner->getPosition().x + 25), (owner->getPosition().y + 35)});
     
     //WeaponPositionning
     auto Mouseangle = owner->getComponent<MouseComponent>();
-    auto comp = WeaponRender->getComponent<RenderFile>();
+    auto comp = WeaponRender->getComponent<RenderComponent>();
     
     Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
     Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
@@ -118,9 +118,9 @@ void WeaponMain::ChangeWeapon(argsWeapon newWeapon) {
     }
     
     WeaponRender = new Object({(owner->getPosition().x + 25), (owner->getPosition().y + 35)}, {50, 50});
-    WeaponRender->addComponent(new RenderFile(WeaponRender,myArgs.WeaponImage));
+    WeaponRender->addComponent(new RenderComponent(WeaponRender,myArgs.WeaponImage));
     
-    auto ori = WeaponRender->getComponent<RenderFile>();
+    auto ori = WeaponRender->getComponent<RenderComponent>();
     ori->getRect()->setOrigin({25.f, 25.f});
 }
 

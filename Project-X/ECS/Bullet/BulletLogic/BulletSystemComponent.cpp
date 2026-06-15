@@ -31,7 +31,7 @@ void BulletSystemComponent::CreateTrailPoint()
 {
     Object* point = new Object(ActualPosition, {10, 10});
     
-    point->addComponent(new RenderFile(point, "Assets/Debug/DebugPoint.png"));
+    point->addComponent(new RenderComponent(point, "Assets/Debug/DebugPoint.png"));
     Trail.push_back(point);
 }
 

@@ -1,8 +1,9 @@
 ﻿#include "GameEngine.h"
 
 sf::RenderWindow* GameEngine::window = nullptr;
-std::unordered_map<int, Scene*> GameEngine::scenes;
+std::vector<Scene*> GameEngine::scenes;
 int GameEngine::idScene = 0;
+
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -16,25 +17,23 @@ GameEngine::~GameEngine() {
     window = nullptr;
 }
 
-void GameEngine::initRead() {    
+void GameEngine::start() {    
+    InputReader readInput;
+    readInput.read();
+    
+    WeaponReader readWeapons;
+    readWeapons.read();
+    
+    SceneReader readScene;
+    //readScene.read();
+    
     //## for dev ##//
-    // SceneReader readScene;
-    // readScene.SceneTestDev();
+    readScene.SceneTestDev();
     //readScene.SceneTestDev2();
     //#############//
-    readers.push_back(new InputReader());
-    readers.push_back(new WeaponReader());
-    readers.push_back(new SceneReader());
 }
 
-void GameEngine::readData() {
-    for (auto& r : readers) {
-        r->read();
-    }
-}
-
-void GameEngine::updateEvent() {
-    Input::getInput()->reset();
+void GameEngine::updateEvent() {    
     while (const std::optional event = window->pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
             window->close();
@@ -45,7 +44,6 @@ void GameEngine::updateEvent() {
         if (event->is<sf::Event::FocusGained>()) {
             inGame = true;
         }
-        Input::getInput()->setEvent(*event);
     }
 }
 
@@ -56,13 +54,13 @@ void GameEngine::updateTime() {
 }
 
 void GameEngine::update() {
-    if (scenes.count(idScene)) {
+    if (!scenes.empty()) {
         scenes[idScene]->update(delatTime);
     }
 }
 
 void GameEngine::render() {
-    if (scenes.count(idScene)) {
+    if (!scenes.empty()) {
         scenes[idScene]->render();
     }
 }
@@ -72,7 +70,7 @@ sf::RenderWindow* GameEngine::getWindow() {
     return window;
 }
 
-std::unordered_map<int, Scene*>& GameEngine::getVecState() {
+std::vector<Scene*>& GameEngine::getVecState() {
     return scenes;
 }
 
@@ -86,9 +84,7 @@ int GameEngine::getIdCurrentScene() {
 
 
 void GameEngine::run() {
-    initRead();
-    readData();
-    
+    start();
     while (window->isOpen()) {
         updateEvent();
         if (inGame) {

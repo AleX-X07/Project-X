@@ -1,12 +1,12 @@
 ﻿#include "CrossHairComponent.h"
 
 #include "../../Main/GameEngine.h"
-#include "../Graphics/RenderFile.h"
+#include "../Graphics/RenderComponent.h"
 #include "../Input/MouseComponent.h"
 
 CrossHairComponent::CrossHairComponent(Object* _owner) : Component(_owner) {
     Cross = new Object({0 ,0}, {25, 25});
-    Cross->addComponent(new RenderFile(Cross, "Assets/Debug/CrossHair.png"));
+    Cross->addComponent(new RenderComponent(Cross, "Assets/Debug/CrossHair.png"));
 }
 
 CrossHairComponent::~CrossHairComponent() {

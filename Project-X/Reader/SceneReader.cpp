@@ -1,16 +1,8 @@
 ﻿#include "SceneReader.h"
 
-#include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
-std::unordered_map<std::string, std::vector<Object*>> SceneReader::screen;
-
 void SceneReader::read() {
-    std::string defaultString = "Default";
-    std::vector<Object*> defaultVec;
-    
-    screen[defaultString] = defaultVec;
-    
     std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
@@ -25,7 +17,7 @@ void SceneReader::read() {
                 nlohmann::json data2 = nlohmann::json::parse(currentScene);
                 
                 Scene* addScene = new Scene(data2["ID"]);
-                GameEngine::getVecState()[addScene->getIdScene()] = addScene;
+                GameEngine::getVecState().push_back(addScene);
                 addScene->setLayer(data2["Layer"]);
                 nlohmann::json objects = data2["Objects"];
                 
@@ -42,6 +34,18 @@ void SceneReader::read() {
                         newObj->team = Object::Team::Neutral;
                     }
                     
+                    // à transformer en ECS
+                    if (currentObj["Type"]["TypeName"] == "Transition") {
+                        std::string currentTransitionType = currentObj["Type"]["Transition"][1];
+                        Transition::TransitionType transitionType;
+                        if (currentTransitionType == "Click") {
+                            transitionType = Transition::TransitionType::Button;
+                        }
+                        Transition* newTrans = new Transition(currentObj["Type"]["Transition"][0], transitionType ,newObj);
+                        addScene->addTransition(newTrans);
+                    }
+                    //#####
+                    
                     for (auto& ecs : currentObj["ECS"]) {
                         std::string name = ecs["Component"];
                         
@@ -53,31 +57,19 @@ void SceneReader::read() {
                         if (name == "StateMachine") {
                             readAnimation(ecs, newObj);
                         }
-                        if (name == "HUD") {
-                            readHUD(ecs, newObj, addScene);
-                        }
                     }
                     addScene->addObject(newObj, currentObj["LayerPosition"]);
                 }
             }
         }
     }
-    
-    std::ifstream path("Data/Scene/SceneManagerHUD.json");
-    if (path.is_open()) {
-        nlohmann::json data = nlohmann::json::parse(path);
-        
-        for (auto& sceneData : data["Manager"]) {
-            readSceneHUD(sceneData);
+    for (auto& vS : GameEngine::getVecState()) {
+        for (auto& vS2 : GameEngine::getVecState()) {
+            if (vS != vS2 && vS->getIdScene() == vS2->getIdScene()) {
+                std::cout << "Id déjà existant" << std::endl;
+            }
         }
     }
-    
-    Scene* quitScene = new Scene(71756974);
-    quitScene->setLayer(1);
-    Object* quit = new Object();
-    quit->addComponent(new Quit(quit));
-    quitScene->addObject(quit, 0);
-    GameEngine::getVecState()[quitScene->getIdScene()] = quitScene;  
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
@@ -99,55 +91,14 @@ void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
     newObj->getComponent<StateMachineComponent>()->setSM(myMap,mapState,dataFirstState);
 }
 
-void SceneReader::readSceneHUD(std::string file) {
-    std::string fileName = file + ".json";
-    std::string path = "Data/Scene/SceneHUD/" + fileName;
-    std::ifstream currentScene(path);
-    
-    nlohmann::json data = nlohmann::json::parse(currentScene);
-    
-    for (auto& currentObj : data["Objects"]) {
-        Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
-        
-        for (auto& ecs : currentObj["ECS"]) {
-            std::string name = ecs["Component"];
-            
-            if (FactoriesECS::factories.count(name)) {
-                newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, GameEngine::getVecState().at(GameEngine::getIdCurrentScene())));
-            } else {
-                std::cerr << "Composant inconnu : " << name << std::endl;
-            }
-            if (name == "StateMachine") {
-                readAnimation(ecs, newObj);
-            }
-        }
-        screen[file].push_back(newObj);
-    }
-}
-
-void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene) {
-    auto hud = newObj->getComponent<HUD>();
-    
-    if (hud != nullptr) {
-        for (auto& item : ecs["args"]) {
-            for (auto& [key, value] : item.items()) {
-                std::string name = key + "Display";
-                if (FactoriesECS::factories.count(name)) {
-                    hud->addHUD(FactoriesECS::factories[name](newObj, value, newScene));
-                }
-            }
-        }
-    }
-}
-
 void SceneReader::SceneTestDev() {
     Scene* addScene = new Scene(2);
     addScene->setLayer(2);
-    GameEngine::getVecState()[addScene->getIdScene()] = addScene;
+    GameEngine::getVecState().push_back(addScene);
     
     // DebugMap for dev only
     Object* Map = new Object({0, 0}, { 1920*2, 1080*2});
-    Map->addComponent(new RenderFile(Map, "Assets/Debug/map.png"));
+    Map->addComponent(new RenderComponent(Map, "Assets/Debug/map.png"));
     addScene->addObject(Map, 1);
     // End Debug
     
@@ -161,7 +112,7 @@ void SceneReader::SceneTestDev() {
 
     newObj->addComponent(new CapacityManager(newObj));
     newObj->addComponent(new InputComponent(newObj));
-    newObj->addComponent(new RenderFile(newObj, "Assets/Character/hero1.png"));
+    newObj->addComponent(new RenderComponent(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));
     newObj->addComponent(new MovementsComponent(newObj, 500));
     newObj->addComponent(new BulletManager(newObj));
@@ -170,17 +121,12 @@ void SceneReader::SceneTestDev() {
     newObj->addComponent(new CameraComponent(newObj, false, 5));
     newObj->addComponent(new HealthComponent(newObj, 1000, addScene->getVecObjects()));
     newObj->addComponent(new ExpManager(newObj));
-    //newObj->addComponent(new DebugHudComp(newObj));
+    newObj->addComponent(new DebugHudComp(newObj));
     newObj->addComponent(new CrossHairComponent(newObj));
-    newObj->addComponent(new TimerComponent(newObj,60));
-    newObj->addComponent(new HUD(newObj));
-    newObj->getComponent<HUD>()->addHUD(new HealthDisplay(newObj,{0, 0}, 24, sf::Color::White, "Assets/Font/Brown Cookies.otf"));
-    newObj->getComponent<HUD>()->addHUD(new TimerDisplay(newObj,{WindowSize.x/2,0},24,sf::Color::White, "Assets/Font/Brown Cookies.otf"));
+    newObj->addComponent(new LevelEnder(newObj, 500));
     
     Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
-    Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
-    
-    newObj->addComponent(new ScreenManager(newObj, addScene));
+    Exp->addComponent(new RenderComponent(Exp, "Assets/Debug/ExpDebug.png"));
     
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
@@ -190,18 +136,13 @@ void SceneReader::SceneTestDev() {
 void SceneReader::SceneTestDev2() {
     Scene* myScene = new Scene(0);
     myScene->setLayer(2);
-    GameEngine::getVecState()[myScene->getIdScene()] = myScene;
+    GameEngine::getVecState().push_back(myScene);
     
     Object* Hero = new Object({0, 0}, { 50, 50});
     Hero->addComponent(new InputComponent(Hero));
     Hero->addComponent(new MovementsComponent(Hero,500));
-    Hero->addComponent(new RenderFile(Hero, "Assets/Debug/Collider_DebugTX.png"));
+    Hero->addComponent(new RenderComponent(Hero, "Assets/Debug/Collider_DebugTX.png"));
     Hero->addComponent(new StateMachineComponent(Hero));
     
     myScene->addObject(Hero, 0);
 }
-
-std::unordered_map<std::string, std::vector<Object*>>& SceneReader::getScreen() {
-    return screen;
-}
-

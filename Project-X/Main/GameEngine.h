@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "SFML/Graphics.hpp"
 #include <vector>
-#include <unordered_map>
 
 #include "../Scene/Scene.h"
 #include "../Reader/SceneReader.h"
@@ -12,10 +11,7 @@ class GameEngine {
 private:
     
     static sf::RenderWindow* window;
-    
-    static std::unordered_map<int, Scene*> scenes;
-    
-    std::vector<Reader*> readers;
+    static std::vector<Scene*> scenes;
     
     static int idScene;
     
@@ -23,8 +19,7 @@ private:
     float delatTime;
     bool inGame;
     
-    void initRead();
-    void readData();
+    void start();
     
     void updateEvent();
     void updateTime();
@@ -34,8 +29,7 @@ private:
 public:
     
     static sf::RenderWindow* getWindow();
-    static std::unordered_map<int, Scene*>& getVecState();
-    
+    static std::vector<Scene*>& getVecState();
     static void setScene(int newScene);
     static int getIdCurrentScene();
     
