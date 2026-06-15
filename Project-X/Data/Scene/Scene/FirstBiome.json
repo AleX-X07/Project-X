@@ -1,5 +1,5 @@
 {
-    "ID" : 0,
+    "ID" : 1,
     "Layer" : 2,
     "Name" : "FirstBiome",
     "Objects" : [
@@ -29,7 +29,7 @@
                                                 {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "ScreenManager", "args" : []}
+                {"Component" : "ScreenManager", "args" : ["win","death","paused"]}
             ]
         },
         {

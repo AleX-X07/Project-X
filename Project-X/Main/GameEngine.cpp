@@ -2,9 +2,7 @@
 
 sf::RenderWindow* GameEngine::window = nullptr;
 std::unordered_map<int, Scene*> GameEngine::scenes;
-std::unordered_map<int, Scene*> GameEngine::scenesPaused;
 int GameEngine::idScene = 0;
-int GameEngine::idScenePaused = 0;
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -35,7 +33,8 @@ void GameEngine::readData() {
     }
 }
 
-void GameEngine::updateEvent() {    
+void GameEngine::updateEvent() {
+    Input::getInput()->reset();
     while (const std::optional event = window->pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
             window->close();
@@ -46,6 +45,7 @@ void GameEngine::updateEvent() {
         if (event->is<sf::Event::FocusGained>()) {
             inGame = true;
         }
+        Input::getInput()->setEvent(*event);
     }
 }
 
@@ -57,25 +57,13 @@ void GameEngine::updateTime() {
 
 void GameEngine::update() {
     if (scenes.count(idScene)) {
-        if (!scenes[idScene]->getIsPaused()) {
-            scenes[idScene]->update(delatTime);
-        }
-    }
-    if (scenesPaused.count(idScenePaused)) {
-        if (scenes[idScene]->getIsPaused()) {
-            scenesPaused[idScenePaused]->update(delatTime);
-        }
+        scenes[idScene]->update(delatTime);
     }
 }
 
 void GameEngine::render() {
     if (scenes.count(idScene)) {
         scenes[idScene]->render();
-    }
-    if (scenesPaused.count(idScenePaused)) {
-        if (scenes[idScene]->getIsPaused()) {
-            scenesPaused[idScenePaused]->render();
-        }
     }
 }
 
@@ -88,20 +76,8 @@ std::unordered_map<int, Scene*>& GameEngine::getVecState() {
     return scenes;
 }
 
-std::unordered_map<int, Scene*>& GameEngine::getVecPaused() {
-    return scenesPaused;
-}
-
 void GameEngine::setScene(int newScene) {
     idScene = newScene;
-}
-
-void GameEngine::setScenePaused(int newScene) {
-    idScenePaused = newScene;
-}
-
-int GameEngine::getIdCurrentScenePaused() {
-    return idScenePaused;
 }
 
 int GameEngine::getIdCurrentScene() {

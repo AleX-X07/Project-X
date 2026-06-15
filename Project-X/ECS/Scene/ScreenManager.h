@@ -8,12 +8,17 @@ class ScreenManager : public Component {
 private:
  
     Scene* currentScene;
-    bool death;
-    bool hasEnd;
+    
+    std::string nameWin;
+    std::string nameDeath;
+    std::string namePaused;
     
 public:
-    ScreenManager(Object* owner, Scene* scene);
+    ScreenManager(Object* _owner, Scene* scene);
+    ScreenManager(Object* _owner, Scene* scene, std::string nameWin, std::string nameDeath, std::string namePaused);
     virtual ~ScreenManager() override = default;
     
-    void update(float deltaTime) override;
+    void setScreen(std::string name);
+    
+    virtual void update(float deltaTime) override;
 };

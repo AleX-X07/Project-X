@@ -5,13 +5,22 @@
 
 class GameEngine;
 class HealthComponent;
+class SceneReader;
 
 class Scene {
 public:
+    enum class State {
+        Run,
+        Paused,
+    };
+private:
     Layer myLayer;
     std::vector<Object*> myObjects;
     int idScene;
-    bool isPaused;
+    
+    State state;
+    
+    std::string screen;
     
 public:
     Scene();
@@ -21,13 +30,15 @@ public:
     Layer& getMyLayer();
     std::vector<Object*>& getVecObjects();
     
-    int getIdScene();
-    bool& getIsPaused();
+    int& getIdScene();
+    State& getState();
     
     void addObject(Object* addObject, int Layer);
     
+    void setIdScene(int _idScene);
+    void setState(State newState);
+    void setScreen(std::string newScreen);
     void setLayer(int Layer);
-    void setPaused(bool pause);
     
     void update(float deltatime);
     void render();

@@ -39,21 +39,23 @@ void Animation::update(float deltaTime) {
     startPoint += deltaTime;
     
     if (startPoint >= frameRate) {
+        startPoint = 0;
+
         locTexture.x = sizeSpriteSheet.x * actualFrame;
         offset = sf::IntRect({locTexture}, {sizeSpriteSheet});
+        
         if (owner->hasComponent<RenderFile>()) {
             owner->getComponent<RenderFile>()->getRect()->setTextureRect(offset);
         }
+        
         actualFrame++;
-        startPoint = 0;
+        if (actualFrame >= nbrFrames) {
+            actualFrame = 0;
+            locTexture = {0, 0};
+        }
     }
     
-    if (actualFrame == nbrFrames) {
-        actualFrame = 0;
-        locTexture = {0,0};
-    }
-    
-    if (textureSet == false) {
+    if (!textureSet) {
         if (owner->hasComponent<RenderFile>()) {
             owner->getComponent<RenderFile>()->setTexture(texture);
         }

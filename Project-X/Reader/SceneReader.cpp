@@ -3,7 +3,14 @@
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
+std::unordered_map<std::string, std::vector<Object*>> SceneReader::screen;
+
 void SceneReader::read() {
+    std::string defaultString = "Default";
+    std::vector<Object*> defaultVec;
+    
+    screen[defaultString] = defaultVec;
+    
     std::ifstream scene("Data/Scene/SceneManager.json");
     if (scene.is_open()) {
         nlohmann::json data = nlohmann::json::parse(scene);
@@ -99,9 +106,6 @@ void SceneReader::readSceneHUD(std::string file) {
     
     nlohmann::json data = nlohmann::json::parse(currentScene);
     
-    Scene* newScene = new Scene(1);
-    newScene->setLayer(data["Layer"]);
-    
     for (auto& currentObj : data["Objects"]) {
         Object* newObj = new Object({currentObj["Position"][0],currentObj["Position"][1]},{currentObj["Size"][0],currentObj["Size"][1]});
         
@@ -109,7 +113,7 @@ void SceneReader::readSceneHUD(std::string file) {
             std::string name = ecs["Component"];
             
             if (FactoriesECS::factories.count(name)) {
-                newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, newScene));
+                newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, GameEngine::getVecState().at(GameEngine::getIdCurrentScene())));
             } else {
                 std::cerr << "Composant inconnu : " << name << std::endl;
             }
@@ -117,9 +121,8 @@ void SceneReader::readSceneHUD(std::string file) {
                 readAnimation(ecs, newObj);
             }
         }
-        newScene->addObject(newObj, currentObj["LayerPosition"]);
+        screen[file].push_back(newObj);
     }
-    GameEngine::getVecPaused()[newScene->getIdScene()] = newScene;
 }
 
 void SceneReader::readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene) {
@@ -195,5 +198,9 @@ void SceneReader::SceneTestDev2() {
     Hero->addComponent(new StateMachineComponent(Hero));
     
     myScene->addObject(Hero, 0);
+}
+
+std::unordered_map<std::string, std::vector<Object*>>& SceneReader::getScreen() {
+    return screen;
 }
 

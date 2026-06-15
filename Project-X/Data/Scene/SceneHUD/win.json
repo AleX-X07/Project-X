@@ -1,9 +1,9 @@
 {
-    "ID" : 0,
+    "ID" : 1,
     "Layer" : 2,
-
+    "Name" : "win",
     "Objects" : [
-       {
+        {
             "Name" : "Fond noir",
             "Description" : "",
             "Team" : "",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "Name" : "Play",
+            "Name" : "Quit",
             "Description" : "",
             "Team" : "",
             "ID Object" : 1,
@@ -26,7 +26,21 @@
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition", "args" : [1,"Button"]}
+                {"Component" : "Transition", "args" : [71756974,"Button"]}
+            ]
+        },
+        {
+            "Name" : "Settings",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [200,800],
+            "Size" : [350,250],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Transition" , "args" : [0,"Button"]}
             ]
         }
     ]

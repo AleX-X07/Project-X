@@ -14,12 +14,10 @@ private:
     static sf::RenderWindow* window;
     
     static std::unordered_map<int, Scene*> scenes;
-    static std::unordered_map<int, Scene*> scenesPaused;
     
     std::vector<Reader*> readers;
     
     static int idScene;
-    static int idScenePaused;
     
     sf::Clock clock;
     float delatTime;
@@ -37,12 +35,8 @@ public:
     
     static sf::RenderWindow* getWindow();
     static std::unordered_map<int, Scene*>& getVecState();
-    static std::unordered_map<int, Scene*>& getVecPaused();
     
     static void setScene(int newScene);
-    static void setScenePaused(int newScene);
-    
-    static int getIdCurrentScenePaused();
     static int getIdCurrentScene();
     
     GameEngine();
