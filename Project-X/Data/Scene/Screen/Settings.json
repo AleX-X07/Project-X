@@ -1,0 +1,30 @@
+{
+    "Objects" : [
+        {
+            "Name" : "Fond blanc",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [1920,1080],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [255,255,255,255]}
+            ]
+        },
+        {
+            "Name" : "Back",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [1820,0],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,0,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "ScreenClear" , "args" : []}
+            ]
+        }
+    ]
+}

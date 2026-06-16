@@ -30,12 +30,10 @@
                                                 {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "ScreenManager", "args" : [{
-                                                            "Win" : "Win",
-                                                            "Death" : "Death",
-                                                            "Paused" : "Paused",
-                                                            "Settings" : "Settings"
-                                                            }]}
+                {"Component" : "ScreenWin", "args" : ["Win"]},
+                {"Component" : "ScreenDeath", "args" : ["Death"]},
+                {"Component" : "ScreenPaused", "args" : ["Paused"]},
+                {"Component" : "ScreenSettings", "args" : ["Settings"]}
             ]
         },
         {

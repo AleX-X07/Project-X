@@ -65,13 +65,25 @@ std::unordered_map <
         };
         return new Transition(obj, ecs["args"][0], typeMap.at(std::string(ecs["args"][1])));
     }},
-    {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        std::unordered_map<std::string, std::string> screenMap;
-        for (auto& [ke, kv] : ecs["args"][0].items()) {
-            screenMap[ke] = kv.get<std::string>();
-        }
-        return new ScreenManager(obj, currentScene, std::move(screenMap));
+    {"Quit", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new Quit(obj);
     }},
+        //Screen
+        {"ScreenWin", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenWin(obj, currentScene, ecs["args"][0]);
+        }},
+        {"ScreenDeath", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenDeath(obj, currentScene, ecs["args"][0]);
+        }},
+        {"ScreenPaused", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenPaused(obj, currentScene, ecs["args"][0]);
+        }},
+        {"ScreenSettings", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenSettings(obj, currentScene, ecs["args"][0]);
+        }},
+        {"ScreenClear", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenClear(obj, currentScene);
+        }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);

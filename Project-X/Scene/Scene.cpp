@@ -56,6 +56,14 @@ void Scene::setScreen(std::string newScreen) {
     objectsScreen = SceneReader::getInstance()->initScreen(screen,this);
 }
 
+void Scene::clearScreen() {
+    for (auto& obj : *objectsScreen) {
+        delete obj;
+        obj = nullptr;
+    }
+    objectsScreen->clear();
+}
+
 void Scene::setLayer(int Layer) {
     myLayer.setNbrLayer(Layer);
 }

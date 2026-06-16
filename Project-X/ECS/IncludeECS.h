@@ -37,8 +37,14 @@
 
 // Scene
 #include "Scene/Transition.h"
-#include "Scene/ScreenManager.h"
 #include "Scene/Quit.h"
+#include "Scene/ScreenManager.h"
+
+#include "Scene/Screen/ScreenDeath.h"
+#include "Scene/Screen/ScreenWin.h"
+#include "Scene/Screen/ScreenPaused.h"
+#include "Scene/Screen/ScreenSettings.h"
+#include "Scene/Screen/ScreenClear.h"
 
 // Tool
 #include "../ECS/Tool/CameraComponent.h"

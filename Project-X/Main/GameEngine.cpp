@@ -4,6 +4,7 @@ sf::RenderWindow* GameEngine::window = nullptr;
 std::unordered_map<int, std::string> GameEngine::scenes;
 Scene* GameEngine::currentScene;
 int GameEngine::idScene = 0;
+int GameEngine::nextScene = -1;
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -29,6 +30,12 @@ void GameEngine::initRead() {
     // #############//
     SceneReader::getInstance()->read();
     currentScene = SceneReader::getInstance()->initScene(0);
+}
+
+void GameEngine::updateChangeScene() {
+    idScene = nextScene;
+    window->setView(window->getDefaultView());
+    currentScene = SceneReader::getInstance()->initScene(idScene);
 }
 
 void GameEngine::updateEvent() {
@@ -71,9 +78,12 @@ std::unordered_map<int, std::string>& GameEngine::getMapScene() {
 }
 
 void GameEngine::setScene(int newScene) {
-    idScene = newScene;
+    nextScene = newScene;
+    
+    idScene = nextScene;
     window->setView(window->getDefaultView());
     currentScene = SceneReader::getInstance()->initScene(idScene);
+    
 }
 
 Scene* GameEngine::getCurrentScene() {  
@@ -89,10 +99,13 @@ void GameEngine::run() {
         if (inGame) {
             updateTime();
             update();
-            //updateChangeScene();
             window->clear();
             render();
             window->display();
+            // if (nextScene != -1) { 
+            //     updateChangeScene();
+            //     nextScene = -1;
+            // }
         }    
     }
 }

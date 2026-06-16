@@ -1,7 +1,7 @@
 {
     "ID" : 1,
     "Layer" : 2,
-    "Name" : "win",
+    "Name" : "Paused",
     "Objects" : [
         {
             "Name" : "Fond noir",
@@ -24,7 +24,7 @@
             "Position" : [200,200],
             "Size" : [350,250],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "RenderColor", "args" : [255,0,0,255]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition", "args" : [71756974,"Button"]}
             ]
@@ -38,9 +38,9 @@
             "Position" : [200,800],
             "Size" : [350,250],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition" , "args" : [0,"Button"]}
+                {"Component" : "ScreenSettings" , "args" : ["Settings"]}
             ]
         }
     ]

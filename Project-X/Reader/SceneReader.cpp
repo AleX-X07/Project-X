@@ -40,9 +40,9 @@ Scene* SceneReader::initScene(int idScene) {
         Scene* newScene = new Scene(idScene);
         newScene->setLayer(data["Layer"]);
         
-        for (auto& s : data["Screen"]) {
-            newScene->getScreenVec().push_back(s.get<std::string>());
-        }
+        // for (auto& s : data["Screen"]) {
+        //     newScene->getScreenVec().push_back(s.get<std::string>());
+        // }
         
         nlohmann::json objects = data["Objects"];
         

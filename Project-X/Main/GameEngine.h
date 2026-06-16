@@ -13,7 +13,8 @@ private:
     
     static std::unordered_map<int, std::string> scenes;
     static int idScene;
-    static Scene *currentScene;
+    static Scene* currentScene;
+    static int nextScene;
     
     void initRead();
     
@@ -23,6 +24,7 @@ private:
     bool inGame;
     
     // Update
+    void updateChangeScene();
     void updateEvent();
     void updateTime();
     void update();

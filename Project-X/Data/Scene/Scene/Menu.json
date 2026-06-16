@@ -39,7 +39,8 @@
             "Size" : [375,125],
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,0,255,255]},
-                {"Component" : "Mouse", "args" : []}
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "ScreenSettings", "args" : ["Settings"]}
             ]
         },
         {

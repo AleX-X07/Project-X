@@ -42,6 +42,7 @@ public:
     void setIdScene(int _idScene);
     void setState(State newState);
     void setScreen(std::string newScreen);
+    void clearScreen();
     void setLayer(int Layer);
     
     void update(float deltatime);
