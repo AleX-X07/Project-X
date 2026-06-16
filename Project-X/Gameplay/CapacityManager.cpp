@@ -65,6 +65,7 @@ void CapacityManager::update(float deltaTime) {
             
             pendnumber += 1;
             ExpNeed *= ExpMulti;
+            comp->level += 1;
         }
     }
     

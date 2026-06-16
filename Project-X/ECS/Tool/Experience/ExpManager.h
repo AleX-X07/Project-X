@@ -10,10 +10,14 @@ public:
     sf::RectangleShape bar;
     
     float Exp = 0;
+    int level = 1;
+
+    sf::Font myFont;
+    sf::Text* myText;
     
 public:
     ExpManager(Object* _owner);
-    ~ExpManager() override = default;
+    ~ExpManager() override;
 
     void update(float deltaTime) override;
     void render() override;

@@ -1,12 +1,10 @@
 ﻿#include "AiMobSpawner.h"
 #include "../../../Main/GameEngine.h"
 
-AiMobSpawner::AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects)
-    : Component(_owner), sceneObjects(_sceneObjects)
-{
+AiMobSpawner::AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects) : Component(_owner), sceneObjects(_sceneObjects) {
     LevelSize.x = levelSize.x - 50;
     LevelSize.y = levelSize.y - 50;
-    timer = 1.5;
+    timer = 2;
     srand(time(nullptr));
 }
 
@@ -101,7 +99,7 @@ void AiMobSpawner::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Debug/Trigger_DebugTX.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_1.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 10, 1, 1));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 50));
@@ -114,7 +112,7 @@ void AiMobSpawner::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Debug/Trigger_DebugTX.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Debug/Debug_porpol.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 360, 0.2, 15));
         Mob->addComponent(new ExperienceContainer(Mob, 10));
@@ -126,7 +124,7 @@ void AiMobSpawner::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Debug/Collider_DebugTX.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_2.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 200));
         Mob->addComponent(new ExperienceContainer(Mob, 3));

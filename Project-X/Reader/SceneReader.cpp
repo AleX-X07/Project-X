@@ -1,5 +1,6 @@
 ﻿#include "SceneReader.h"
 
+#include "../ECS/Behaviour/Manager/BossManager.h"
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
 
@@ -156,6 +157,7 @@ void SceneReader::SceneTestDev() {
     Object* Exp = new Object({0, 0}, { 50, 50});
     
     Hurt->addComponent(new AiMobSpawner(Hurt, addScene->getVecObjects()));
+    Hurt->addComponent(new BossManager(Hurt, 5, addScene->getVecObjects()));
 
     newObj->team = Object::Team::Player;
 
