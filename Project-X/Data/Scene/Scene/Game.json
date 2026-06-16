@@ -1,12 +1,12 @@
 {
     "ID" : 1,
-    "Name" : "FirstBiome",
+    "Name" : "Game",
     "Layer" : 2,
     "Screen" : ["Win","Death","Paused","Settings"],
     "Objects" : [
         {
-            "Name" : "Hero",
-            "Description" : "Player",
+            "Name" : "Player",
+            "Description" : "Hero",
             "Team" : "Player",
             "ID Object" : 0,
             "LayerPosition" : 1,
@@ -30,7 +30,12 @@
                                                 {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
-                {"Component" : "ScreenManager", "args" : ["Win","Death","Paused","Settings"]}
+                {"Component" : "ScreenManager", "args" : [{
+                                                            "Win" : "Win",
+                                                            "Death" : "Death",
+                                                            "Paused" : "Paused",
+                                                            "Settings" : "Settings"
+                                                            }]}
             ]
         },
         {

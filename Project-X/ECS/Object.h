@@ -15,6 +15,8 @@ private:
     sf::Vector2f position;
     sf::Vector2f size;
     std::vector<Component*> components = {};
+    std::string name;
+    std::string description;
     
 public:
     Object();
@@ -55,4 +57,9 @@ public:
     void setPosition(sf::Vector2f newPosition);
     sf::Vector2f getSize();
     void setSize(sf::Vector2f newSize);
+    void setName(std::string _name);
+    void setDescription(std::string _description);
+    
+    std::string& getName();
+    std::string& getDescription();
 };

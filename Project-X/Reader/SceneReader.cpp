@@ -48,7 +48,9 @@ Scene* SceneReader::initScene(int idScene) {
         
         for (auto& obj : objects) {
             Object* newObj = new Object({obj["Position"][0],obj["Position"][1]},{obj["Size"][0],obj["Size"][1]});
-                    
+            newObj->setName(obj["Name"]);
+            newObj->setDescription(obj["Description"]);            
+            
             if (obj["Team"] == "Player") {
                 newObj->team = Object::Team::Player;
             }
@@ -68,10 +70,10 @@ Scene* SceneReader::initScene(int idScene) {
                     std::cerr << "Composant inconnu : " << name << std::endl;
                 }
                 
-                if (newObj->hasComponent<StateMachine>()) {
+                if (name =="StateMachine") {
                     readAnimation(ecs,newObj);
                 }
-                if (newObj->hasComponent<HUD>()) {
+                if (name == "HUD") {
                     readHUD(ecs,newObj,newScene);
                 }
             }
@@ -200,7 +202,7 @@ void SceneReader::SceneTestDev() {
     Exp->addComponent(new ExpComponent(Exp, {50, 50}, addScene->getVecObjects(), 10));
     Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
     
-    newObj->addComponent(new ScreenManager(newObj, addScene));
+    //newObj->addComponent(new ScreenManager(newObj, addScene));
     
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);

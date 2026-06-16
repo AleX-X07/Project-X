@@ -66,10 +66,11 @@ std::unordered_map <
         return new Transition(obj, ecs["args"][0], typeMap.at(std::string(ecs["args"][1])));
     }},
     {"ScreenManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        if (ecs.contains("args") && !ecs["args"].empty() && !ecs["args"][0].is_null()) {
-            return new ScreenManager(obj, currentScene, ecs["args"][0], ecs["args"][1], ecs["args"][2], ecs["args"][3]);
+        std::unordered_map<std::string, std::string> screenMap;
+        for (auto& [ke, kv] : ecs["args"][0].items()) {
+            screenMap[ke] = kv.get<std::string>();
         }
-        return new ScreenManager(obj, currentScene);
+        return new ScreenManager(obj, currentScene, std::move(screenMap));
     }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {

@@ -22,11 +22,38 @@
             "ID Object" : 1,
             "LayerPosition" : 1,
             "Position" : [200,200],
-            "Size" : [175,125],
+            "Size" : [375,125],
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition", "args" : [1,"Button"]}
+            ]
+        },
+        {
+            "Name" : "Settings",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 1,
+            "LayerPosition" : 1,
+            "Position" : [800,400],
+            "Size" : [375,125],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,0,255,255]},
+                {"Component" : "Mouse", "args" : []}
+            ]
+        },
+        {
+            "Name" : "Quit",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 1,
+            "LayerPosition" : 1,
+            "Position" : [1400,800],
+            "Size" : [375,125],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Transition", "args" : [71756974,"Button"]}
             ]
         }
     ]

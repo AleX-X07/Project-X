@@ -1,6 +1,6 @@
 ﻿#include "Object.h"
 
-Object::Object() : position({0,0}), size({0,0}){
+Object::Object() : position({0,0}), size({0,0}) , name(""){
 }
 
 Object::Object(sf::Vector2f _position, sf::Vector2f _size)
@@ -57,4 +57,20 @@ sf::Vector2f Object::getSize()
 void Object::setSize(sf::Vector2f newSize)
 {
     size = newSize;
+}
+
+void Object::setName(std::string _name) {
+    name = _name;
+}
+
+void Object::setDescription(std::string _description) {
+    description = _description;
+}
+
+std::string& Object::getName() {
+    return name;
+}
+
+std::string& Object::getDescription() {
+    return description;
 }

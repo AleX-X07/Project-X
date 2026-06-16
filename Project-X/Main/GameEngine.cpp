@@ -89,6 +89,7 @@ void GameEngine::run() {
         if (inGame) {
             updateTime();
             update();
+            //updateChangeScene();
             window->clear();
             render();
             window->display();

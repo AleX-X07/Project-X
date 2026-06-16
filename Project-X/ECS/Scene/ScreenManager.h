@@ -9,14 +9,11 @@ private:
  
     Scene* currentScene;
     
-    std::string nameWin;
-    std::string nameDeath;
-    std::string namePaused;
-    std::string nameSettings;
+    std::unordered_map<std::string, std::string> screen;
+    std::string currentScreen;
     
 public:
-    ScreenManager(Object* _owner, Scene* scene);
-    ScreenManager(Object* _owner, Scene* scene, std::string nameWin, std::string nameDeath, std::string namePaused, std::string nameSettings);
+    ScreenManager(Object* _owner, Scene* scene, std::unordered_map<std::string, std::string> screen);
     virtual ~ScreenManager() override = default;
     
     void setScreen(std::string name);
