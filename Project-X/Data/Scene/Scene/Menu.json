@@ -22,7 +22,7 @@
             "ID Object" : 1,
             "LayerPosition" : 1,
             "Position" : [200,200],
-            "Size" : [350,250],
+            "Size" : [175,125],
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},

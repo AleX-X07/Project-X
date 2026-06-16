@@ -72,6 +72,7 @@ std::unordered_map<int, std::string>& GameEngine::getMapScene() {
 
 void GameEngine::setScene(int newScene) {
     idScene = newScene;
+    window->setView(window->getDefaultView());
     currentScene = SceneReader::getInstance()->initScene(idScene);
 }
 

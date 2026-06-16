@@ -2,6 +2,7 @@
 #include "../Main/GameEngine.h"
 #include "../ECS/Tool/HealthComponent.h"
 #include "../Reader/SceneReader.h"
+#include "../ECS/Object.h"
 
 Scene::Scene() : Scene(0){
 }

@@ -6,6 +6,7 @@
 class GameEngine;
 class HealthComponent;
 class SceneReader;
+class Object;
 
 class Scene {
 public:
