@@ -209,6 +209,10 @@ void SceneReader::SceneTestDev() {
     addScene->addObject(Exp, 1);
 }
 
+void SceneReader::testMap() {
+    
+}
+
 SceneReader* SceneReader::getInstance() {
     if (myInstance == nullptr) {
         myInstance = new SceneReader();

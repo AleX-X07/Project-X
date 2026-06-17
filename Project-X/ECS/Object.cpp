@@ -3,6 +3,9 @@
 Object::Object() : position({0,0}), size({0,0}) , name(""){
 }
 
+Object::Object(sf::Vector2f _size)  : size(_size), position({0,0}){
+}
+
 Object::Object(sf::Vector2f _position, sf::Vector2f _size)
     : position(_position)
     , size(_size)

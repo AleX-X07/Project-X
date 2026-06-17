@@ -43,6 +43,7 @@ public:
    void readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene);
    
    void SceneTestDev();
+   void testMap();
    
    static SceneReader* getInstance();
 };

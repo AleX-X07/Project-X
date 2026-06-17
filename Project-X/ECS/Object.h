@@ -20,6 +20,7 @@ private:
     
 public:
     Object();
+    Object(sf::Vector2f _size);
     Object(sf::Vector2f _position, sf::Vector2f _size);
     ~Object();
 
