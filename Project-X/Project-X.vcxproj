@@ -632,6 +632,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Graphics\HUD\TimerDisplay.cpp" />
+    <ClCompile Include="ECS\Graphics\RenderAngle.cpp" />
     <ClCompile Include="ECS\Graphics\RenderColor.cpp" />
     <ClCompile Include="ECS\Graphics\RenderFile.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1462,6 +1463,7 @@
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />
     <ClInclude Include="ECS\Graphics\HUD\TimerDisplay.h" />
+    <ClInclude Include="ECS\Graphics\RenderAngle.h" />
     <ClInclude Include="ECS\Graphics\RenderColor.h" />
     <ClInclude Include="ECS\Graphics\RenderFile.h" />
     <ClInclude Include="ECS\Graphics\RenderText.h" />
