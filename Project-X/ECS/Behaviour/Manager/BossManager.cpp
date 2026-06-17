@@ -1,6 +1,7 @@
 ﻿#include "BossManager.h"
 
 #include "../../Box/HurtBox.h"
+#include "../../ChemicalSystem/ChemicalManager.h"
 #include "../../Tool/HealthBar.h"
 #include "../Boss/AiBossCircle.h"
 #include "../Boss/AiBossExplode.h"
@@ -77,6 +78,7 @@ void BossManager::spawnBoss() {
     Boss->addComponent(new AiMoveTo(Boss, sceneObjects, 50));
     Boss->addComponent(new ExperienceContainer(Boss, 50));
     Boss->addComponent(new HealthBar(Boss, sf::Color::Red));
+    Boss->addComponent(new ChemicalManager(Boss));
     
     auto comp = owner->getComponent<AiMobSpawner>();
     comp->liste.push_back(Boss);

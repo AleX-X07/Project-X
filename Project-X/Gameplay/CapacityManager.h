@@ -14,7 +14,7 @@ public:
     bool pending = false;
     
     float ExpNeed = 10;
-    float ExpMulti = 1.2;
+    float ExpMulti = 1.2f;
     
     int pendnumber;
     

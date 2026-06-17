@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../../Object.h"
+#include "../../ChemicalSystem/ElementMain.h"
 #include "../../Graphics/RenderFile.h"
 
 class BulletSystemComponent : public Component

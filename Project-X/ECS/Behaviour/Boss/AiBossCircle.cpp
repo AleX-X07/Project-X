@@ -28,7 +28,7 @@ void AiBossCircle::update(float dt)
         sound->play();
         CreateBullet(owner, actualAngle, 5);
         actualTime = 0;
-        actualAngle += 10;
+        actualAngle += 15;
     }
     
     if (active) {
