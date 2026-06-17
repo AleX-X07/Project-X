@@ -50,6 +50,9 @@
 #include "../ECS/Tool/CameraComponent.h"
 #include "../ECS/Tool/HealthComponent.h"
 #include "../ECS/Tool/CrossHairComponent.h"
+#include "../ECS/Tool/MapMakeComponent.h"
+#include "../ECS/Tool/CloneItemComponent.h"
+#include "../ECS/Tool/RandomItemPositionComponent.h"
 
 #include "../ECS/Tool/Debug/DebugHudComp.h"
 

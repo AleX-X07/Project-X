@@ -18,6 +18,7 @@
 #include "InputReader.h"
 #include "../Pattern/StateMachine/StateMachine.h"
 #include "WeaponReader.h"
+#include "../Tool/MapMaker.h"
 
 
 class GameEngine;
@@ -43,7 +44,6 @@ public:
    void readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene);
    
    void SceneTestDev();
-   void testMap();
    
    static SceneReader* getInstance();
 };

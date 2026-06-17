@@ -2,6 +2,8 @@
 
 #include <map>
 
+#include "../ECS/Graphics/RenderFile.h"
+
 MapMaker::MapMaker(std::string _folder, sf::Vector2f _sizeImage) : folder(_folder), sizeImage(_sizeImage) {
     background = new Object(levelSize);
     
@@ -19,30 +21,28 @@ MapMaker::~MapMaker() {
 }
 
 void MapMaker::makeBackground() {
-    sf::RenderTexture renderTex(sf::Vector2u(levelSize));
+    renderTex = sf::RenderTexture(sf::Vector2u(levelSize));
     
-    for (int X = 0; X < levelSize.x; X++) {
-        for (int Y = 0; Y < levelSize.y; Y++) {
+    float tilesX = levelSize.x / sizeImage.x;
+    float tilesY = levelSize.y / sizeImage.y;
+    
+    for (int X = 0; X < tilesX; X++) {
+        for (int Y = 0; Y < tilesY; Y++) {
             sf::Texture texture;
-            texture.loadFromFile();
-            sf::Sprite
+            int nbr = Random::getInstance()->getRandomInt(0,images.size()-1);
+            texture.loadFromFile(images[nbr].c_str());
+            sf::Sprite sprite(texture);
+            sprite.setPosition({X*sizeImage.x,Y*sizeImage.y});
+            renderTex.draw(sprite);
         }
     }
-    
-}
-
-int MapMaker::randomInt(int min, int max) {
-
-    int getRandomNumber(int min, int max)
-    {
-        std::random_device m_rd;
-        std::mt19937 m_gen(m_rd());
-
-        std::uniform_int_distribution<int> dis(min, max);
-        return dis(m_gen);
-    }
+    renderTex.display();
 }
 
 Object* MapMaker::getBackground() {
+    if (!background->hasComponent<RenderFile>()) {
+        background->addComponent(new RenderFile(background));
+        background->getComponent<RenderFile>()->setTexture(new sf::Texture(renderTex.getTexture()));
+    }
     return background;
 }

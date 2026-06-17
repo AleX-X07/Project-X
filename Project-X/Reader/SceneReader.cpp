@@ -40,10 +40,6 @@ Scene* SceneReader::initScene(int idScene) {
         Scene* newScene = new Scene(idScene);
         newScene->setLayer(data["Layer"]);
         
-        // for (auto& s : data["Screen"]) {
-        //     newScene->getScreenVec().push_back(s.get<std::string>());
-        // }
-        
         nlohmann::json objects = data["Objects"];
         
         for (auto& obj : objects) {
@@ -63,7 +59,13 @@ Scene* SceneReader::initScene(int idScene) {
                     
             for (auto& ecs : obj["ECS"]) {
                 std::string name = ecs["Component"];
-                        
+                if (name == "Clone") {
+                    int nbr = ecs["args"][0];
+                    auto* cloneComp = new CloneItemComponent(newObj, newScene, nbr, obj);
+                    newObj->addComponent(cloneComp);
+                    cloneComp->clone(); // ← appel direct, pas via getComponent
+                    continue; // ← skip la factory
+                }
                 if (FactoriesECS::factories.count(name)) {
                     newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, newScene));
                 } else {
@@ -77,7 +79,8 @@ Scene* SceneReader::initScene(int idScene) {
                     readHUD(ecs,newObj,newScene);
                 }
             }
-            newScene->addObject(newObj, obj["LayerPosition"]);
+            newObj->setLayer(obj["LayerPosition"]);
+            newScene->addObject(newObj, newObj->getLayer());
         }
         return newScene;
     }
@@ -207,10 +210,6 @@ void SceneReader::SceneTestDev() {
     addScene->addObject(newObj, 1);
     addScene->addObject(Hurt, 1);
     addScene->addObject(Exp, 1);
-}
-
-void SceneReader::testMap() {
-    
 }
 
 SceneReader* SceneReader::getInstance() {

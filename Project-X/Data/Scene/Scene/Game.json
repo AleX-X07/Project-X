@@ -1,7 +1,7 @@
 {
     "ID" : 1,
     "Name" : "Game",
-    "Layer" : 2,
+    "Layer" : 4,
     "Screen" : ["Win","Death","Paused","Settings"],
     "Objects" : [
         {
@@ -9,7 +9,7 @@
             "Description" : "Hero",
             "Team" : "Player",
             "ID Object" : 0,
-            "LayerPosition" : 1,
+            "LayerPosition" : 2,
             "Position" : [500,500],
             "Size" : [175,125],
             "ECS" : [
@@ -21,7 +21,7 @@
                 {"Component" : "Weapon", "args" : ["Deagle"]},
                 {"Component" : "HurtBox", "args" : [175,125,1]},
                 {"Component" : "Camera", "args" : [false, 0]},
-                {"Component" : "Health", "args" : [10]},
+                {"Component" : "Health", "args" : [1000]},
                 {"Component" : "ExpManager", "args" : []},
                 {"Component" : "Crosshair", "args" : []},
                 {"Component" : "Timer", "args" : [500]},
@@ -43,9 +43,23 @@
             "ID Object" : 0,
             "LayerPosition" : 0,
             "Position" : [0,0],
-            "Size" : [1920,1080],
+            "Size" : [0,0],
             "ECS" : [
-                {"Component" : "RenderFile", "args" : ["Assets/Debug/Map.png"]}
+                {"Component" : "MapMaker", "args" : ["Assets/Decoration/Map/", [128,128]]}
+            ]
+        },
+        {
+            "Name" : "Cailloux",
+            "Description" : "Cailloux",
+            "Team" : "Neutral",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [50,50],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Item/Cailloux1.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3790],[0,2110]]}, 
+                {"Component" : "Clone", "args" : [5]}
             ]
         },
         {
@@ -53,7 +67,7 @@
             "Description" : "AIMobSpawner",
             "Team" : "Enemy",
             "ID Object" : 0,
-            "LayerPosition" : 1,
+            "LayerPosition" : 3,
             "Position" : [0,0],
             "Size" : [0,0],
             "ECS" : [

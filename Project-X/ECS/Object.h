@@ -17,9 +17,11 @@ private:
     std::vector<Component*> components = {};
     std::string name;
     std::string description;
+    int layer;
     
 public:
     Object();
+    Object(Object& other);
     Object(sf::Vector2f _size);
     Object(sf::Vector2f _position, sf::Vector2f _size);
     ~Object();
@@ -56,11 +58,19 @@ public:
 
     sf::Vector2f getPosition();
     void setPosition(sf::Vector2f newPosition);
+    
     sf::Vector2f getSize();
     void setSize(sf::Vector2f newSize);
-    void setName(std::string _name);
-    void setDescription(std::string _description);
     
+    void setLayer(int _layer);
+    int getLayer();
+    
+    void setName(std::string _name);
     std::string& getName();
+    
+    void setDescription(std::string _description);
     std::string& getDescription();
+    
+    std::vector<Component*>& getVecComponents();
+    
 };

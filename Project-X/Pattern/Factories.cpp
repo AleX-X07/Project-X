@@ -100,6 +100,13 @@ std::unordered_map <
     {"Timer", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new TimerComponent(obj, ecs["args"][0]);
     }},
+    {"MapMaker", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new MapMakeComponent(obj, ecs["args"][0], {ecs["args"][1][0],ecs["args"][1][1]});
+    }},
+    {"RandomPosition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new RandomItemPositionComponent(obj, {ecs["args"][0][0],ecs["args"][0][1]}, {ecs["args"][1][0],ecs["args"][1][1]});
+    }},
+    
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new WeaponMain(obj, ecs["args"][0]);
