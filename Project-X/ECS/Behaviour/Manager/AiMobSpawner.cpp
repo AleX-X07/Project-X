@@ -97,10 +97,10 @@ void AiMobSpawner::addMob()
 
     if (r <= 25)
     {
-        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
+        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {75, 75});
         Mob->team = Object::Team::Enemy;
-        Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
+        Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
+        Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
         Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_1.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 10, 1, 1));
@@ -112,10 +112,10 @@ void AiMobSpawner::addMob()
     }
     else if (r <= 50)
     {
-        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
+        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {75, 75});
         Mob->team = Object::Team::Enemy;
-        Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
+        Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
+        Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
         Mob->addComponent(new RenderFile(Mob, "Assets/Debug/Debug_porpol.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 360, 0.2, 15));
@@ -126,10 +126,10 @@ void AiMobSpawner::addMob()
     }
     else
     {
-        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {50, 50});
+        Object* Mob = new Object({ static_cast<float>(rand()) / RAND_MAX * LevelSize.x, static_cast<float>(rand()) / RAND_MAX * LevelSize.y }, {75, 75});
         Mob->team = Object::Team::Enemy;
-        Mob->addComponent(new HurtBox(Mob, {50, 50}, sceneObjects, 0));
-        Mob->addComponent(new HitBox(Mob, {50, 50}, true, 10));
+        Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
+        Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
         Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_2.png"));
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 200));

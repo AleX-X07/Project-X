@@ -216,9 +216,9 @@
             "Description" : "Hero",
             "Team" : "Player",
             "ID Object" : 0,
-            "LayerPosition" : 2,
+            "LayerPosition" : 3,
             "Position" : [500,500],
-            "Size" : [125,75],
+            "Size" : [75,50],
             "ECS" : [
                 {"Component" : "Input", "args" : []},
                 {"Component" : "RenderFile", "args" : []},
@@ -249,7 +249,7 @@
             "Description" : "AIMobSpawner",
             "Team" : "Enemy",
             "ID Object" : 0,
-            "LayerPosition" : 3,
+            "LayerPosition" : 2,
             "Position" : [0,0],
             "Size" : [0,0],
             "ECS" : [
