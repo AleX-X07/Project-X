@@ -6,6 +6,9 @@
 CA_bigbullet::CA_bigbullet(Object* _owner, float _Multi, float _Cooldown) : CapacityMain(_owner) {
     Multi = _Multi;
     CoolDown = _Cooldown;
+    
+    HUDtx.loadFromFile("Assets/Capacity/NukeIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_bigbullet::update(float dt) {

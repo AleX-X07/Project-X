@@ -5,9 +5,6 @@ CapacityMain::CapacityMain(Object* _owner) : Component(_owner) {
     HUDrect.setSize({50, 50});
     HUDrect.setPosition({(1920 - 30), (1080 - 100)});
     
-    HUDtx.loadFromFile("Assets/Debug/Debug_pink.png");
-    HUDrect.setTexture(&HUDtx);
-    
     HUDlevel.setSize({50, 10});
     HUDlevel.setPosition({(HUDrect.getPosition().x), (HUDrect.getPosition().y + 60)});
     

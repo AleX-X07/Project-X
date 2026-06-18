@@ -8,9 +8,10 @@
 #include "Capacity/CA_BigBullet.h"
 #include "Capacity/CA_DoubleBullet.h"
 #include "Capacity/CA_Dash.h"
+#include "Capacity/CA_FireBullet.h"
 
 CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
-    ActualCapa = new CA_Rage(owner, 10, 10);
+    ActualCapa = new CA_FireBullet(owner, 10, 10);
     SecondaryCapa = new CA_DoubleBullet(owner, 10, 10);
     UltiCapa = new CA_Dash(owner, 4000, 200, 3);
     

@@ -7,6 +7,9 @@ CA_Dash::CA_Dash(Object* _owner, float _speed, float _distance, float _Cooldown)
     speed = _speed;
     distance = _distance;
     CoolDown = _Cooldown;
+    
+    HUDtx.loadFromFile("Assets/Capacity/DoubleIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_Dash::update(float dt) {

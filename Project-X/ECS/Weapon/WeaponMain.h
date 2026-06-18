@@ -40,6 +40,11 @@ class WeaponMain : public Component
 public:
     argsWeapon myArgs;
     
+    bool HasFire = false;
+    bool HasIce = false;
+    bool HasPoison = false;
+    bool HasLightning = false;
+    
 public:
     Object* WeaponRender;
     

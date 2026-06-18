@@ -7,6 +7,9 @@ CA_Heal::CA_Heal(Object* _owner, float _Amount, float _Interval, float _Timer, f
     Interval = _Interval;
     Timer = _Timer;
     CoolDown = _Cooldown;
+    
+    HUDtx.loadFromFile("Assets/Capacity/healIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_Heal::update(float dt) {

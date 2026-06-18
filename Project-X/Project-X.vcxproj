@@ -481,6 +481,8 @@
     <ClCompile Include="ECS\ChemicalSystem\Giver\ElementGiver.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Fire.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Ice.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Lightning.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Poison.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\HealthDisplay.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1204,8 +1206,12 @@
     <ClCompile Include="Gameplay\Capacity\CA_BulletExplode.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Dash.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_DoubleBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_FireBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Frenesie.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Heal.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_IceBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Lightning.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_PoisonBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
     <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
@@ -1551,6 +1557,8 @@
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementType.h" />
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Fire.h" />
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Ice.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Lightning.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Poison.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />
@@ -1591,8 +1599,12 @@
     <ClInclude Include="Gameplay\Capacity\CA_BulletExplode.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Dash.h" />
     <ClInclude Include="Gameplay\Capacity\CA_DoubleBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_FireBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Frenesie.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Heal.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_IceBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Lightning.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_PoisonBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />

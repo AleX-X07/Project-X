@@ -38,7 +38,14 @@ Object* WeaponMain::CreateBullet(float angle) {
     ball->addComponent(new RenderAngle(ball, myArgs.BulletImage, angle));
     ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
     ball->addComponent(new ElementGiver(ball));
-    ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
+
+    if (HasFire) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Fire, 10, 10, 5);
+    }
+    if (HasIce) {
+        ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
+    }
+    
     
     return ball;
 }
