@@ -107,6 +107,10 @@ std::unordered_map <
     // Debug
     {"DebugHUD", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new DebugHudComp(obj);
+    }},
+    // Capacity
+{"CapacityManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new CapacityManager(obj);
     }}
 };
 

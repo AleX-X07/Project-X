@@ -11,17 +11,17 @@
             "ID Object" : 0,
             "LayerPosition" : 1,
             "Position" : [500,500],
-            "Size" : [175,125],
+            "Size" : [50,50],
             "ECS" : [
                 {"Component" : "Input", "args" : []},
                 {"Component" : "RenderFile", "args" : []},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Movement" , "args" : [500]},
                 {"Component" : "BulletManager", "args" : []},
-                {"Component" : "Weapon", "args" : ["Deagle"]},
-                {"Component" : "HurtBox", "args" : [175,125,1]},
+                {"Component" : "Weapon", "args" : ["ShotGun"]},
+                {"Component" : "HurtBox", "args" : [50,50,1]},
                 {"Component" : "Camera", "args" : [false, 0]},
-                {"Component" : "Health", "args" : [10]},
+                {"Component" : "Health", "args" : [1000]},
                 {"Component" : "ExpManager", "args" : []},
                 {"Component" : "Crosshair", "args" : []},
                 {"Component" : "Timer", "args" : [500]},
@@ -33,7 +33,8 @@
                 {"Component" : "ScreenWin", "args" : ["Win"]},
                 {"Component" : "ScreenDeath", "args" : ["Death"]},
                 {"Component" : "ScreenPaused", "args" : ["Paused"]},
-                {"Component" : "ScreenSettings", "args" : ["Settings"]}
+                {"Component" : "ScreenSettings", "args" : ["Settings"]},
+                {"Component" : "CapacityManager", "args" : []}
             ]
         },
         {
@@ -43,7 +44,7 @@
             "ID Object" : 0,
             "LayerPosition" : 0,
             "Position" : [0,0],
-            "Size" : [1920,1080],
+            "Size" : [3840,2160],
             "ECS" : [
                 {"Component" : "RenderFile", "args" : ["Assets/Debug/Map.png"]}
             ]

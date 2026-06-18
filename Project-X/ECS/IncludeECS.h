@@ -55,3 +55,6 @@
 
 // Weapon
 #include "../ECS/Weapon/WeaponMain.h"
+
+// Capacity
+#include "../Gameplay/CapacityManager.h"
