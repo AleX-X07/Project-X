@@ -30,6 +30,10 @@ std::vector<std::string>& Scene::getScreenVec() {
     return screenVec;
 }
 
+std::vector<Object*>* Scene::getObjectsScreen() {
+    return objectsScreen;
+}
+
 int& Scene::getIdScene() {
     return idScene;
 }
@@ -41,6 +45,10 @@ Scene::State& Scene::getState() {
 void Scene::addObject(Object* addObject, int Layer) {
     myObjects.push_back(addObject);
     getMyLayer().addInLayer(addObject, Layer);
+}
+
+void Scene::setObjectsScreen(std::vector<Object*>* _objectsScreen) {
+    objectsScreen = _objectsScreen;
 }
 
 void Scene::setIdScene(int _idScene) {

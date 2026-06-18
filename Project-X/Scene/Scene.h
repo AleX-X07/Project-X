@@ -34,11 +34,13 @@ public:
     std::vector<Object*>& getVecObjects();
     
     std::vector<std::string>& getScreenVec();
+    std::vector<Object*>* getObjectsScreen();
     int& getIdScene();
     State& getState();
     
     void addObject(Object* addObject, int Layer);
     
+    void setObjectsScreen(std::vector<Object*>* _objectsScreen);
     void setIdScene(int _idScene);
     void setState(State newState);
     void setScreen(std::string newScreen);
