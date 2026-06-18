@@ -17,7 +17,7 @@ CameraComponent::~CameraComponent()
 }
 
 void CameraComponent::update(float dt) {
-    ShakeTimer += dt;
+    //ShakeTimer += dt;
     if (haslag)
     {
         ObjectivePos = { owner->getPosition().x + owner->getSize().x / 2, owner->getPosition().y + owner->getSize().y / 2 };
@@ -41,15 +41,17 @@ void CameraComponent::update(float dt) {
         CamPos = ObjectivePos;
     }
     
-    if (isShaking)
-    {
+    if (isShaking) {
         ShakeTimer += dt;
 
         float t = ShakeTimer / ShakeDuration;
         float currentIntensity = ShakeIntensity * (1.f - t);
-        
+
         CamPos.x += ((std::rand() % 21) - 10) * currentIntensity;
         CamPos.y += ((std::rand() % 21) - 10) * currentIntensity;
+        
+        CamPos.x = std::clamp(CamPos.x, ScreenSize.x / 2, LevelSize.x - ScreenSize.x / 2);
+        CamPos.y = std::clamp(CamPos.y, ScreenSize.y / 2, LevelSize.y - ScreenSize.y / 2);
 
         if (ShakeTimer >= ShakeDuration)
             isShaking = false;

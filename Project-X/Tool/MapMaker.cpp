@@ -17,7 +17,12 @@ MapMaker::MapMaker(std::string _folder, sf::Vector2f _sizeImage) : folder(_folde
 }
 
 MapMaker::~MapMaker() {
-    
+    delete background;
+    background = nullptr;
+}
+
+std::vector<Object*>& MapMaker::getItemMap() {
+    return itemMap;
 }
 
 void MapMaker::makeBackground() {
@@ -31,16 +36,28 @@ void MapMaker::makeBackground() {
             sf::Texture texture;
             int nbr = Random::getInstance()->getRandomInt(0,images.size()-1);
             texture.loadFromFile(images[nbr].c_str());
-            sf::Sprite sprite(texture);
-            sprite.setPosition({X*sizeImage.x,Y*sizeImage.y});
-            renderTex.draw(sprite);
+            sf::RectangleShape rect;
+            rect.setPosition({X*sizeImage.x,Y*sizeImage.y});
+            rect.setSize((sizeImage));
+            rect.setTexture(&texture);
+            renderTex.draw(rect);
         }
     }
     renderTex.display();
 }
 
+void MapMaker::addItemOnMap() {
+    for (auto& obj : itemMap) {
+        auto rend = obj->getComponent<RenderFile>()->getRect();
+        if (rend != nullptr) {
+            renderTex.draw(*rend);
+        }
+    }
+}
+
 Object* MapMaker::getBackground() {
     if (!background->hasComponent<RenderFile>()) {
+        addItemOnMap();
         background->addComponent(new RenderFile(background));
         background->getComponent<RenderFile>()->setTexture(new sf::Texture(renderTex.getTexture()));
     }

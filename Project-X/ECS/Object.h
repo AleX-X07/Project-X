@@ -8,7 +8,7 @@
 class Object
 {
 public :
-    enum class Team { Player, Enemy, Neutral };
+    enum class Team { Player, Enemy, Neutral, Map };
     Team team = Team::Neutral;
     
 private:

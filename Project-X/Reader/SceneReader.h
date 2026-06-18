@@ -40,6 +40,7 @@ public:
    Scene* initScene(int idScene);
    std::vector<Object*>* initScreen(std::string nameScreen, Scene* currentScene);
    
+   void makeMap(MapMakeComponent* map, Object* newObj);
    void readAnimation(nlohmann::basic_json<>& ecs, Object* newObj);
    void readHUD(nlohmann::basic_json<>& ecs, Object* newObj, Scene* newScene);
    

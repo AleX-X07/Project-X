@@ -3,7 +3,7 @@
     "State" : {
         "IdleRight" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_idle.png"],
         "IdleLeft" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_idle_left.png"],
-        "Right" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_marche.png"],
-        "Left" : [{"Type" : "Animated", "args" : [2048,512,4,0.2]}, "Assets/Character/Animation/animation_marche_left.png"]
+        "Right" : [{"Type" : "Animated", "args" : [2048,512,4,0.1]}, "Assets/Character/Animation/animation_marche.png"],
+        "Left" : [{"Type" : "Animated", "args" : [2048,512,4,0.1]}, "Assets/Character/Animation/animation_marche_left.png"]
     }
 }

@@ -10,6 +10,10 @@ MapMakeComponent::~MapMakeComponent() {
     myMaker = nullptr;
 }
 
+MapMaker* MapMakeComponent::getMaker() {
+    return myMaker;
+}
+
 void MapMakeComponent::render() {
     myMaker->getBackground()->render();
 }

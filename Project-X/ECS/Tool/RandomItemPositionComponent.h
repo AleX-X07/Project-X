@@ -6,6 +6,9 @@
 class Object;
 
 class RandomItemPositionComponent : public Component {
+private:
+    sf::Vector2f limite;
+    
 public:
     RandomItemPositionComponent(Object* _owner, sf::Vector2i _posX, sf::Vector2i _posY);
     virtual ~RandomItemPositionComponent() override = default;

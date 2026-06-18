@@ -43,6 +43,7 @@ Scene* SceneReader::initScene(int idScene) {
         nlohmann::json objects = data["Objects"];
         
         for (auto& obj : objects) {
+            MapMakeComponent* map = nullptr;
             Object* newObj = new Object({obj["Position"][0],obj["Position"][1]},{obj["Size"][0],obj["Size"][1]});
             newObj->setName(obj["Name"]);
             newObj->setDescription(obj["Description"]);            
@@ -52,6 +53,9 @@ Scene* SceneReader::initScene(int idScene) {
             }
             else if (obj["Team"] == "Enemy") {
                 newObj->team = Object::Team::Enemy;
+            }
+            else if (obj["Team"] == "Map") {
+                newObj->team = Object::Team::Map;
             }
             else {
                 newObj->team = Object::Team::Neutral;
@@ -63,8 +67,8 @@ Scene* SceneReader::initScene(int idScene) {
                     int nbr = ecs["args"][0];
                     auto* cloneComp = new CloneItemComponent(newObj, newScene, nbr, obj);
                     newObj->addComponent(cloneComp);
-                    cloneComp->clone(); // ← appel direct, pas via getComponent
-                    continue; // ← skip la factory
+                    cloneComp->clone(); 
+                    continue;
                 }
                 if (FactoriesECS::factories.count(name)) {
                     newObj->addComponent(FactoriesECS::factories[name](newObj, ecs, newScene));
@@ -78,9 +82,17 @@ Scene* SceneReader::initScene(int idScene) {
                 if (name == "HUD") {
                     readHUD(ecs,newObj,newScene);
                 }
+                if (name == "Map") {
+                    map = newObj->getComponent<MapMakeComponent>();
+                }
             }
-            newObj->setLayer(obj["LayerPosition"]);
-            newScene->addObject(newObj, newObj->getLayer());
+            if (newObj->team != Object::Team::Map) {
+                newObj->setLayer(obj["LayerPosition"]);
+                newScene->addObject(newObj, newObj->getLayer());
+            }
+            else {
+                makeMap(map, newObj);
+            }
         }
         return newScene;
     }
@@ -130,6 +142,12 @@ std::vector<Object*>* SceneReader::initScreen(std::string nameScreen, Scene* cur
         }
     }
     return myObjects;
+}
+
+void SceneReader::makeMap(MapMakeComponent* map, Object* newObj) {
+    if (map != nullptr) {
+        map->getMaker()->getItemMap().push_back(newObj);
+    }
 }
 
 void SceneReader::readAnimation(nlohmann::basic_json<>& ecs, Object* newObj) {
