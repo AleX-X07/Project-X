@@ -5,12 +5,14 @@
 class ChemicalManager : public Component {
 public:
     std::vector<ElementMain*> List;
+    std::vector<sf::RectangleShape*> rectlist;
     
 public:
     ChemicalManager(Object* owner);
     ~ChemicalManager();
     
     void update(float deltaTime) override;
+    void render() override;
     
     void addState(ElementMain* Element);
 };

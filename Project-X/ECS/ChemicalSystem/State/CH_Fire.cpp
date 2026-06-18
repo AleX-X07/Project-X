@@ -11,6 +11,8 @@ CH_Fire::CH_Fire(ChemicalManager& _Manager, float _duration, float _damage, floa
     if (comp) {
         comp->getRect()->setFillColor(sf::Color::Red);
     }
+    
+    file = "Assets/EffectIcon/FireIcon.png";
 }
 
 void CH_Fire::update(float dt) {

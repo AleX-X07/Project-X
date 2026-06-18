@@ -480,6 +480,7 @@
     <ClCompile Include="ECS\ChemicalSystem\ElementMain.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\Giver\ElementGiver.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Fire.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Ice.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\HealthDisplay.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1468,6 +1469,7 @@
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementGiver.h" />
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementType.h" />
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Fire.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Ice.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />

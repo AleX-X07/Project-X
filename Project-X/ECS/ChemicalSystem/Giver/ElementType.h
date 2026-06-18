@@ -7,4 +7,5 @@ struct ElementData {
     float duration;
     float damage;
     float interval;
+    float power;
 };

@@ -1,5 +1,6 @@
 ﻿#include "ChemicalManager.h"
 
+#include "../../Main/GameEngine.h"
 #include "State/CH_Fire.h"
 
 ChemicalManager::ChemicalManager(Object* owner) : Component(owner) {
@@ -10,6 +11,11 @@ ChemicalManager::~ChemicalManager() {
     for (auto z : List) {
         delete z;
         z = nullptr;
+    }
+    
+    for (auto c : rectlist) {
+        delete c;
+        c = nullptr;
     }
 }
 
@@ -34,4 +40,10 @@ void ChemicalManager::update(float deltaTime) {
 
 void ChemicalManager::addState(ElementMain* Element) {
     List.push_back(Element);
+}
+
+void ChemicalManager::render() {
+    for (auto z : rectlist) {
+        GameEngine::getWindow()->draw(*z);
+    }
 }

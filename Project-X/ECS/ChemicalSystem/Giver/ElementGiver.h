@@ -8,6 +8,8 @@ public:
 
     ElementGiver(Object* owner);
 
-    void addElement(ElementType type, float duration, float damage, float interval);
+    void addFire(ElementType type, float duration, float damage, float interval);
+    void addIce(ElementType type, float duration, float power);
+    
     void applyTo(Object* target);
 };
