@@ -1,13 +1,14 @@
 {
-    "Name" : "Deagle",
+    "Name" : "ShotGun",
     "Image" : "Assets/Weapon/shotgun.png",
     "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
     "shakeIntensity" : 1,
     "shakeDuration" : 1,
     "hasrecoil" : true,
     "recoilTime" : 1,
     "Bullet" : {        
-        "BulletImage" : "Assets/Debug/DebugBulletblue.png",
+        "BulletImage" : "Assets/Weapon/balles.png",
         "Size" : [25,25],
         "spread" : 15,
         "fireRate" : 2,

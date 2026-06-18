@@ -16,4 +16,5 @@ public:
     void update(float dt) override;
     
     void activate() override;
+    void levelUp() override;
 };

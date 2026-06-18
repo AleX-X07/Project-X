@@ -2,6 +2,8 @@
 #include "../Bullet/BulletManager.h"
 #include "../../Main/GameEngine.h"
 #include "../../Reader/WeaponReader.h"
+#include "../ChemicalSystem/Giver/ElementGiver.h"
+#include "../Graphics/RenderAngle.h"
 
 WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
     myArgs = WeaponReader::getWeapons()[weapon];
@@ -33,8 +35,10 @@ Object* WeaponMain::CreateBullet(float angle) {
     Object* ball = new Object(owner->getPosition(), myArgs.bulletSize);
     
     ball->addComponent(new BulletSystemComponent(ball, myArgs.speed, angle, myArgs.lifeTime));
-    ball->addComponent(new RenderFile(ball, myArgs.BulletImage));
+    ball->addComponent(new RenderAngle(ball, myArgs.BulletImage, angle));
     ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
+    ball->addComponent(new ElementGiver(ball));
+    ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
     
     return ball;
 }

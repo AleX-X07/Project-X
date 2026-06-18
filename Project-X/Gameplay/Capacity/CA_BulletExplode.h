@@ -16,4 +16,6 @@ public:
     
     void activate() override;
     void Shot();
+    
+    void levelUp() override;
 };

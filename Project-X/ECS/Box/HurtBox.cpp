@@ -1,6 +1,7 @@
 ﻿#include "HurtBox.h"
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Bullet/BulletLogic/GrenadeSystemComponent.h"
+#include "../ChemicalSystem/Giver/ElementGiver.h"
 
 HurtBox::HurtBox(Object* _owner, sf::Vector2f _size, std::vector<Object*>& _objects, float _Iframe)
     : Component(_owner), other(_objects)
@@ -41,6 +42,10 @@ bool HurtBox::checkHitBox(Object* b)
     {
         damageTaken = hit->damage;
         actualtime = 0;
+        
+        auto giver = b->getComponent<ElementGiver>();
+        if (giver) giver->applyTo(owner);
+        
         return true;
     }
     return false;
@@ -96,6 +101,10 @@ bool HurtBox::checkBulletsInSource(BulletSource* comp)
         {
             damageTaken = damage;
             actualtime = 0;
+            
+            auto giver = c->getComponent<ElementGiver>();
+            if (giver) giver->applyTo(owner);
+            
             return true;
         }
     }

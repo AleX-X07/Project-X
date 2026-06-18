@@ -6,14 +6,22 @@ class GameEngine;
 class ExpManager : public Component
 {
 public:
-    int Exp = 0;
+    sf::RectangleShape rect;
+    sf::RectangleShape bar;
+    
+    float Exp = 0;
+    int level = 1;
+
+    sf::Font myFont;
+    sf::Text* myText;
     
 public:
     ExpManager(Object* _owner);
-    ~ExpManager() override = default;
+    ~ExpManager() override;
 
     void update(float deltaTime) override;
+    void render() override;
     
     void setExp(int _exp);
-    int getExp();
+    float getExp();
 };

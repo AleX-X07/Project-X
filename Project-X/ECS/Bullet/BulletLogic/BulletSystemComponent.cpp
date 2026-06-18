@@ -1,5 +1,7 @@
 ﻿#include "BulletSystemComponent.h"
 
+#include "../../ChemicalSystem/State/CH_Fire.h"
+
 BulletSystemComponent::BulletSystemComponent(Object* _owner, float _speed, float _angle, float _lifetime)
     : Component(_owner)
 {

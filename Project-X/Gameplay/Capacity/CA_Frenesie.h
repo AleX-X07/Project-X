@@ -9,6 +9,8 @@ public:
     float TotalTime = 0;
     
     bool IsActived = false;
+    
+    float FrenFireRate;
 public:
     CA_Frenesie(Object* _owner, float _Timer, float _CoolDown);
     ~CA_Frenesie() override = default;
@@ -16,4 +18,5 @@ public:
     void update(float dt) override;
     
     void activate() override;
+    void levelUp() override;
 };

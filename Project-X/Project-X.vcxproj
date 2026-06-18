@@ -160,7 +160,11 @@
   <ItemGroup>
     <ClCompile Include="ECS\Behaviour\AiDebugShoot.cpp" />
     <ClCompile Include="ECS\Behaviour\AiMoveTo.cpp" />
+    <ClCompile Include="ECS\Behaviour\Boss\AiBossCircle.cpp" />
+    <ClCompile Include="ECS\Behaviour\Boss\AiBossExplode.cpp" />
+    <ClCompile Include="ECS\Behaviour\Boss\AiBossShot.cpp" />
     <ClCompile Include="ECS\Behaviour\Manager\AiMobSpawner.cpp" />
+    <ClCompile Include="ECS\Behaviour\Manager\BossManager.cpp" />
     <ClCompile Include="ECS\Box\HitBox.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -472,6 +476,11 @@
     </ClCompile>
     <ClCompile Include="ECS\Bullet\BulletSource.cpp" />
     <ClCompile Include="ECS\Bullet\Special\GrenadeBullet.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\ChemicalManager.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\ElementMain.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\Giver\ElementGiver.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Fire.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Ice.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\HealthDisplay.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -547,7 +556,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Graphics\HUD\HUD.cpp">
@@ -624,10 +633,11 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\alexs\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Graphics\HUD\TimerDisplay.cpp" />
+    <ClCompile Include="ECS\Graphics\RenderAngle.cpp" />
     <ClCompile Include="ECS\Graphics\RenderColor.cpp" />
     <ClCompile Include="ECS\Graphics\RenderFile.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1108,6 +1118,7 @@
     </ClCompile>
     <ClCompile Include="ECS\Tool\Experience\ExperienceContainer.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
+    <ClCompile Include="ECS\Tool\HealthBar.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="ECS\Tool\TimerComponent.cpp" />
     <ClCompile Include="ECS\Weapon\WeaponMain.cpp">
@@ -1522,7 +1533,11 @@
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
     <ClInclude Include="ECS\Behaviour\AiMoveTo.h" />
+    <ClInclude Include="ECS\Behaviour\Boss\AiBossCircle.h" />
+    <ClInclude Include="ECS\Behaviour\Boss\AiBossExplode.h" />
+    <ClInclude Include="ECS\Behaviour\Boss\AiBossShot.h" />
     <ClInclude Include="ECS\Behaviour\Manager\AiMobSpawner.h" />
+    <ClInclude Include="ECS\Behaviour\Manager\BossManager.h" />
     <ClInclude Include="ECS\Box\HitBox.h" />
     <ClInclude Include="ECS\Box\HurtBox.h" />
     <ClInclude Include="ECS\Bullet\BulletLogic\BulletSystemComponent.h" />
@@ -1530,10 +1545,17 @@
     <ClInclude Include="ECS\Bullet\BulletManager.h" />
     <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\Special\GrenadeBullet.h" />
+    <ClInclude Include="ECS\ChemicalSystem\ChemicalManager.h" />
+    <ClInclude Include="ECS\ChemicalSystem\ElementMain.h" />
+    <ClInclude Include="ECS\ChemicalSystem\Giver\ElementGiver.h" />
+    <ClInclude Include="ECS\ChemicalSystem\Giver\ElementType.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Fire.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Ice.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />
     <ClInclude Include="ECS\Graphics\HUD\TimerDisplay.h" />
+    <ClInclude Include="ECS\Graphics\RenderAngle.h" />
     <ClInclude Include="ECS\Graphics\RenderColor.h" />
     <ClInclude Include="ECS\Graphics\RenderFile.h" />
     <ClInclude Include="ECS\Graphics\RenderText.h" />
@@ -1559,6 +1581,7 @@
     <ClInclude Include="ECS\Tool\Experience\ExpComponent.h" />
     <ClInclude Include="ECS\Tool\Experience\ExperienceContainer.h" />
     <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />
+    <ClInclude Include="ECS\Tool\HealthBar.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\TimerComponent.h" />
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />

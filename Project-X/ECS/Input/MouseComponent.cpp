@@ -16,6 +16,16 @@ sf::Vector2i MouseComponent::getMousePosition() {
     return sf::Mouse::getPosition(*GameEngine::getWindow());
 }
 
+bool MouseComponent::keepClick() {
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        return true;
+    }
+    if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -10) {
+        return true;
+    }
+    return false;
+}
+
 bool MouseComponent::clicked() {
     if (Input::getInput()->isMousePressed(sf::Mouse::Button::Left)) {
         return true;

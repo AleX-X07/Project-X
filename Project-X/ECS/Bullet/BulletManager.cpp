@@ -19,7 +19,7 @@ void BulletManager::update(float dt)
     actualTime += dt;
 
     auto Comp = owner->getComponent<MouseComponent>();
-    if (Comp->clicked() && actualTime >= 1.0f / weapon->myArgs.fireRate)
+    if (Comp->keepClick() && actualTime >= 1.0f / weapon->myArgs.fireRate)
     {
         mouseScreenPos = {
             (int)Comp->getMousePosition().x,
