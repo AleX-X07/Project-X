@@ -9,10 +9,11 @@
 #include "Capacity/CA_DoubleBullet.h"
 #include "Capacity/CA_Dash.h"
 #include "Capacity/CA_FireBullet.h"
+#include "Capacity/CA_PoisonBullet.h"
 
 CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
     ActualCapa = new CA_FireBullet(owner, 10, 10);
-    SecondaryCapa = new CA_DoubleBullet(owner, 10, 10);
+    SecondaryCapa = new CA_PoisonBullet(owner, 10, 10);
     UltiCapa = new CA_Dash(owner, 4000, 200, 3);
     
     ActualCapa->HUDrect.setPosition({(1920 - 70*3), (1080 - 100)});

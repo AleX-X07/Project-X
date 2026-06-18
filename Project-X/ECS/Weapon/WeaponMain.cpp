@@ -40,10 +40,16 @@ Object* WeaponMain::CreateBullet(float angle) {
     ball->addComponent(new ElementGiver(ball));
 
     if (HasFire) {
-        ball->getComponent<ElementGiver>()->addFire(ElementType::Fire, 10, 10, 5);
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Fire, 5, 10, 1);
     }
     if (HasIce) {
         ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
+    }
+    if (HasPoison) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Poison, 10, 5, 1);
+    }
+    if (HasLightning) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Light, 10, 20, 3);
     }
     
     
