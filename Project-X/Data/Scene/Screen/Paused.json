@@ -30,7 +30,7 @@
             ]
         },
         {
-            "Name" : "Settings",
+            "Name" : "Resume",
             "Description" : "",
             "Team" : "",
             "ID Object" : 2,
@@ -40,7 +40,7 @@
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenSettings" , "args" : ["Settings"]}
+                {"Component" : "ScreenClear" , "args" : []}
             ]
         }
     ]

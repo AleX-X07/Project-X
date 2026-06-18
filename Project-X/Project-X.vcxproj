@@ -1037,6 +1037,7 @@
     <ClCompile Include="ECS\Scene\Screen\ScreenWin.cpp" />
     <ClCompile Include="ECS\Scene\Transition.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
+    <ClCompile Include="ECS\Tool\CloneItemComponent.cpp" />
     <ClCompile Include="ECS\Tool\CrossHairComponent.cpp" />
     <ClCompile Include="ECS\Tool\Debug\DebugHudComp.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExpComponent.cpp">
@@ -1120,6 +1121,8 @@
     <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
     <ClCompile Include="ECS\Tool\HealthBar.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
+    <ClCompile Include="ECS\Tool\MapMakeComponent.cpp" />
+    <ClCompile Include="ECS\Tool\RandomItemPositionComponent.cpp" />
     <ClCompile Include="ECS\Tool\TimerComponent.cpp" />
     <ClCompile Include="ECS\Weapon\WeaponMain.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1529,6 +1532,8 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Tool\MapMaker.cpp" />
+    <ClCompile Include="Tool\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
@@ -1576,6 +1581,7 @@
     <ClInclude Include="ECS\Scene\Screen\ScreenWin.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
+    <ClInclude Include="ECS\Tool\CloneItemComponent.h" />
     <ClInclude Include="ECS\Tool\CrossHairComponent.h" />
     <ClInclude Include="ECS\Tool\Debug\DebugHudComp.h" />
     <ClInclude Include="ECS\Tool\Experience\ExpComponent.h" />
@@ -1583,6 +1589,8 @@
     <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />
     <ClInclude Include="ECS\Tool\HealthBar.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
+    <ClInclude Include="ECS\Tool\MapMakeComponent.h" />
+    <ClInclude Include="ECS\Tool\RandomItemPositionComponent.h" />
     <ClInclude Include="ECS\Tool\TimerComponent.h" />
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />
     <ClInclude Include="Gameplay\CapacityMain.h" />
@@ -1613,6 +1621,8 @@
     <ClInclude Include="Tool\Animation.h" />
     <ClInclude Include="Tool\Globals.h" />
     <ClInclude Include="Tool\Input.h" />
+    <ClInclude Include="Tool\MapMaker.h" />
+    <ClInclude Include="Tool\Random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

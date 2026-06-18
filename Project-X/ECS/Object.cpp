@@ -3,6 +3,13 @@
 Object::Object() : position({0,0}), size({0,0}) , name(""){
 }
 
+Object::Object(Object& other) : position(other.getPosition()), size(other.getSize()), name(other.getName()) {
+    
+}
+
+Object::Object(sf::Vector2f _size)  : size(_size), position({0,0}){
+}
+
 Object::Object(sf::Vector2f _position, sf::Vector2f _size)
     : position(_position)
     , size(_size)
@@ -59,6 +66,14 @@ void Object::setSize(sf::Vector2f newSize)
     size = newSize;
 }
 
+void Object::setLayer(int _layer) {
+    layer = _layer;
+}
+
+int Object::getLayer() {
+    return layer;
+}
+
 void Object::setName(std::string _name) {
     name = _name;
 }
@@ -73,4 +88,8 @@ std::string& Object::getName() {
 
 std::string& Object::getDescription() {
     return description;
+}
+
+std::vector<Component*>& Object::getVecComponents() {
+    return components;
 }
