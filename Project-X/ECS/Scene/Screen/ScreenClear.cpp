@@ -7,13 +7,11 @@ void ScreenClear::update(float deltaTime) {
     auto click = owner->getComponent<MouseComponent>()->isClick();
     
     if (click) {
-        auto& previous = getPreviousScreen(); 
+        auto& previous = getCurrentScene()->getPreviousScreen(); 
         getCurrentScene()->setState(Scene::State::Run);
-        getCurrentScene()->clearScreen();
-        resetScreenSet();
         if (!previous.empty()) {
-            getCurrentScene()->setObjectsScreen(getPreviousScreen().back());
-            getPreviousScreen().pop_back();   
+            getCurrentScene()->setObjectsScreen(getCurrentScene()->getPreviousScreen().back());
+            getCurrentScene()->getPreviousScreen().pop_back();   
         }          
     }
 }

@@ -34,6 +34,10 @@ std::vector<Object*>* Scene::getObjectsScreen() {
     return objectsScreen;
 }
 
+std::vector<std::vector<Object*>*>& Scene::getPreviousScreen() {
+    return previousScreen;
+}
+
 int& Scene::getIdScene() {
     return idScene;
 }
@@ -62,14 +66,6 @@ void Scene::setState(State newState) {
 void Scene::setScreen(std::string newScreen) {
     screen = newScreen;
     objectsScreen = SceneReader::getInstance()->initScreen(screen,this);
-}
-
-void Scene::clearScreen() {
-    for (auto& obj : *objectsScreen) {
-        delete obj;
-        obj = nullptr;
-    }
-    objectsScreen->clear();
 }
 
 void Scene::setLayer(int Layer) {
