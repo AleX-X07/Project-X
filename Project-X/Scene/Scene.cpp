@@ -7,15 +7,32 @@
 Scene::Scene() : Scene(0){
 }
 
-Scene::Scene(int _idScene) : idScene(_idScene), state(State::Run), objectsScreen(nullptr)  {
+Scene::Scene(int _idScene) : idScene(_idScene), state(State::Run), objectsScreen(nullptr) {
 }
 
 Scene::~Scene() {
+    screenVec.clear();
+
     for (auto& obj : myObjects) {
         delete obj;
-        obj = nullptr;
     }
     myObjects.clear();
+
+    if (objectsScreen != nullptr) {
+        for (auto& obj : *objectsScreen) {
+            delete obj;
+        }
+        delete objectsScreen;
+        objectsScreen = nullptr;
+    }
+
+    for (auto& obj : previousScreen) {
+        for (auto& obj2 : *obj) {
+            delete obj2;
+        }
+        delete obj;
+    }
+    previousScreen.clear();
 }
 
 Layer& Scene::getMyLayer() {
@@ -46,6 +63,10 @@ Scene::State& Scene::getState() {
     return state;
 }
 
+std::string& Scene::getCurrentScreen() {
+    return screen;
+}
+
 void Scene::addObject(Object* addObject, int Layer) {
     myObjects.push_back(addObject);
     getMyLayer().addInLayer(addObject, Layer);
@@ -70,6 +91,14 @@ void Scene::setScreen(std::string newScreen) {
 
 void Scene::setLayer(int Layer) {
     myLayer.setNbrLayer(Layer);
+}
+
+void Scene::clearScreen() {
+    for (auto& objScreen : *objectsScreen) {
+        delete objScreen;
+        objScreen = nullptr;
+    }
+    objectsScreen->clear();
 }
 
 void Scene::update(float deltatime) {

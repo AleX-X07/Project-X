@@ -22,7 +22,6 @@ sf::Keyboard::Key Input::getKey(const std::string& key) {
 }
 
 Input::Input() {
-    myInstance = nullptr;
 }
 
 Input* Input::getInput() {

@@ -39,6 +39,7 @@ public:
     std::vector<std::vector<Object*>*>& getPreviousScreen();
     int& getIdScene();
     State& getState();
+    std::string& getCurrentScreen();
     
     void addObject(Object* addObject, int Layer);
     
@@ -47,6 +48,8 @@ public:
     void setState(State newState);
     void setScreen(std::string newScreen);
     void setLayer(int Layer);
+    
+    void clearScreen();
     
     void update(float deltatime);
     void render();

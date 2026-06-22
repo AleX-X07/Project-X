@@ -8,10 +8,14 @@ void ScreenClear::update(float deltaTime) {
     
     if (click) {
         auto& previous = getCurrentScene()->getPreviousScreen(); 
-        getCurrentScene()->setState(Scene::State::Run);
         if (!previous.empty()) {
-            getCurrentScene()->setObjectsScreen(getCurrentScene()->getPreviousScreen().back());
-            getCurrentScene()->getPreviousScreen().pop_back();   
-        }          
+            auto* toRestore = previous.back();
+            previous.pop_back();               
+            getCurrentScene()->setObjectsScreen(toRestore);
+        }
+        else {
+            getCurrentScene()->setState(Scene::State::Run);
+            getCurrentScene()->clearScreen();
+        }
     }
 }
