@@ -110,7 +110,9 @@ void Scene::update(float deltatime) {
     if (objectsScreen != nullptr) {
         if (!objectsScreen->empty()) {
             for (auto& objScreen : *objectsScreen) {
-                objScreen->update(deltatime);
+                if (objScreen != nullptr) {
+                    objScreen->update(deltatime);
+                }
             }
         }
     }
