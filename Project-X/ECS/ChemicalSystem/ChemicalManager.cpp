@@ -44,6 +44,6 @@ void ChemicalManager::addState(ElementMain* Element) {
 
 void ChemicalManager::render() {
     for (auto z : rectlist) {
-        GameEngine::getWindow()->draw(*z);
+
     }
 }

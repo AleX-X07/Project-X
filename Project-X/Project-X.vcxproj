@@ -1120,6 +1120,9 @@
     </ClCompile>
     <ClCompile Include="ECS\Tool\Experience\ExperienceContainer.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldComponent.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldContainer.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldManager.cpp" />
     <ClCompile Include="ECS\Tool\HealthBar.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="ECS\Tool\TimerComponent.cpp" />
@@ -1589,6 +1592,9 @@
     <ClInclude Include="ECS\Tool\Experience\ExpComponent.h" />
     <ClInclude Include="ECS\Tool\Experience\ExperienceContainer.h" />
     <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldComponent.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldContainer.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldManager.h" />
     <ClInclude Include="ECS\Tool\HealthBar.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\TimerComponent.h" />

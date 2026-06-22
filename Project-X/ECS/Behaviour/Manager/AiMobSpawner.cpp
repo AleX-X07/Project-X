@@ -2,6 +2,7 @@
 #include "../../../Main/GameEngine.h"
 #include "../../ChemicalSystem/ChemicalManager.h"
 #include "../../ChemicalSystem/State/CH_Fire.h"
+#include "../../Tool/Gold/GoldContainer.h"
 
 AiMobSpawner::AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects) : Component(_owner), sceneObjects(_sceneObjects) {
     LevelSize.x = levelSize.x - 50;
@@ -34,12 +35,21 @@ void AiMobSpawner::update(float dt)
         c->update(dt);
         auto hp = c->getComponent<HealthComponent>();
         auto Contain = c->getComponent<ExperienceContainer>();
+        auto GoldContain = c->getComponent<GoldContainer>();
         if (!hp->alive) {
             Object* Exp = new Object(c->getPosition(), {25, 25});
             Exp->addComponent(new ExpComponent(Exp, {25, 25}, sceneObjects, Contain->Exp));
             Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
             
             ExpList.push_back(Exp);
+            
+            Object* Gold = new Object({c->getPosition().x + 25, c->getPosition().y + 25}, {25, 25});
+            Gold->addComponent(new ExpComponent(Exp, {25, 25}, sceneObjects, GoldContain->gold));
+            Gold->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
+            
+            if (GoldContain->gold > 0) {
+                ExpList.push_back(Gold);
+            }
         }
     }
     for (auto b : ExpList) {

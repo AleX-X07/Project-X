@@ -5,7 +5,7 @@
 class ChemicalManager : public Component {
 public:
     std::vector<ElementMain*> List;
-    std::vector<sf::RectangleShape*> rectlist;
+    std::vector<Object*> rectlist;
     
 public:
     ChemicalManager(Object* owner);
