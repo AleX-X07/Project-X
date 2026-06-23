@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-enum class ElementType { Fire, Poison, Ice };
+enum class ElementType { Fire, Poison, Ice, Light };
 
 struct ElementData {
     ElementType type;

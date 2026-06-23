@@ -7,7 +7,8 @@ CA_Rage::CA_Rage(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    LevelUpOption = 3;
+    HUDtx.loadFromFile("Assets/Capacity/AlcoolIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_Rage::update(float dt) {

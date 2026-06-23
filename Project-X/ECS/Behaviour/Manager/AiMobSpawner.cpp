@@ -2,6 +2,8 @@
 #include "../../../Main/GameEngine.h"
 #include "../../ChemicalSystem/ChemicalManager.h"
 #include "../../ChemicalSystem/State/CH_Fire.h"
+#include "../../Tool/Gold/GoldComponent.h"
+#include "../../Tool/Gold/GoldContainer.h"
 
 AiMobSpawner::AiMobSpawner(Object* _owner, std::vector<Object*>& _sceneObjects) : Component(_owner), sceneObjects(_sceneObjects) {
     LevelSize.x = levelSize.x - 50;
@@ -22,8 +24,15 @@ AiMobSpawner::~AiMobSpawner()
         delete c;
         c = nullptr;
     }
+    for (auto c : GoldList)
+    {
+        delete c;
+        c = nullptr;
+    }
+    
     liste.clear();
     ExpList.clear();
+    GoldList.clear();
 }
 
 void AiMobSpawner::update(float dt)
@@ -34,15 +43,27 @@ void AiMobSpawner::update(float dt)
         c->update(dt);
         auto hp = c->getComponent<HealthComponent>();
         auto Contain = c->getComponent<ExperienceContainer>();
+        auto GoldContain = c->getComponent<GoldContainer>();
         if (!hp->alive) {
             Object* Exp = new Object(c->getPosition(), {25, 25});
             Exp->addComponent(new ExpComponent(Exp, {25, 25}, sceneObjects, Contain->Exp));
             Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
             
             ExpList.push_back(Exp);
+            
+            Object* Gold = new Object({c->getPosition().x + 25, c->getPosition().y + 25}, {25, 25});
+            Gold->addComponent(new GoldComponent(Gold, {25, 25}, sceneObjects, GoldContain->gold));
+            Gold->addComponent(new RenderFile(Gold, "Assets/Debug/Debug_green.png"));
+            
+            if (GoldContain->gold > 0) {
+                GoldList.push_back(Gold);
+            }
         }
     }
     for (auto b : ExpList) {
+        b->update(dt);
+    }
+    for (auto b : GoldList) {
         b->update(dt);
     }
 
@@ -64,6 +85,15 @@ void AiMobSpawner::update(float dt)
         }
         return false;
     }), ExpList.end());
+    
+    GoldList.erase(std::remove_if(GoldList.begin(), GoldList.end(), [](Object* c) {
+        auto comp = c->getComponent<GoldComponent>();
+        if (comp != nullptr && !comp->isActive && c !=nullptr)
+        {
+            return true;
+        }
+        return false;
+    }), GoldList.end());
 
     if (actualtime >= timer)
     {
@@ -77,6 +107,8 @@ void AiMobSpawner::render()
     for (auto c : liste)
         c->render();
     for (auto b : ExpList)
+        b->render();
+    for (auto b : GoldList)
         b->render();
 }
 
@@ -106,6 +138,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 10, 1, 1));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 50));
         Mob->addComponent(new ExperienceContainer(Mob, 8));
+        Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
         
         liste.push_back(Mob);
@@ -120,6 +153,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiDebugShoot(Mob, *target, 10, 500, 360, 0.2, 15));
         Mob->addComponent(new ExperienceContainer(Mob, 10));
+        Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
         
         liste.push_back(Mob);
@@ -134,6 +168,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new HealthComponent(Mob, 30, sceneObjects));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 200));
         Mob->addComponent(new ExperienceContainer(Mob, 3));
+        Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
         
         liste.push_back(Mob);

@@ -1,18 +1,16 @@
-﻿#include "CA_Frenesie.h"
-
+﻿#include "CA_FireBullet.h"
 #include "../../ECS/Tool/HealthComponent.h"
 #include "../../ECS/Weapon/WeaponMain.h"
 
-CA_Frenesie::CA_Frenesie(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
+CA_FireBullet::CA_FireBullet(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
     Timer = _Timer;
     CoolDown = _Cooldown;
-    FrenFireRate = 1.5;
     
     HUDtx.loadFromFile("Assets/Capacity/RageIcon.png");
     HUDrect.setTexture(&HUDtx);
 }
 
-void CA_Frenesie::update(float dt) {
+void CA_FireBullet::update(float dt) {
     CoolDownActualTime -= dt;
     
     if (CoolDownActualTime <= 0 && !IsActived) {
@@ -29,25 +27,25 @@ void CA_Frenesie::update(float dt) {
 
             auto comp = owner->getComponent<WeaponMain>();
             if (comp) {
-                comp->myArgs.fireRate /= FrenFireRate;
+                comp->HasFire = false;
             }
         }
     }
 }
 
-void CA_Frenesie::activate() {
+void CA_FireBullet::activate() {
     if (CoolDownActualTime <= 0 && !IsActived) {
         IsActived = true;
         HUDrect.setFillColor(sf::Color({0, 0, 0, 255}));
 
         auto comp = owner->getComponent<WeaponMain>();
         if (comp) {
-            comp->myArgs.fireRate *= FrenFireRate;
+            comp->HasFire = true;
         }
     }
 }
 
-void CA_Frenesie::levelUp() {
+void CA_FireBullet::levelUp() {
     level += 1;
     if (level > maxLevel) {
         level = maxLevel;
@@ -57,8 +55,7 @@ void CA_Frenesie::levelUp() {
         std::string test = "Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png";
         HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
         HUDlevel.setTexture(&HUDtxLv);
-    
-        FrenFireRate += 0.5;
+
         Timer += 1;
     }
 }

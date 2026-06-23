@@ -7,6 +7,7 @@
 
 WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
     myArgs = WeaponReader::getWeapons()[weapon];
+    mapping = GamepadUtils::getMapping(0);
     
     auto comp = owner->getComponent<BulletManager>();
     if (comp != nullptr)
@@ -38,7 +39,20 @@ Object* WeaponMain::CreateBullet(float angle) {
     ball->addComponent(new RenderAngle(ball, myArgs.BulletImage, angle));
     ball->addComponent(new HitBox(ball, myArgs.bulletSize, true, myArgs.damage));
     ball->addComponent(new ElementGiver(ball));
-    ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
+
+    if (HasFire) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Fire, 5, 10, 1);
+    }
+    if (HasIce) {
+        ball->getComponent<ElementGiver>()->addIce(ElementType::Ice, 10, 2);
+    }
+    if (HasPoison) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Poison, 10, 5, 1);
+    }
+    if (HasLightning) {
+        ball->getComponent<ElementGiver>()->addFire(ElementType::Light, 10, 20, 3);
+    }
+    
     
     return ball;
 }
@@ -81,8 +95,8 @@ void WeaponMain::update(float deltaTime) {
     auto Mouseangle = owner->getComponent<MouseComponent>();
     auto comp = WeaponRender->getComponent<RenderFile>();
     
-    Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
-    Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
+    Xjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickX);
+    Yjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickY);
 
     if (sf::Joystick::isConnected(0) && (std::abs(Xjoystick) > 20 || std::abs(Yjoystick) > 20))
     {

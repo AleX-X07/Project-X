@@ -8,6 +8,9 @@ CA_BulletExplode::CA_BulletExplode(Object* _owner, float _Quantity, float _Coold
     
     speed = 400;
     damage = 15;
+    
+    HUDtx.loadFromFile("Assets/Capacity/ExplodeIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_BulletExplode::update(float dt) {

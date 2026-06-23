@@ -241,6 +241,7 @@
                 {"Component" : "ScreenDeath", "args" : ["Death"]},
                 {"Component" : "ScreenPaused", "args" : ["Paused"]},
                 {"Component" : "ScreenSettings", "args" : ["Settings"]},
+		{"Component" : "GoldManager", "args" : []},
                 {"Component" : "CapacityManager", "args" : []}
             ]
         },
@@ -253,7 +254,8 @@
             "Position" : [0,0],
             "Size" : [0,0],
             "ECS" : [
-                {"Component" : "AIMobSpawner", "args" : []}
+                {"Component" : "AIMobSpawner", "args" : []},
+		{"Component" : "BossManager", "args" : [10]}
             ]
         }
     ]

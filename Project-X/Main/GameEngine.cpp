@@ -20,12 +20,12 @@ GameEngine::~GameEngine() {
 
 void GameEngine::initRead() {    
     //## for dev ##//
-    // InputReader input;
-    // input.read();
-    // WeaponReader weapons;
-    // weapons.read();
-    // SceneReader readScene;
-    // readScene.SceneTestDev();
+    //InputReader input;
+    //input.read();
+    //WeaponReader weapons;
+    //weapons.read();
+    //SceneReader readScene;
+    //readScene.SceneTestDev();
     // readScene.SceneTestDev2();
     // #############//
     SceneReader::getInstance()->read();

@@ -5,6 +5,9 @@
 CA_DoubleBullet::CA_DoubleBullet(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
     Timer = _Timer;
     CoolDown = _Cooldown;
+    
+    HUDtx.loadFromFile("Assets/Capacity/DoubleIcon.png");
+    HUDrect.setTexture(&HUDtx);
 }
 
 void CA_DoubleBullet::update(float dt) {

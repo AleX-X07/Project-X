@@ -2,6 +2,7 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
+#include "../ECS/Behaviour/Manager/BossManager.h"
 #include "../ECS/Tool/TimerComponent.h"
 
 std::unordered_map <
@@ -11,6 +12,9 @@ std::unordered_map <
     // Behaviour
     {"AIMobSpawner",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new AiMobSpawner(obj, currentScene->getVecObjects());
+    }},
+    {"BossManager",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new BossManager(obj, ecs["args"][0], currentScene->getVecObjects());
     }},
     // Box
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -87,6 +91,9 @@ std::unordered_map <
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);
+    }},
+    {"GoldManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new GoldManager(obj);
     }},
     {"Camera", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new CameraComponent(obj, ecs["args"][0], ecs["args"][1]);

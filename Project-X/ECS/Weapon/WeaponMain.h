@@ -7,6 +7,7 @@
 #include "../Bullet/BulletLogic/BulletSystemComponent.h"
 #include "../Tool/CameraComponent.h"
 #include "../../Tool/Globals.h"
+#include "../../Pattern/GamepadType.h"
 
 class BulletManager;
 class GameEngine;
@@ -38,7 +39,14 @@ struct argsWeapon {
 class WeaponMain : public Component
 {
 public:
+    AxisMapping mapping;
+    
     argsWeapon myArgs;
+    
+    bool HasFire = false;
+    bool HasIce = false;
+    bool HasPoison = false;
+    bool HasLightning = false;
     
 public:
     Object* WeaponRender;

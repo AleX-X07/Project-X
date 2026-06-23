@@ -2,6 +2,8 @@
 #include "../ChemicalManager.h"
 #include "../State/CH_Fire.h"
 #include "../State/CH_Ice.h"
+#include "../State/CH_Lightning.h"
+#include "../State/CH_Poison.h"
 
 ElementGiver::ElementGiver(Object* owner) : Component(owner) {}
 
@@ -24,6 +26,12 @@ void ElementGiver::applyTo(Object* target) {
         case ElementType::Ice:
              chem->addState(new CH_Ice(*chem, e.duration, e.power));
              break;
+        case ElementType::Poison:
+            chem->addState(new CH_Poison(*chem, e.duration, e.damage, e.interval));
+            break;
+        case ElementType::Light:
+            chem->addState(new CH_Lightning(*chem, e.duration, e.damage, e.interval));
+            break;
         }
     }
 }

@@ -481,6 +481,8 @@
     <ClCompile Include="ECS\ChemicalSystem\Giver\ElementGiver.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Fire.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Ice.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Lightning.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\State\CH_Poison.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\HealthDisplay.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1119,6 +1121,9 @@
     </ClCompile>
     <ClCompile Include="ECS\Tool\Experience\ExperienceContainer.cpp" />
     <ClCompile Include="ECS\Tool\Experience\ExpManager.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldComponent.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldContainer.cpp" />
+    <ClCompile Include="ECS\Tool\Gold\GoldManager.cpp" />
     <ClCompile Include="ECS\Tool\HealthBar.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="ECS\Tool\MapMakeComponent.cpp" />
@@ -1207,8 +1212,12 @@
     <ClCompile Include="Gameplay\Capacity\CA_BulletExplode.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Dash.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_DoubleBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_FireBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Frenesie.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Heal.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_IceBullet.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Lightning.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_PoisonBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
     <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
@@ -1366,6 +1375,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Pattern\GamepadType.cpp" />
     <ClCompile Include="Pattern\StateMachine\State.cpp" />
     <ClCompile Include="Pattern\StateMachine\StateMachine.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1556,6 +1566,8 @@
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementType.h" />
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Fire.h" />
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Ice.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Lightning.h" />
+    <ClInclude Include="ECS\ChemicalSystem\State\CH_Poison.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />
@@ -1587,6 +1599,9 @@
     <ClInclude Include="ECS\Tool\Experience\ExpComponent.h" />
     <ClInclude Include="ECS\Tool\Experience\ExperienceContainer.h" />
     <ClInclude Include="ECS\Tool\Experience\ExpManager.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldComponent.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldContainer.h" />
+    <ClInclude Include="ECS\Tool\Gold\GoldManager.h" />
     <ClInclude Include="ECS\Tool\HealthBar.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\MapMakeComponent.h" />
@@ -1599,12 +1614,17 @@
     <ClInclude Include="Gameplay\Capacity\CA_BulletExplode.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Dash.h" />
     <ClInclude Include="Gameplay\Capacity\CA_DoubleBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_FireBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Frenesie.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Heal.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_IceBullet.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Lightning.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_PoisonBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
+    <ClInclude Include="Pattern\GamepadType.h" />
     <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
     <ClInclude Include="Pattern\StateMachine\State.h" />
     <ClInclude Include="Pattern\StateMachine\StateMachine.h" />
