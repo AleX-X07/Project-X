@@ -1,0 +1,47 @@
+{
+    "ID" : 1,
+    "Layer" : 2,
+    "Name" : "win",
+    "Objects" : [
+        {
+            "Name" : "Fond blanc",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [1920,1080],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [255,255,255,255]}
+            ]
+        },
+        {
+            "Name" : "Resume",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [0,0],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,0,255,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "ScreenClear" , "args" : []} 
+            ]
+        },
+        {
+            "Name" : "ChoiceSpell",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [1820,0],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "ScreenClear" , "args" : []} 
+            ]
+        }
+    ]
+}
