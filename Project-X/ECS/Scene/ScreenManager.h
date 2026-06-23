@@ -7,7 +7,7 @@ class SceneReader;
 class ScreenManager : public Component {
 private:
     Scene* currentScene;
-
+    
 public:
     ScreenManager(Object* _owner, Scene* scene);
     virtual ~ScreenManager() override = default;

@@ -1,8 +1,8 @@
 {
     "Name" : "ShotGun",
     "Image" : "Assets/Weapon/shotgun.png",
-    "Size" : [50,50],
-    "PositionOnPlayer" : [25,35],
+    "Size" : [87,60],
+    "PositionOnPlayer" : [60,50],
     "shakeIntensity" : 1,
     "shakeDuration" : 1,
     "hasrecoil" : true,

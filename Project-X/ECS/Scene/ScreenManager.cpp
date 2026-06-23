@@ -9,12 +9,16 @@ ScreenManager::ScreenManager(Object* _owner, Scene* scene) : Component(_owner), 
 void ScreenManager::setScreen(std::string name) {
     currentScene->setState(Scene::State::Paused);
     GameEngine::getWindow()->setMouseCursorVisible(true);
+    if (currentScene->getObjectsScreen() != nullptr) {
+        currentScene->getPreviousScreen().push_back(currentScene->getObjectsScreen());
+    }   
     currentScene->setScreen(name);
 }
 
 Scene* ScreenManager::getCurrentScene() {
     return currentScene;
 }
+
 
 
 

@@ -4,7 +4,7 @@ ScreenPaused::ScreenPaused(Object* _owner, Scene* scene, std::string _file) : Sc
 }
 
 void ScreenPaused::update(float deltaTime) {
-    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Pause"))) {
+    if (Input::getInput()->isKeyPressed(Input::getInput()->getKey("Pause"))) {
         setScreen(file);
     }
 }
