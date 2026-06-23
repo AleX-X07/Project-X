@@ -94,11 +94,15 @@ void Scene::setLayer(int Layer) {
 }
 
 void Scene::clearScreen() {
+    if (objectsScreen == nullptr) {
+        return;
+    }
     for (auto& objScreen : *objectsScreen) {
         delete objScreen;
         objScreen = nullptr;
     }
     objectsScreen->clear();
+    objectsScreen = nullptr;
 }
 
 void Scene::update(float deltatime) {
@@ -124,7 +128,9 @@ void Scene::render() {
         if (!objectsScreen->empty()) {
             GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
             for (auto& objScreen : *objectsScreen) {
-                objScreen->render();
+                if (objScreen != nullptr) {
+                    objScreen->render();
+                }
             }
             for (auto& obj : myObjects) {
                 auto cam = obj->getComponent<CameraComponent>();
