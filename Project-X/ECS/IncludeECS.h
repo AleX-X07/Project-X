@@ -52,6 +52,7 @@
 #include "../ECS/Tool/CrossHairComponent.h"
 
 #include "../ECS/Tool/Debug/DebugHudComp.h"
+#include "../ECS/Tool/Gold/GoldManager.h"
 
 // Weapon
 #include "../ECS/Weapon/WeaponMain.h"

@@ -16,7 +16,7 @@ class GameEngine;
 
 class CapacityMain : public Component {
 public:
-    int level = 1;
+    int level = 0;
     int maxLevel = 5;
     
     int LevelUpOption;  // Pas explicite mais du coup correspond au nombre de varaible qui peut etre upgrade sur la capa (sert pour l'ecran de selection)

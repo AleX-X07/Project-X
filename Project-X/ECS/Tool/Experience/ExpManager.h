@@ -6,6 +6,8 @@ class GameEngine;
 class ExpManager : public Component
 {
 public:
+    sf::Vector2u winSize;
+    
     sf::RectangleShape rect;
     sf::RectangleShape bar;
     

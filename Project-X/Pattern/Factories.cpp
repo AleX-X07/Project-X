@@ -88,6 +88,9 @@ std::unordered_map <
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);
     }},
+    {"GoldManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new GoldManager(obj);
+    }},
     {"Camera", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new CameraComponent(obj, ecs["args"][0], ecs["args"][1]);
     }},

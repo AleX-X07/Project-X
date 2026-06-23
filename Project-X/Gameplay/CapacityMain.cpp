@@ -31,11 +31,13 @@ void CapacityMain::activate() {
 void CapacityMain::renderHUD() {
     GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
     GameEngine::getWindow()->draw(HUDrect);
-    GameEngine::getWindow()->draw(HUDlevel);
+    
+    if (level > 0) {
+        GameEngine::getWindow()->draw(HUDlevel);
+    }
     
     auto cam = owner->getComponent<CameraComponent>();
-    if (cam != nullptr)
-    {
+    if (cam != nullptr) {
         GameEngine::getWindow()->setView(*cam->view);
     }
 }

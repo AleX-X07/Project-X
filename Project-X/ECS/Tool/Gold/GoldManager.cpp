@@ -2,13 +2,13 @@
 #include "../../../Main/GameEngine.h"
 
 GoldManager::GoldManager(Object* _owner) : Component(_owner) {
-    
+    winSize = GameEngine::getWindow()->getSize();
     if (!myFont.openFromFile("Assets/Font/Brown Cookies.otf")) {
         std::cerr << "Erreur : impossible de charger la police !" << std::endl;
     }
     myText = new sf::Text(myFont);
     
-    myText->setPosition({10, 1040});
+    myText->setPosition({10, static_cast<float>(winSize.y) - 40 });
     myText->setCharacterSize(24);
 }
 

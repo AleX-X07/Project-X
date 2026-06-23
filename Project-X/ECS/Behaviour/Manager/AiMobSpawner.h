@@ -14,6 +14,7 @@ class AiMobSpawner : public Component
 public:
     std::vector<Object*> liste;
     std::vector<Object*> ExpList;
+    std::vector<Object*> GoldList;
     
     std::vector<Object*>& sceneObjects;
     

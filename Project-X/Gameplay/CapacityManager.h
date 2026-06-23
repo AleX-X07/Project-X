@@ -3,8 +3,12 @@
 #include "CapacityMain.h"
 #include "Test/CapaButton.h"
 
+class GameEngine;
+
 class CapacityManager : public Component{
 public:
+    sf::Vector2u winSize;
+    
     CapacityMain* ActualCapa;
     CapacityMain* SecondaryCapa;
     CapacityMain* UltiCapa;

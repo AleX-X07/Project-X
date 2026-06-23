@@ -34,6 +34,7 @@
                 {"Component" : "ScreenDeath", "args" : ["Death"]},
                 {"Component" : "ScreenPaused", "args" : ["Paused"]},
                 {"Component" : "ScreenSettings", "args" : ["Settings"]},
+		{"Component" : "GoldManager", "args" : []},
                 {"Component" : "CapacityManager", "args" : []}
             ]
         },

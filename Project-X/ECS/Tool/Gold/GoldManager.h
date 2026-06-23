@@ -6,6 +6,8 @@ class GameEngine;
 class GoldManager : public Component
 {
 public:
+    sf::Vector2u winSize;
+    
     int gold = 0;
 
     sf::Font myFont;
