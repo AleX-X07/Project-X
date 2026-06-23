@@ -7,6 +7,7 @@
 
 WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
     myArgs = WeaponReader::getWeapons()[weapon];
+    mapping = GamepadUtils::getMapping(0);
     
     auto comp = owner->getComponent<BulletManager>();
     if (comp != nullptr)
@@ -94,8 +95,8 @@ void WeaponMain::update(float deltaTime) {
     auto Mouseangle = owner->getComponent<MouseComponent>();
     auto comp = WeaponRender->getComponent<RenderFile>();
     
-    Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
-    Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
+    Xjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickX);
+    Yjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickY);
 
     if (sf::Joystick::isConnected(0) && (std::abs(Xjoystick) > 20 || std::abs(Yjoystick) > 20))
     {

@@ -3,6 +3,7 @@
 #include "../../Box/HurtBox.h"
 #include "../../ChemicalSystem/ChemicalManager.h"
 #include "../../Tool/HealthBar.h"
+#include "../../Tool/Gold/GoldContainer.h"
 #include "../Boss/AiBossCircle.h"
 #include "../Boss/AiBossExplode.h"
 #include "../Boss/AiBossShot.h"
@@ -74,11 +75,12 @@ void BossManager::spawnBoss() {
     Boss->addComponent(new AiBossExplode(Boss, 20, 350, 12));
     Boss->addComponent(new AiBossCircle(Boss, 10, 200, 0, 10));
     Boss->addComponent(new AiBossShot(Boss, *target, 20, 400, 0, 0, 1));
-    Boss->addComponent(new RenderFile(Boss, "Assets/Debug/Debug_White.png"));
+    Boss->addComponent(new RenderFile(Boss, "Assets/Character/boss1.png"));
     Boss->addComponent(new AiMoveTo(Boss, sceneObjects, 50));
     Boss->addComponent(new ExperienceContainer(Boss, 50));
     Boss->addComponent(new HealthBar(Boss, sf::Color::Red));
     Boss->addComponent(new ChemicalManager(Boss));
+    Boss->addComponent(new GoldContainer(Boss, 50, 100));
     
     auto comp = owner->getComponent<AiMobSpawner>();
     comp->liste.push_back(Boss);

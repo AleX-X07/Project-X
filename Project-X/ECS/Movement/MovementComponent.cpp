@@ -7,7 +7,7 @@ MovementsComponent::MovementsComponent(Object* _owner, float _speed)
     : Component(_owner)
     , speed(_speed)
 {
-    
+
 }
 
 float MovementsComponent::getSpeed()

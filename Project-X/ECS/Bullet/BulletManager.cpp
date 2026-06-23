@@ -5,6 +5,7 @@ BulletManager::BulletManager(Object* _owner)
     : BulletSource(_owner), weapon(nullptr)
 {
     actualTime = 0;
+    mapping = GamepadUtils::getMapping(0);
 
     buffer.loadFromFile("Assets/Sound/Shoot.wav");
     sound = new sf::Sound(buffer);
@@ -75,8 +76,8 @@ void BulletManager::CreateBullet(Object* _owner, float _angle, float _lifetime)
 
     for (int u = 0; u < weapon->myArgs.Bulletquantity; u++)
     {
-        Xjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
-        Yjoystick = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
+        Xjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickX);
+        Yjoystick = sf::Joystick::getAxisPosition(0, mapping.rightStickY);
 
         if (sf::Joystick::isConnected(0) && (std::abs(Xjoystick) > 20 || std::abs(Yjoystick) > 20))
         {

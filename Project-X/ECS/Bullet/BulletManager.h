@@ -11,12 +11,15 @@
 #include "../Input/MouseComponent.h"
 #include "../Box/Hitbox.h"
 #include "../Weapon/WeaponMain.h"
+#include "../../Pattern/GamepadType.h"
 
 class GameEngine;
 
 class BulletManager : public BulletSource
 {
 public:
+    AxisMapping mapping;
+    
     WeaponMain* weapon;
     
     float Xjoystick;

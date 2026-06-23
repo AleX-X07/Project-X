@@ -1372,6 +1372,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Pattern\GamepadType.cpp" />
     <ClCompile Include="Pattern\StateMachine\State.cpp" />
     <ClCompile Include="Pattern\StateMachine\StateMachine.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1615,6 +1616,7 @@
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
+    <ClInclude Include="Pattern\GamepadType.h" />
     <ClInclude Include="Pattern\StateMachine\IncludeSM.h" />
     <ClInclude Include="Pattern\StateMachine\State.h" />
     <ClInclude Include="Pattern\StateMachine\StateMachine.h" />

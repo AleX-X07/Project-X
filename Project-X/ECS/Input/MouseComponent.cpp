@@ -2,14 +2,12 @@
 #include "../../Main/GameEngine.h"
 
 
-MouseComponent::MouseComponent(Object* _owner)
-    : Component(_owner)
-{
+MouseComponent::MouseComponent(Object* _owner) : Component(_owner) {
+    mapping = GamepadUtils::getMapping(0);
 }
 
-void MouseComponent::update(float deltaTime)
-{
-    //std::cout << owner->getPosition().x << " " << owner->getPosition().y << "\n";
+void MouseComponent::update(float deltaTime) {
+
 }
 
 sf::Vector2i MouseComponent::getMousePosition() {
@@ -20,7 +18,7 @@ bool MouseComponent::keepClick() {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
         return true;
     }
-    if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -10) {
+    if (GamepadUtils::getTriggerValue(0, mapping, false) > 15) {
         return true;
     }
     return false;
@@ -30,7 +28,8 @@ bool MouseComponent::clicked() {
     if (Input::getInput()->isMousePressed(sf::Mouse::Button::Left)) {
         return true;
     }
-    if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z) < -10) {
+    
+    if (GamepadUtils::getTriggerValue(0, mapping, false) > 15) {
         return true;
     }
     return false;
