@@ -2,7 +2,7 @@
 
 #include "../../ECS/Tool/HealthComponent.h"
 
-CA_Heal::CA_Heal(Object* _owner, float _Amount, float _Interval, float _Timer, float _Cooldown) : CapacityMain(_owner) {
+CA_Heal::CA_Heal(Object* _owner, float _Amount, float _Interval, float _Timer, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Amount = _Amount;
     Interval = _Interval;
     Timer = _Timer;

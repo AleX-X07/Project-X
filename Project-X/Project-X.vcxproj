@@ -1219,6 +1219,7 @@
     <ClCompile Include="Gameplay\Capacity\CA_Lightning.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_PoisonBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Tank.cpp" />
     <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
@@ -1621,6 +1622,7 @@
     <ClInclude Include="Gameplay\Capacity\CA_Lightning.h" />
     <ClInclude Include="Gameplay\Capacity\CA_PoisonBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Tank.h" />
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />

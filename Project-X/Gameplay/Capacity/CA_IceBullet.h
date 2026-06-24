@@ -10,7 +10,7 @@ public:
     
     bool IsActived = false;
 public:
-    CA_IceBullet(Object* _owner, float _Timer, float _CoolDown);
+    CA_IceBullet(Object* _owner, float _Timer, float _CoolDown, int _Button);
     ~CA_IceBullet() override = default;
     
     void update(float dt) override;

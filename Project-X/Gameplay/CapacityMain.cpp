@@ -1,7 +1,7 @@
 ﻿#include "CapacityMain.h"
 #include "../Main/GameEngine.h"
 
-CapacityMain::CapacityMain(Object* _owner) : Component(_owner) {
+CapacityMain::CapacityMain(Object* _owner, int Button) : Component(_owner) {
     HUDrect.setSize({50, 50});
     HUDrect.setPosition({(1920 - 30), (1080 - 100)});
     
@@ -10,6 +10,8 @@ CapacityMain::CapacityMain(Object* _owner) : Component(_owner) {
     
     HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
     HUDlevel.setTexture(&HUDtxLv);
+    
+    LinkButton = Button;
 }
 
 CapacityMain::~CapacityMain() {

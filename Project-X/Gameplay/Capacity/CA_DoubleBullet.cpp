@@ -2,7 +2,7 @@
 
 #include "../../ECS/Weapon/WeaponMain.h"
 
-CA_DoubleBullet::CA_DoubleBullet(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
+CA_DoubleBullet::CA_DoubleBullet(Object* _owner, float _Timer, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Timer = _Timer;
     CoolDown = _Cooldown;
     

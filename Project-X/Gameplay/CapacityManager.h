@@ -1,12 +1,15 @@
 ﻿#pragma once
 #include "../ECS/Object.h"
 #include "CapacityMain.h"
+#include "../Pattern/GamepadType.h"
 #include "Test/CapaButton.h"
 
 class GameEngine;
 
 class CapacityManager : public Component{
 public:
+    AxisMapping mapping;
+    
     sf::Vector2u winSize;
     
     CapacityMain* ActualCapa;

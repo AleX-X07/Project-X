@@ -14,7 +14,7 @@ public:
     float RageDamage = 2;
 
 public:
-    CA_Rage(Object* _owner, float _Timer, float _CoolDown);
+    CA_Rage(Object* _owner, float _Timer, float _CoolDown, int _Button);
     ~CA_Rage() override = default;
     
     void update(float dt) override;

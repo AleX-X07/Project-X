@@ -29,7 +29,14 @@ AxisMapping GamepadUtils::getMappingFor(GamepadType type) {
             sf::Joystick::Axis::X, sf::Joystick::Axis::Y,
             sf::Joystick::Axis::U, sf::Joystick::Axis::V,
             sf::Joystick::Axis::Z, sf::Joystick::Axis::Z,
-            true, 4, 5, 7
+            true, 
+            4, 
+            5, 
+            7, 
+            0,
+            1,
+            2,
+            3
         };
  
     case GamepadType::PlayStation:
@@ -37,7 +44,14 @@ AxisMapping GamepadUtils::getMappingFor(GamepadType type) {
             sf::Joystick::Axis::X, sf::Joystick::Axis::Y,
             sf::Joystick::Axis::Z, sf::Joystick::Axis::R,
             sf::Joystick::Axis::U, sf::Joystick::Axis::V,
-            false, 4, 5, 8
+            false, 
+            4, 
+            5, 
+            8, 
+            0,
+            1,
+            2,
+            3
         };
  
     case GamepadType::Unknown:
@@ -46,7 +60,14 @@ AxisMapping GamepadUtils::getMappingFor(GamepadType type) {
             sf::Joystick::Axis::X, sf::Joystick::Axis::Y,
             sf::Joystick::Axis::U, sf::Joystick::Axis::V,
             sf::Joystick::Axis::Z, sf::Joystick::Axis::Z,
-            true, 4, 5, 7
+            true, 
+            4, 
+            5, 
+            7, 
+            0,
+            1,
+            2,
+            3
         };
     }
 }

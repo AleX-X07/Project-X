@@ -3,7 +3,7 @@
 
 #include "../../ECS/Input/MouseComponent.h"
 
-CA_Dash::CA_Dash(Object* _owner, float _speed, float _distance, float _Cooldown) : CapacityMain(_owner) {
+CA_Dash::CA_Dash(Object* _owner, float _speed, float _distance, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     speed = _speed;
     distance = _distance;
     CoolDown = _Cooldown;

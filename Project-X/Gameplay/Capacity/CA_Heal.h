@@ -12,7 +12,7 @@ public:
     
     bool IsActived = false;
 public:
-    CA_Heal(Object* _owner, float _Amount, float _Interval, float _Timer, float _CoolDown);
+    CA_Heal(Object* _owner, float _Amount, float _Interval, float _Timer, float _CoolDown, int _Button);
     ~CA_Heal() override = default;
     
     void update(float dt) override;
