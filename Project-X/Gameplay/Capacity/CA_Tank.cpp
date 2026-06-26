@@ -3,6 +3,7 @@
 #include "../../ECS/Movement/MovementComponent.h"
 #include "../../ECS/Tool/HealthComponent.h"
 #include "../../ECS/Weapon/WeaponMain.h"
+#include "../../Main/GameEngine.h"
 
 CA_Tank::CA_Tank(Object* _owner, float _Timer, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Timer = _Timer;
@@ -12,6 +13,10 @@ CA_Tank::CA_Tank(Object* _owner, float _Timer, float _Cooldown, int _Button) : C
     HUDrect.setTexture(&HUDtx);
     
     speedModifier = 2;
+    
+    rect.setSize({owner->getSize().x + 20, owner->getSize().y + 20});
+    TX.loadFromFile("Assets/Debug/Shield.png");
+    rect.setTexture(&TX);
 }
 
 void CA_Tank::update(float dt) {
@@ -39,6 +44,16 @@ void CA_Tank::update(float dt) {
             }
         }
     }
+    
+    rect.setPosition({owner->getPosition().x - 10, owner->getPosition().y - 10});
+}
+
+void CA_Tank::render() {
+    CapacityMain::render();
+    
+    if (IsActived) {
+        GameEngine::getWindow()->draw(rect);
+    }
 }
 
 void CA_Tank::activate() {
@@ -50,7 +65,7 @@ void CA_Tank::activate() {
         }
         auto comp = owner->getComponent<HealthComponent>();
         if (comp) {
-            comp->invincible = false;
+            comp->invincible = true;
         }
         
         IsActived = true;
@@ -69,7 +84,7 @@ void CA_Tank::levelUp() {
         HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
         HUDlevel.setTexture(&HUDtxLv);
         
-        CoolDown -= 0.5;
-        speedModifier -= 0.2;
+        CoolDown -= 0.25;
+        speedModifier -= 0.1;
     }
 }

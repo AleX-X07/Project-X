@@ -1,0 +1,20 @@
+{
+    "Name" : "BigDeagle",
+    "Image" : "Assets/Weapon/big_deagle.png",
+    "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
+    "shakeIntensity" : 1,
+    "shakeDuration" : 1,
+    "hasrecoil" : true,
+    "recoilTime" : 1,
+    "Bullet" : {        
+        "BulletImage" : "Assets/Weapon/grosse_balles.png",
+        "Size" : [50,50],
+        "spread" : 15,
+        "fireRate" : 2,
+        "speed" : 500,
+        "Bulletquantity" : 1,
+        "damage" : 25,
+        "lifeTime" : 1.5
+    }
+}

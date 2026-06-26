@@ -225,7 +225,7 @@
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Movement" , "args" : [500]},
                 {"Component" : "BulletManager", "args" : []},
-                {"Component" : "Weapon", "args" : ["ShotGun"]},
+                {"Component" : "Weapon", "args" : ["BigDeagle"]},
                 {"Component" : "HurtBox", "args" : [50,50,1]},
                 {"Component" : "Camera", "args" : [false, 0]},
                 {"Component" : "Health", "args" : [1000]},

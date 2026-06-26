@@ -11,12 +11,13 @@
 #include "Capacity/CA_FireBullet.h"
 #include "Capacity/CA_PoisonBullet.h"
 #include "../Main/GameEngine.h"
+#include "Capacity/CA_Tank.h"
 
 CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
     winSize = GameEngine::getWindow()->getSize();
     mapping = GamepadUtils::getMapping(0);
     
-    ActualCapa = new CA_FireBullet(owner, 10, 10, 2);
+    ActualCapa = new CA_Tank(owner, 10, 10, 2);
     SecondaryCapa = new CA_PoisonBullet(owner, 10, 10, 1);
     UltiCapa = new CA_Dash(owner, 4000, 200, 3, 0);
     
@@ -47,13 +48,13 @@ void CapacityManager::update(float deltaTime) {
     SecondaryCapa->update(deltaTime);
     UltiCapa->update(deltaTime);
     
-    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || mapping.RightBumper) && ActualCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && ActualCapa->level >= 1) {
         ActualCapa->activate();
     }
-    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) || mapping.LeftBumper) && SecondaryCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) && SecondaryCapa->level >= 1) {
         SecondaryCapa->activate();
     }
-    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R) || GamepadUtils::getTriggerValue(0, mapping, true) > 15) && UltiCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R) && UltiCapa->level >= 1) {
         UltiCapa->activate();
     }
     

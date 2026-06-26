@@ -12,11 +12,6 @@ ChemicalManager::~ChemicalManager() {
         delete z;
         z = nullptr;
     }
-    
-    for (auto c : rectlist) {
-        delete c;
-        c = nullptr;
-    }
 }
 
 void ChemicalManager::update(float deltaTime) {
@@ -43,7 +38,5 @@ void ChemicalManager::addState(ElementMain* Element) {
 }
 
 void ChemicalManager::render() {
-    for (auto z : rectlist) {
 
-    }
 }
