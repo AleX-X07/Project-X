@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../CapacityMain.h"
 
-class CA_Frenesie : public CapacityMain {
+class CA_Tank : public CapacityMain {
 public:
     float Timer;
     
@@ -10,13 +10,20 @@ public:
     
     bool IsActived = false;
     
-    float FrenFireRate;
+    float speedModifier;
+    float StoredSpeed;
+    
+    sf::RectangleShape rect;
+    sf::Texture TX;
+
 public:
-    CA_Frenesie(Object* _owner, float _Timer, float _CoolDown, int _Button);
-    ~CA_Frenesie() override = default;
+    CA_Tank(Object* _owner, float _Timer, float _CoolDown, int _Button);
+    ~CA_Tank() override = default;
     
     void update(float dt) override;
+    void render() override;
     
     void activate() override;
     void levelUp() override;
 };
+

@@ -11,15 +11,16 @@ HealthComponent::HealthComponent(Object* _owner, int _MaxHp, std::vector<Object*
 
 void HealthComponent::TakeDamage(int damage)
 {
-    hp -= damage;
-    if (hp <= 0)
-    {
-        Death();
-    }
-    //std::cout << owner << " : " << hp << std::endl;
-    
-    if (owner->hasComponent<InputComponent>()) {
-        sound->play();
+    if (!invincible) {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Death();
+        }
+        
+        if (owner->hasComponent<InputComponent>()) {
+            sound->play();
+        }
     }
 }
 

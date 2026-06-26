@@ -9,7 +9,7 @@ public:
     
     float Angle;
 public:
-    CA_BulletExplode(Object* _owner, float _Quantity, float _Cooldown);
+    CA_BulletExplode(Object* _owner, float _Quantity, float _Cooldown, int _Button);
     ~CA_BulletExplode() override = default;
     
     void update(float dt) override;

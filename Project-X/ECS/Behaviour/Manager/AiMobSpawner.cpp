@@ -1,6 +1,7 @@
 ﻿#include "AiMobSpawner.h"
 #include "../../../Main/GameEngine.h"
 #include "../../ChemicalSystem/ChemicalManager.h"
+#include "../../ChemicalSystem/ChemicalRenderer.h"
 #include "../../ChemicalSystem/State/CH_Fire.h"
 #include "../../Tool/Gold/GoldComponent.h"
 #include "../../Tool/Gold/GoldContainer.h"
@@ -140,6 +141,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new ExperienceContainer(Mob, 8));
         Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
+        Mob->addComponent(new ChemicalRenderer(Mob));
         
         liste.push_back(Mob);
     }
@@ -155,6 +157,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new ExperienceContainer(Mob, 10));
         Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
+        Mob->addComponent(new ChemicalRenderer(Mob));
         
         liste.push_back(Mob);
     }
@@ -170,6 +173,7 @@ void AiMobSpawner::addMob()
         Mob->addComponent(new ExperienceContainer(Mob, 3));
         Mob->addComponent(new GoldContainer(Mob, 10, 100));
         Mob->addComponent(new ChemicalManager(Mob));
+        Mob->addComponent(new ChemicalRenderer(Mob));
         
         liste.push_back(Mob);
     }

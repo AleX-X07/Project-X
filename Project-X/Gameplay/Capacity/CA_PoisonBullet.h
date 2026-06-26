@@ -10,7 +10,7 @@ public:
     
     bool IsActived = false;
 public:
-    CA_PoisonBullet(Object* _owner, float _Timer, float _CoolDown);
+    CA_PoisonBullet(Object* _owner, float _Timer, float _CoolDown, int _Button);
     ~CA_PoisonBullet() override = default;
     
     void update(float dt) override;

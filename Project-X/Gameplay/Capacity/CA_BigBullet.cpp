@@ -3,7 +3,7 @@
 #include "../../ECS/Tool/HealthComponent.h"
 #include "../../ECS/Weapon/WeaponMain.h"
 
-CA_bigbullet::CA_bigbullet(Object* _owner, float _Multi, float _Cooldown) : CapacityMain(_owner) {
+CA_bigbullet::CA_bigbullet(Object* _owner, float _Multi, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Multi = _Multi;
     CoolDown = _Cooldown;
     

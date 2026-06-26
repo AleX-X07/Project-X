@@ -20,6 +20,13 @@ struct AxisMapping {
     
     int LeftBumper;
     int RightBumper;
+    
+    int start;
+    
+    int A;
+    int B;
+    int Y;
+    int X;
 };
  
 class GamepadUtils {

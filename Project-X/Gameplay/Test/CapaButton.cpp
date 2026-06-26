@@ -47,4 +47,13 @@ void CapaButton::clicked() {
             }
         }
     }
+    
+    if (sf::Joystick::isButtonPressed(0, capa->LinkButton)) {
+        capa->levelUp();
+        auto* comp = owner->getComponent<CapacityManager>();
+        if (comp) {
+            comp->pending = true;
+            comp->offered = false;
+        }
+    }
 }

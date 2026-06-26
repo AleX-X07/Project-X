@@ -5,7 +5,6 @@
 class ChemicalManager : public Component {
 public:
     std::vector<ElementMain*> List;
-    std::vector<Object*> rectlist;
     
 public:
     ChemicalManager(Object* owner);

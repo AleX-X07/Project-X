@@ -11,13 +11,15 @@
 #include "Capacity/CA_FireBullet.h"
 #include "Capacity/CA_PoisonBullet.h"
 #include "../Main/GameEngine.h"
+#include "Capacity/CA_Tank.h"
 
 CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
     winSize = GameEngine::getWindow()->getSize();
+    mapping = GamepadUtils::getMapping(0);
     
-    ActualCapa = new CA_FireBullet(owner, 10, 10);
-    SecondaryCapa = new CA_PoisonBullet(owner, 10, 10);
-    UltiCapa = new CA_Dash(owner, 4000, 200, 3);
+    ActualCapa = new CA_Tank(owner, 10, 10, 2);
+    SecondaryCapa = new CA_PoisonBullet(owner, 10, 10, 1);
+    UltiCapa = new CA_Dash(owner, 4000, 200, 3, 0);
     
     ActualCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*3), (static_cast<float>(winSize.y) - 100)});
     ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
@@ -76,7 +78,7 @@ void CapacityManager::update(float deltaTime) {
         }
     }
     
-    if (pendnumber > 0 && !offered && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+    if (pendnumber > 0 && !offered && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !sf::Joystick::isButtonPressed(0, 0) && !sf::Joystick::isButtonPressed(0, 1) && !sf::Joystick::isButtonPressed(0, 2)) {
         offered = true;
         pendnumber -=1;
         

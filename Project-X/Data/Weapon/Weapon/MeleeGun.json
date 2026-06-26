@@ -1,0 +1,20 @@
+{
+    "Name" : "MeleeGun",
+    "Image" : "Assets/Weapon/melee_gun.png",
+    "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
+    "shakeIntensity" : 0.001,
+    "shakeDuration" : 0.001,
+    "hasrecoil" : false,
+    "recoilTime" : 1,
+    "Bullet" : {        
+        "BulletImage" : "Assets/Weapon/balles_bleu.png",
+        "Size" : [30,30],
+        "spread" : 1,
+        "fireRate" : 4,
+        "speed" : 2000,
+        "Bulletquantity" : 1,
+        "damage" : 50,
+        "lifeTime" : 0.1
+    }
+}

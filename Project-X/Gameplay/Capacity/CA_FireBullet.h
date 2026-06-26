@@ -10,7 +10,7 @@ public:
     
     bool IsActived = false;
 public:
-    CA_FireBullet(Object* _owner, float _Timer, float _CoolDown);
+    CA_FireBullet(Object* _owner, float _Timer, float _CoolDown, int _Button);
     ~CA_FireBullet() override = default;
     
     void update(float dt) override;

@@ -11,7 +11,7 @@ public:
     bool IsActived = false;
     bool stored;
 public:
-    CA_bigbullet(Object* _owner, float _Multi, float _CoolDown);
+    CA_bigbullet(Object* _owner, float _Multi, float _CoolDown, int _Button);
     ~CA_bigbullet() override = default;
     
     void update(float dt) override;

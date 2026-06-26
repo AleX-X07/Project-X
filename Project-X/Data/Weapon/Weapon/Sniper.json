@@ -1,0 +1,20 @@
+{
+    "Name" : "Sniper",
+    "Image" : "Assets/Weapon/sniper.png",
+    "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
+    "shakeIntensity" : 1,
+    "shakeDuration" : 0.75,
+    "hasrecoil" : true,
+    "recoilTime" : 1,
+    "Bullet" : {        
+        "BulletImage" : "Assets/Weapon/sniper_balle.png",
+        "Size" : [25,25],
+        "spread" : 1,
+        "fireRate" : 0.75,
+        "speed" : 4000,
+        "Bulletquantity" : 1,
+        "damage" : 40,
+        "lifeTime" : 1
+    }
+}

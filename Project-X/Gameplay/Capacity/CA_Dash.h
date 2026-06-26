@@ -15,7 +15,7 @@ public:
     
     bool IsActived = false;
 public:
-    CA_Dash(Object* _owner, float _speed, float _distance, float _Cooldown);
+    CA_Dash(Object* _owner, float _speed, float _distance, float _Cooldown, int _Button);
     ~CA_Dash() override = default;
 
     void update(float dt) override;

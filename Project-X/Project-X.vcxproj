@@ -477,6 +477,7 @@
     <ClCompile Include="ECS\Bullet\BulletSource.cpp" />
     <ClCompile Include="ECS\Bullet\Special\GrenadeBullet.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\ChemicalManager.cpp" />
+    <ClCompile Include="ECS\ChemicalSystem\ChemicalRenderer.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\ElementMain.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\Giver\ElementGiver.cpp" />
     <ClCompile Include="ECS\ChemicalSystem\State\CH_Fire.cpp" />
@@ -1297,6 +1298,7 @@
     <ClCompile Include="Gameplay\Capacity\CA_Lightning.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_PoisonBullet.cpp" />
     <ClCompile Include="Gameplay\Capacity\CA_Rage.cpp" />
+    <ClCompile Include="Gameplay\Capacity\CA_Tank.cpp" />
     <ClCompile Include="Gameplay\Test\CapaButton.cpp" />
     <ClCompile Include="Main\GameEngine.cpp" />
     <ClCompile Include="Main\main.cpp">
@@ -1639,6 +1641,7 @@
     <ClInclude Include="ECS\Bullet\BulletSource.h" />
     <ClInclude Include="ECS\Bullet\Special\GrenadeBullet.h" />
     <ClInclude Include="ECS\ChemicalSystem\ChemicalManager.h" />
+    <ClInclude Include="ECS\ChemicalSystem\ChemicalRenderer.h" />
     <ClInclude Include="ECS\ChemicalSystem\ElementMain.h" />
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementGiver.h" />
     <ClInclude Include="ECS\ChemicalSystem\Giver\ElementType.h" />
@@ -1701,6 +1704,7 @@
     <ClInclude Include="Gameplay\Capacity\CA_Lightning.h" />
     <ClInclude Include="Gameplay\Capacity\CA_PoisonBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
+    <ClInclude Include="Gameplay\Capacity\CA_Tank.h" />
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />

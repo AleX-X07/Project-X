@@ -2,7 +2,7 @@
 #include "../../ECS/Tool/HealthComponent.h"
 #include "../../ECS/Weapon/WeaponMain.h"
 
-CA_FireBullet::CA_FireBullet(Object* _owner, float _Timer, float _Cooldown) : CapacityMain(_owner) {
+CA_FireBullet::CA_FireBullet(Object* _owner, float _Timer, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Timer = _Timer;
     CoolDown = _Cooldown;
     

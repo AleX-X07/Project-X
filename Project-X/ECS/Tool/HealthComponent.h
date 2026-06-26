@@ -11,6 +11,7 @@ public:
     int MaxHp;
     
     bool alive = true;
+    bool invincible = false;
     
     std::vector<Object*>& sceneObjects;
 

@@ -2,7 +2,7 @@
 
 #include "../../ECS/Bullet/BulletManager.h"
 
-CA_BulletExplode::CA_BulletExplode(Object* _owner, float _Quantity, float _Cooldown) : CapacityMain(_owner) {
+CA_BulletExplode::CA_BulletExplode(Object* _owner, float _Quantity, float _Cooldown, int _Button) : CapacityMain(_owner, _Button) {
     Quantity = _Quantity;
     CoolDown = _Cooldown;
     

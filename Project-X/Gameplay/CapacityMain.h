@@ -19,7 +19,7 @@ public:
     int level = 0;
     int maxLevel = 5;
     
-    int LevelUpOption;  // Pas explicite mais du coup correspond au nombre de varaible qui peut etre upgrade sur la capa (sert pour l'ecran de selection)
+    int LinkButton;
 
 public:
     
@@ -33,7 +33,7 @@ public:
     float CoolDown;
     float CoolDownActualTime = 0;
 public:
-    CapacityMain(Object* _owner);
+    CapacityMain(Object* _owner, int Button);
     ~CapacityMain();
     
     virtual void update(float dt);
