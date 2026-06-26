@@ -16,14 +16,14 @@ GameEngine::GameEngine() {
 }
 
 GameEngine::~GameEngine() {
-    delete window;
-    window = nullptr;
+    delete myWeapon;
+    myWeapon = nullptr;
     
     delete currentScene;
     currentScene = nullptr;
     
-    delete myWeapon;
-    myWeapon = nullptr;
+    delete window;
+    window = nullptr;
 }
 
 void GameEngine::initRead() {    

@@ -4,7 +4,7 @@
 WeaponChoiceComponent::WeaponChoiceComponent(Object* _owner, Scene* currentScene) : Component(_owner){
     myChoices = nullptr;
     sf::Vector2f Size = {};
-    int ligne = 5;
+    int ligne = 8;
     int col = 0;
     int row = 0;
     
@@ -54,7 +54,7 @@ void WeaponChoiceComponent::update(float deltaTime) {
             myChoices->setFillColor(sf::Color::Transparent);
             myChoices->setOutlineColor(sf::Color::Green);
             myChoices->setOutlineThickness(2.f);
-            GameEngine::myWeapon = &w->getName();
+            GameEngine::myWeapon = new std::string(w->getName());
         }
     }
 }
