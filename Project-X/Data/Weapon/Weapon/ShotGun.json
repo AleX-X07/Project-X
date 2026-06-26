@@ -1,6 +1,6 @@
 {
     "Name" : "ShotGun",
-    "Image" : "Assets/Debug/DebugBulletblue.png",
+    "Image" : "Assets/Weapon/ShotGun.png",
     "Size" : [87,60],
     "PositionOnPlayer" : [60,50],
     "shakeIntensity" : 1,
