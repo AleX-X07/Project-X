@@ -9,7 +9,7 @@
     "recoilTime" : 1,
     "Bullet" : {        
         "BulletImage" : "Assets/Weapon/Laser.png",
-        "Size" : [60,15],
+        "Size" : [100,15],
         "spread" : 0,
         "fireRate" : 50,
         "speed" : 3000,
