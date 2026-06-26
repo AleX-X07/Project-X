@@ -5,6 +5,7 @@ std::unordered_map<int, std::string> GameEngine::scenes;
 Scene* GameEngine::currentScene;
 int GameEngine::idScene = 0;
 int GameEngine::nextScene = 0;
+std::string* GameEngine::myWeapon = nullptr;
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -17,6 +18,12 @@ GameEngine::GameEngine() {
 GameEngine::~GameEngine() {
     delete window;
     window = nullptr;
+    
+    delete currentScene;
+    currentScene = nullptr;
+    
+    delete myWeapon;
+    myWeapon = nullptr;
 }
 
 void GameEngine::initRead() {    

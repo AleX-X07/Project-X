@@ -1,7 +1,8 @@
 {
-    "Name" : "Deagle",
-    "Image" : "Assets/Weapon/shotgun.png",
+    "Name" : "Nuke",
+    "Image" : "Assets/Debug/DebugBulletblue.png",
     "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
     "shakeIntensity" : 1,
     "shakeDuration" : 1,
     "hasrecoil" : true,

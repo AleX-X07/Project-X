@@ -18,6 +18,9 @@
 #include "../ECS/Bullet/BulletManager.h"
 #include "../ECS/Bullet/BulletSource.h"
 
+// Display
+#include "../ECS/Display/WeaponChoiceComponent.h"
+
 // Graphics
 #include "../ECS/Graphics/RenderFile.h"
 #include "../ECS/Graphics/RenderText.h"
@@ -45,12 +48,13 @@
 #include "Scene/Screen/ScreenPaused.h"
 #include "Scene/Screen/ScreenSettings.h"
 #include "Scene/Screen/ScreenClear.h"
+#include "Scene/Screen/ScreenWeaponChoice.h"
 
 // Tool
 #include "../ECS/Tool/CameraComponent.h"
 #include "../ECS/Tool/HealthComponent.h"
 #include "../ECS/Tool/CrossHairComponent.h"
-#include "../ECS/Tool/MapMakeComponent.h"
+#include "../ECS/Display/MapMakeComponent.h"
 #include "../ECS/Tool/CloneItemComponent.h"
 #include "../ECS/Tool/RandomItemPositionComponent.h"
 

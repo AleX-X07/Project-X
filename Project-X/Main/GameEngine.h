@@ -29,6 +29,10 @@ private:
     void updateTime();
     void update();
     void render();
+
+public:
+    // Character
+    static std::string* myWeapon;
     
 public:
     

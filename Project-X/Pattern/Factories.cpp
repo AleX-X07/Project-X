@@ -3,7 +3,9 @@
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
 #include "../ECS/Behaviour/Manager/BossManager.h"
+#include "../ECS/Scene/Screen/ScreenWeaponChoice.h"
 #include "../ECS/Tool/TimerComponent.h"
+#include "../Main/GameEngine.h"
 
 std::unordered_map <
     std::string,
@@ -23,6 +25,10 @@ std::unordered_map <
     // Bullet
     {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new BulletManager(obj);
+    }},
+    // Display
+    {"ChoiceWeapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new WeaponChoiceComponent(obj, currentScene);
     }},
     // Graphics
     {"RenderFile", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -88,6 +94,9 @@ std::unordered_map <
         {"ScreenClear", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
             return new ScreenClear(obj, currentScene);
         }},
+        {"ScreenWeaponChoice", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenWeaponChoice(obj, currentScene, ecs["args"][0]);
+        }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);
@@ -116,14 +125,14 @@ std::unordered_map <
     
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new WeaponMain(obj, ecs["args"][0]);
+        return new WeaponMain(obj, *GameEngine::myWeapon);
     }},
     // Debug
     {"DebugHUD", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new DebugHudComp(obj);
     }},
     // Capacity
-{"CapacityManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+    {"CapacityManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new CapacityManager(obj);
     }}
 };

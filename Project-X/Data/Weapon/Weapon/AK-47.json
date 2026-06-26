@@ -1,7 +1,8 @@
 {
-    "Name" : "Deagle",
-    "Image" : "Assets/Weapon/AK-47.png",
+    "Name" : "AK-47",
+    "Image" : "Assets/Weapon/ak-47.png",
     "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
     "shakeIntensity" : 0.25,
     "shakeDuration" : 0.5,
     "hasrecoil" : false,

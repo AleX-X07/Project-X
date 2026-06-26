@@ -1,7 +1,8 @@
 {
-    "Name" : "Deagle",
-    "Image" : "Assets/Weapon/shotgun.png",
+    "Name" : "Laser",
+    "Image" : "Assets/Debug/DebugBulletblue.png",
     "Size" : [50,50],
+    "PositionOnPlayer" : [25,35],
     "shakeIntensity" : 0.01,
     "shakeDuration" : 0.01,
     "hasrecoil" : false,
