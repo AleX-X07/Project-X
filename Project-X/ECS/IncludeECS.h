@@ -8,6 +8,7 @@
 // Box
 #include "../ECS/Box/HurtBox.h"
 #include "../ECS/Box/HitBox.h"
+#include "../ECS/Box/Collider.h"
 
 // Bullet
 #include "../ECS/Bullet/BulletLogic/BulletSystemComponent.h"

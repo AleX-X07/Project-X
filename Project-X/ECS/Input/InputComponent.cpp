@@ -12,25 +12,23 @@ InputComponent::InputComponent(Object* _owner)
 
 void InputComponent::update(float deltaTime)
 {
-    for (unsigned int button = 0; button < sf::Joystick::getButtonCount(0); ++button) {
-        if (sf::Joystick::isButtonPressed(0, button)) {
-            std::cout << "\033[2J\033[1;1H";
-            std::cout << "Bouton " << button << " pressé\n";
-        }
-    }
+    bool hori = false;
+    bool vert = false;
     
     auto movementsComp = owner->getComponent<MovementsComponent>();
     if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Left")) || (sf::Joystick::getAxisPosition(0, mapping.leftStickX) < -deadzone))
     {
         if (movementsComp != nullptr)
         {
+            hori = true;
             movementsComp->left(deltaTime);
-        }
+        } 
     }
     if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Right")) || (sf::Joystick::getAxisPosition(0, mapping.leftStickX) > deadzone))
     {
         if (movementsComp != nullptr)
         {
+            hori = true;
             movementsComp->right(deltaTime);
         }
     }
@@ -38,6 +36,7 @@ void InputComponent::update(float deltaTime)
     {
         if (movementsComp != nullptr)
         {
+            vert = true;
             movementsComp->up(deltaTime);
         }
     }
@@ -45,7 +44,19 @@ void InputComponent::update(float deltaTime)
     {
         if (movementsComp != nullptr)
         {
+            vert = true;
             movementsComp->down(deltaTime);
+        }
+    }
+    
+    if (!hori) {
+        if (movementsComp) {
+            movementsComp->VelocityX = 0;
+        }
+    }
+    if (!vert) {
+        if (movementsComp) {
+            movementsComp->VelocityY = 0;
         }
     }
 }

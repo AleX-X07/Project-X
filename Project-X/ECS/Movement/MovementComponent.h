@@ -9,6 +9,10 @@ private:
     float speed;
 
 public:
+    float VelocityX = 0;
+    float VelocityY = 0;
+    
+public:
     MovementsComponent(Object* _owner, float _speed);
     ~MovementsComponent() override = default;
 
@@ -19,4 +23,7 @@ public:
     void right(float deltaTime);
     void up(float deltaTime);
     void down(float deltaTime);
+    
+    void NoneHori();
+    void NoneVert();
 };

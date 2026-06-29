@@ -165,6 +165,7 @@
     <ClCompile Include="ECS\Behaviour\Boss\AiBossShot.cpp" />
     <ClCompile Include="ECS\Behaviour\Manager\AiMobSpawner.cpp" />
     <ClCompile Include="ECS\Behaviour\Manager\BossManager.cpp" />
+    <ClCompile Include="ECS\Box\Collider.cpp" />
     <ClCompile Include="ECS\Box\HitBox.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1633,6 +1634,7 @@
     <ClInclude Include="ECS\Behaviour\Boss\AiBossShot.h" />
     <ClInclude Include="ECS\Behaviour\Manager\AiMobSpawner.h" />
     <ClInclude Include="ECS\Behaviour\Manager\BossManager.h" />
+    <ClInclude Include="ECS\Box\Collider.h" />
     <ClInclude Include="ECS\Box\HitBox.h" />
     <ClInclude Include="ECS\Box\HurtBox.h" />
     <ClInclude Include="ECS\Bullet\BulletLogic\BulletSystemComponent.h" />

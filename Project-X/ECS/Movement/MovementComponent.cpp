@@ -23,6 +23,7 @@ void MovementsComponent::setSpeed(float newSpeed)
 void MovementsComponent::left(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x - speed * deltaTime, owner->getPosition().y});
+    VelocityX = -1;
     
     if (owner->getPosition().x < 0)
     {
@@ -33,6 +34,7 @@ void MovementsComponent::left(float deltaTime)
 void MovementsComponent::right(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x + speed * deltaTime, owner->getPosition().y});
+    VelocityX = 1;
     
     if ((owner->getPosition().x + owner->getSize().x) > levelSize.x)
     {
@@ -43,6 +45,7 @@ void MovementsComponent::right(float deltaTime)
 void MovementsComponent::up(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x, owner->getPosition().y - speed * deltaTime});
+    VelocityY = 1;
     
     if (owner->getPosition().y < 0)
     {
@@ -53,9 +56,18 @@ void MovementsComponent::up(float deltaTime)
 void MovementsComponent::down(float deltaTime)
 {
     owner->setPosition({owner->getPosition().x, owner->getPosition().y + speed * deltaTime});
+    VelocityY = -1;
     
     if ((owner->getPosition().y + owner->getSize().y) > levelSize.y)
     {
         owner->setPosition({owner->getPosition().x, (levelSize.y - owner->getSize().y)});
     }
+}
+
+void MovementsComponent::NoneHori() {
+    VelocityX = 0;
+}
+
+void MovementsComponent::NoneVert() {
+    VelocityY = 0;
 }

@@ -212,12 +212,24 @@
             ]
         },
         {
+            "Name" : "Collider",
+            "Description" : "Cailloux",
+            "Team" : "Player",
+            "ID Object" : 0,
+            "LayerPosition" : 3,
+            "Position" : [500,500],
+            "Size" : [500,500],
+            "ECS" : [
+                {"Component" : "Collider", "args" : []}
+            ]
+        },
+        {
             "Name" : "Player",
             "Description" : "Hero",
             "Team" : "Player",
             "ID Object" : 0,
             "LayerPosition" : 3,
-            "Position" : [500,500],
+            "Position" : [200,200],
             "Size" : [75,75],
             "ECS" : [
                 {"Component" : "Input", "args" : []},

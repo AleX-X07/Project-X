@@ -22,6 +22,9 @@ std::unordered_map <
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new HurtBox(obj, {ecs["args"][0],ecs["args"][1]}, currentScene->getVecObjects(), ecs["args"][2]);
     }},
+    {"Collider", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new Collider(obj, currentScene->getVecObjects());
+    }},
     // Bullet
     {"BulletManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new BulletManager(obj);
