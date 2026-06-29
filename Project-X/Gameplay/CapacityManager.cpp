@@ -13,13 +13,13 @@
 #include "../Main/GameEngine.h"
 #include "Capacity/CA_Tank.h"
 
-CapacityManager::CapacityManager(Object* _owner) : Component(_owner) {
+CapacityManager::CapacityManager(Object* _owner, CapacityMain* _ActualCapa, CapacityMain* _SecondaryCapa, CapacityMain* _UltiCapa) : Component(_owner) {
     winSize = GameEngine::getWindow()->getSize();
     mapping = GamepadUtils::getMapping(0);
-    
-    ActualCapa = new CA_Tank(owner, 10, 10, 2);
-    SecondaryCapa = new CA_PoisonBullet(owner, 10, 10, 1);
-    UltiCapa = new CA_Dash(owner, 4000, 200, 3, 0);
+
+    ActualCapa = _ActualCapa;
+    SecondaryCapa = _SecondaryCapa;
+    UltiCapa = _UltiCapa;
     
     ActualCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*3), (static_cast<float>(winSize.y) - 100)});
     ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
@@ -48,13 +48,13 @@ void CapacityManager::update(float deltaTime) {
     SecondaryCapa->update(deltaTime);
     UltiCapa->update(deltaTime);
     
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && ActualCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-1")) && ActualCapa->level >= 1) {
         ActualCapa->activate();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) && SecondaryCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-2")) && SecondaryCapa->level >= 1) {
         SecondaryCapa->activate();
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R) && UltiCapa->level >= 1) {
+    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-3")) && UltiCapa->level >= 1) {
         UltiCapa->activate();
     }
     

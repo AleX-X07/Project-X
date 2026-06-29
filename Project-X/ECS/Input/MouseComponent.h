@@ -5,8 +5,10 @@
 
 class GameEngine;
 
-class MouseComponent : public Component
-{
+class MouseComponent : public Component{
+private:
+    bool selected;
+    
 public:
     AxisMapping mapping;
     
@@ -21,4 +23,6 @@ public:
     bool clicked();
     
     bool isClick();
+    
+    bool isSelected();
 };

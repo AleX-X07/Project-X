@@ -6,6 +6,7 @@ Scene* GameEngine::currentScene;
 int GameEngine::idScene = 0;
 int GameEngine::nextScene = 0;
 std::string* GameEngine::myWeapon = nullptr;
+std::vector<std::string> GameEngine::myCapacity;
 
 GameEngine::GameEngine() {
     window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Project-X");
@@ -36,6 +37,7 @@ void GameEngine::initRead() {
     //readScene.SceneTestDev();
     // readScene.SceneTestDev2();
     // #############//
+    CapacityReader::getInstance()->read(); 
     SceneReader::getInstance()->read();
     currentScene = SceneReader::getInstance()->initScene(0);
 }

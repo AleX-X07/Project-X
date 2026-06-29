@@ -2,12 +2,12 @@
 #include "../ScreenManager.h"
 #include "../../../Reader/WeaponReader.h"
 
-class ScreenWeaponChoice : public ScreenManager {
+class ScreenSpellChoice : public ScreenManager {
 private:
     std::string file;
 public:
-    ScreenWeaponChoice(Object* _owner, Scene* scene, std::string file);
-    virtual ~ScreenWeaponChoice() override = default;
+    ScreenSpellChoice(Object* _owner, Scene* scene, std::string file);
+    virtual ~ScreenSpellChoice() override = default;
     
     virtual void update(float deltaTime) override;
 };

@@ -1,0 +1,15 @@
+﻿#pragma once
+#include "CapacityMain.h"
+
+#include "Capacity/CA_BigBullet.h"
+#include "Capacity/CA_BulletExplode.h"
+#include "Capacity/CA_Dash.h"
+#include "Capacity/CA_DoubleBullet.h"
+#include "Capacity/CA_FireBullet.h"
+#include "Capacity/CA_Frenesie.h"
+#include "Capacity/CA_Heal.h"
+#include "Capacity/CA_IceBullet.h"
+#include "Capacity/CA_Lightning.h"
+#include "Capacity/CA_PoisonBullet.h"
+#include "Capacity/CA_Rage.h"
+#include "Capacity/CA_Tank.h"

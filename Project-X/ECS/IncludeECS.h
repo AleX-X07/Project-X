@@ -20,6 +20,7 @@
 
 // Display
 #include "../ECS/Display/WeaponChoiceComponent.h"
+#include "../ECS/Display/SpellChoiceComponent.h"
 
 // Graphics
 #include "../ECS/Graphics/RenderFile.h"
@@ -49,6 +50,7 @@
 #include "Scene/Screen/ScreenSettings.h"
 #include "Scene/Screen/ScreenClear.h"
 #include "Scene/Screen/ScreenWeaponChoice.h"
+#include "Scene/Screen/ScreenSpellChoice.h"
 
 // Tool
 #include "../ECS/Tool/CameraComponent.h"

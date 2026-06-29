@@ -3,6 +3,7 @@
 #include "CapacityMain.h"
 #include "../Pattern/GamepadType.h"
 #include "Test/CapaButton.h"
+#include "../Tool/Input.h"
 
 class GameEngine;
 
@@ -27,8 +28,8 @@ public:
     
     bool offered = false;
 public:
-    CapacityManager(Object* _owner);
-    ~CapacityManager();
+    CapacityManager(Object* _owner, CapacityMain* _ActualCapa, CapacityMain* _SecondaryCapa, CapacityMain* _UltiCapa);
+    virtual ~CapacityManager() override;
     
     void update(float deltaTime) override;
     void render() override;

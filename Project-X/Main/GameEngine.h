@@ -5,6 +5,7 @@
 
 #include "../Scene/Scene.h"
 #include "../Reader/SceneReader.h"
+#include "../Reader/CapacityReader.h"
 
 class GameEngine {
 private:
@@ -33,6 +34,7 @@ private:
 public:
     // Character
     static std::string* myWeapon;
+    static std::vector<std::string> myCapacity;
     
 public:
     

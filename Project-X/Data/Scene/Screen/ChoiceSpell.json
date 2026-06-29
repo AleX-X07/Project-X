@@ -30,7 +30,7 @@
             ]
         },
         {
-            "Name" : "ChoiceSpell",
+            "Name" : "LaucnhGame",
             "Description" : "",
             "Team" : "",
             "ID Object" : 2,
@@ -40,11 +40,11 @@
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenSpellChoice" , "args" : ["ChoiceSpell"]} 
+                {"Component" : "Transition" , "args" : [1,"Button"]} 
             ]
         },
         {
-            "Name" : "ChoiceWeapon",
+            "Name" : "ChoiceSpell",
             "Description" : "",
             "Team" : "",
             "ID Object" : 2,
@@ -52,7 +52,7 @@
             "Position" : [0,0],
             "Size" : [0,0],
             "ECS" : [
-                {"Component" : "ChoiceWeapon" , "args" : []} 
+                {"Component" : "ChoiceSpell" , "args" : []} 
             ]
         }
     ]

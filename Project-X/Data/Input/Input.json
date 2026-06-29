@@ -4,5 +4,9 @@
     "Down" : "S",
     "Right" : "D",
 
-    "Pause" : "Escape"
+    "Pause" : "Escape",
+
+    "Capacity-1" : "A",
+    "Capacity-2" : "E",
+    "Capacity-3" : "R"
 }
