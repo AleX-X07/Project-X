@@ -14,6 +14,7 @@ class Scene;
 class Component;
 class Object;
 class CapacityReader;
+class GameEngine;
 
 using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&, Scene*)>;
 

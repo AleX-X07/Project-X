@@ -4,6 +4,7 @@
 #include "../ECS/Behaviour/AiMoveTo.h"
 
 #include "../ECS/Behaviour/Manager/AiMobSpawner.h"
+#include "../ECS/Behaviour/Manager/BossManager.h"
 
 // Box
 #include "../ECS/Box/HurtBox.h"
@@ -22,6 +23,7 @@
 // Display
 #include "../ECS/Display/WeaponChoiceComponent.h"
 #include "../ECS/Display/SpellChoiceComponent.h"
+#include "../ECS/Display/MapMakeComponent.h"
 
 // Graphics
 #include "../ECS/Graphics/RenderFile.h"
@@ -31,6 +33,8 @@
 #include "../ECS/Graphics/HUD/HUD.h"
 #include "../ECS/Graphics/HUD/HealthDisplay.h"
 #include "../ECS/Graphics/HUD/TimerDisplay.h"
+#include "../ECS/Graphics/HUD/ExpDisplay.h"
+#include "../ECS/Graphics/HUD/GoldDisplay.h"
 
 // Input
 #include "../ECS/Input/InputComponent.h"
@@ -57,15 +61,22 @@
 #include "../ECS/Tool/CameraComponent.h"
 #include "../ECS/Tool/HealthComponent.h"
 #include "../ECS/Tool/CrossHairComponent.h"
-#include "../ECS/Display/MapMakeComponent.h"
 #include "../ECS/Tool/CloneItemComponent.h"
 #include "../ECS/Tool/RandomItemPositionComponent.h"
+#include "../ECS/Tool/TimerComponent.h"
+
+#include "../ECS/Tool/Gold/GoldManager.h"
+#include "../ECS/Tool/Experience/ExpManager.h"
 
 #include "../ECS/Tool/Debug/DebugHudComp.h"
-#include "../ECS/Tool/Gold/GoldManager.h"
 
 // Weapon
 #include "../ECS/Weapon/WeaponMain.h"
 
 // Capacity
 #include "../Gameplay/CapacityManager.h"
+
+
+
+
+
