@@ -8,8 +8,8 @@ CapacityMain::CapacityMain(Object* _owner, int Button) : Component(_owner) {
     HUDlevel.setSize({50, 10});
     HUDlevel.setPosition({(HUDrect.getPosition().x), (HUDrect.getPosition().y + 60)});
     
-    HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
-    HUDlevel.setTexture(&HUDtxLv);
+    // HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+    // HUDlevel.setTexture(&HUDtxLv);
     
     LinkButton = Button;
 }
@@ -44,13 +44,18 @@ void CapacityMain::renderHUD() {
     }
 }
 
+void CapacityMain::setTexture(std::string _tex) {
+    HUDtxLv.loadFromFile(_tex);
+    HUDlevel.setTexture(&HUDtxLv);
+}
+
 void CapacityMain::levelUp() {
     level += 1;
     if (level > maxLevel) {
         level = maxLevel;
     }
     
-    HUDlevel.setTexture(nullptr);
-    HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
-    HUDlevel.setTexture(&HUDtxLv);
+    // HUDlevel.setTexture(nullptr);
+    // HUDtxLv.loadFromFile("Assets/Debug/Level/CapaLV_" + std::to_string(level) + ".png");
+    // HUDlevel.setTexture(&HUDtxLv);
 }

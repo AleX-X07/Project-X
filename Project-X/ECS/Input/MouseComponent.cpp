@@ -4,6 +4,7 @@
 
 MouseComponent::MouseComponent(Object* _owner) : Component(_owner) {
     mapping = GamepadUtils::getMapping(0);
+    selected = false;
 }
 
 void MouseComponent::update(float deltaTime) {
@@ -47,9 +48,19 @@ bool MouseComponent::isClick() {
     );
     
     if (clicked() && bounds.contains(sf::Vector2f(mousePos))) {
+        if (selected) {
+            selected = false;
+        }
+        else {
+            selected = true;
+        }
         return true;
     }
     else {
         return false;
     }
+}
+
+bool MouseComponent::isSelected() {
+    return selected;
 }

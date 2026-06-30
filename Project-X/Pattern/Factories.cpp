@@ -2,12 +2,10 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
-#include "../ECS/Behaviour/Manager/BossManager.h"
-#include "../ECS/Graphics/HUD/ExpDisplay.h"
-#include "../ECS/Graphics/HUD/GoldDisplay.h"
-#include "../ECS/Scene/Screen/ScreenWeaponChoice.h"
-#include "../ECS/Tool/TimerComponent.h"
+#include "../Reader/CapacityReader.h"
 #include "../Main/GameEngine.h"
+
+
 
 std::unordered_map <
     std::string,
@@ -34,6 +32,9 @@ std::unordered_map <
     // Display
     {"ChoiceWeapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new WeaponChoiceComponent(obj, currentScene);
+    }},
+    {"ChoiceSpell", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new SpellChoiceComponent(obj);
     }},
     // Graphics
     {"RenderFile", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -108,6 +109,9 @@ std::unordered_map <
         {"ScreenWeaponChoice", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
             return new ScreenWeaponChoice(obj, currentScene, ecs["args"][0]);
         }},
+        {"ScreenSpellChoice", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenSpellChoice(obj, currentScene, ecs["args"][0]);
+        }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new ExpManager(obj);
@@ -144,7 +148,21 @@ std::unordered_map <
     }},
     // Capacity
     {"CapacityManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new CapacityManager(obj);
+        if (GameEngine::myCapacity.size() == 3) {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[2]));
+        }
+        else if (GameEngine::myCapacity.size() == 2) {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),
+                nullptr);
+        }
+        else {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                nullptr,
+                nullptr);
+        }
     }}
 };
 
@@ -163,5 +181,20 @@ std::unordered_map <
     }},
     {"Left", [](Object* obj, mapState myMap) -> State* {
             return new LeftState(obj, myMap);
+    }}
+};
+
+std::unordered_map<
+    std::string, 
+    CapacityFactories
+> FactoriesCapacity::factories = {
+    {"Big_Bullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_bigbullet(obj, args[0], args[1], args[2]);
+    }},
+    {"Dash", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Dash(obj, args[0], args[1], args[2], args[3]);
+    }},
+    {"Heal", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Heal(obj, args[0], args[1], args[2], args[3],args[4]);
     }}
 };

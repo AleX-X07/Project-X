@@ -563,6 +563,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="ECS\Display\SpellChoiceComponent.cpp" />
     <ClCompile Include="ECS\Display\WeaponChoiceComponent.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\ExpDisplay.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\GoldDisplay.cpp" />
@@ -1118,6 +1119,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="ECS\Scene\Screen\ScreenSpellChoice.cpp" />
     <ClCompile Include="ECS\Scene\Screen\ScreenWeaponChoice.cpp" />
     <ClCompile Include="ECS\Scene\Screen\ScreenWin.cpp" />
     <ClCompile Include="ECS\Scene\Transition.cpp" />
@@ -1541,6 +1543,7 @@
     <ClCompile Include="Pattern\StateMachine\State\IdleLeftState.cpp" />
     <ClCompile Include="Pattern\StateMachine\State\LeftState.cpp" />
     <ClCompile Include="Pattern\StateMachine\State\RightState.cpp" />
+    <ClCompile Include="Reader\CapacityReader.cpp" />
     <ClCompile Include="Reader\InputReader.cpp" />
     <ClCompile Include="Reader\Reader.cpp" />
     <ClCompile Include="Reader\SceneReader.cpp" />
@@ -1627,6 +1630,7 @@
     </ClCompile>
     <ClCompile Include="Tool\MapMaker.cpp" />
     <ClCompile Include="Tool\Random.cpp" />
+    <ClCompile Include="Writer\SaveWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
@@ -1655,6 +1659,7 @@
     <ClInclude Include="ECS\ChemicalSystem\State\CH_Poison.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Display\MapMakeComponent.h" />
+    <ClInclude Include="ECS\Display\SpellChoiceComponent.h" />
     <ClInclude Include="ECS\Display\WeaponChoiceComponent.h" />
     <ClInclude Include="ECS\Graphics\HUD\ExpDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\GoldDisplay.h" />
@@ -1679,6 +1684,7 @@
     <ClInclude Include="ECS\Scene\Screen\ScreenDeath.h" />
     <ClInclude Include="ECS\Scene\Screen\ScreenPaused.h" />
     <ClInclude Include="ECS\Scene\Screen\ScreenSettings.h" />
+    <ClInclude Include="ECS\Scene\Screen\ScreenSpellChoice.h" />
     <ClInclude Include="ECS\Scene\Screen\ScreenWeaponChoice.h" />
     <ClInclude Include="ECS\Scene\Screen\ScreenWin.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
@@ -1711,6 +1717,7 @@
     <ClInclude Include="Gameplay\Capacity\CA_PoisonBullet.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Rage.h" />
     <ClInclude Include="Gameplay\Capacity\CA_Tank.h" />
+    <ClInclude Include="Gameplay\IncludeCapacity.h" />
     <ClInclude Include="Gameplay\Test\CapaButton.h" />
     <ClInclude Include="Main\GameEngine.h" />
     <ClInclude Include="Pattern\Factories.h" />
@@ -1722,6 +1729,7 @@
     <ClInclude Include="Pattern\StateMachine\State\IdleLeftState.h" />
     <ClInclude Include="Pattern\StateMachine\State\LeftState.h" />
     <ClInclude Include="Pattern\StateMachine\State\RightState.h" />
+    <ClInclude Include="Reader\CapacityReader.h" />
     <ClInclude Include="Reader\InputReader.h" />
     <ClInclude Include="Reader\Reader.h" />
     <ClInclude Include="Reader\SceneReader.h" />
@@ -1733,6 +1741,7 @@
     <ClInclude Include="Tool\Input.h" />
     <ClInclude Include="Tool\MapMaker.h" />
     <ClInclude Include="Tool\Random.h" />
+    <ClInclude Include="Writer\SaveWriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

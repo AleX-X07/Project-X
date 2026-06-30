@@ -7,16 +7,20 @@
 
 #include "../Pattern/StateMachine/IncludeSM.h"
 
+#include "../Gameplay/IncludeCapacity.h"
+
+
 class Scene;
 class Component;
 class Object;
-
+class CapacityReader;
 
 using ComponentFactory = std::function<Component*(Object*, const nlohmann::json&, Scene*)>;
 
 using mapState = std::unordered_map<std::string,nlohmann::json>*;
 using StateFactory = std::function<State*(Object*, mapState)>;
 
+using CapacityFactories = std::function<CapacityMain*(Object*, const nlohmann::json&)>;
 
 struct FactoriesECS {
     static std::unordered_map <
@@ -33,3 +37,9 @@ struct FactoriesStates {
     > factories;
 };
 
+struct FactoriesCapacity {
+    static std::unordered_map <
+        std::string, 
+        CapacityFactories
+    > factories;
+};

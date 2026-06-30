@@ -6,13 +6,17 @@
 
 class WeaponReader : public Reader {
 private:
+    static WeaponReader* myInstance;
     static std::unordered_map<std::string, argsWeapon> weapons;
+    WeaponReader() = default;
     
 public:
-    WeaponReader() = default;
-    virtual ~WeaponReader() override = default;
+
+    virtual ~WeaponReader() override;
     
     static std::unordered_map<std::string, argsWeapon>& getWeapons();
     
     virtual void read() override;
+    
+    static WeaponReader* getInstance();
 };

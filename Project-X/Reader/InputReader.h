@@ -61,9 +61,14 @@ private:
         {"Backspace", sf::Keyboard::Key::Backspace},
         {"Tab",       sf::Keyboard::Key::Tab},
     };
-public:
+    
+    static InputReader* myInstance;
+    
     InputReader() = default;
-    virtual ~InputReader() override = default;
+public:
+    virtual ~InputReader() override;
     
     virtual void read() override;
+    
+    static InputReader* getInstance();
 };

@@ -13,6 +13,7 @@ GoldManager::GoldManager(Object* _owner) : Component(_owner) {
 }
 
 GoldManager::~GoldManager() {
+    SaveWriter::getInstance()->writeGold(getGold());
     delete myText;
     myText = nullptr;
 }

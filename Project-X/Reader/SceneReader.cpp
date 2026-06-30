@@ -3,12 +3,16 @@
 #include "../ECS/Behaviour/Manager/BossManager.h"
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
+#include "../Reader/CapacityReader.h"
 
 SceneReader* SceneReader::myInstance = nullptr;
 
+SceneReader::~SceneReader() {
+    delete myInstance;
+    myInstance = nullptr;
+}
+
 void SceneReader::read() {
-    inputReader.read();
-    weaponReader.read();
     readScene();
 }
 
@@ -204,7 +208,7 @@ void SceneReader::SceneTestDev() {
 
     newObj->team = Object::Team::Player;
 
-    newObj->addComponent(new CapacityManager(newObj));
+    //newObj->addComponent(new CapacityManager(newObj));
     newObj->addComponent(new InputComponent(newObj));
     newObj->addComponent(new RenderFile(newObj, "Assets/Character/hero1.png"));
     newObj->addComponent(new MouseComponent(newObj));

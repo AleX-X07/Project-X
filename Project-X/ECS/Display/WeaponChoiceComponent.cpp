@@ -3,8 +3,8 @@
 
 WeaponChoiceComponent::WeaponChoiceComponent(Object* _owner, Scene* currentScene) : Component(_owner){
     myChoices = nullptr;
-    sf::Vector2f Size = {};
-    int ligne = 8;
+    sf::Vector2f Size = {150,150};
+    int ligne = 6;
     int col = 0;
     int row = 0;
     
@@ -14,7 +14,6 @@ WeaponChoiceComponent::WeaponChoiceComponent(Object* _owner, Scene* currentScene
     float padding = 100;
 
     for (auto& [key, value] : WeaponReader::getWeapons()) {
-        Size = {value.size.x*3,value.size.y*3};
         sf::Vector2f Pos = {
             (Size.x + padding) * col + marginX,
             (Size.y + padding) * row + marginY
@@ -49,6 +48,10 @@ void WeaponChoiceComponent::update(float deltaTime) {
     for (auto& w : weapons) {
         if (w->getComponent<MouseComponent>()->isClick()) {
             GameEngine::myWeapon = nullptr;
+            if (myChoices != nullptr) {
+                delete myChoices;
+                myChoices = nullptr;
+            }
             myChoices = new sf::RectangleShape(w->getSize());
             myChoices->setPosition(w->getPosition());
             myChoices->setFillColor(sf::Color::Transparent);

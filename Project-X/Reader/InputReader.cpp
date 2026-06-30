@@ -1,5 +1,12 @@
 ﻿#include "InputReader.h"
 
+InputReader* InputReader::myInstance = nullptr;
+
+InputReader::~InputReader() {
+    delete myInstance;
+    myInstance = nullptr;
+}
+
 void InputReader::read() {
     std::ifstream inputFile("Data/Input/Input.json");
     if (inputFile.is_open()) {
@@ -8,4 +15,11 @@ void InputReader::read() {
             Input::getInput()->getMap()[key] = keyTable.at(val.get<std::string>());
         }
     }
+}
+
+InputReader* InputReader::getInstance() {
+    if (myInstance == nullptr) {
+        myInstance = new InputReader();
+    }
+    return myInstance;
 }
