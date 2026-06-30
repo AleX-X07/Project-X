@@ -39,7 +39,7 @@ void ExpDisplay::update(float dt) {
         EXP = owner->getComponent<ExpManager>()->getExp();
     }
     if (displayEXP->hasComponent<RenderText>()) {
-        displayEXP->getComponent<RenderText>()->getText()->setString(std::to_string(EXP));
+        displayEXP->getComponent<RenderText>()->getText()->setString( " Level : " + std::to_string(owner->getComponent<ExpManager>()->level));
     }
     
     auto comp = owner->getComponent<CapacityManager>();
