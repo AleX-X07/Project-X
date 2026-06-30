@@ -212,8 +212,8 @@
             ]
         },
         {
-            "Name" : "Collider",
-            "Description" : "Cailloux",
+            "Name" : "collision",
+            "Description" : "coll",
             "Team" : "Player",
             "ID Object" : 0,
             "LayerPosition" : 3,
@@ -240,13 +240,15 @@
                 {"Component" : "Weapon", "args" : []},
                 {"Component" : "HurtBox", "args" : [50,50,1]},
                 {"Component" : "Camera", "args" : [false, 0]},
-                {"Component" : "Health", "args" : [1000]},
+                {"Component" : "Health", "args" : [100]},
                 {"Component" : "ExpManager", "args" : []},
                 {"Component" : "Crosshair", "args" : []},
                 {"Component" : "Timer", "args" : [500]},
                 {"Component" : "HUD", "args" : [
                                                 {"Timer" : ["Timer",[960,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
-                                                {"Health": ["Health",[0,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
+                                                {"Health": ["Health",[0,0],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Exp": ["Exp",[0,30],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Gold": ["Exp",[30,60],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
                                                 ]},
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
                 {"Component" : "ScreenWin", "args" : ["Win"]},

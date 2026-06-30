@@ -9,7 +9,10 @@ class RenderText;
 class HealthDisplay : public Component {
 private:
     Object* displayHP;
+    Object* EmptyBar;
     int HP;
+    
+    float barsize;
     
 public:
     HealthDisplay(Object* _owner, sf::Vector2f pos, sf::Vector2f size, sf::Color color, std::string file);

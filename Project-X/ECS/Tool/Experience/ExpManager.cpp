@@ -47,6 +47,7 @@ void ExpManager::setExp(int _exp) {
 }
 
 void ExpManager::render() {
+    /*
     GameEngine::getWindow()->setView(GameEngine::getWindow()->getDefaultView());
     GameEngine::getWindow()->draw(rect);
     GameEngine::getWindow()->draw(bar);
@@ -57,6 +58,7 @@ void ExpManager::render() {
     {
         GameEngine::getWindow()->setView(*cam->view);
     }
+    */
 }
 
 

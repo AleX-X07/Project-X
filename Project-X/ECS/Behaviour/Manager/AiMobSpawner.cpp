@@ -48,13 +48,13 @@ void AiMobSpawner::update(float dt)
         if (!hp->alive) {
             Object* Exp = new Object(c->getPosition(), {25, 25});
             Exp->addComponent(new ExpComponent(Exp, {25, 25}, sceneObjects, Contain->Exp));
-            Exp->addComponent(new RenderFile(Exp, "Assets/Debug/ExpDebug.png"));
+            Exp->addComponent(new RenderFile(Exp, "Assets/HUD/exp.png"));
             
             ExpList.push_back(Exp);
             
             Object* Gold = new Object({c->getPosition().x + 25, c->getPosition().y + 25}, {25, 25});
             Gold->addComponent(new GoldComponent(Gold, {25, 25}, sceneObjects, GoldContain->gold));
-            Gold->addComponent(new RenderFile(Gold, "Assets/Debug/Debug_green.png"));
+            Gold->addComponent(new RenderFile(Gold, "Assets/HUD/Coin.png"));
             
             if (GoldContain->gold > 0) {
                 GoldList.push_back(Gold);

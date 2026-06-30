@@ -564,6 +564,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Display\WeaponChoiceComponent.cpp" />
+    <ClCompile Include="ECS\Graphics\HUD\ExpDisplay.cpp" />
+    <ClCompile Include="ECS\Graphics\HUD\GoldDisplay.cpp" />
     <ClCompile Include="ECS\Graphics\HUD\HealthDisplay.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1654,6 +1656,8 @@
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Display\MapMakeComponent.h" />
     <ClInclude Include="ECS\Display\WeaponChoiceComponent.h" />
+    <ClInclude Include="ECS\Graphics\HUD\ExpDisplay.h" />
+    <ClInclude Include="ECS\Graphics\HUD\GoldDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HealthDisplay.h" />
     <ClInclude Include="ECS\Graphics\HUD\HUD.h" />
     <ClInclude Include="ECS\Graphics\HUD\TimerDisplay.h" />

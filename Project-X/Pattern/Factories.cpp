@@ -3,6 +3,8 @@
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
 #include "../ECS/Behaviour/Manager/BossManager.h"
+#include "../ECS/Graphics/HUD/ExpDisplay.h"
+#include "../ECS/Graphics/HUD/GoldDisplay.h"
 #include "../ECS/Scene/Screen/ScreenWeaponChoice.h"
 #include "../ECS/Tool/TimerComponent.h"
 #include "../Main/GameEngine.h"
@@ -55,6 +57,12 @@ std::unordered_map <
         }},
         {"TimerDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
             return new TimerDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
+        }},
+        {"ExpDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ExpDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
+        }},
+        {"GoldDisplay", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new GoldDisplay(obj, {ecs[1][0], ecs[1][1]}, ecs[2], {ecs[3][0],ecs[3][1],ecs[3][2],ecs[3][3]},ecs[4]);
         }},
     // Input
     {"Mouse",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {

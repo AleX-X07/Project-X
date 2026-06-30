@@ -26,6 +26,8 @@ public:
     void render() override;
     
     bool intersects(Object* object);
-    void collisionHori(Object* object);
-    void collisionVert(Object* object);
+    //void collisionHori(Object* object);
+    //void collisionVert(Object* object);
+    
+    void resolveCollision(Object* object);
 };
