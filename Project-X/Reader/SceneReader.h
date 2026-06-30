@@ -27,12 +27,9 @@ class SceneReader : public Reader {
 private:
    static SceneReader* myInstance;
    
-   InputReader inputReader;
-   WeaponReader weaponReader;
-   
    SceneReader() = default;
 public:
-   virtual ~SceneReader() override = default;
+   virtual ~SceneReader() override;
    
    virtual void read() override;
    void readScene();

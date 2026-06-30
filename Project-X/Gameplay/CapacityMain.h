@@ -42,4 +42,5 @@ public:
     
     virtual void levelUp();
     void renderHUD();
+    void setTexture(std::string _tex);
 };

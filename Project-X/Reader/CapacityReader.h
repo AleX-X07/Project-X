@@ -20,7 +20,7 @@ private:
     CapacityReader() = default;
     
 public:
-    virtual ~CapacityReader() override = default;
+    virtual ~CapacityReader() override;
     
     std::unordered_map<std::string, std::string>& getCapacity();
     

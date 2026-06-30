@@ -3,6 +3,11 @@
 
 CapacityReader* CapacityReader::myInstance = nullptr;
 
+CapacityReader::~CapacityReader() {
+    delete myInstance;
+    myInstance = nullptr;
+}
+
 std::unordered_map<std::string, std::string>& CapacityReader::getCapacity() {
     return capacity;
 }

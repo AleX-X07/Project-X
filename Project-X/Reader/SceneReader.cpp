@@ -7,9 +7,12 @@
 
 SceneReader* SceneReader::myInstance = nullptr;
 
+SceneReader::~SceneReader() {
+    delete myInstance;
+    myInstance = nullptr;
+}
+
 void SceneReader::read() {
-    inputReader.read();
-    weaponReader.read();
     readScene();
 }
 

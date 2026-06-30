@@ -1,6 +1,12 @@
 ﻿#include "WeaponReader.h"
 
+WeaponReader* WeaponReader::myInstance = nullptr;
 std::unordered_map<std::string, argsWeapon> WeaponReader::weapons = std::unordered_map<std::string, argsWeapon>();
+
+WeaponReader::~WeaponReader() {
+    delete myInstance;
+    myInstance = nullptr;
+}
 
 std::unordered_map<std::string, argsWeapon>& WeaponReader::getWeapons() {
     return weapons;
@@ -45,4 +51,11 @@ void WeaponReader::read() {
             }
         }   
     }
+}
+
+WeaponReader* WeaponReader::getInstance() {
+    if (myInstance == nullptr) {
+        myInstance = new WeaponReader();
+    }
+    return myInstance;
 }

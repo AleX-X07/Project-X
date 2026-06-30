@@ -37,6 +37,8 @@ void GameEngine::initRead() {
     //readScene.SceneTestDev();
     // readScene.SceneTestDev2();
     // #############//
+    InputReader::getInstance()->read();
+    WeaponReader::getInstance()->read();
     CapacityReader::getInstance()->read(); 
     SceneReader::getInstance()->read();
     currentScene = SceneReader::getInstance()->initScene(0);
@@ -55,6 +57,11 @@ void GameEngine::updateChangeScene() {
     delete currentScene;
     currentScene = nullptr;
     currentScene = SceneReader::getInstance()->initScene(idScene);
+    if (idScene == 0) {
+        myCapacity.clear();
+        delete myWeapon;
+        myWeapon = nullptr;
+    }
 }
 
 void GameEngine::updateEvent() {

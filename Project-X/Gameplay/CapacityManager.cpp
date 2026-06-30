@@ -21,16 +21,18 @@ CapacityManager::CapacityManager(Object* _owner, CapacityMain* _ActualCapa, Capa
     SecondaryCapa = _SecondaryCapa;
     UltiCapa = _UltiCapa;
     
-    ActualCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*3), (static_cast<float>(winSize.y) - 100)});
-    ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
-    
-    SecondaryCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*2), (static_cast<float>(winSize.y) - 100)});
-    SecondaryCapa->HUDlevel.setPosition({(SecondaryCapa->HUDrect.getPosition().x), (SecondaryCapa->HUDrect.getPosition().y + 60)});
-    
-    UltiCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70), (static_cast<float>(winSize.y) - 100)});
-    UltiCapa->HUDlevel.setPosition({(UltiCapa->HUDrect.getPosition().x), (UltiCapa->HUDrect.getPosition().y + 60)});
-    
-    sf::Vector2f test = UltiCapa->HUDrect.getPosition();
+    if (ActualCapa != nullptr) {
+        ActualCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*3), (static_cast<float>(winSize.y) - 100)});
+        ActualCapa->HUDlevel.setPosition({(ActualCapa->HUDrect.getPosition().x), (ActualCapa->HUDrect.getPosition().y + 60)});
+    }
+    if (SecondaryCapa != nullptr) {
+        SecondaryCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70*2), (static_cast<float>(winSize.y) - 100)});
+        SecondaryCapa->HUDlevel.setPosition({(SecondaryCapa->HUDrect.getPosition().x), (SecondaryCapa->HUDrect.getPosition().y + 60)});
+    }
+    if (UltiCapa != nullptr) {
+        UltiCapa->HUDrect.setPosition({(static_cast<float>(winSize.x) - 70), (static_cast<float>(winSize.y) - 100)});
+        UltiCapa->HUDlevel.setPosition({(UltiCapa->HUDrect.getPosition().x), (UltiCapa->HUDrect.getPosition().y + 60)});
+    }
 }
 
 CapacityManager::~CapacityManager() {
@@ -44,20 +46,25 @@ CapacityManager::~CapacityManager() {
 }
 
 void CapacityManager::update(float deltaTime) {
-    ActualCapa->update(deltaTime);
-    SecondaryCapa->update(deltaTime);
-    UltiCapa->update(deltaTime);
-    
-    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-1")) && ActualCapa->level >= 1) {
-        ActualCapa->activate();
+    if (ActualCapa != nullptr) {
+        ActualCapa->update(deltaTime);
+        if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-1")) && ActualCapa->level >= 1) {
+            ActualCapa->activate();
+        }
     }
-    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-2")) && SecondaryCapa->level >= 1) {
-        SecondaryCapa->activate();
+    if (SecondaryCapa != nullptr) {
+        SecondaryCapa->update(deltaTime);
+        if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-2")) && SecondaryCapa->level >= 1) {
+            SecondaryCapa->activate();
+        }
     }
-    if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-3")) && UltiCapa->level >= 1) {
-        UltiCapa->activate();
+    if (UltiCapa != nullptr) {
+        UltiCapa->update(deltaTime);
+        if (sf::Keyboard::isKeyPressed(Input::getInput()->getKey("Capacity-3")) && UltiCapa->level >= 1) {
+            UltiCapa->activate();
+        }
     }
-    
+
     for (auto& z : buttonList) {
         z.update(deltaTime);
     }
@@ -82,22 +89,34 @@ void CapacityManager::update(float deltaTime) {
         offered = true;
         pendnumber -=1;
         
-        if (ActualCapa->level != ActualCapa->maxLevel) {
-            offerUpgrade(ActualCapa);
+        if (ActualCapa != nullptr) {
+            if (ActualCapa->level != ActualCapa->maxLevel) {
+                offerUpgrade(ActualCapa);
+            }
         }
-        if (SecondaryCapa->level != SecondaryCapa->maxLevel) {
-            offerUpgrade(SecondaryCapa);
+        if (SecondaryCapa != nullptr) {
+            if (SecondaryCapa->level != SecondaryCapa->maxLevel) {
+                offerUpgrade(SecondaryCapa);
+            }
         }
-        if (UltiCapa->level != UltiCapa->maxLevel) {
-            offerUpgrade(UltiCapa);
+        if (UltiCapa != nullptr) {
+            if (UltiCapa->level != UltiCapa->maxLevel) {
+                offerUpgrade(UltiCapa);
+            }
         }
     }
 }
 
 void CapacityManager::render() {
-    ActualCapa->render();
-    SecondaryCapa->render();
-    UltiCapa->render();
+    if (ActualCapa != nullptr) {
+        ActualCapa->render();
+    }
+    if (SecondaryCapa != nullptr) {
+        SecondaryCapa->render();
+    }
+    if (UltiCapa != nullptr) {
+        UltiCapa->render();
+    }
     
     for (auto& c : buttonList) {
         c.render();

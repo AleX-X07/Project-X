@@ -1627,6 +1627,7 @@
     </ClCompile>
     <ClCompile Include="Tool\MapMaker.cpp" />
     <ClCompile Include="Tool\Random.cpp" />
+    <ClCompile Include="Writer\SaveWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
@@ -1734,6 +1735,7 @@
     <ClInclude Include="Tool\Input.h" />
     <ClInclude Include="Tool\MapMaker.h" />
     <ClInclude Include="Tool\Random.h" />
+    <ClInclude Include="Writer\SaveWriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

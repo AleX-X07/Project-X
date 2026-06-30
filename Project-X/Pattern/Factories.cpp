@@ -141,7 +141,21 @@ std::unordered_map <
     }},
     // Capacity
     {"CapacityManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[2]));
+        if (GameEngine::myCapacity.size() == 3) {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[2]));
+        }
+        else if (GameEngine::myCapacity.size() == 2) {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),
+                nullptr);
+        }
+        else {
+            return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
+                nullptr,
+                nullptr);
+        }
     }}
 };
 
