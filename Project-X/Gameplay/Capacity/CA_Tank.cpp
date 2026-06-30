@@ -69,7 +69,7 @@ void CA_Tank::activate() {
         }
         
         IsActived = true;
-        HUDrect.setFillColor(sf::Color({0, 0, 0, 255}));
+        HUDrect.setFillColor(sf::Color({25, 25, 25, 255}));
     }
 }
 

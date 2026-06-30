@@ -24,7 +24,7 @@ void CA_BulletExplode::update(float dt) {
 void CA_BulletExplode::activate() {
     if (CoolDownActualTime <= 0) {
         Shot();
-        HUDrect.setFillColor(sf::Color({0, 0, 0, 255}));
+        HUDrect.setFillColor(sf::Color({25, 25, 25, 255}));
         CoolDownActualTime = CoolDown;
     }
 }

@@ -212,18 +212,6 @@
             ]
         },
         {
-            "Name" : "collision",
-            "Description" : "coll",
-            "Team" : "Player",
-            "ID Object" : 0,
-            "LayerPosition" : 3,
-            "Position" : [500,500],
-            "Size" : [500,500],
-            "ECS" : [
-                {"Component" : "Collider", "args" : []}
-            ]
-        },
-        {
             "Name" : "Player",
             "Description" : "Hero",
             "Team" : "Player",

@@ -39,7 +39,7 @@ void CA_Dash::update(float dt) {
 void CA_Dash::activate() {
     if (CoolDownActualTime <= 0 && !IsActived) {
         IsActived = true;
-        HUDrect.setFillColor(sf::Color({0, 0, 0, 255}));
+        HUDrect.setFillColor(sf::Color({25, 25, 25, 255}));
         CoolDownActualTime = CoolDown;
         
         auto comp = owner->getComponent<MouseComponent>();
