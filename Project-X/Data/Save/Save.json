@@ -1,3 +1,11 @@
 {
-    "Gold": 750
+    "AK-47": false,
+    "BigDeagle": false,
+    "Deagle": true,
+    "GambleGun": false,
+    "Gold": 110,
+    "Laser": false,
+    "MeleeGun": false,
+    "ShotGun": true,
+    "Sniper": false
 }

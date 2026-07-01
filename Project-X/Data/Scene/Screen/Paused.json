@@ -56,20 +56,6 @@
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "ScreenClear" , "args" : []}
             ]
-        },
-        {
-            "Name" : "Settings",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 2,
-            "LayerPosition" : 1,
-            "Position" : [800,200],
-            "Size" : [350,250],
-            "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
-                {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenSettings" , "args" : ["Settings"]}
-            ]
         }
     ]
 }

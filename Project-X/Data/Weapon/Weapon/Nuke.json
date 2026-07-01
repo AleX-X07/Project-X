@@ -7,6 +7,7 @@
     "shakeDuration" : 1,
     "hasrecoil" : true,
     "recoilTime" : 1,
+    "price" : 10,
     "Bullet" : {        
         "BulletImage" : "Assets/Debug/DebugBulletblue.png",
         "Size" : [25,25],

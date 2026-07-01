@@ -34,6 +34,8 @@ struct argsWeapon {
     
     bool hasrecoil;
     float recoilTime;
+    
+    int price;
 };
 
 class WeaponMain : public Component

@@ -97,20 +97,14 @@ std::unordered_map <
         {"ScreenDeath", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
             return new ScreenDeath(obj, currentScene, ecs["args"][0]);
         }},
-        {"ScreenPaused", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new ScreenPaused(obj, currentScene, ecs["args"][0]);
+        {"ScreenKey", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenKey(obj, currentScene, ecs["args"][0], ecs["args"][1]);
         }},
-        {"ScreenSettings", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new ScreenSettings(obj, currentScene, ecs["args"][0]);
+        {"ScreenClick", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+            return new ScreenClick(obj, currentScene, ecs["args"][0]);
         }},
         {"ScreenClear", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
             return new ScreenClear(obj, currentScene);
-        }},
-        {"ScreenWeaponChoice", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new ScreenWeaponChoice(obj, currentScene, ecs["args"][0]);
-        }},
-        {"ScreenSpellChoice", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-            return new ScreenSpellChoice(obj, currentScene, ecs["args"][0]);
         }},
     // Tool
     {"ExpManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -137,6 +131,9 @@ std::unordered_map <
     {"RandomPosition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new RandomItemPositionComponent(obj, {ecs["args"][0][0],ecs["args"][0][1]}, {ecs["args"][1][0],ecs["args"][1][1]});
     }},
+    {"ClearSave", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new ClearSaveComponent(obj);
+    }},
     
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
@@ -158,10 +155,13 @@ std::unordered_map <
                 CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[1]),
                 nullptr);
         }
-        else {
+        else if (GameEngine::myCapacity.size() == 1) {
             return new CapacityManager(obj,CapacityReader::getInstance()->readCapacity(obj,GameEngine::myCapacity[0]),
                 nullptr,
                 nullptr);
+        }
+        else {
+            return new CapacityManager(obj, nullptr, nullptr, nullptr);
         }
     }}
 };
