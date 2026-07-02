@@ -10,6 +10,7 @@ RenderText::RenderText(Object* _owner, std::string file) : Component(_owner){
         std::cerr << "Erreur : impossible de charger la police !" << std::endl;
     }
     myText = new sf::Text(myFont);
+    myText->setPosition(owner->getPosition());
 }
 
 RenderText::~RenderText() {

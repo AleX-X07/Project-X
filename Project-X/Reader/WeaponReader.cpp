@@ -36,6 +36,8 @@ void WeaponReader::read() {
                 newWeapon.hasrecoil = data2["hasrecoil"];
                 newWeapon.recoilTime = data2["recoilTime"];
                 
+                newWeapon.price = data2["price"];
+                
                 nlohmann::json data3 = data2["Bullet"];
                 
                 newWeapon.bulletSize = {data3["Size"][0], data3["Size"][1]};

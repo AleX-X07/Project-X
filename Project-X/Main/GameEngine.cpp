@@ -28,18 +28,10 @@ GameEngine::~GameEngine() {
 }
 
 void GameEngine::initRead() {    
-    //## for dev ##//
-    //InputReader input;
-    //input.read();
-    //WeaponReader weapons;
-    //weapons.read();
-    //SceneReader readScene;
-    //readScene.SceneTestDev();
-    // readScene.SceneTestDev2();
-    // #############//
     InputReader::getInstance()->read();
     WeaponReader::getInstance()->read();
-    CapacityReader::getInstance()->read(); 
+    CapacityReader::getInstance()->read();
+    SaveWriter::getInstance();
     SceneReader::getInstance()->read();
     currentScene = SceneReader::getInstance()->initScene(0);
 }

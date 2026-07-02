@@ -51,11 +51,9 @@
 
 #include "Scene/Screen/ScreenDeath.h"
 #include "Scene/Screen/ScreenWin.h"
-#include "Scene/Screen/ScreenPaused.h"
-#include "Scene/Screen/ScreenSettings.h"
+#include "Scene/Screen/ScreenClick.h"
+#include "Scene/Screen/ScreenKey.h"
 #include "Scene/Screen/ScreenClear.h"
-#include "Scene/Screen/ScreenWeaponChoice.h"
-#include "Scene/Screen/ScreenSpellChoice.h"
 
 // Tool
 #include "../ECS/Tool/CameraComponent.h"
@@ -64,6 +62,7 @@
 #include "../ECS/Tool/CloneItemComponent.h"
 #include "../ECS/Tool/RandomItemPositionComponent.h"
 #include "../ECS/Tool/TimerComponent.h"
+#include "../ECS/Tool/ClearSaveComponent.h"
 
 #include "../ECS/Tool/Gold/GoldManager.h"
 #include "../ECS/Tool/Experience/ExpManager.h"
@@ -75,8 +74,3 @@
 
 // Capacity
 #include "../Gameplay/CapacityManager.h"
-
-
-
-
-

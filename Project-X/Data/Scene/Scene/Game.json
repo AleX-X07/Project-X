@@ -241,8 +241,8 @@
                 {"Component" : "StateMachine", "args" : ["AnimationHero"]},
                 {"Component" : "ScreenWin", "args" : ["Win"]},
                 {"Component" : "ScreenDeath", "args" : ["Death"]},
-                {"Component" : "ScreenPaused", "args" : ["Paused"]},
-                {"Component" : "ScreenSettings", "args" : ["Settings"]},
+                {"Component" : "ScreenKey", "args" : ["Paused","Pause"]},
+                {"Component" : "ScreenClick", "args" : ["Settings"]},
 		        {"Component" : "GoldManager", "args" : []},
                 {"Component" : "CapacityManager", "args" : []},
                 {"Component" : "StatManager", "args" : []}

@@ -15,7 +15,8 @@ class CapacityReader : public Reader {
 private:
     static CapacityReader* myInstance;
     
-    std::unordered_map<std::string, std::string> capacity;  
+    std::unordered_map<std::string, std::string> capacity; 
+    std::unordered_map<std::string, int> capacityPrice;
     
     CapacityReader() = default;
     
@@ -23,6 +24,7 @@ public:
     virtual ~CapacityReader() override;
     
     std::unordered_map<std::string, std::string>& getCapacity();
+    std::unordered_map<std::string, int>& getCapacityPrice();
     
     virtual void read() override;
     
