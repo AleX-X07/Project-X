@@ -8,7 +8,7 @@ public:
     int Level;
     int MaxLevel;
     
-    float cost;
+    int cost;
     
     int id;
     
@@ -16,9 +16,12 @@ public:
     Object* ButtonMinus;
     
     Object* Bar;
+    Object* Text;
+    
+    std::string Name;
     
 public:
-    StatUpgrade(int _Level, float _MaxLevel, int _id);
+    StatUpgrade(int _Level, float _MaxLevel, int _id, std::string name);
     ~StatUpgrade();
     
     void update(float dt);
