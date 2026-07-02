@@ -27,7 +27,7 @@ int GoldManager::getGold() {
 }
 
 void GoldManager::setGold(int _Gold) {
-    gold = _Gold;
+    gold = _Gold * multi;
 }
 
 void GoldManager::render() {

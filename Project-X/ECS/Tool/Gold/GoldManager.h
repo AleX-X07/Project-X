@@ -14,6 +14,8 @@ public:
     sf::Font myFont;
     sf::Text* myText;
     
+    float multi = 1;
+    
 public:
     GoldManager(Object* _owner);
     ~GoldManager() override;

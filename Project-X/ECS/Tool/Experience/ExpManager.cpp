@@ -43,7 +43,7 @@ float ExpManager::getExp() {
 }
 
 void ExpManager::setExp(int _exp) {
-    Exp = _exp;
+    Exp = _exp * multi;
 }
 
 void ExpManager::render() {

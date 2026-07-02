@@ -20,6 +20,8 @@ HealthDisplay::HealthDisplay(Object* _owner, sf::Vector2f pos, int size, sf::Col
     displayHP->getComponent<RenderText>()->getText()->setCharacterSize(size);
     displayHP->getComponent<RenderText>()->getText()->setFillColor(color);
     
+    
+    
     EmptyBar->addComponent(new RenderFile(EmptyBar, "Assets/HUD/EmptyBar.png"));
     
     if (owner->hasComponent<HealthComponent>()) {
@@ -42,11 +44,14 @@ HealthDisplay::~HealthDisplay() {
 void HealthDisplay::update(float dt) {
     if (owner->hasComponent<HealthComponent>()) {
         HP = owner->getComponent<HealthComponent>()->getHp();
+        
+        EmptyBar->getComponent<RenderFile>()->getRect()->setSize({static_cast<float>(owner->getComponent<HealthComponent>()->MaxHp) * 2, 25});
     }
     if (displayHP->hasComponent<RenderText>()) {
         displayHP->getComponent<RenderText>()->getText()->setString(std::to_string(HP));
     }
     barsize = HP * 2;
+    
     displayHP->getComponent<RenderFile>()->getRect()->setSize({barsize, 25});
 }
 

@@ -2,6 +2,8 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
+#include "../ECS/Tool/Stat/StatManager.h"
+#include "../ECS/Tool/Stat/StatMenu.h"
 #include "../Reader/CapacityReader.h"
 #include "../Main/GameEngine.h"
 
@@ -137,7 +139,12 @@ std::unordered_map <
     {"RandomPosition", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new RandomItemPositionComponent(obj, {ecs["args"][0][0],ecs["args"][0][1]}, {ecs["args"][1][0],ecs["args"][1][1]});
     }},
-    
+    {"StatManager", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new StatManager(obj, currentScene->getVecObjects());
+    }},
+    {"StatMenu", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new StatMenu(obj, currentScene->getVecObjects());
+    }},
     // Weapon
     {"Weapon", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new WeaponMain(obj, *GameEngine::myWeapon);

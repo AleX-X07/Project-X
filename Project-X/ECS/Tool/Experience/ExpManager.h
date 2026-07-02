@@ -17,6 +17,7 @@ public:
     sf::Font myFont;
     sf::Text* myText;
     
+    float multi = 1;
 public:
     ExpManager(Object* _owner);
     ~ExpManager() override;

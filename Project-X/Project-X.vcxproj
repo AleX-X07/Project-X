@@ -1123,6 +1123,7 @@
     <ClCompile Include="ECS\Scene\Screen\ScreenWeaponChoice.cpp" />
     <ClCompile Include="ECS\Scene\Screen\ScreenWin.cpp" />
     <ClCompile Include="ECS\Scene\Transition.cpp" />
+    <ClCompile Include="ECS\Tool\ButtonComponent.cpp" />
     <ClCompile Include="ECS\Tool\CameraComponent.cpp" />
     <ClCompile Include="ECS\Tool\CloneItemComponent.cpp" />
     <ClCompile Include="ECS\Tool\CrossHairComponent.cpp" />
@@ -1212,6 +1213,85 @@
     <ClCompile Include="ECS\Tool\HealthBar.cpp" />
     <ClCompile Include="ECS\Tool\HealthComponent.cpp" />
     <ClCompile Include="ECS\Tool\RandomItemPositionComponent.cpp" />
+    <ClCompile Include="ECS\Tool\Stat\StatManager.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>x64\Debug\Project-X.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>x64\Debug\Project-X.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Steve\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="ECS\Tool\Stat\StatMenu.cpp" />
+    <ClCompile Include="ECS\Tool\Stat\StatUpgrade.cpp" />
     <ClCompile Include="ECS\Tool\TimerComponent.cpp" />
     <ClCompile Include="ECS\Weapon\WeaponMain.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -1688,6 +1768,7 @@
     <ClInclude Include="ECS\Scene\Screen\ScreenWeaponChoice.h" />
     <ClInclude Include="ECS\Scene\Screen\ScreenWin.h" />
     <ClInclude Include="ECS\Scene\Transition.h" />
+    <ClInclude Include="ECS\Tool\ButtonComponent.h" />
     <ClInclude Include="ECS\Tool\CameraComponent.h" />
     <ClInclude Include="ECS\Tool\CloneItemComponent.h" />
     <ClInclude Include="ECS\Tool\CrossHairComponent.h" />
@@ -1701,6 +1782,9 @@
     <ClInclude Include="ECS\Tool\HealthBar.h" />
     <ClInclude Include="ECS\Tool\HealthComponent.h" />
     <ClInclude Include="ECS\Tool\RandomItemPositionComponent.h" />
+    <ClInclude Include="ECS\Tool\Stat\StatManager.h" />
+    <ClInclude Include="ECS\Tool\Stat\StatMenu.h" />
+    <ClInclude Include="ECS\Tool\Stat\StatUpgrade.h" />
     <ClInclude Include="ECS\Tool\TimerComponent.h" />
     <ClInclude Include="ECS\Weapon\WeaponMain.h" />
     <ClInclude Include="Gameplay\CapacityMain.h" />
