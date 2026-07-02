@@ -20,6 +20,8 @@ public:
     
     std::string Name;
     
+    Object* Gold;
+    
 public:
     StatUpgrade(int _Level, float _MaxLevel, int _id, std::string name);
     ~StatUpgrade();

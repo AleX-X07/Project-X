@@ -3,6 +3,7 @@
 #include "../ButtonComponent.h"
 #include "../../Graphics/RenderFile.h"
 #include "../../Graphics/RenderText.h"
+#include "../../../Writer/SaveWriter.h"
 
 StatUpgrade::StatUpgrade(int _Level, float _MaxLevel, int _id, std::string _name) {
     Level = _Level;
@@ -29,6 +30,12 @@ StatUpgrade::StatUpgrade(int _Level, float _MaxLevel, int _id, std::string _name
     Text->getComponent<RenderText>()->getText()->setPosition({250, 100 * static_cast<float>(id)});
     Text->getComponent<RenderText>()->getText()->setCharacterSize(24);
     Text->getComponent<RenderText>()->getText()->setFillColor(sf::Color::Black);
+    
+    Gold = new Object({150, 100 * static_cast<float>(id)}, {0, 0});
+    Gold->addComponent(new RenderText(Bar, "Assets/Font/Brown Cookies.otf"));
+    Gold->getComponent<RenderText>()->getText()->setPosition({500, 0 * static_cast<float>(id)});
+    Gold->getComponent<RenderText>()->getText()->setCharacterSize(24);
+    Gold->getComponent<RenderText>()->getText()->setFillColor(sf::Color::Black);
 }
 
 StatUpgrade::~StatUpgrade() {
@@ -44,6 +51,7 @@ StatUpgrade::~StatUpgrade() {
 void StatUpgrade::update(float dt) {
     Bar->getComponent<RenderText>()->getText()->setString(std::to_string(Level));
     Text->getComponent<RenderText>()->getText()->setString(Name + " | " + std::to_string(cost));
+    Gold->getComponent<RenderText>()->getText()->setString(std::to_string(SaveWriter::getInstance()->readGold()));
     
     ButtonMinus->update(dt);
     ButtonPlus->update(dt);
@@ -56,9 +64,14 @@ void StatUpgrade::update(float dt) {
         }
     }
     if (ButtonPlus->getComponent<ButtonComponent>()->clicked()) {
-        Level += 1;
-        if (Level > MaxLevel) {
-            Level = MaxLevel;
+        if (SaveWriter::getInstance()->readGold() >= cost) {
+            Level += 1;
+            if (Level > MaxLevel) {
+                Level = MaxLevel;
+            }
+            else {
+                SaveWriter::getInstance()->writeGold(-cost);
+            }
         }
     }
     
@@ -70,5 +83,6 @@ void StatUpgrade::render() {
     ButtonPlus->render();
     Bar->render();
     Text->render();
+    Gold->render();
 }
 

@@ -17,20 +17,20 @@ StatManager::StatManager(Object* _owner, std::vector<Object*>& _objects) : Compo
     file >> GoldBoost;
     
     if (owner->hasComponent<HealthComponent>()) {
-        owner->getComponent<HealthComponent>()->MaxHp *= Health * 0.15;
-        owner->getComponent<HealthComponent>()->hp *= Health * 0.15;
+        owner->getComponent<HealthComponent>()->MaxHp *= Health * 0.15 + 1;
+        owner->getComponent<HealthComponent>()->hp *= Health * 0.15 + 1;
     }
     if (owner->hasComponent<MovementsComponent>()) {
         owner->getComponent<MovementsComponent>()->setSpeed(owner->getComponent<MovementsComponent>()->getSpeed() * speed * 0.1);
     }
     if (owner->hasComponent<WeaponMain>()) {
-        owner->getComponent<WeaponMain>()->myArgs.damage *= damage * 0.1;
+        owner->getComponent<WeaponMain>()->myArgs.damage *= damage * 0.1 + 1;
     }
     if (owner->hasComponent<ExpManager>()) {
-        owner->getComponent<ExpManager>()->multi *= ExpBoost * 0.1;
+        owner->getComponent<ExpManager>()->multi *= ExpBoost * 0.1 + 1;
     }
     if (owner->hasComponent<GoldManager>()) {
-        owner->getComponent<GoldManager>()->multi *= GoldBoost * 0.1;
+        owner->getComponent<GoldManager>()->multi *= GoldBoost * 0.1 + 1;
     }
 }
 

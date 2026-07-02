@@ -27,7 +27,7 @@ void GoldComponent::intersect() {
             if (overlaps(b) && isActive) {
                 auto comp = b->getComponent<GoldManager>();
                 if (comp != nullptr) {
-                    comp->setGold(comp->getGold() + quantity);
+                    comp->setGold(quantity);
                     sound->play();
                     isActive = false;
                 }
