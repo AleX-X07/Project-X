@@ -12,6 +12,10 @@ std::unordered_map<std::string, std::string>& CapacityReader::getCapacity() {
     return capacity;
 }
 
+std::unordered_map<std::string, int>& CapacityReader::getCapacityPrice() {
+    return capacityPrice;
+}
+
 void CapacityReader::read() {
     std::string path = "Data/Capacity/CapacityManager.json";
     std::ifstream file(path);
@@ -20,7 +24,8 @@ void CapacityReader::read() {
         nlohmann::json data = nlohmann::json::parse(file);
         std::string path = "Assets/Capacity/";
         for (auto& [key, value] : data["Capacity"].items()) {
-            capacity[key] = path + value.get<std::string>();
+            capacity[key] = path + value[0].get<std::string>();
+            capacityPrice[key] = value[1].get<int>();
         }
     }
 }

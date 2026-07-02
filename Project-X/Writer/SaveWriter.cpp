@@ -1,5 +1,6 @@
 ﻿#include "SaveWriter.h"
 
+#include "../Reader/CapacityReader.h"
 #include "../Reader/WeaponReader.h"
 
 SaveWriter* SaveWriter::myInstance = nullptr;
@@ -11,8 +12,13 @@ SaveWriter::SaveWriter() {
         nlohmann::json data = nlohmann::json::object();
         std::ofstream outFile(pathSave);
         data["Gold"] = 0;
+        nlohmann::json& data2 = data["Weapon"];
         for (auto& [k,v] : WeaponReader::getInstance()->getWeapons()) {
-            data[k] = false;
+            data2[k] = false;
+        }
+        nlohmann::json& data3 = data["Capa"];
+        for (auto& [k,v] : CapacityReader::getInstance()->getCapacity()) {
+            data3[k] = false;
         }
         if (outFile.is_open()) {
             outFile << data.dump(4);
@@ -20,14 +26,15 @@ SaveWriter::SaveWriter() {
         }
     }
     std::ifstream inFile(pathSave);
-    nlohmann::json data;
     if (inFile.is_open()) {
-        data = nlohmann::json::parse(inFile);
-        for (auto& [k,v] : data.items()) {
-            if (k != "Gold") {
-                getWeaponUnlock()[k] = v.get<bool>();
-            }
+        nlohmann::json data = nlohmann::json::parse(inFile);
+        for (auto& [k, v] : data["Weapon"].items()) {
+            weaponUnlock[k] = v.get<bool>();
         }
+        for (auto& [k,v] : data["Capacity"].items()) {
+            capaUnlock[k] = v.get<bool>();
+        }
+        inFile.close();
     }
 }
 
@@ -66,7 +73,26 @@ void SaveWriter::writeWeapon() {
     }
 
     for (auto& [k, v] : weaponUnlock) {
-        data[k] = v;
+        data["Weapon"][k] = v;
+    }
+
+    std::ofstream outFile(pathSave);
+    if (outFile.is_open()) {
+        outFile << data.dump(4);
+        outFile.close();
+    }
+}
+
+void SaveWriter::writeCapa() {
+    std::ifstream inFile(pathSave);
+    nlohmann::json data;
+    if (inFile.is_open()) {
+        data = nlohmann::json::parse(inFile);
+        inFile.close();
+    }
+
+    for (auto& [k, v] : capaUnlock) {
+        data["Capa"][k] = v;
     }
 
     std::ofstream outFile(pathSave);
@@ -83,10 +109,15 @@ int SaveWriter::readGold() {
         data = nlohmann::json::parse(inFile);
         return data["Gold"].get<int>();
     }
+    return 0;
 }
 
 std::unordered_map<std::string, bool>& SaveWriter::getWeaponUnlock() {
     return weaponUnlock;
+}
+
+std::unordered_map<std::string, bool>& SaveWriter::getCapaUnlock() {
+    return capaUnlock;
 }
 
 void SaveWriter::clearSave() {
