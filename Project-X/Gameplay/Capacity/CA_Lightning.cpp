@@ -6,7 +6,7 @@ CA_Lightning::CA_Lightning(Object* _owner, float _Timer, float _Cooldown, int _B
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    HUDtx.loadFromFile("Assets/Capacity/RageIcon.png");
+    HUDtx.loadFromFile("Assets/Capacity/LightningBullet.png");
     HUDrect.setTexture(&HUDtx);
 }
 

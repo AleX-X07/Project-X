@@ -6,7 +6,7 @@ CA_IceBullet::CA_IceBullet(Object* _owner, float _Timer, float _Cooldown, int _B
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    HUDtx.loadFromFile("Assets/Capacity/RageIcon.png");
+    HUDtx.loadFromFile("Assets/Capacity/IceBullet.png");
     HUDrect.setTexture(&HUDtx);
 }
 

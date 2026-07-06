@@ -6,7 +6,7 @@ CA_PoisonBullet::CA_PoisonBullet(Object* _owner, float _Timer, float _Cooldown, 
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    HUDtx.loadFromFile("Assets/Capacity/RageIcon.png");
+    HUDtx.loadFromFile("Assets/Capacity/PoisonBullet.png");
     HUDrect.setTexture(&HUDtx);
 }
 

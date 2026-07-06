@@ -6,7 +6,7 @@ CA_FireBullet::CA_FireBullet(Object* _owner, float _Timer, float _Cooldown, int 
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    HUDtx.loadFromFile("Assets/Capacity/RageIcon.png");
+    HUDtx.loadFromFile("Assets/Capacity/FireBullet.png");
     HUDrect.setTexture(&HUDtx);
 }
 
