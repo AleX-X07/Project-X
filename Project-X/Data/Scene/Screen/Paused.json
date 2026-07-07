@@ -21,24 +21,10 @@
             "Team" : "",
             "ID Object" : 1,
             "LayerPosition" : 1,
-            "Position" : [200,200],
+            "Position" : [720,500],
             "Size" : [350,250],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,0,0,255]},
-                {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition", "args" : [71756974,"Button"]}
-            ]
-        },
-        {
-            "Name" : "Menu",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 1,
-            "LayerPosition" : 1,
-            "Position" : [800,800],
-            "Size" : [350,250],
-            "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/Quit.png"]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition", "args" : [0,"Button"]}
             ]
@@ -49,10 +35,10 @@
             "Team" : "",
             "ID Object" : 2,
             "LayerPosition" : 1,
-            "Position" : [200,800],
-            "Size" : [350,250],
+            "Position" : [680,200],
+            "Size" : [425,325],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/Resume.png"]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "ScreenClear" , "args" : []}
             ]

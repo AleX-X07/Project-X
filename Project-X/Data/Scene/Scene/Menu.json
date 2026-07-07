@@ -12,7 +12,7 @@
             "Position" : [0,0],
             "Size" : [1920,1080],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,0,0,155]}
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/background.png"]}
             ]
         },
         {
@@ -21,12 +21,12 @@
             "Team" : "",
             "ID Object" : 1,
             "LayerPosition" : 1,
-            "Position" : [200,200],
-            "Size" : [375,125],
+            "Position" : [680,200],
+            "Size" : [425,325],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/Start.png"]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenClick", "args" : ["ChoiceStuff"]}
+                {"Component" : "ScreenClick", "args" : ["Stat"]}
             ]
         },
         {
@@ -49,10 +49,10 @@
             "Team" : "",
             "ID Object" : 1,
             "LayerPosition" : 1,
-            "Position" : [1400,800],
-            "Size" : [375,125],
+            "Position" : [700,500],
+            "Size" : [375,275],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/Quit.png"]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition", "args" : [71756974,"Button"]}
             ]

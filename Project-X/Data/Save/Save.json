@@ -1,10 +1,6 @@
 {
-    "Capa": {
-        "Big_Bullet": false,
-        "Dash": false,
-        "Heal": true
-    },
-    "Gold": 149039163,
+    "Capa": null,
+    "Gold": 0,
     "Weapon": {
         "AK-47": false,
         "BigDeagle": false,

@@ -1210,7 +1210,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Steve\Documents\GitHub\Project-X\external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external/include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="ECS\Tool\Stat\StatMenu.cpp" />

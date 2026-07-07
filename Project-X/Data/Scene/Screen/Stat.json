@@ -12,7 +12,34 @@
             "Position" : [0,0],
             "Size" : [1920,1080],
             "ECS" : [
-                {"Component" : "RenderFile", "args" : ["Assets/Menu/background.png"]}
+                {"Component" : "RenderColor", "args" : [255,255,255,255]}
+            ]
+        },
+        {
+            "Name" : "ChoiceStuff",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [1820,0],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "ScreenClick" , "args" : ["ChoiceStuff"]} 
+            ]
+        },
+        {
+            "Name" : "Stat",
+            "Description" : "",
+            "Team" : "",
+            "ID Object" : 2,
+            "LayerPosition" : 1,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "StatManager" , "args" : []},
+                {"Component" : "StatMenu" , "args" : []}
             ]
         },
         {
@@ -27,32 +54,6 @@
                 {"Component" : "RenderColor", "args" : [0,0,255,255]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "ScreenClear" , "args" : []} 
-            ]
-        },
-        {
-            "Name" : "ChoiceSpell",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 2,
-            "LayerPosition" : 1,
-            "Position" : [1770,0],
-            "Size" : [150,150],
-            "ECS" : [
-                {"Component" : "RenderFile", "args" : ["Assets/Menu/Start.png"]},
-                {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenClick" , "args" : ["ChoiceSpell"]} 
-            ]
-        },
-        {
-            "Name" : "ChoiceWeapon",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 2,
-            "LayerPosition" : 1,
-            "Position" : [0,0],
-            "Size" : [0,0],
-            "ECS" : [
-                {"Component" : "ChoiceWeapon" , "args" : []} 
             ]
         }
     ]

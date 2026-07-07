@@ -121,10 +121,41 @@ std::unordered_map<std::string, bool>& SaveWriter::getCapaUnlock() {
 }
 
 void SaveWriter::clearSave() {
+    for (auto& [k, v] : weaponUnlock) {
+        v = false;
+    }
+    for (auto& [k, v] : capaUnlock) {
+        v = false;
+    }
+
+    nlohmann::json data = nlohmann::json::object();
+    data["Gold"] = 0;
+
+    nlohmann::json& dataWeapon = data["Weapon"];
+    for (auto& [k, v] : weaponUnlock) {
+        dataWeapon[k] = false;
+    }
+
+    nlohmann::json& dataCapa = data["Capa"];
+    for (auto& [k, v] : capaUnlock) {
+        dataCapa[k] = false;
+    }
+
     std::ofstream outFile(pathSave);
     if (outFile.is_open()) {
-        nlohmann::json data = nlohmann::json::object();
         outFile << data.dump(4);
         outFile.close();
     }
+    
+    std::ofstream file("Data/Stat/Stat.txt", std::ios::out);
+    
+    
+    file << 1 << "\n";
+    file << 1 << "\n";
+    file << 1 << "\n";
+    file << 1 << "\n";
+    file << 1 << "\n";
+    
+    file.close();
 }
+
