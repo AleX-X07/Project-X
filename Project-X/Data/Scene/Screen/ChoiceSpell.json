@@ -40,7 +40,7 @@
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition" , "args" : [1,"Button"]} 
+                {"Component" : "Transition" , "args" : [2,"Button"]} 
             ]
         },
         {

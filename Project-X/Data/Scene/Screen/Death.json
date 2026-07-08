@@ -13,31 +13,17 @@
             ]
         },
         {
-            "Name" : "Menu",
-            "Description" : "",
-            "Team" : "",
-            "ID Object" : 1,
-            "LayerPosition" : 1,
-            "Position" : [200,200],
-            "Size" : [350,250],
-            "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
-                {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition", "args" : [0,"Button"]}
-            ]
-        },
-        {
             "Name" : "Quit",
             "Description" : "",
             "Team" : "",
             "ID Object" : 2,
             "LayerPosition" : 1,
-            "Position" : [200,800],
+            "Position" : [680,200],
             "Size" : [350,250],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,0,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/Quit.png"]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "Transition" , "args" : [71756974,"Button"]}
+                {"Component" : "Transition" , "args" : [0,"Button"]}
             ]
         }
     ]

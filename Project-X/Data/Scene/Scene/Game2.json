@@ -1,0 +1,307 @@
+{
+    "ID" : 2,
+    "Name" : "Game2",
+    "Layer" : 4,
+    "Objects" : [
+        {
+            "Name" : "Map",
+            "Description" : "Map",
+            "Team" : "Neutral",
+            "ID Object" : 0,
+            "LayerPosition" : 0,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "MapMaker", "args" : ["Assets/Decoration/Biome2/Map/", [128,128]]}
+            ]
+        },
+        {
+            "Name" : "Cailloux1",
+            "Description" : "Cailloux",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cailloux.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Cailloux2",
+            "Description" : "Cailloux",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cailloux2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Cailloux3",
+            "Description" : "Cailloux",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cailloux3.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Barriere",
+            "Description" : "Barriere",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [300,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Barriere.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Barriere",
+            "Description" : "Barriere",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [300,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Barriere2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [1]}
+            ]
+        },
+        {
+            "Name" : "Cactus",
+            "Description" : "Cactus",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cactus.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Cactus",
+            "Description" : "Cactus",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cactus2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Cactus",
+            "Description" : "Cactus",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Cactus3.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Crane",
+            "Description" : "Crane",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [260,200],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Crane.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [1]}
+            ]
+        },
+        {
+            "Name" : "Os",
+            "Description" : "Os",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,125],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Os.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Os",
+            "Description" : "Os",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,125],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Os2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Os",
+            "Description" : "Os",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [100,125],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Os3.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [3]}
+            ]
+        },
+        {
+            "Name" : "Panneau",
+            "Description" : "Panneau",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Panneau.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Panneau",
+            "Description" : "Panneau",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Panneau2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Tonneau",
+            "Description" : "Cailloux",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [150,100],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Tonneau.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Arbre",
+            "Description" : "Arbre",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [300,400],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Arbre.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Arbre",
+            "Description" : "Arbre",
+            "Team" : "Map",
+            "ID Object" : 0,
+            "LayerPosition" : 1,
+            "Position" : [500,500],
+            "Size" : [300,400],
+            "ECS" : [
+                {"Component" : "RenderFile", "args" : ["Assets/Decoration/Biome2/Item/Arbre2.png"]},
+                {"Component" : "RandomPosition", "args" : [[0,3840],[0,2160]]}, 
+                {"Component" : "Clone", "args" : [2]}
+            ]
+        },
+        {
+            "Name" : "Player",
+            "Description" : "Hero",
+            "Team" : "Player",
+            "ID Object" : 0,
+            "LayerPosition" : 3,
+            "Position" : [200,200],
+            "Size" : [75,75],
+            "ECS" : [
+                {"Component" : "Input", "args" : []},
+                {"Component" : "RenderFile", "args" : []},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Movement" , "args" : [250]},
+                {"Component" : "BulletManager", "args" : []},
+                {"Component" : "Weapon", "args" : []},
+                {"Component" : "HurtBox", "args" : [50,50,1]},
+                {"Component" : "Camera", "args" : [false, 0]},
+                {"Component" : "Health", "args" : [50]},
+                {"Component" : "ExpManager", "args" : []},
+                {"Component" : "Crosshair", "args" : []},
+                {"Component" : "Timer", "args" : [500]},
+                {"Component" : "HUD", "args" : [
+                                                {"Timer" : ["Timer",[960,0],24,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Health": ["Health",[0,0],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Exp": ["Exp",[0,30],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]},
+                                                {"Gold": ["Exp",[30,60],20,[255,255,255,255],"Assets/Font/Brown Cookies.otf"]}
+                                                ]},
+                {"Component" : "StateMachine", "args" : ["AnimationHero"]},
+                {"Component" : "ScreenWin", "args" : ["Win"]},
+                {"Component" : "ScreenDeath", "args" : ["Death"]},
+                {"Component" : "ScreenKey", "args" : ["Paused","Pause"]},
+                {"Component" : "ScreenClick", "args" : ["Settings"]},
+		        {"Component" : "GoldManager", "args" : []},
+                {"Component" : "CapacityManager", "args" : []},
+                {"Component" : "StatManager", "args" : []}
+            ]
+        },
+        {
+            "Name" : "EnemyManager",
+            "Description" : "AIMobSpawner",
+            "Team" : "Enemy",
+            "ID Object" : 0,
+            "LayerPosition" : 2,
+            "Position" : [0,0],
+            "Size" : [0,0],
+            "ECS" : [
+                {"Component" : "AIMobSpawner", "args" : []},
+		        {"Component" : "BossManager", "args" : [10]}
+            ]
+        }
+    ]
+}
