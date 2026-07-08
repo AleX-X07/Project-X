@@ -3,7 +3,7 @@
 #include "AiBossExplode.h"
 #include "../../../Main/GameEngine.h"
 
-AiBossShot::AiBossShot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate, int quantity)
+AiBossShot::AiBossShot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate, int quantity, bool _fire)
     : BulletSource(_owner), target(_target)
 {
     speed = _speed;
@@ -17,6 +17,8 @@ AiBossShot::AiBossShot(Object* _owner, Object& _target, int _damage, float _spee
     
     buffer.loadFromFile("Assets/Sound/Shoot.wav");
     sound =  new sf::Sound(buffer);
+    
+    fire = _fire;
 }
 
 void AiBossShot::update(float dt)

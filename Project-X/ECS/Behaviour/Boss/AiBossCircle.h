@@ -24,11 +24,13 @@ public:
     
     bool active = false;
 
+    bool fire;
+    
     sf::SoundBuffer buffer;
     sf::Sound* sound;
 
 public:
-    AiBossCircle(Object* _owner, int _damage, float _speed, float _spread, float _firerate);
+    AiBossCircle(Object* _owner, int _damage, float _speed, float _spread, float _firerate, bool _fire);
     ~AiBossCircle() override;
 
     void CreateBullet(Object* _owner, float _angle, float _lifetime);

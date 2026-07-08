@@ -2,6 +2,7 @@
 #include "../Scene/Scene.h"
 #include "../ECS/Object.h"
 #include "../ECS/Component.h"
+#include "../ECS/Behaviour/Manager/AiMobSpawner_Desert.h"
 #include "../ECS/Tool/Stat/StatManager.h"
 #include "../ECS/Tool/Stat/StatMenu.h"
 #include "../Reader/CapacityReader.h"
@@ -17,8 +18,11 @@ std::unordered_map <
     {"AIMobSpawner",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
         return new AiMobSpawner(obj, currentScene->getVecObjects());
     }},
+    {"AIMobSpawnerDesert",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
+        return new AiMobSpawner_Desert(obj, currentScene->getVecObjects());
+    }},
     {"BossManager",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new BossManager(obj, ecs["args"][0], currentScene->getVecObjects());
+        return new BossManager(obj, ecs["args"][0], currentScene->getVecObjects(), ecs["args"][1]);
     }},
     // Box
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {

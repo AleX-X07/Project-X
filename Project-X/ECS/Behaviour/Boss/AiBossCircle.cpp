@@ -3,7 +3,7 @@
 #include "AiBossExplode.h"
 #include "../../../Main/GameEngine.h"
 
-AiBossCircle::AiBossCircle(Object* _owner, int _damage, float _speed, float _spread, float _firerate)
+AiBossCircle::AiBossCircle(Object* _owner, int _damage, float _speed, float _spread, float _firerate, bool _fire)
     : BulletSource(_owner)
 {
     speed = _speed;
@@ -17,6 +17,8 @@ AiBossCircle::AiBossCircle(Object* _owner, int _damage, float _speed, float _spr
     
     buffer.loadFromFile("Assets/Sound/Shoot.wav");
     sound =  new sf::Sound(buffer);
+    
+    fire = _fire;
 }
 
 void AiBossCircle::update(float dt)

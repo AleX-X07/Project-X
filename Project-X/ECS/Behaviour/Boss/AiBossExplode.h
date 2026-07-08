@@ -14,11 +14,12 @@ public:
     float randomAngle;
 
     int BulletQuantity;
+    bool fire;
     
     sf::SoundBuffer buffer;
     sf::Sound* sound;
 public:
-    AiBossExplode(Object* _owner, int _damage, float _speed, int quantity);
+    AiBossExplode(Object* _owner, int _damage, float _speed, int quantity, bool _fire);
     ~AiBossExplode() override;
     
     void CreateBullet(Object* _owner, float _lifetime);
