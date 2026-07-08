@@ -159,11 +159,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ECS\Behaviour\AiDebugShoot.cpp" />
+    <ClCompile Include="ECS\Behaviour\AiFireShot.cpp" />
     <ClCompile Include="ECS\Behaviour\AiMoveTo.cpp" />
     <ClCompile Include="ECS\Behaviour\Boss\AiBossCircle.cpp" />
     <ClCompile Include="ECS\Behaviour\Boss\AiBossExplode.cpp" />
     <ClCompile Include="ECS\Behaviour\Boss\AiBossShot.cpp" />
     <ClCompile Include="ECS\Behaviour\Manager\AiMobSpawner.cpp" />
+    <ClCompile Include="ECS\Behaviour\Manager\AiMobSpawner_Desert.cpp" />
     <ClCompile Include="ECS\Behaviour\Manager\BossManager.cpp" />
     <ClCompile Include="ECS\Box\Collider.cpp" />
     <ClCompile Include="ECS\Box\HitBox.cpp">
@@ -1637,11 +1639,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\Behaviour\AiDebugShoot.h" />
+    <ClInclude Include="ECS\Behaviour\AiFireShot.h" />
     <ClInclude Include="ECS\Behaviour\AiMoveTo.h" />
     <ClInclude Include="ECS\Behaviour\Boss\AiBossCircle.h" />
     <ClInclude Include="ECS\Behaviour\Boss\AiBossExplode.h" />
     <ClInclude Include="ECS\Behaviour\Boss\AiBossShot.h" />
     <ClInclude Include="ECS\Behaviour\Manager\AiMobSpawner.h" />
+    <ClInclude Include="ECS\Behaviour\Manager\AiMobSpawner_Desert.h" />
     <ClInclude Include="ECS\Behaviour\Manager\BossManager.h" />
     <ClInclude Include="ECS\Box\Collider.h" />
     <ClInclude Include="ECS\Box\HitBox.h" />

@@ -5,6 +5,7 @@
 #include "../ChemicalSystem/Giver/ElementGiver.h"
 #include "../Graphics/RenderAngle.h"
 
+
 WeaponMain::WeaponMain(Object* _owner, std::string weapon) : Component(_owner) {
     myArgs = WeaponReader::getWeapons()[weapon];
     mapping = GamepadUtils::getMapping(0);

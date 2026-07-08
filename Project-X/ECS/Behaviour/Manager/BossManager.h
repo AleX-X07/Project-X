@@ -21,8 +21,10 @@ public:
     std::vector<Object*>& sceneObjects;
     bool hasspawn = false;
     
+    bool level;
+    
 public:
-    BossManager(Object* _owner, float _Timer, std::vector<Object*>& _sceneObjects);
+    BossManager(Object* _owner, float _Timer, std::vector<Object*>& _sceneObjects, bool _level);
     ~BossManager() override;
     
     void update(float deltaTime) override;

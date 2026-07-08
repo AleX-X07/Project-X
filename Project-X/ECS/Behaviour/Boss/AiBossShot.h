@@ -24,9 +24,11 @@ public:
     sf::Sound* sound;
 
     Object& target;
+    
+    bool fire;
 
 public:
-    AiBossShot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate, int quantity);
+    AiBossShot(Object* _owner, Object& _target, int _damage, float _speed, float _spread, float _firerate, int quantity, bool _fire);
     ~AiBossShot() override;
 
     void CreateBullet(Object* _owner, float _lifetime);

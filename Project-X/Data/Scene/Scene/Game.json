@@ -223,7 +223,7 @@
                 {"Component" : "Input", "args" : []},
                 {"Component" : "RenderFile", "args" : []},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "Movement" , "args" : [250]},
+                {"Component" : "Movement" , "args" : [350]},
                 {"Component" : "BulletManager", "args" : []},
                 {"Component" : "Weapon", "args" : []},
                 {"Component" : "HurtBox", "args" : [50,50,1]},
@@ -258,7 +258,7 @@
             "Size" : [0,0],
             "ECS" : [
                 {"Component" : "AIMobSpawner", "args" : []},
-		        {"Component" : "BossManager", "args" : [10]}
+		        {"Component" : "BossManager", "args" : [10, false]}
             ]
         }
     ]
