@@ -35,24 +35,26 @@
             "Team" : "",
             "ID Object" : 2,
             "LayerPosition" : 1,
-            "Position" : [1820,0],
+            "Position" : [500,500],
             "Size" : [100,100],
             "ECS" : [
                 {"Component" : "RenderColor", "args" : [0,255,0,255]},
                 {"Component" : "Mouse", "args" : []},
-                {"Component" : "ScreenClick" , "args" : ["ChoiceBiome"]} 
+                {"Component" : "Transition" , "args" : [1,"Button"]} 
             ]
         },
         {
-            "Name" : "ChoiceSpell",
+            "Name" : "LaunchGame",
             "Description" : "",
             "Team" : "",
             "ID Object" : 2,
             "LayerPosition" : 1,
-            "Position" : [0,0],
-            "Size" : [0,0],
+            "Position" : [1200,500],
+            "Size" : [100,100],
             "ECS" : [
-                {"Component" : "ChoiceSpell" , "args" : []} 
+                {"Component" : "RenderColor", "args" : [0,0,255,255]},
+                {"Component" : "Mouse", "args" : []},
+                {"Component" : "Transition" , "args" : [2,"Button"]} 
             ]
         }
     ]

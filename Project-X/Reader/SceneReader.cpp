@@ -204,7 +204,7 @@ void SceneReader::SceneTestDev() {
     Object* Exp = new Object({0, 0}, { 50, 50});
     
     Hurt->addComponent(new AiMobSpawner(Hurt, addScene->getVecObjects()));
-    Hurt->addComponent(new BossManager(Hurt, 5, addScene->getVecObjects()));
+    //Hurt->addComponent(new BossManager(Hurt, 5, addScene->getVecObjects()));
 
     newObj->team = Object::Team::Player;
 
