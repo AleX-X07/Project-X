@@ -1,17 +1,26 @@
 {
     "Capa": {
-        "Big_Bullet": true,
+        "Big_Bullet": false,
+        "BulletExplode": false,
         "Dash": true,
-        "Heal": true
+        "DoubleBullet": false,
+        "FireBullet": true,
+        "Frenesie": false,
+        "Heal": false,
+        "IceBullet": true,
+        "LightningBullet": false,
+        "PoisonBullet": false,
+        "Rage": false,
+        "Tank": false
     },
-    "Gold": 1350,
+    "Gold": 80,
     "Weapon": {
         "AK-47": false,
         "BigDeagle": false,
         "Deagle": false,
         "GambleGun": false,
         "Laser": false,
-        "MeleeGun": true,
+        "MeleeGun": false,
         "ShotGun": true,
         "Sniper": false
     }

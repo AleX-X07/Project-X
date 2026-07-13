@@ -3,14 +3,14 @@
         "Big_Bullet": ["NukeIcon.png",10],
         "Dash": ["DoubleIcon.png",10],
         "Heal": ["healIcon.png",10],
-	"BulletExplode": ["ExplodeIcon.png", 10],
-	"DoubleBullet": ["DoubleIcon.png", 10],
-	"FireBullet": ["FireBullet.png", 10],
-	"Frenesie": ["AlcoolIcon.png", 10],
-	"IceBullet": ["IceBullet.png", 10],
-	"LightningBullet": ["LightningBullet.png", 10],
-	"PoisonBullet": ["PoisonBullet.png", 10],
-	"Rage": ["RageIcon.png", 10],
-	"Tank": ["NukeIcon.png", 10]
+		"BulletExplode": ["ExplodeIcon.png", 10],
+		"DoubleBullet": ["DoubleIcon.png", 10],
+		"FireBullet": ["FireBullet.png", 10],
+		"Frenesie": ["AlcoolIcon.png", 10],
+		"IceBullet": ["IceBullet.png", 10],
+		"LightningBullet": ["LightningBullet.png", 10],
+		"PoisonBullet": ["PoisonBullet.png", 10],
+		"Rage": ["RageIcon.png", 10],
+		"Tank": ["NukeIcon.png", 10]
     }
 }
