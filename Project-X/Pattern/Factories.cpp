@@ -207,5 +207,32 @@ std::unordered_map<
     }},
     {"Heal", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
         return new CA_Heal(obj, args[0], args[1], args[2], args[3],args[4]);
-    }}
+    }},
+    {"BulletExplode", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_BulletExplode(obj, args[0], args[1], args[2]);
+    }},
+    {"DoubleBullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_DoubleBullet(obj, args[0], args[1], args[2]);
+    }},
+    {"FireBullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_FireBullet(obj, args[0], args[1], args[2]);
+    }},
+    {"Frenesie", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Frenesie(obj, args[0], args[1], args[2]);
+    }},
+    {"IceBullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_IceBullet(obj, args[0], args[1], args[2]);
+    }},
+    {"LightningBullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Lightning(obj, args[0], args[1], args[2]);
+    }},
+    {"PoisonBullet", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_PoisonBullet(obj, args[0], args[1], args[2]);
+    }},
+    {"Rage", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Rage(obj, args[0], args[1], args[2]);
+    }},
+    {"Tank", [](Object* obj, const nlohmann::json& args) -> CapacityMain* {
+        return new CA_Tank(obj, args[0], args[1], args[2]);
+    }},
 };
