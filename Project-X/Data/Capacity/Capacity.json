@@ -2,6 +2,15 @@
     "Capacity" : {
         "Big_Bullet" : [2,10,0],
         "Dash" : [4000,200,3,0],
-        "Heal" : [5,1,5,15,0]
+        "Heal" : [5,1,5,15,0],
+	"BulletExplode" : [5,10,0],
+	"DoubleBullet" : [5,10,0],
+	"FireBulleté : [5,10,0],
+	"Frenesie" : [5,10,0],
+	"IceBullet" : [5,10,0],
+	"LightningBullet" : [5,10,0],
+	"PoisonBullet" : [5,10,0],
+	"Rage" : [5,10,0],
+	"Tank" : [5,10,0]
     }  
 }
