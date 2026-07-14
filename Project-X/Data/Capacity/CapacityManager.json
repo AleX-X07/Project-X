@@ -11,6 +11,6 @@
 		"LightningBullet": ["LightningBullet.png", 10],
 		"PoisonBullet": ["PoisonBullet.png", 10],
 		"Rage": ["RageIcon.png", 10],
-		"Tank": ["NukeIcon.png", 10]
+		"Tank": ["TANK.png", 10]
     }
 }

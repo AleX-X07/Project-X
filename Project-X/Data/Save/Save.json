@@ -4,16 +4,16 @@
         "BulletExplode": false,
         "Dash": false,
         "DoubleBullet": false,
-        "FireBullet": false,
+        "FireBullet": true,
         "Frenesie": false,
         "Heal": false,
         "IceBullet": false,
         "LightningBullet": false,
         "PoisonBullet": false,
         "Rage": false,
-        "Tank": false
+        "Tank": true
     },
-    "Gold": 45,
+    "Gold": 91,
     "Weapon": {
         "AK-47": false,
         "BigDeagle": false,

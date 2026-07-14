@@ -9,7 +9,7 @@ CA_Tank::CA_Tank(Object* _owner, float _Timer, float _Cooldown, int _Button) : C
     Timer = _Timer;
     CoolDown = _Cooldown;
     
-    HUDtx.loadFromFile("Assets/Capacity/AlcoolIcon.png");
+    HUDtx.loadFromFile("Assets/Capacity/TANK.png");
     HUDrect.setTexture(&HUDtx);
     
     speedModifier = 2;
