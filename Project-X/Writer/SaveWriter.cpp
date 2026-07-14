@@ -16,7 +16,7 @@ SaveWriter::SaveWriter() {
         for (auto& [k,v] : WeaponReader::getInstance()->getWeapons()) {
             data2[k] = false;
         }
-        nlohmann::json& data3 = data["Capa"];
+        nlohmann::json& data3 = data["Capacity"];
         for (auto& [k,v] : CapacityReader::getInstance()->getCapacity()) {
             data3[k] = false;
         }
@@ -39,8 +39,8 @@ SaveWriter::SaveWriter() {
 }
 
 SaveWriter::~SaveWriter() {
-    delete myInstance;
-    myInstance = nullptr;
+    capaUnlock.clear();
+    weaponUnlock.clear();
 }
 
 SaveWriter* SaveWriter::getInstance() {
@@ -92,7 +92,7 @@ void SaveWriter::writeCapa() {
     }
 
     for (auto& [k, v] : capaUnlock) {
-        data["Capa"][k] = v;
+        data["Capacity"][k] = v;
     }
 
     std::ofstream outFile(pathSave);
@@ -136,7 +136,7 @@ void SaveWriter::clearSave() {
         dataWeapon[k] = false;
     }
 
-    nlohmann::json& dataCapa = data["Capa"];
+    nlohmann::json& dataCapa = data["Capacity"];
     for (auto& [k, v] : capaUnlock) {
         dataCapa[k] = false;
     }

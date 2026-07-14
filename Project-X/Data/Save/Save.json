@@ -1,19 +1,19 @@
 {
-    "Capa": {
-        "Big_Bullet": false,
+    "Capacity": {
+        "Big_Bullet": true,
         "BulletExplode": false,
-        "Dash": true,
+        "Dash": false,
         "DoubleBullet": false,
-        "FireBullet": true,
+        "FireBullet": false,
         "Frenesie": false,
         "Heal": false,
-        "IceBullet": true,
+        "IceBullet": false,
         "LightningBullet": false,
         "PoisonBullet": false,
         "Rage": false,
         "Tank": false
     },
-    "Gold": 80,
+    "Gold": 45,
     "Weapon": {
         "AK-47": false,
         "BigDeagle": false,
