@@ -96,7 +96,7 @@ void BossManager::spawnBoss() {
         Boss->addComponent(new AiBossExplode(Boss, 40, 350, 20, true));
         Boss->addComponent(new AiBossCircle(Boss, 20, 200, 0, 10, true));
         Boss->addComponent(new AiBossShot(Boss, *target, 30, 400, 15, 0, 1, true));
-        Boss->addComponent(new RenderFile(Boss, "Assets/Character/boss1.png"));
+        Boss->addComponent(new RenderFile(Boss, "Assets/Character/boss2.png"));
         Boss->addComponent(new AiMoveTo(Boss, sceneObjects, 50));
         Boss->addComponent(new ExperienceContainer(Boss, 100));
         Boss->addComponent(new HealthBar(Boss, sf::Color::Red));

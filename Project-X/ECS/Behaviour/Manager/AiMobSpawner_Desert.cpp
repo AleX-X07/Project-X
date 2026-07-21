@@ -136,7 +136,7 @@ void AiMobSpawner_Desert::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_1.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/cheloului.png.png"));
         Mob->addComponent(new HealthComponent(Mob, 50, sceneObjects));
         Mob->addComponent(new AiFireShot(Mob, *target, 10, 500, 10, 1, 1));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 50));
@@ -153,7 +153,7 @@ void AiMobSpawner_Desert::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_3.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/pouletos.png"));
         Mob->addComponent(new HealthComponent(Mob, 40, sceneObjects));
         Mob->addComponent(new AiFireShot(Mob, *target, 15, 1000, 360, 1, 1));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 50));
@@ -170,7 +170,7 @@ void AiMobSpawner_Desert::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_3.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/pouletos.png"));
         Mob->addComponent(new HealthComponent(Mob, 50, sceneObjects));
         Mob->addComponent(new AiFireShot(Mob, *target, 25, 2500, 0, 0.5, 1));
         Mob->addComponent(new ExperienceContainer(Mob, 10));
@@ -186,7 +186,7 @@ void AiMobSpawner_Desert::addMob()
         Mob->team = Object::Team::Enemy;
         Mob->addComponent(new HurtBox(Mob, {75, 75}, sceneObjects, 0));
         Mob->addComponent(new HitBox(Mob, {75, 75}, true, 10));
-        Mob->addComponent(new RenderFile(Mob, "Assets/Character/ennemi_2.png"));
+        Mob->addComponent(new RenderFile(Mob, "Assets/Character/cheloului.png"));
         Mob->addComponent(new HealthComponent(Mob, 100, sceneObjects));
         Mob->addComponent(new AiMoveTo(Mob, sceneObjects, 100));
         Mob->addComponent(new ExperienceContainer(Mob, 3));
