@@ -12,7 +12,7 @@
             "Position" : [0,0],
             "Size" : [1920,1080],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [255,255,255,255]}
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/background.png"]}
             ]
         },
         {
@@ -36,9 +36,9 @@
             "ID Object" : 2,
             "LayerPosition" : 1,
             "Position" : [500,500],
-            "Size" : [100,100],
+            "Size" : [300,300],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,255,0,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/images_biomes_1.png"]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition" , "args" : [1,"Button"]} 
             ]
@@ -50,9 +50,9 @@
             "ID Object" : 2,
             "LayerPosition" : 1,
             "Position" : [1200,500],
-            "Size" : [100,100],
+            "Size" : [300,300],
             "ECS" : [
-                {"Component" : "RenderColor", "args" : [0,0,255,255]},
+                {"Component" : "RenderFile", "args" : ["Assets/Menu/images_biomes_2.png"]},
                 {"Component" : "Mouse", "args" : []},
                 {"Component" : "Transition" , "args" : [2,"Button"]} 
             ]
