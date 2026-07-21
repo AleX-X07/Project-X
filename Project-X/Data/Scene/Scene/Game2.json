@@ -299,8 +299,8 @@
             "Position" : [0,0],
             "Size" : [0,0],
             "ECS" : [
-                {"Component" : "AIMobSpawner", "args" : []},
-		        {"Component" : "BossManager", "args" : [10]}
+                {"Component" : "AIMobSpawnerDesert", "args" : []},
+		        {"Component" : "BossManager", "args" : [10, true]}
             ]
         }
     ]

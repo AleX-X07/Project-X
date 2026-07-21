@@ -22,7 +22,7 @@ std::unordered_map <
         return new AiMobSpawner_Desert(obj, currentScene->getVecObjects());
     }},
     {"BossManager",    [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
-        return new BossManager(obj, ecs["args"][0], currentScene->getVecObjects(), false);
+        return new BossManager(obj, ecs["args"][0], currentScene->getVecObjects(), ecs["args"][1]);
     }},
     // Box
     {"HurtBox", [](Object* obj, const nlohmann::json& ecs, Scene* currentScene) -> Component* {
